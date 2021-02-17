@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NasaService {
-    @GET("/photos")
+    @GET("photos")
     suspend fun listPhotosByEarthDate(
         @Query("earth_date") earthDate: String,
         @Query("api_key") apiKey: String
