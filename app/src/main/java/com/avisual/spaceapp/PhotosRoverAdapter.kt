@@ -8,15 +8,16 @@ import com.avisual.spaceapp.model.roverPhotos.Photo
 import com.avisual.spaceapp.model.roverPhotos.RoverPhotosResult
 import com.bumptech.glide.Glide
 
-class PhotosRoverAdapter(var photosRover: RoverPhotosResult)
-    : RecyclerView.Adapter<PhotosRoverAdapter.ViewHolder>() {
+class PhotosRoverAdapter(var photosRover: RoverPhotosResult) :
+    RecyclerView.Adapter<PhotosRoverAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemMainBinding
             .inflate(
                 LayoutInflater.from(parent.context),
-            parent,
-            false)
+                parent,
+                false
+            )
         return ViewHolder(binding)
     }
 
@@ -26,9 +27,13 @@ class PhotosRoverAdapter(var photosRover: RoverPhotosResult)
 
     override fun getItemCount(): Int = photosRover.photos.size
 
+    fun setItems(photosResult: RoverPhotosResult) {
+        this.photosRover = photosResult
+        notifyDataSetChanged()
+    }
 
-    class ViewHolder(var binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(photosRover: Photo){
+    class ViewHolder(var binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(photosRover: Photo) {
             Glide.with(binding.root.context).load(photosRover.img_src).into(binding.photoRover);
         }
     }
