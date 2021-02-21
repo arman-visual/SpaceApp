@@ -14,7 +14,7 @@ object NasaClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val roverService: NasaService = retrofitNasa.create(NasaService::class.java)
+    val nasaService: NasaService = retrofitNasa.create(NasaService::class.java)
 
     val libraryService: NasaLibraryService = retrofitLibrary.create(NasaLibraryService::class.java)
 }
