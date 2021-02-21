@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             val apiKey = getString(R.string.api_key)
-            val photosResult = NasaClient.roverService.listPhotosByEarthDate("2018-6-3", apiKey)
+            val photosResult = NasaClient.roverService.marsRoverPhotosByEarthDate("2018-6-3", apiKey)
 
             val listPhotos = photosResult.photos
             println("Lista de objtetos de tamaño : ${listPhotos.size}")
