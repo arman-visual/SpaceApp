@@ -8,7 +8,6 @@ import com.avisual.spaceapp.model.NasaClient
 import com.avisual.spaceapp.model.nasaRoverResponse.RoverPhotosResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,18 +22,20 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             val apiKey = getString(R.string.api_key)
-            val photosResult = NasaClient.nasaService.marsRoverPhotosByEarthDate("2018-6-3", apiKey)
-            val neowsResult = NasaClient.nasaService.searchNeoWsByDate("2021-02-21","",apiKey)
-            var neowsCount = neowsResult.near_earth_objects.size
-            val listPhotos = photosResult.photos
-            println("Lista de objtetos de tamaño : ${listPhotos.size}")
+           // val photosResult = NasaClient.nasaService.marsRoverPhotosByEarthDate("2018-6-3", apiKey)
+           // val listPhotos = photosResult.photos
+            //println("Lista de objtetos de tamaño : ${listPhotos.size}")
+
+            val neowsResult = NasaClient.nasaService.searchNeoWsByDate("2021-02-21", "", apiKey)
+            var neowsCount = neowsResult.registerDay.size
             println("Lista de asteroides : $neowsCount")
 
-            photosRoverAdapter.photosRover = photosResult
 
-            withContext(Dispatchers.Main) {
-                photosRoverAdapter.setItems(photosResult)
-            }
+            /*  photosRoverAdapter.photosRover = photosResult
+
+              withContext(Dispatchers.Main) {
+                  photosRoverAdapter.setItems(photosResult)
+              }*/
         }
     }
 }

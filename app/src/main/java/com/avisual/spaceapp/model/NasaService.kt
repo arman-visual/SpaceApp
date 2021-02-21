@@ -1,6 +1,7 @@
 package com.avisual.spaceapp.model
 
-import com.avisual.spaceapp.model.asteroidsNeoWsResponse.AsteroidsNeowsResult
+import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObject
+import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
 import com.avisual.spaceapp.model.nasaRoverResponse.RoverPhotosResult
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,5 +17,6 @@ interface NasaService {
     suspend fun searchNeoWsByDate(
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String,
-        @Query("api_key") apiKey: String): AsteroidsNeowsResult
+        @Query("api_key") apiKey: String
+    ): NearEarthObjectResult
 }
