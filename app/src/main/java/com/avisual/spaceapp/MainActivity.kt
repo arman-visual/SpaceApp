@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.avisual.spaceapp.databinding.ActivityMainBinding
 import com.avisual.spaceapp.model.NasaClient
-import com.avisual.spaceapp.model.roverPhotos.RoverPhotosResult
+import com.avisual.spaceapp.model.nasaRoverResponse.RoverPhotosResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             val apiKey = getString(R.string.api_key)
-            val photosResult = NasaClient.service.listPhotosByEarthDate("2018-6-3", apiKey)
+            val photosResult = NasaClient.roverService.listPhotosByEarthDate("2018-6-3", apiKey)
 
             val listPhotos = photosResult.photos
             println("Lista de objtetos de tamaño : ${listPhotos.size}")

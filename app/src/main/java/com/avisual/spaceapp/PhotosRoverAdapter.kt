@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avisual.spaceapp.databinding.ItemMainBinding
-import com.avisual.spaceapp.model.roverPhotos.Photo
-import com.avisual.spaceapp.model.roverPhotos.RoverPhotosResult
+import com.avisual.spaceapp.model.nasaRoverResponse.Photo
+import com.avisual.spaceapp.model.nasaRoverResponse.RoverPhotosResult
 import com.bumptech.glide.Glide
 
 class PhotosRoverAdapter(var photosRover: RoverPhotosResult) :

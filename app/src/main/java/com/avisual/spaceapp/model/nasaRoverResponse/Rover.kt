@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.model.roverPhotos
+package com.avisual.spaceapp.model.nasaRoverResponse
 
 data class Rover(
     val id: Int,
