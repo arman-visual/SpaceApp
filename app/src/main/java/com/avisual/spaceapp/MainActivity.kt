@@ -8,6 +8,7 @@ import com.avisual.spaceapp.model.NasaClient
 import com.avisual.spaceapp.model.nasaRoverResponse.RoverPhotosResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,12 +27,13 @@ class MainActivity : AppCompatActivity() {
            // val listPhotos = photosResult.photos
             //println("Lista de objtetos de tamaño : ${listPhotos.size}")
 
-            val neowsResult = NasaClient.nasaService.searchNeoWsByDate("2021-02-21", "", apiKey)
-            var neowsCount = neowsResult.registerDay.size
-            println("Lista de asteroides : $neowsCount")
+            //val neowsResult = NasaClient.nasaService.searchNeoWsByDate("2021-02-21", "", apiKey)
+            //var neowsCount = neowsResult.registerDay.size
+            //println("Lista de asteroides : $neowsCount")
+            val galeriResult = NasaClient.libraryService.searchContain("Neptuno")
+            val itemsPhoto = galeriResult.collection.items
 
-
-            /*  photosRoverAdapter.photosRover = photosResult
+ /*             photosRoverAdapter.photosRover = photosResult
 
               withContext(Dispatchers.Main) {
                   photosRoverAdapter.setItems(photosResult)
