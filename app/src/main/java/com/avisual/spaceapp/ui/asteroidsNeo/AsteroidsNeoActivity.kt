@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui
+package com.avisual.spaceapp.ui.asteroidsNeo
 
 import android.os.Bundle
 import android.util.Log

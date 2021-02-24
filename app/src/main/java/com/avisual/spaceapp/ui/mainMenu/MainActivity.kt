@@ -1,12 +1,13 @@
-package com.avisual.spaceapp
+package com.avisual.spaceapp.ui.mainMenu
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityMainBinding
 import com.avisual.spaceapp.ui.exploreGallery.NasaGalleryActivity
-import com.avisual.spaceapp.ui.AsteroidsNeoActivity
-import com.avisual.spaceapp.ui.RoverMarsActivity
+import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
+import com.avisual.spaceapp.ui.roverMars.RoverMarsActivity
 
 class MainActivity : AppCompatActivity() {
 

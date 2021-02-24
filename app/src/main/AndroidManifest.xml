@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.RoverMarsActivity"></activity>
+        <activity android:name=".ui.roverMars.RoverMarsActivity"></activity>
         <activity android:name=".ui.exploreGallery.NasaGalleryActivity" />
-        <activity android:name=".ui.AsteroidsNeoActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.asteroidsNeo.AsteroidsNeoActivity" />
+        <activity android:name=".ui.mainMenu.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
