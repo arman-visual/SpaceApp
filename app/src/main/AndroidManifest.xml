@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SpaceApp"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.RoverMarsActivity"></activity>
-        <activity android:name=".ui.NasaGalleryActivity" />
+        <activity android:name=".ui.exploreGallery.NasaGalleryActivity" />
         <activity android:name=".ui.AsteroidsNeoActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
