@@ -3,7 +3,7 @@ package com.avisual.spaceapp
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.avisual.spaceapp.databinding.ItemMainBinding
+import com.avisual.spaceapp.databinding.ItemRoverMarsBinding
 import com.avisual.spaceapp.model.nasaRoverResponse.Photo
 import com.avisual.spaceapp.model.nasaRoverResponse.RoverPhotosResult
 import com.bumptech.glide.Glide
@@ -12,7 +12,7 @@ class PhotosRoverAdapter(var photosRover: RoverPhotosResult) :
     RecyclerView.Adapter<PhotosRoverAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemMainBinding
+        val binding = ItemRoverMarsBinding
             .inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -32,7 +32,7 @@ class PhotosRoverAdapter(var photosRover: RoverPhotosResult) :
         notifyDataSetChanged()
     }
 
-    class ViewHolder(var binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(var binding: ItemRoverMarsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(photosRover: Photo) {
             Glide.with(binding.root.context).load(photosRover.img_src).into(binding.photoRover);
         }

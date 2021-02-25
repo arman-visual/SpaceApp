@@ -30,7 +30,7 @@ class GalleryPhotoAdatper(var items: List<Item>) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Item) {
-            Glide.with(binding.root.context).load(item.href).into(binding.photoRover)
+            Glide.with(binding.root.context).load(item.href).into(binding.photoNasa)
         }
     }
 }
