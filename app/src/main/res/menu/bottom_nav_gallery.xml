@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/exploreFragment"
+        android:id="@+id/explorePhotos"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="@string/explore_images_gallery" />
     <item
-        android:id="@+id/storedLocationsFragment"
+        android:id="@+id/storedPhotos"
         android:icon="@android:drawable/picture_frame"
         android:title="@string/favorite_images" />
 </menu>
