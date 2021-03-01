@@ -7,8 +7,8 @@ import com.avisual.spaceapp.databinding.ItemGalleryPhotosBinding
 import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.bumptech.glide.Glide
 
-class GalleryPhotosAdatper(var photos: List<Item>) :
-    RecyclerView.Adapter<GalleryPhotosAdatper.ViewHolder>() {
+class GalleryPhotosAdapter(var photos: List<Item>) :
+    RecyclerView.Adapter<GalleryPhotosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemGalleryPhotosBinding
