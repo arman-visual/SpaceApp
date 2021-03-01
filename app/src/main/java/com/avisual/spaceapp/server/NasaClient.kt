@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.model
+package com.avisual.spaceapp.server
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
