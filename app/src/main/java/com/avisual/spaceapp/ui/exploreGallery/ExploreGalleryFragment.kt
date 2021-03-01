@@ -13,7 +13,7 @@ class ExploreGalleryFragment : Fragment() {
 
     private lateinit var binding: FragmentExploreGalleryBinding
     private lateinit var viewModel: ExploreGalleryViewModel
-    private lateinit var photosAdapter: GalleryPhotosAdatper
+    private lateinit var photosAdapter: GalleryPhotosAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +28,7 @@ class ExploreGalleryFragment : Fragment() {
 
     private fun setUpUi() {
         binding = FragmentExploreGalleryBinding.inflate(layoutInflater)
-        photosAdapter = GalleryPhotosAdatper(emptyList())
+        photosAdapter = GalleryPhotosAdapter(emptyList())
         binding.recycler.adapter = photosAdapter
     }
 
