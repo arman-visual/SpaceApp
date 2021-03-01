@@ -7,11 +7,11 @@ import com.avisual.spaceapp.databinding.ItemGalleryPhotosBinding
 import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.bumptech.glide.Glide
 
-class GalleryPhotoAdatper(var items: List<Item>) :
-    RecyclerView.Adapter<GalleryPhotoAdatper.ViewHolder>() {
+class GalleryPhotosAdatper(var photos: List<Item>) :
+    RecyclerView.Adapter<GalleryPhotosAdatper.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var binding = ItemGalleryPhotosBinding
+        val binding = ItemGalleryPhotosBinding
             .inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -21,16 +21,22 @@ class GalleryPhotoAdatper(var items: List<Item>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(photos[position])
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = photos.size
 
     class ViewHolder(var binding: ItemGalleryPhotosBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Item) {
-            Glide.with(binding.root.context).load(item.href).into(binding.photoNasa)
+        fun bind(photo: Item) {
+            Glide.with(binding.root.context).load(photo.links[0].href).into(binding.photoNasa)
         }
     }
+
+    fun setItems(photos: List<Item>) {
+        this.photos = photos
+        notifyDataSetChanged()
+    }
+
 }

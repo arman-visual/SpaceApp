@@ -7,10 +7,9 @@
     tools:context=".ui.exploreGallery.ExploreGalleryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerGallery"
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/item_gallery_photos" />
+        app:spanCount="2"/>
 </FrameLayout>
