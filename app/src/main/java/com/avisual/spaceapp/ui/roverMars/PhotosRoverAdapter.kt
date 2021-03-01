@@ -1,4 +1,4 @@
-package com.avisual.spaceapp
+package com.avisual.spaceapp.ui.roverMars
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
