@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityNasaGalleryBinding
+import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 
 class NasaGalleryActivity : AppCompatActivity() {
 
@@ -43,4 +44,5 @@ class NasaGalleryActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
+
 }

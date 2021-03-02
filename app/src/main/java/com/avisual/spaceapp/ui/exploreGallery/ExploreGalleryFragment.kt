@@ -5,9 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
+import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 
 class ExploreGalleryFragment : Fragment() {
 
@@ -28,8 +30,14 @@ class ExploreGalleryFragment : Fragment() {
 
     private fun setUpUi() {
         binding = FragmentExploreGalleryBinding.inflate(layoutInflater)
-        photosAdapter = GalleryPhotosAdapter(emptyList())
+        photosAdapter = GalleryPhotosAdapter(emptyList()) {
+            onClickPhoto(it)
+        }
         binding.recycler.adapter = photosAdapter
+    }
+
+    private fun onClickPhoto(photo: Item) {
+        Toast.makeText(requireActivity(),photo.data_photo[0].title,Toast.LENGTH_LONG).show()
     }
 
     private fun subscribeUi() {

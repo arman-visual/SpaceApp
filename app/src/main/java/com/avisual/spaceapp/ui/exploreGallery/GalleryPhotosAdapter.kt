@@ -7,7 +7,10 @@ import com.avisual.spaceapp.databinding.ItemGalleryPhotosBinding
 import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.bumptech.glide.Glide
 
-class GalleryPhotosAdapter(var photos: List<Item>) :
+class GalleryPhotosAdapter(
+    var photos: List<Item>,
+    var photoOnClickLister: (Item)-> Unit
+) :
     RecyclerView.Adapter<GalleryPhotosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,6 +25,7 @@ class GalleryPhotosAdapter(var photos: List<Item>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(photos[position])
+        holder.itemView.setOnClickListener { photoOnClickLister(photos[position]) }
     }
 
     override fun getItemCount(): Int = photos.size
