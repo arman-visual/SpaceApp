@@ -7,7 +7,7 @@ import androidx.navigation.ActivityNavigator
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityMainBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
-import com.avisual.spaceapp.ui.exploreGallery.NasaGalleryActivity
+import com.avisual.spaceapp.ui.searchGallery.NavGalleryActivity
 import com.avisual.spaceapp.ui.roverMars.RoverMarsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -17,11 +17,12 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         binding.imageView.setImageResource(R.drawable.spacemenu)
         setContentView(binding.root)
+
         binding.btNeows.setOnClickListener {
             navigateToOption(Intent(this, AsteroidsNeoActivity::class.java))
         }
         binding.btNasagallery.setOnClickListener {
-            navigateToOption(Intent(this, NasaGalleryActivity::class.java))
+            navigateToOption(Intent(this, NavGalleryActivity::class.java))
         }
         binding.btSearchrover.setOnClickListener {
             navigateToOption(Intent(this, RoverMarsActivity::class.java))

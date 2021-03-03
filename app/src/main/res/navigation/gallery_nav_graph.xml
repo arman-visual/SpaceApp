@@ -6,7 +6,7 @@
     app:startDestination="@id/exploreGalleryFragment">
     <fragment
         android:id="@+id/exploreGalleryFragment"
-        android:name="com.avisual.spaceapp.ui.exploreGallery.ExploreGalleryFragment"
+        android:name="com.avisual.spaceapp.ui.searchGallery.ExploreGalleryFragment"
         android:label="fragment_explore_gallery"
         tools:layout="@layout/fragment_explore_gallery" />
 </navigation>

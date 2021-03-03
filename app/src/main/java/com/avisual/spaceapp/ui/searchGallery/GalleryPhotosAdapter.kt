@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.exploreGallery
+package com.avisual.spaceapp.ui.searchGallery
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
