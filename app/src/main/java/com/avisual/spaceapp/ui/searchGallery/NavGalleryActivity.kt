@@ -15,33 +15,5 @@ class NavGalleryActivity : AppCompatActivity() {
         binding = ActivityNavGalleryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.i("NasaGalleryActivity", "Init this activity")
-        setListeners()
-        binding.bottomNavigation.selectedItemId = R.id.explorePhotos
     }
-
-    private fun setListeners() {
-        Log.i("NasaGalleryActivity", "Configure listener of bottomNavigation")
-        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.explorePhotos -> {
-                    replaceFragmentContainerWith(ExploreGalleryFragment())
-                    true
-                }
-                R.id.storedPhotos -> {
-                    replaceFragmentContainerWith(ExploreGalleryFragment())
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-
-    private fun replaceFragmentContainerWith(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(binding.fragmentContainerView.id, fragment)
-            .addToBackStack(null)
-            .commit()
-    }
-
 }

@@ -8,5 +8,14 @@
         android:id="@+id/exploreGalleryFragment"
         android:name="com.avisual.spaceapp.ui.searchGallery.ExploreGalleryFragment"
         android:label="fragment_explore_gallery"
-        tools:layout="@layout/fragment_explore_gallery" />
+        tools:layout="@layout/fragment_explore_gallery" >
+        <action
+            android:id="@+id/action_exploreGalleryFragment_to_detailPhotoGalleryFragment"
+            app:destination="@id/detailPhotoGalleryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailPhotoGalleryFragment"
+        android:name="com.avisual.spaceapp.ui.searchGallery.DetailPhotoGalleryFragment"
+        android:label="fragment_detail_photo_gallery"
+        tools:layout="@layout/fragment_detail_photo_gallery" />
 </navigation>
