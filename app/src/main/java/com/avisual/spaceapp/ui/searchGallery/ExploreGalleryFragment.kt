@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.exploreGallery
+package com.avisual.spaceapp.ui.searchGallery
 
 import android.os.Bundle
 import android.util.Log

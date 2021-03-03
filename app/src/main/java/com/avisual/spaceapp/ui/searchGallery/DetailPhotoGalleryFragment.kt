@@ -1,13 +1,11 @@
-package com.avisual.spaceapp.ui.exploreGallery
+package com.avisual.spaceapp.ui.searchGallery
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.FragmentDetailPhotoGalleryBinding
-import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 
 
 class DetailPhotoGalleryFragment : Fragment() {
