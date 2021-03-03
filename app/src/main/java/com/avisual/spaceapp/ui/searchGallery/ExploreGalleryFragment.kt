@@ -9,9 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import com.avisual.spaceapp.R
+import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 
@@ -37,6 +36,7 @@ class ExploreGalleryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
     }
+
     private fun setUpUi() {
         binding = FragmentExploreGalleryBinding.inflate(layoutInflater)
         photosAdapter = GalleryPhotosAdapter(emptyList()) {
@@ -47,7 +47,9 @@ class ExploreGalleryFragment : Fragment() {
 
     private fun onClickPhoto(photo: Item) {
         Toast.makeText(requireActivity(),photo.data_photo[0].title,Toast.LENGTH_LONG).show()
-        navController.navigate(R.id.action_exploreGalleryFragment_to_detailPhotoGalleryFragment)
+        val action = ExploreGalleryFragmentDirections
+            .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
+        findNavController().navigate(action)
     }
 
     private fun subscribeUi() {

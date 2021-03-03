@@ -17,5 +17,11 @@
         android:id="@+id/detailPhotoGalleryFragment"
         android:name="com.avisual.spaceapp.ui.searchGallery.DetailPhotoGalleryFragment"
         android:label="fragment_detail_photo_gallery"
-        tools:layout="@layout/fragment_detail_photo_gallery" />
+        tools:layout="@layout/fragment_detail_photo_gallery" >
+        <argument
+            android:name="photoArg"
+            app:argType="com.avisual.spaceapp.model.nasaLibraryResponse.Item"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>
