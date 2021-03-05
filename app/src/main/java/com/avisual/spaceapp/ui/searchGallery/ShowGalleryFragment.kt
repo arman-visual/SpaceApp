@@ -13,13 +13,15 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.model.nasaLibraryResponse.Item
+import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
-import com.avisual.spaceapp.ui.searchGallery.viewModel.ExploreGalleryViewModel
+import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
+import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModelFactory
 
-class ExploreGalleryFragment : Fragment() {
+class ShowGalleryFragment : Fragment() {
 
     private lateinit var binding: FragmentExploreGalleryBinding
-    private lateinit var viewModel: ExploreGalleryViewModel
+    private lateinit var viewModel: ShowGalleryViewModel
     private lateinit var photosAdapter: GalleryPhotosAdapter
     private lateinit var navController: NavController
 
@@ -48,8 +50,8 @@ class ExploreGalleryFragment : Fragment() {
     }
 
     private fun onClickPhoto(photo: Item) {
-        Toast.makeText(requireActivity(),photo.data_photo[0].title,Toast.LENGTH_LONG).show()
-        val action = ExploreGalleryFragmentDirections
+        Toast.makeText(requireActivity(), photo.data_photo[0].title, Toast.LENGTH_LONG).show()
+        val action = ShowGalleryFragmentDirections
             .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
         findNavController().navigate(action)
     }
@@ -60,6 +62,8 @@ class ExploreGalleryFragment : Fragment() {
         }
     }
 
-    private fun buildViewModel(): ExploreGalleryViewModel =
-        ViewModelProvider(this)[ExploreGalleryViewModel::class.java]
+    private fun buildViewModel(): ShowGalleryViewModel {
+        val factory = ShowGalleryViewModelFactory(PhotoGalleryRepository())
+        return ViewModelProvider(this, factory).get(ShowGalleryViewModel::class.java)
+    }
 }
