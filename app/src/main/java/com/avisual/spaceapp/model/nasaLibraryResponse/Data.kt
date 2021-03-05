@@ -1,5 +1,9 @@
 package com.avisual.spaceapp.model.nasaLibraryResponse
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Data(
     val album: List<String>,
     val center: String,
@@ -13,4 +17,4 @@ data class Data(
     val photographer: String,
     val secondary_creator: String,
     val title: String
-)
+): Parcelable
