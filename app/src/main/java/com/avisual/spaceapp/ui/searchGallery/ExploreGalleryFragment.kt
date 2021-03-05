@@ -13,6 +13,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.model.nasaLibraryResponse.Item
+import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
+import com.avisual.spaceapp.ui.searchGallery.viewModel.ExploreGalleryViewModel
 
 class ExploreGalleryFragment : Fragment() {
 
