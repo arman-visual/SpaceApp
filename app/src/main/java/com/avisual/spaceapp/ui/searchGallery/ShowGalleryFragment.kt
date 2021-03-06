@@ -3,6 +3,7 @@ package com.avisual.spaceapp.ui.searchGallery
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,11 +24,10 @@ class ShowGalleryFragment : Fragment() {
     private lateinit var viewModel: ShowGalleryViewModel
     private lateinit var photosAdapter: GalleryPhotosAdapter
     private lateinit var navController: NavController
-    private lateinit var menuNav: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -44,11 +44,6 @@ class ShowGalleryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_nav_gallery, menu)
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun setUpUi() {
@@ -75,5 +70,34 @@ class ShowGalleryFragment : Fragment() {
     private fun buildViewModel(): ShowGalleryViewModel {
         val factory = ShowGalleryViewModelFactory(PhotoGalleryRepository())
         return ViewModelProvider(this, factory).get(ShowGalleryViewModel::class.java)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        configureSearchView(inflater, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun configureSearchView(inflater: MenuInflater, menu: Menu) {
+        inflater.inflate(R.menu.menu_nav_gallery, menu)
+        val searchItem = menu.findItem(R.id.nav_search)
+        val searchView = searchItem.actionView as SearchView
+        searchView.queryHint = "Search photos of NASA..."
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(keyword: String?): Boolean {
+                if (keyword != null) viewModel.findPhotosByKeyword(keyword)
+                else Toast.makeText(
+                    requireActivity(),
+                    "You have insert a word!S",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
     }
 }
