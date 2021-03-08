@@ -21,7 +21,6 @@ fun Item.convertToPhotoGallery() = PhotoGallery(
     this.data_photo[0].date_created,
     this.data_photo[0].description,
     this.data_photo[0].description_508,
-    this.data_photo[0].keywords,
     this.data_photo[0].location,
     this.data_photo[0].media_type,
     this.data_photo[0].nasa_id,
