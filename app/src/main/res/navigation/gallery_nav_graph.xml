@@ -24,4 +24,13 @@
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>
+    <fragment
+        android:id="@+id/savedPhotosFragment"
+        android:name="com.avisual.spaceapp.ui.searchGallery.SavedPhotosFragment"
+        android:label="fragment_saved_photos"
+        tools:layout="@layout/fragment_saved_photos" >
+        <action
+            android:id="@+id/action_savedPhotosFragment_to_detailPhotoGalleryFragment"
+            app:destination="@id/detailPhotoGalleryFragment" />
+    </fragment>
 </navigation>
