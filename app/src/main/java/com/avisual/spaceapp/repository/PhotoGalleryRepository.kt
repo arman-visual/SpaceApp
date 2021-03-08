@@ -1,5 +1,6 @@
 package com.avisual.spaceapp.repository
 
+import androidx.lifecycle.LiveData
 import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.database.PhotoGallery
 import com.avisual.spaceapp.database.PhotoGalleryDao
@@ -16,5 +17,9 @@ class PhotoGalleryRepository(database: Db) {
 
     suspend fun saveFavoritePhoto(photoGallery: PhotoGallery) {
         photoGalleryDao.insert(photoGallery)
+    }
+
+    suspend fun getAllPhotos(): LiveData<List<PhotoGallery>>{
+        return photoGalleryDao.getAllLiveData()
     }
 }
