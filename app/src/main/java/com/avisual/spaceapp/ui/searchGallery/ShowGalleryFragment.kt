@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
+import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
@@ -24,6 +25,7 @@ class ShowGalleryFragment : Fragment() {
     private lateinit var viewModel: ShowGalleryViewModel
     private lateinit var photosAdapter: GalleryPhotosAdapter
     private lateinit var navController: NavController
+    private lateinit var photoGalleryRepository: PhotoGalleryRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -68,7 +70,9 @@ class ShowGalleryFragment : Fragment() {
     }
 
     private fun buildViewModel(): ShowGalleryViewModel {
-        val factory = ShowGalleryViewModelFactory(PhotoGalleryRepository())
+        val database = Db.getDatabase(requireContext())
+        photoGalleryRepository = PhotoGalleryRepository(database)
+        val factory = ShowGalleryViewModelFactory(photoGalleryRepository)
         return ViewModelProvider(this, factory).get(ShowGalleryViewModel::class.java)
     }
 
