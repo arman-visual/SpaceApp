@@ -11,7 +11,7 @@ import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.adapter.SavedPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModel
-import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModelFactory
+import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModelFactory
 
 class SavedPhotosFragment : Fragment() {
 
@@ -26,13 +26,14 @@ class SavedPhotosFragment : Fragment() {
     ): View? {
         viewModel = buildViewModel()
         setUpUi()
+        subscribeUi()
         return binding.root
     }
 
     private fun buildViewModel(): SavedPhotosViewModel {
         val database = Db.getDatabase(requireContext())
         photoGalleryRepository = PhotoGalleryRepository(database)
-        val factory = ShowGalleryViewModelFactory(photoGalleryRepository)
+        val factory = SavedPhotosViewModelFactory(photoGalleryRepository)
         return ViewModelProvider(this, factory).get(SavedPhotosViewModel::class.java)
     }
 
@@ -43,7 +44,7 @@ class SavedPhotosFragment : Fragment() {
     }
 
     private fun subscribeUi() {
-        viewModel.photosLibrary.observe(requireActivity()) {
+        viewModel.savedPhotos.observe(requireActivity()) {
             photosAdapter.setItems(it)
         }
     }
