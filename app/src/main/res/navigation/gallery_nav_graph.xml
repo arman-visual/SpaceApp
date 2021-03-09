@@ -20,7 +20,7 @@
         tools:layout="@layout/fragment_detail_photo_gallery" >
         <argument
             android:name="photoArg"
-            app:argType="com.avisual.spaceapp.model.nasaLibraryResponse.Item"
+            app:argType="com.avisual.spaceapp.database.PhotoGallery"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>

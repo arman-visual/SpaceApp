@@ -11,8 +11,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.database.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
-import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
@@ -76,8 +76,8 @@ class ShowGalleryFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    private fun onClickPhoto(photo: Item) {
-        Toast.makeText(requireActivity(), photo.data_photo[0].title, Toast.LENGTH_LONG).show()
+    private fun onClickPhoto(photo: PhotoGallery) {
+        Toast.makeText(requireActivity(), photo.title, Toast.LENGTH_LONG).show()
         val action = ShowGalleryFragmentDirections
             .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
         findNavController().navigate(action)

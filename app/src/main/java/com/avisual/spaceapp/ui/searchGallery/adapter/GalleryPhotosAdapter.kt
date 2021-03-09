@@ -3,13 +3,13 @@ package com.avisual.spaceapp.ui.searchGallery.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.avisual.spaceapp.database.PhotoGallery
 import com.avisual.spaceapp.databinding.ItemGalleryPhotosBinding
-import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.bumptech.glide.Glide
 
 class GalleryPhotosAdapter(
-    var photos: List<Item>,
-    var photoOnClickLister: (Item)-> Unit
+    var photos: List<PhotoGallery>,
+    var photoOnClickLister: (PhotoGallery) -> Unit
 ) :
     RecyclerView.Adapter<GalleryPhotosAdapter.ViewHolder>() {
 
@@ -33,12 +33,12 @@ class GalleryPhotosAdapter(
     class ViewHolder(var binding: ItemGalleryPhotosBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(photo: Item) {
-            Glide.with(binding.root.context).load(photo.links[0].href).into(binding.photoNasa)
+        fun bind(photo: PhotoGallery) {
+            Glide.with(binding.root.context).load(photo.url).into(binding.photoNasa)
         }
     }
 
-    fun setItems(photos: List<Item>) {
+    fun setItems(photos: List<PhotoGallery>) {
         this.photos = photos
         notifyDataSetChanged()
     }
