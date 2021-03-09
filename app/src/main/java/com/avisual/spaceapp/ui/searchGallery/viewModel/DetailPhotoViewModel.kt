@@ -8,9 +8,9 @@ import kotlinx.coroutines.launch
 class DetailPhotoViewModel(private val photoGalleryRepository: PhotoGalleryRepository) :
     ScopeViewModel() {
 
-    fun saveFavoritePhoto(photoGallery: PhotoGallery) {
+    fun savePhoto(photoGallery: PhotoGallery) {
         launch {
-            photoGalleryRepository.saveFavoritePhoto(photoGallery)
+            photoGalleryRepository.savePhoto(photoGallery)
         }
     }
 }

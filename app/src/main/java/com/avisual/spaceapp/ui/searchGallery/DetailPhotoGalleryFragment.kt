@@ -37,7 +37,7 @@ class DetailPhotoGalleryFragment : Fragment() {
         binding.titlePhotoDetail.text = photo.data_photo[0].title
         binding.descriptionPhotoDetail.text = photo.data_photo[0].description
 
-        binding.btFavorite.setOnClickListener { viewModel.saveFavoritePhoto(photo.convertToPhotoGallery()) }
+        binding.btFavorite.setOnClickListener { viewModel.savePhoto(photo.convertToPhotoGallery()) }
 
         return binding.root
     }
