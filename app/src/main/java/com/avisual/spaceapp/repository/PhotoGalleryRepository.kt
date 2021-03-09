@@ -24,4 +24,8 @@ class PhotoGalleryRepository(database: Db) {
     suspend fun getAllPhotos(): List<PhotoGallery> = withContext(Dispatchers.IO) {
         photoGalleryDao.getAll()
     }
+
+    fun getAllPhotosLiveData():LiveData<List<PhotoGallery>>{
+        return photoGalleryDao.getAllLiveData()
+    }
 }
