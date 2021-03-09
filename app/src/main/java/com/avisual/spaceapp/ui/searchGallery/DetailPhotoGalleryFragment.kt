@@ -12,8 +12,8 @@ import com.avisual.spaceapp.databinding.FragmentDetailPhotoGalleryBinding
 import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.avisual.spaceapp.model.nasaLibraryResponse.convertToPhotoGallery
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
-import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModel
-import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModelFactory
+import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModel
+import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModelFactory
 import com.bumptech.glide.Glide
 
 
@@ -21,7 +21,7 @@ class DetailPhotoGalleryFragment : Fragment() {
 
     private val args: DetailPhotoGalleryFragmentArgs by navArgs()
     private lateinit var photo: Item
-    private lateinit var viewModel: SavedPhotosViewModel
+    private lateinit var viewModel: DetailPhotoViewModel
     private lateinit var photoGalleryRepository: PhotoGalleryRepository
 
     override fun onCreateView(
@@ -33,18 +33,19 @@ class DetailPhotoGalleryFragment : Fragment() {
 
         viewModel = buildViewModel()
 
-        binding.btFavorite.setOnClickListener { viewModel.clickOnfavoritePhoto(photo.convertToPhotoGallery()) }
-
         Glide.with(binding.root.context).load(photo.links[0].href).into(binding.imagePhoto)
         binding.titlePhotoDetail.text = photo.data_photo[0].title
         binding.descriptionPhotoDetail.text = photo.data_photo[0].description
+
+        binding.btFavorite.setOnClickListener { viewModel.saveFavoritePhoto(photo.convertToPhotoGallery()) }
+
         return binding.root
     }
 
-    private fun buildViewModel(): SavedPhotosViewModel {
+    private fun buildViewModel(): DetailPhotoViewModel {
         val database = Db.getDatabase(requireContext())
         photoGalleryRepository = PhotoGalleryRepository(database)
-        val factory = SavedPhotosViewModelFactory(photoGalleryRepository)
-        return ViewModelProvider(this, factory).get(SavedPhotosViewModel::class.java)
+        val factory = DetailPhotoViewModelFactory(photoGalleryRepository)
+        return ViewModelProvider(this, factory).get(DetailPhotoViewModel::class.java)
     }
 }
