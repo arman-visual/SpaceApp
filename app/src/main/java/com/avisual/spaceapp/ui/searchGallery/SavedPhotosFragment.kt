@@ -24,15 +24,19 @@ class SavedPhotosFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        buildDependencies()
         viewModel = buildViewModel()
         setUpUi()
         subscribeUi()
         return binding.root
     }
 
-    private fun buildViewModel(): SavedPhotosViewModel {
+    private fun buildDependencies() {
         val database = Db.getDatabase(requireContext())
         photoGalleryRepository = PhotoGalleryRepository(database)
+    }
+
+    private fun buildViewModel(): SavedPhotosViewModel {
         val factory = SavedPhotosViewModelFactory(photoGalleryRepository)
         return ViewModelProvider(this, factory).get(SavedPhotosViewModel::class.java)
     }
@@ -44,7 +48,7 @@ class SavedPhotosFragment : Fragment() {
     }
 
     private fun subscribeUi() {
-        viewModel.savedPhotos.observe(requireActivity()) {
+        viewModel.saveLivePhotos.observe(requireActivity()) {
             photosAdapter.setItems(it)
         }
     }
