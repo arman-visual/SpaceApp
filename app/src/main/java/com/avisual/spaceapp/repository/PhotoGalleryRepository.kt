@@ -17,7 +17,7 @@ class PhotoGalleryRepository(database: Db) {
         return NasaClient.libraryService.searchContain(keyword)
     }
 
-    suspend fun saveFavoritePhoto(photoGallery: PhotoGallery) = withContext(Dispatchers.IO) {
+    suspend fun savePhoto(photoGallery: PhotoGallery) = withContext(Dispatchers.IO) {
         photoGalleryDao.insert(photoGallery)
     }
 
