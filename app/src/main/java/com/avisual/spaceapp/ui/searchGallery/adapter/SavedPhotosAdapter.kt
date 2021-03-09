@@ -34,4 +34,9 @@ class SavedPhotosAdapter(var photos: List<PhotoGallery>) :
             binding.photographer.text = photo.photographer
         }
     }
+
+    fun setItems(photos: List<PhotoGallery>){
+        this.photos = photos
+        notifyDataSetChanged()
+    }
 }

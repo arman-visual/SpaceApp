@@ -4,22 +4,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
 import com.avisual.spaceapp.database.PhotoGallery
-import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import kotlinx.coroutines.launch
 
 class SavedPhotosViewModel(private val photoGalleryRepository: PhotoGalleryRepository) :
     ScopeViewModel() {
 
-   // private val _photosFavorites = MutableLiveData<List<PhotoGallery>>()
-    //val photosFavorites: LiveData<List<PhotoGallery>>
-     //   get() = _photosLibrary
+    private val _savedPhotos = MutableLiveData<List<PhotoGallery>>(emptyList())
+    val savedPhotos: LiveData<List<PhotoGallery>>
+        get() = _savedPhotos
 
-    fun getAllFavorites(photo: PhotoGallery) {
+    init {
+        getAllFavorites()
+    }
+
+    private fun getAllFavorites() {
         launch {
-            var photosBD = photoGalleryRepository.getAllPhotos()
-          //  _photosFavorites.value = photosBD.value
-            //TODO conectar VM con Vista e imprimir datos de BD y consumir tambien.
+            _savedPhotos.value = photoGalleryRepository.getAllPhotos()
         }
     }
 }
