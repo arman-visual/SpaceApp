@@ -3,7 +3,7 @@ package com.avisual.spaceapp.ui.searchGallery.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
-import com.avisual.spaceapp.database.PhotoGallery
+import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.model.nasaLibraryResponse.convertToPhotoGallery
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import kotlinx.coroutines.launch

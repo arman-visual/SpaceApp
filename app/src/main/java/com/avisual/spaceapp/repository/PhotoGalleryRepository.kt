@@ -2,7 +2,7 @@ package com.avisual.spaceapp.repository
 
 import androidx.lifecycle.LiveData
 import com.avisual.spaceapp.database.Db
-import com.avisual.spaceapp.database.PhotoGallery
+import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.database.PhotoGalleryDao
 import com.avisual.spaceapp.model.nasaLibraryResponse.CollectionNasaResult
 import com.avisual.spaceapp.server.NasaClient
@@ -25,7 +25,11 @@ class PhotoGalleryRepository(database: Db) {
         photoGalleryDao.getAll()
     }
 
-    fun getAllPhotosLiveData():LiveData<List<PhotoGallery>>{
+    fun getAllPhotosLiveData(): LiveData<List<PhotoGallery>> {
         return photoGalleryDao.getAllLiveData()
+    }
+
+    suspend fun getFindById(nasaId: String): PhotoGallery = withContext(Dispatchers.IO) {
+        photoGalleryDao.getByNasaID(nasaId)
     }
 }
