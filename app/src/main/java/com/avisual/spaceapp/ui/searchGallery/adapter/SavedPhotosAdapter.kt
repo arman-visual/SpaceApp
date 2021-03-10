@@ -7,7 +7,10 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.database.PhotoGallery
 import com.avisual.spaceapp.databinding.ItemGallerySavephotoBinding
 
-class SavedPhotosAdapter(var photos: List<PhotoGallery>) :
+class SavedPhotosAdapter(
+    var photos: List<PhotoGallery>,
+    var photoOnClickLister: (PhotoGallery) -> Unit
+) :
     RecyclerView.Adapter<SavedPhotosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,6 +25,7 @@ class SavedPhotosAdapter(var photos: List<PhotoGallery>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(photos[position])
+        holder.itemView.setOnClickListener { photoOnClickLister(photos[position]) }
     }
 
     override fun getItemCount(): Int {

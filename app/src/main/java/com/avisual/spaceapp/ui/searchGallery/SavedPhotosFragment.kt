@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.database.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.adapter.SavedPhotosAdapter
@@ -43,7 +45,9 @@ class SavedPhotosFragment : Fragment() {
 
     private fun setUpUi() {
         binding = FragmentSavedPhotosBinding.inflate(layoutInflater)
-        photosAdapter = SavedPhotosAdapter(emptyList())
+        photosAdapter = SavedPhotosAdapter(emptyList()) {
+            navToDetailPhoto(it)
+        }
         binding.recycler.adapter = photosAdapter
     }
 
@@ -51,5 +55,10 @@ class SavedPhotosFragment : Fragment() {
         viewModel.saveLivePhotos.observe(requireActivity()) {
             photosAdapter.setItems(it)
         }
+    }
+
+    private fun navToDetailPhoto(photo: PhotoGallery) {
+        val action = SavedPhotosFragmentDirections.actionSavedPhotosFragmentToDetailPhotoGalleryFragment(photo)
+        findNavController().navigate(action)
     }
 }
