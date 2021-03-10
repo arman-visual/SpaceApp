@@ -29,7 +29,7 @@ class DetailPhotoGalleryFragment : Fragment() {
     ): View? {
         val binding = FragmentDetailPhotoGalleryBinding.inflate(layoutInflater)
         photo = args.photoArg!!
-
+        buildDependencies()
         viewModel = buildViewModel()
 
         Glide.with(binding.root.context).load(photo.url).into(binding.imagePhoto)
@@ -41,9 +41,12 @@ class DetailPhotoGalleryFragment : Fragment() {
         return binding.root
     }
 
-    private fun buildViewModel(): DetailPhotoViewModel {
+    private fun buildDependencies() {
         val database = Db.getDatabase(requireContext())
         photoGalleryRepository = PhotoGalleryRepository(database)
+    }
+
+    private fun buildViewModel(): DetailPhotoViewModel {
         val factory = DetailPhotoViewModelFactory(photoGalleryRepository)
         return ViewModelProvider(this, factory).get(DetailPhotoViewModel::class.java)
     }

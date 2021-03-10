@@ -94,7 +94,7 @@ class ShowGalleryFragment : Fragment() {
                 if (keyword != null) viewModel.findPhotosByKeyword(keyword)
                 else Toast.makeText(
                     requireActivity(),
-                    "You have insert a word!S",
+                    "You have insert a word!",
                     Toast.LENGTH_LONG
                 )
                     .show()
