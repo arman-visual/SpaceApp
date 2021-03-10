@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.database.PhotoGallery
+import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.databinding.ItemGallerySavephotoBinding
 
 class SavedPhotosAdapter(
