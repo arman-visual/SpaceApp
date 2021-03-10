@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.database.Db
-import com.avisual.spaceapp.database.PhotoGallery
+import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.adapter.SavedPhotosAdapter
