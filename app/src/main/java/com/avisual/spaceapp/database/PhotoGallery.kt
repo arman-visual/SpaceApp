@@ -1,21 +1,20 @@
 package com.avisual.spaceapp.database
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "photos_gallery")
-data class PhotoGallery (
+@Parcelize
+data class PhotoGallery(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val url:String,
-    val center: String,
-    val date_created: String,
-    val description: String,
-    val description_508: String,
-    val location: String,
-    val media_type: String,
-    val nasa_id: String,
-    val photographer: String,
-    val secondary_creator: String,
-    val title: String
-)
+    var id: Int,
+    var url: String,
+    var date_created: String,
+    var description: String,
+    var media_type: String,
+    var nasa_id: String,
+    var photographer: String,
+    var title: String
+) : Parcelable

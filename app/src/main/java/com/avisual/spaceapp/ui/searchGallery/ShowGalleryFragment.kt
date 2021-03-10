@@ -1,7 +1,6 @@
 package com.avisual.spaceapp.ui.searchGallery
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
@@ -12,8 +11,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.database.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
-import com.avisual.spaceapp.model.nasaLibraryResponse.Item
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
@@ -36,7 +35,7 @@ class ShowGalleryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("ExploreGalleryFragment", "Start this fragment")
+        buildDependencies()
         viewModel = buildViewModel()
         setUpUi()
         subscribeUi()
@@ -48,6 +47,16 @@ class ShowGalleryFragment : Fragment() {
         navController = view.findNavController()
     }
 
+    private fun buildDependencies() {
+        val database = Db.getDatabase(requireContext())
+        photoGalleryRepository = PhotoGalleryRepository(database)
+    }
+
+    private fun buildViewModel(): ShowGalleryViewModel {
+        val factory = ShowGalleryViewModelFactory(photoGalleryRepository)
+        return ViewModelProvider(this, factory).get(ShowGalleryViewModel::class.java)
+    }
+
     private fun setUpUi() {
         binding = FragmentExploreGalleryBinding.inflate(layoutInflater)
         photosAdapter = GalleryPhotosAdapter(emptyList()) {
@@ -56,29 +65,22 @@ class ShowGalleryFragment : Fragment() {
         binding.recycler.adapter = photosAdapter
     }
 
-    private fun onClickPhoto(photo: Item) {
-        Toast.makeText(requireActivity(), photo.data_photo[0].title, Toast.LENGTH_LONG).show()
-        val action = ShowGalleryFragmentDirections
-            .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
-        findNavController().navigate(action)
-    }
-
     private fun subscribeUi() {
         viewModel.photosLibrary.observe(requireActivity()) {
             photosAdapter.setItems(it)
         }
     }
 
-    private fun buildViewModel(): ShowGalleryViewModel {
-        val database = Db.getDatabase(requireContext())
-        photoGalleryRepository = PhotoGalleryRepository(database)
-        val factory = ShowGalleryViewModelFactory(photoGalleryRepository)
-        return ViewModelProvider(this, factory).get(ShowGalleryViewModel::class.java)
-    }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         configureSearchView(inflater, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun onClickPhoto(photo: PhotoGallery) {
+        Toast.makeText(requireActivity(), photo.title, Toast.LENGTH_LONG).show()
+        val action = ShowGalleryFragmentDirections
+            .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
+        findNavController().navigate(action)
     }
 
     private fun configureSearchView(inflater: MenuInflater, menu: Menu) {
@@ -92,7 +94,7 @@ class ShowGalleryFragment : Fragment() {
                 if (keyword != null) viewModel.findPhotosByKeyword(keyword)
                 else Toast.makeText(
                     requireActivity(),
-                    "You have insert a word!S",
+                    "You have insert a word!",
                     Toast.LENGTH_LONG
                 )
                     .show()
