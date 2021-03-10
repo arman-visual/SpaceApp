@@ -2,6 +2,7 @@ package com.avisual.spaceapp.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.avisual.spaceapp.model.PhotoGallery
 
 @Dao
 interface PhotoGalleryDao {
@@ -13,7 +14,10 @@ interface PhotoGalleryDao {
     suspend fun getAll(): List<PhotoGallery>
 
     @Query("SELECT * FROM photos_gallery WHERE id = :id")
-    suspend fun get(id: String): PhotoGallery?
+    suspend fun get(id: Int): PhotoGallery?
+
+    @Query("SELECT * FROM photos_gallery WHERE nasa_id = :nasaId")
+    suspend fun getByNasaID(nasaId: String): PhotoGallery
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(photos: List<PhotoGallery>)

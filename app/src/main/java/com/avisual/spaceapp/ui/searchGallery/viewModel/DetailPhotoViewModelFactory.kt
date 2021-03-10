@@ -4,9 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 
+
 class DetailPhotoViewModelFactory constructor(
-    private val photoGalleryRepository: PhotoGalleryRepository
+    private val photoGalleryRepository: PhotoGalleryRepository,
+    private val nasaId: String
 ) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>) =
-        DetailPhotoViewModel(photoGalleryRepository) as T
+        DetailPhotoViewModel(nasaId, photoGalleryRepository) as T
 }
