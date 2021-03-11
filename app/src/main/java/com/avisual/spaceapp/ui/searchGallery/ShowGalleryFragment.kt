@@ -11,8 +11,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.database.Db
-import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
+import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
@@ -67,7 +67,16 @@ class ShowGalleryFragment : Fragment() {
 
     private fun subscribeUi() {
         viewModel.photosLibrary.observe(requireActivity()) {
-            photosAdapter.setItems(it)
+            if (!it.isNullOrEmpty()) {
+                photosAdapter.setItems(it)
+            } else {
+                Toast.makeText(
+                    requireActivity(),
+                    "Does not exist photos for this word",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+            }
         }
     }
 
