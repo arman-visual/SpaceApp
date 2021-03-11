@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.database
+package com.avisual.spaceapp.model
 
 import android.os.Parcelable
 import androidx.room.Entity
