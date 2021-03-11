@@ -42,7 +42,7 @@ class DetailPhotoGalleryFragment : Fragment() {
         binding.titlePhotoDetail.text = photo.title
         binding.descriptionPhotoDetail.text = photo.description
 
-        binding.btFavorite.setOnClickListener { checkIsExistPhoto(photo) }
+        binding.fbtSaveFavorite.setOnClickListener { checkIsExistPhoto(photo) }
     }
 
     private fun buildDependencies() {
