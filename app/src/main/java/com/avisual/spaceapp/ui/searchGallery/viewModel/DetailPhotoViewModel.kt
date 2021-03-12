@@ -1,34 +1,55 @@
 package com.avisual.spaceapp.ui.searchGallery.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
 import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailPhotoViewModel(
-    private val photoId: String,
     private val photoGalleryRepository: PhotoGalleryRepository
 ) :
     ScopeViewModel() {
 
+    private val _statusFavorite = MutableLiveData(false)
+    val statusFavorite: LiveData<Boolean>
+        get() = _statusFavorite
 
-    private val _photoSavedGallery = MutableLiveData<PhotoGallery>()
-
-    init {
-        getFindByNasaId(photoId)
+    fun checkIfPhotoSaved(photoGallery: PhotoGallery) {
+        launch(Dispatchers.IO) {
+            _statusFavorite.postValue(isPhotoInDB(photoGallery))
+        }
     }
 
-    fun savePhoto(photoGallery: PhotoGallery) {
+    private suspend fun isPhotoInDB(photoGallery: PhotoGallery): Boolean {
+        return photoGalleryRepository.getFindByNasaId(photoGallery.nasa_id) != null
+    }
+
+    private fun savePhotoInDb(photoGallery: PhotoGallery) {
         launch {
             photoGalleryRepository.savePhoto(photoGallery)
         }
     }
 
-    fun getFindByNasaId(photoId: String): Boolean {
+    private fun deletePhotoInDB(photoGallery: PhotoGallery) {
         launch {
-            _photoSavedGallery.postValue(photoGalleryRepository.getFindById(photoId))
+            photoGalleryRepository.deletePhoto(photoGallery)
         }
-        return _photoSavedGallery.value?.nasa_id.equals(photoId)
     }
+
+    fun changeSaveStatusOfPhoto(photoGallery: PhotoGallery) {
+        launch(Dispatchers.IO) {
+            val newFavoriteStatus = if (isPhotoInDB(photoGallery)) {
+                deletePhotoInDB(photoGallery)
+                false
+            } else {
+                savePhotoInDb(photoGallery)
+                true
+            }
+            _statusFavorite.postValue(newFavoriteStatus)
+        }
+    }
+
 }
