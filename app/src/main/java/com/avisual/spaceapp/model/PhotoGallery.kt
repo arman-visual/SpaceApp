@@ -8,13 +8,13 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "photos_gallery")
 @Parcelize
 data class PhotoGallery(
-    @PrimaryKey(autoGenerate = true)
-    var id: Int,
+    @PrimaryKey
+    var nasa_id: String,
     var url: String,
     var date_created: String,
     var description: String,
     var media_type: String,
-    var nasa_id: String,
     var photographer: String,
-    var title: String
+    var title: String,
+    var isFavorite:Boolean
 ) : Parcelable
