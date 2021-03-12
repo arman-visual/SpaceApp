@@ -7,17 +7,14 @@ import com.avisual.spaceapp.model.PhotoGallery
 @Dao
 interface PhotoGalleryDao {
 
-    @Query("SELECT * FROM  photos_gallery ORDER BY id DESC")
+    @Query("SELECT * FROM  photos_gallery ORDER BY nasa_id DESC")
     fun getAllLiveData(): LiveData<List<PhotoGallery>>
 
     @Query("SELECT * FROM photos_gallery")
     suspend fun getAll(): List<PhotoGallery>
 
-    @Query("SELECT * FROM photos_gallery WHERE id = :id")
-    suspend fun get(id: Int): PhotoGallery?
-
     @Query("SELECT * FROM photos_gallery WHERE nasa_id = :nasaId")
-    suspend fun getByNasaID(nasaId: String): PhotoGallery
+    suspend fun getByNasaId(nasaId: String): PhotoGallery?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(photos: List<PhotoGallery>)
