@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.databinding.ItemGallerySavephotoBinding
+import com.avisual.spaceapp.model.PhotoGallery
+import java.util.*
 
 class SavedPhotosAdapter(
     var photos: List<PhotoGallery>,
@@ -45,4 +46,15 @@ class SavedPhotosAdapter(
         this.photos = photos
         notifyDataSetChanged()
     }
+
+    fun getPhotoPosition(position: Int): PhotoGallery {
+        return photos[position]
+    }
+
+    fun onChangePhotoPosition(fromPosition: Int, toPosition: Int): Boolean{
+        Collections.swap(photos, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
+        return true
+    }
+
 }
