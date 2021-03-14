@@ -6,9 +6,8 @@ import com.avisual.spaceapp.repository.PhotoGalleryRepository
 
 
 class DetailPhotoViewModelFactory constructor(
-    private val photoGalleryRepository: PhotoGalleryRepository,
-    private val nasaId: String
+    private val photoGalleryRepository: PhotoGalleryRepository
 ) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>) =
-        DetailPhotoViewModel(nasaId, photoGalleryRepository) as T
+        DetailPhotoViewModel(photoGalleryRepository) as T
 }

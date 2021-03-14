@@ -1,64 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="0dp"
         android:orientation="vertical"
         tools:context=".ui.searchGallery.DetailPhotoGalleryFragment">
 
-        <ImageView
-            android:id="@+id/image_photo"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_weight="0"
-            android:scaleType="centerCrop"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            android:layout_height="300dp">
+
+            <ImageView
+                android:id="@+id/image_photo"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:contentDescription="@string/image_of_nasa"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbt_save_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:scaleType="centerInside"
+                android:contentDescription="@string/buttom_for_save_or_remove_of_favorite_photos"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/photo_no_saved" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbt_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/fbt_save_favorite"
+                android:layout_toStartOf="@id/fbt_save_favorite"
+                android:contentDescription="@string/buttom_of_download_image_from_nasa"
+                android:scaleType="centerInside"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ic_baseline_cloud_download_24" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/bt_save_photo"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/title_photo_detail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:src="@android:drawable/ic_menu_save" />
+                android:layout_margin="10dp"
+                android:text="@string/hello_blank_fragment"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-            <ImageButton
-                android:id="@+id/bt_favorite"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/description_photo_detail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:src="@android:drawable/btn_star_big_on" />
+                android:layout_margin="10dp"
+                android:text="@tools:sample/lorem/random"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/title_photo_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/hello_blank_fragment"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <TextView
-            android:id="@+id/description_photo_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="0"
-            android:text="@tools:sample/lorem/random"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     </LinearLayout>
 </ScrollView>
