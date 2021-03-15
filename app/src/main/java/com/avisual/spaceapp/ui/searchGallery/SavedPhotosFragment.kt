@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
 import com.avisual.spaceapp.model.PhotoGallery
@@ -16,6 +17,7 @@ import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.adapter.SavedPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModel
 import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 class SavedPhotosFragment : Fragment() {
 
@@ -93,6 +95,9 @@ class SavedPhotosFragment : Fragment() {
             val position = viewHolder.adapterPosition
             val photo = photosAdapter.getPhotoPosition(position)
             viewModel.deletePhoto(photo)
+            Snackbar.make(binding.root, R.string.info, Snackbar.LENGTH_LONG)
+                .setAction(R.string.undo){viewModel.savePhoto(photo)}
+                .show()
         }
     }
 }
