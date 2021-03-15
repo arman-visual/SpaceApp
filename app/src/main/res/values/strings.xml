@@ -6,4 +6,6 @@
     <string name="image_of_nasa">image of NASA</string>
     <string name="buttom_of_download_image_from_nasa">Buttom of download image from NASA</string>
     <string name="buttom_for_save_or_remove_of_favorite_photos">Buttom for save or remove of favorite photos</string>
+    <string name="info">Photo deleted</string>
+    <string name="undo">Undo</string>
 </resources>
