@@ -15,5 +15,4 @@ class SavedPhotosViewModel(private val photoGalleryRepository: PhotoGalleryRepos
             photoGalleryRepository.deletePhoto(photoGallery)
         }
     }
-
 }
