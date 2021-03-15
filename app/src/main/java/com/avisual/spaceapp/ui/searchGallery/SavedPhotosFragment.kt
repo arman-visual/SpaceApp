@@ -86,13 +86,7 @@ class SavedPhotosFragment : Fragment() {
             viewHolder: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder
         ): Boolean {
-            if (viewHolder.itemViewType != target.itemViewType) {
-                return false
-            }
-            return photosAdapter.onChangePhotoPosition(
-                viewHolder.adapterPosition,
-                target.adapterPosition
-            )
+            return false
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
