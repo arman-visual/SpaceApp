@@ -195,7 +195,7 @@ class DetailPhotoGalleryFragment : Fragment() {
                     downloading = false
                 }
                 val status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
-                msg = statusMessage(url, directory, status)
+                msg = statusMessage(directory, status)
                 if (msg != lastMsg) {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
@@ -211,19 +211,15 @@ class DetailPhotoGalleryFragment : Fragment() {
         }
     }
 
-    private fun statusMessage(url: String, directory: File, status: Int): String? {
-        var msg = ""
-        msg = when (status) {
+    private fun statusMessage(directory: File, status: Int): String {
+        return when (status) {
             DownloadManager.STATUS_FAILED -> "Download has been failed, please try again"
             DownloadManager.STATUS_PAUSED -> "Paused"
             DownloadManager.STATUS_PENDING -> "Pending"
             DownloadManager.STATUS_RUNNING -> "Downloading..."
-            DownloadManager.STATUS_SUCCESSFUL -> "Image downloaded successfully in $directory" + File.separator + url.substring(
-                url.lastIndexOf("/") + 1
-            )
+            DownloadManager.STATUS_SUCCESSFUL -> "Image downloaded successfully in $directory"
             else -> "There's nothing to download"
         }
-        return msg
     }
 
     companion object {
