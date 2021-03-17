@@ -86,7 +86,6 @@ class ShowGalleryFragment : Fragment() {
     }
 
     private fun onClickPhoto(photo: PhotoGallery) {
-        Toast.makeText(requireActivity(), photo.title, Toast.LENGTH_LONG).show()
         val action = ShowGalleryFragmentDirections
             .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
         findNavController().navigate(action)
