@@ -158,7 +158,7 @@ class DetailPhotoGalleryFragment : Fragment() {
     }
 
     private fun downloadImage(url: String) {
-        var msg: String? = ""
+        var msg = ""
         var lastMsg = ""
 
         val directory = File(Environment.DIRECTORY_DOWNLOADS)
