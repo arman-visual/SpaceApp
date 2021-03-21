@@ -8,7 +8,7 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityMainBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
 import com.avisual.spaceapp.ui.searchGallery.NavGalleryActivity
-import com.avisual.spaceapp.ui.roverMars.RoverMarsActivity
+import com.avisual.spaceapp.ui.roverMars.NavRoverMarsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             navigateToOption(Intent(this, NavGalleryActivity::class.java))
         }
         binding.btSearchrover.setOnClickListener {
-            navigateToOption(Intent(this, RoverMarsActivity::class.java))
+            navigateToOption(Intent(this, NavRoverMarsActivity::class.java))
         }
     }
 
