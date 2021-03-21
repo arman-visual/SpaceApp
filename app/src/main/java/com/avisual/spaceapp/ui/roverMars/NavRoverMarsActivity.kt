@@ -5,11 +5,11 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.avisual.spaceapp.databinding.ActivityRoverMarsBinding
 
-class RoverMarsActivity : AppCompatActivity() {
+class NavRoverMarsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityRoverMarsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Log.i("RoverMarsActivity","Iniciando esta actividad")
+        Log.i("NavRoverMarsActivity","Iniciando esta actividad")
     }
 }
