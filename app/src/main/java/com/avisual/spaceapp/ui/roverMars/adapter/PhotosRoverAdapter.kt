@@ -1,14 +1,13 @@
-package com.avisual.spaceapp.ui.roverMars
+package com.avisual.spaceapp.ui.roverMars.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.avisual.spaceapp.common.loadUrl
 import com.avisual.spaceapp.databinding.ItemRoverMarsBinding
-import com.avisual.spaceapp.model.nasaRoverResponse.Photo
-import com.avisual.spaceapp.model.nasaRoverResponse.RoverPhotosResult
-import com.bumptech.glide.Glide
+import com.avisual.spaceapp.model.PhotoCuriosity
 
-class PhotosRoverAdapter(var photosRover: RoverPhotosResult) :
+class PhotosRoverAdapter(var photosRover: List<PhotoCuriosity>) :
     RecyclerView.Adapter<PhotosRoverAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,19 +21,19 @@ class PhotosRoverAdapter(var photosRover: RoverPhotosResult) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(photosRover.photos[position])
+        holder.bind(photosRover[position])
     }
 
-    override fun getItemCount(): Int = photosRover.photos.size
+    override fun getItemCount(): Int = photosRover.size
 
-    fun setItems(photosResult: RoverPhotosResult) {
+    fun setItems(photosResult: List<PhotoCuriosity>) {
         this.photosRover = photosResult
         notifyDataSetChanged()
     }
 
     class ViewHolder(var binding: ItemRoverMarsBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(photosRover: Photo) {
-            Glide.with(binding.root.context).load(photosRover.img_src).into(binding.photoRover);
+        fun bind(photosRover: PhotoCuriosity) {
+            binding.photoRover.loadUrl(photosRover.img_src)
         }
     }
 }
