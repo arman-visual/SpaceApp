@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rovermars_nav_graph"
+    app:startDestination="@id/showPhotosFragment">
+
+    <fragment
+        android:id="@+id/showPhotosFragment"
+        android:name="com.avisual.spaceapp.ui.roverMars.ShowPhotosFragment"
+        android:label="fragment_show_photos"
+        tools:layout="@layout/fragment_show_photos" />
+</navigation>
