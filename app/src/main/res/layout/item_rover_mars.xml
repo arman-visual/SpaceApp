@@ -9,6 +9,7 @@
     <ImageView
         android:id="@+id/photoRover"
         android:layout_width="match_parent"
+        android:layout_margin="4dp"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
