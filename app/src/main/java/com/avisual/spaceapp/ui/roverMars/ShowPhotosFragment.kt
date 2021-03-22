@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
 import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
-import com.avisual.spaceapp.repository.PhotoCuriosityRepository
+import com.avisual.spaceapp.repository.PhotoRoverRepository
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModel
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModelFactory
@@ -19,7 +18,7 @@ class ShowPhotosFragment : Fragment() {
     private lateinit var binding: FragmentShowPhotosBinding
     private lateinit var adapter: PhotosRoverAdapter
     private lateinit var viewModel: ShowPhotosViewModel
-    private lateinit var photoCuriosityRepository: PhotoCuriosityRepository
+    private lateinit var photoRoverRepository: PhotoRoverRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,22 +34,31 @@ class ShowPhotosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = PhotosRoverAdapter(emptyList())
         binding.recycler.adapter = adapter
-
         viewModel.findPhotosByDate(date = "2015-6-3", apiKey = getString(R.string.api_key))
+        binding.button.setOnClickListener { onClickSearchButton() }
         subscribeUi()
     }
 
+    private fun onClickSearchButton() {
+        var inputDay = binding.dyear.text
+        var inputMoth = binding.dmonth.text
+        var inputYear = binding.dyear.text
+
+        var inputDate = "$inputYear-$inputMoth-$inputDay"
+        viewModel.findPhotosByDate(inputDate, apiKey = getString(R.string.api_key))
+    }
+
     private fun buildDependencies() {
-        photoCuriosityRepository = PhotoCuriosityRepository()
+        photoRoverRepository = PhotoRoverRepository()
     }
 
     private fun buildViewModel(): ShowPhotosViewModel {
-        val factory = ShowPhotosViewModelFactory(photoCuriosityRepository)
+        val factory = ShowPhotosViewModelFactory(photoRoverRepository)
         return ViewModelProvider(this, factory).get(ShowPhotosViewModel::class.java)
     }
 
     private fun subscribeUi() {
-        viewModel.photosCuriosity.observe(requireActivity()) {
+        viewModel.photosRover.observe(requireActivity()) {
             adapter.setItems(it)
         }
     }
