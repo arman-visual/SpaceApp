@@ -13,6 +13,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/title_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mars Rover Photos"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <TextView
+            android:id="@+id/description_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Introduce one date for to begin search"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
         <LinearLayout
             android:id="@+id/menu_date"
             android:layout_width="match_parent"
@@ -56,7 +72,6 @@
                 android:layout_weight="1"
                 android:text="Search" />
         </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
