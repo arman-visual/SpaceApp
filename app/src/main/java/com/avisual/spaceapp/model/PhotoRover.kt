@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "photos_curiosity")
 @Parcelize
-data class PhotoCuriosity(
+data class PhotoRover(
     @PrimaryKey
     val id: Int,
     val img_src: String,

@@ -1,6 +1,6 @@
 package com.avisual.spaceapp.model.nasaRoverResponse
 
-import com.avisual.spaceapp.model.PhotoCuriosity
+import com.avisual.spaceapp.model.PhotoRover
 
 data class Photo(
     val camera: Camera,
@@ -11,7 +11,7 @@ data class Photo(
     val sol: Int
 )
 
-fun Photo.convertToPhotoCuriosity() = PhotoCuriosity(
+fun Photo.convertToPhotoRover() = PhotoRover(
     this.id,
     this.img_src,
     this.camera.full_name,

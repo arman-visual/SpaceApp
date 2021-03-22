@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avisual.spaceapp.common.loadUrl
 import com.avisual.spaceapp.databinding.ItemRoverMarsBinding
-import com.avisual.spaceapp.model.PhotoCuriosity
+import com.avisual.spaceapp.model.PhotoRover
 
-class PhotosRoverAdapter(var photosRover: List<PhotoCuriosity>) :
+class PhotosRoverAdapter(var photosRover: List<PhotoRover>) :
     RecyclerView.Adapter<PhotosRoverAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,13 +26,13 @@ class PhotosRoverAdapter(var photosRover: List<PhotoCuriosity>) :
 
     override fun getItemCount(): Int = photosRover.size
 
-    fun setItems(photosResult: List<PhotoCuriosity>) {
+    fun setItems(photosResult: List<PhotoRover>) {
         this.photosRover = photosResult
         notifyDataSetChanged()
     }
 
     class ViewHolder(var binding: ItemRoverMarsBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(photosRover: PhotoCuriosity) {
+        fun bind(photosRover: PhotoRover) {
             binding.photoRover.loadUrl(photosRover.img_src)
         }
     }

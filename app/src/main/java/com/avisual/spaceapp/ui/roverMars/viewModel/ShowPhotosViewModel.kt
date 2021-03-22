@@ -3,21 +3,21 @@ package com.avisual.spaceapp.ui.roverMars.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
-import com.avisual.spaceapp.model.PhotoCuriosity
-import com.avisual.spaceapp.model.nasaRoverResponse.convertToPhotoCuriosity
-import com.avisual.spaceapp.repository.PhotoCuriosityRepository
+import com.avisual.spaceapp.model.PhotoRover
+import com.avisual.spaceapp.model.nasaRoverResponse.convertToPhotoRover
+import com.avisual.spaceapp.repository.PhotoRoverRepository
 import kotlinx.coroutines.launch
 
-class ShowPhotosViewModel(var photoCuriosityRepository: PhotoCuriosityRepository) :
+class ShowPhotosViewModel(var photoRoverRepository: PhotoRoverRepository) :
     ScopeViewModel() {
 
-    private val _photosCuriosity = MutableLiveData<List<PhotoCuriosity>>()
-    val photosCuriosity: LiveData<List<PhotoCuriosity>> get() = _photosCuriosity
+    private val _photosRover = MutableLiveData<List<PhotoRover>>()
+    val photosRover: LiveData<List<PhotoRover>> get() = _photosRover
 
     fun findPhotosByDate(date: String, apiKey: String) {
         launch {
-            var response = photoCuriosityRepository.findPhotosRoverFromServer(date, apiKey)
-            _photosCuriosity.value = response.photos.map { it.convertToPhotoCuriosity() }
+            var response = photoRoverRepository.findPhotosRoverFromServer(date, apiKey)
+            _photosRover.value = response.photos.map { it.convertToPhotoRover() }
         }
     }
 }
