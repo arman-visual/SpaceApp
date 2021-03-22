@@ -15,6 +15,9 @@ import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModelFactory
 
 class ShowPhotosFragment : Fragment() {
 
+    companion object{
+        private const val DEFAULT_DATE_EARTH = "2012-08-06"
+    }
     private lateinit var binding: FragmentShowPhotosBinding
     private lateinit var adapter: PhotosRoverAdapter
     private lateinit var viewModel: ShowPhotosViewModel
@@ -34,7 +37,7 @@ class ShowPhotosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = PhotosRoverAdapter(emptyList())
         binding.recycler.adapter = adapter
-        viewModel.findPhotosByDate(date = "2015-6-3", apiKey = getString(R.string.api_key))
+        viewModel.findPhotosByDate(DEFAULT_DATE_EARTH, apiKey = getString(R.string.api_key))
         binding.button.setOnClickListener { onClickSearchButton() }
         subscribeUi()
     }
