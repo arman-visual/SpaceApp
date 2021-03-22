@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
+import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
 import com.avisual.spaceapp.repository.PhotoCuriosityRepository
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModel
@@ -14,7 +16,7 @@ import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModelFactory
 
 class ShowPhotosFragment : Fragment() {
 
-    private lateinit var binding: FragmentSavedPhotosBinding
+    private lateinit var binding: FragmentShowPhotosBinding
     private lateinit var adapter: PhotosRoverAdapter
     private lateinit var viewModel: ShowPhotosViewModel
     private lateinit var photoCuriosityRepository: PhotoCuriosityRepository
@@ -25,7 +27,7 @@ class ShowPhotosFragment : Fragment() {
     ): View? {
         buildDependencies()
         viewModel = buildViewModel()
-        binding = FragmentSavedPhotosBinding.inflate(layoutInflater)
+        binding = FragmentShowPhotosBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -33,6 +35,8 @@ class ShowPhotosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = PhotosRoverAdapter(emptyList())
         binding.recycler.adapter = adapter
+
+        viewModel.findPhotosByDate(date = "2015-6-3", apiKey = getString(R.string.api_key))
         subscribeUi()
     }
 
