@@ -18,7 +18,7 @@ import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModelFactory
 class ShowPhotosFragment : Fragment() {
 
     companion object {
-        private const val DEFAULT_DATE_EARTH = "2012-08-06"
+        private const val DEFAULT_DATE_EARTH = "2015-06-03"
     }
 
     private lateinit var binding: FragmentShowPhotosBinding
