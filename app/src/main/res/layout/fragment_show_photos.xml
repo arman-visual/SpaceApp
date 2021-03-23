@@ -46,6 +46,8 @@
                 android:ems="2"
                 android:hint="06"
                 android:inputType="date"
+                android:maxLength="2"
+                android:minLines="1"
                 android:textAlignment="center" />
 
             <EditText
@@ -56,6 +58,8 @@
                 android:ems="2"
                 android:hint="08"
                 android:inputType="date"
+                android:maxLength="2"
+                android:minLines="1"
                 android:textAlignment="center" />
 
             <EditText
@@ -66,6 +70,8 @@
                 android:ems="4"
                 android:hint="2012"
                 android:inputType="date"
+                android:maxLength="4"
+                android:minLines="4"
                 android:textAlignment="center" />
 
             <Button
