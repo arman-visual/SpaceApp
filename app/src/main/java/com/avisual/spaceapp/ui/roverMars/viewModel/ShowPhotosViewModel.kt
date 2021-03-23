@@ -11,15 +11,20 @@ import kotlinx.coroutines.launch
 class ShowPhotosViewModel(var photoRoverRepository: PhotoRoverRepository) :
     ScopeViewModel() {
 
-    private val _photosRover = MutableLiveData<List<PhotoRover>>()
-    val photosRover: LiveData<List<PhotoRover>> get() = _photosRover
+    private val _model = MutableLiveData<ShowPhotosUi>()
+    val model: LiveData<ShowPhotosUi>get() = _model
 
     fun findPhotosByDate(date: String, apiKey: String) {
         launch {
-            var response = photoRoverRepository.findPhotosRoverFromServer(date, apiKey)
-            _photosRover.value = response.photos.map { it.convertToPhotoRover() }
+            _model.value = ShowPhotosUi.Loading
+            val response = photoRoverRepository.findPhotosRoverFromServer(date, apiKey)
+            _model.value= ShowPhotosUi.Content(response.photos.map { it.convertToPhotoRover() })
         }
     }
 }
 
+sealed class ShowPhotosUi {
+    object Loading : ShowPhotosUi()
+    class Content(val photos: List<PhotoRover>) : ShowPhotosUi()
+}
 
