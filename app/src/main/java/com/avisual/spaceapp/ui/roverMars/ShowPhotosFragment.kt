@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -45,15 +46,6 @@ class ShowPhotosFragment : Fragment() {
         subscribeUi()
     }
 
-    private fun onClickSearchButton() {
-        var inputDay = binding.dyear.text
-        var inputMoth = binding.dmonth.text
-        var inputYear = binding.dyear.text
-
-        var inputDate = "$inputYear-$inputMoth-$inputDay"
-        viewModel.findPhotosByDate(inputDate, apiKey = getString(R.string.api_key))
-    }
-
     private fun buildDependencies() {
         photoRoverRepository = PhotoRoverRepository()
     }
@@ -71,7 +63,44 @@ class ShowPhotosFragment : Fragment() {
         binding.progressBarM.visibility =
             if (model is ShowPhotosUi.Loading) View.VISIBLE else View.GONE
 
-        val photos = if (model is ShowPhotosUi.Content) model.photos else emptyList()
-        adapter.setItems(photos)
+        if (model is ShowPhotosUi.Content) {
+            if(model.photos.isNotEmpty()){
+                adapter.setItems(model.photos)
+            }else{
+                adapter.setItems(model.photos)
+                Toast.makeText(
+                    requireActivity(),
+                    "No hay fotos",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+    }
+
+    private fun onClickSearchButton() {
+
+        if (validateInputs(
+                binding.dday.text.toString(),
+                binding.dmonth.text.toString(),
+                binding.dyear.text.toString()
+            )
+        ) {
+            Toast.makeText(
+                requireActivity(),
+                "Todos los campos son obligatorios",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            viewModel.findPhotosByDate(
+                "${binding.dyear.text}-${binding.dmonth.text}-${binding.dday.text}",
+                apiKey = getString(R.string.api_key)
+            )
+        }
+
+    }
+
+    private fun validateInputs(day: String, month: String, year: String): Boolean {
+        return day.isEmpty() || month.isEmpty() || year.isEmpty()
     }
 }
