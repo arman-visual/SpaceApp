@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avisual.spaceapp.R
+import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
 import com.avisual.spaceapp.repository.PhotoRoverRepository
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
@@ -64,15 +64,11 @@ class ShowPhotosFragment : Fragment() {
             if (model is ShowPhotosUi.Loading) View.VISIBLE else View.GONE
 
         if (model is ShowPhotosUi.Content) {
-            if(model.photos.isNotEmpty()){
+            if (model.photos.isNotEmpty()) {
                 adapter.setItems(model.photos)
-            }else{
+            } else {
                 adapter.setItems(model.photos)
-                Toast.makeText(
-                    requireActivity(),
-                    "No hay fotos",
-                    Toast.LENGTH_SHORT
-                ).show()
+                requireActivity().toast("Does not exist photos for this date")
             }
         }
 
@@ -86,11 +82,7 @@ class ShowPhotosFragment : Fragment() {
                 binding.dyear.text.toString()
             )
         ) {
-            Toast.makeText(
-                requireActivity(),
-                "Todos los campos son obligatorios",
-                Toast.LENGTH_SHORT
-            ).show()
+            requireActivity().toast("Todos los campos son obligatorios")
         } else {
             viewModel.findPhotosByDate(
                 "${binding.dyear.text}-${binding.dmonth.text}-${binding.dday.text}",
