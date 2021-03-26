@@ -81,7 +81,7 @@ class ShowPhotosFragment : Fragment() {
                 binding.dyear.text.toString()
             )
         ) {
-            requireActivity().toast("Todos los campos son obligatorios")
+            requireActivity().toast(getString(R.string.message_input_error))
         } else {
             viewModel.findPhotosByDate(
                 "${binding.dyear.text}-${binding.dmonth.text}-${binding.dday.text}",

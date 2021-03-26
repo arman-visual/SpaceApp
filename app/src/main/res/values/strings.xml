@@ -9,4 +9,5 @@
     <string name="info">Photo deleted</string>
     <string name="undo">Undo</string>
     <string name="message_no_photos">Does not exist photos for this date</string>
+    <string name="message_input_error">All fields are required</string>
 </resources>
