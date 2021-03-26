@@ -68,10 +68,9 @@ class ShowPhotosFragment : Fragment() {
                 adapter.setItems(model.photos)
             } else {
                 adapter.setItems(model.photos)
-                requireActivity().toast("Does not exist photos for this date")
+                requireActivity().toast(getString(R.string.message_no_photos))
             }
         }
-
     }
 
     private fun onClickSearchButton() {

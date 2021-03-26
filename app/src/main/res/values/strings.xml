@@ -8,4 +8,5 @@
     <string name="buttom_for_save_or_remove_of_favorite_photos">Buttom for save or remove of favorite photos</string>
     <string name="info">Photo deleted</string>
     <string name="undo">Undo</string>
+    <string name="message_no_photos">Does not exist photos for this date</string>
 </resources>
