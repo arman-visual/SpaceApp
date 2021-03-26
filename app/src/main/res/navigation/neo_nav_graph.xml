@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/neo_nav_graph"
+    app:startDestination="@id/showNeoFragment">
+
+    <fragment
+        android:id="@+id/showNeoFragment"
+        android:name="com.avisual.spaceapp.ui.asteroidsNeo.ShowNeoFragment"
+        android:label="show_neo_fragment"
+        tools:layout="@layout/show_neo_fragment" />
+</navigation>
