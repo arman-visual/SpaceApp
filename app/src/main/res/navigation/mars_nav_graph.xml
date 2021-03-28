@@ -9,5 +9,23 @@
         android:id="@+id/showPhotosFragment"
         android:name="com.avisual.spaceapp.ui.roverMars.ShowPhotosFragment"
         android:label="fragment_show_photos"
-        tools:layout="@layout/fragment_show_photos" />
+        tools:layout="@layout/fragment_show_photos" >
+        <action
+            android:id="@+id/action_showPhotosFragment_to_detailPhotoRoverFragment"
+            app:destination="@id/detailPhotoRoverFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailPhotoRoverFragment"
+        android:name="com.avisual.spaceapp.ui.roverMars.DetailPhotoRoverFragment"
+        android:label="fragment_detail_photo_rover"
+        tools:layout="@layout/fragment_detail_photo_rover" >
+        <argument
+            android:name="photoRoverArgs"
+            app:argType="com.avisual.spaceapp.model.PhotoRover"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_detailPhotoRoverFragment_to_showPhotosFragment"
+            app:destination="@id/showPhotosFragment" />
+    </fragment>
 </navigation>
