@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
+import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.repository.NeoRepository
+import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModelFactory
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModel
@@ -18,6 +20,7 @@ class ShowNeoFragment : Fragment() {
     private lateinit var viewModel: ShowNeoViewModel
     private lateinit var binding: ShowNeoFragmentBinding
     private lateinit var neoRepository: NeoRepository
+    private lateinit var adapter: AsteroidsNeoAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,14 +29,22 @@ class ShowNeoFragment : Fragment() {
         dependencies()
         viewModel = buildViewModel()
         binding = ShowNeoFragmentBinding.inflate(layoutInflater)
-        binding.text.text = "NEO"
         return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getAsteroidsByDate("2021-02-21", "2021-02-27", getString(R.string.api_key))
+        viewModel.getAsteroidsByDate("2021-02-21", "2021-02-26", getString(R.string.api_key))
+        adapter = AsteroidsNeoAdapter(emptyList())
+        binding.recycler.adapter = adapter
+        subscribe()
+    }
+
+    private fun subscribe() {
+        viewModel.listAsteroids.observe(requireActivity()){
+            adapter.setItems(it)
+        }
     }
 
     private fun dependencies() {
