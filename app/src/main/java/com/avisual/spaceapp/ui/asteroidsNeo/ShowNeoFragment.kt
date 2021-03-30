@@ -15,6 +15,7 @@ import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModelFactory
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
 import java.util.*
 
 class ShowNeoFragment : Fragment() {
@@ -23,10 +24,17 @@ class ShowNeoFragment : Fragment() {
     private lateinit var binding: ShowNeoFragmentBinding
     private lateinit var neoRepository: NeoRepository
     private lateinit var adapter: AsteroidsNeoAdapter
-    private lateinit var datePicker:MaterialDatePicker<Long>
+    private lateinit var datePicker: MaterialDatePicker<Long>
 
+    private val outputDateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).apply {
+        timeZone = TimeZone.getTimeZone("UTC")
+    }
 
-
+    companion object {
+        const val DATE_START_SEARCH_NEO = -2208952800000
+        const val DATE_FINAL_SEARCH_NEO = 2556054000000
+        const val TIME_ZONE = "UTC"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,33 +48,33 @@ class ShowNeoFragment : Fragment() {
         binding.buttonCalendar.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "DATA_PICKER")
             datePicker.addOnPositiveButtonClickListener {
-                Toast.makeText(requireContext(), datePicker.headerText, Toast.LENGTH_SHORT).show()
+                val text = outputDateFormat.format(it)
+                Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
             }
         }
         return binding.root
     }
 
     private fun configureCalendar() {
-        //Calendar
-        val today = MaterialDatePicker.todayInUtcMilliseconds()
-        val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone(TIME_ZONE))
 
-        calendar.timeInMillis = today
-        calendar[Calendar.MONTH] = Calendar.JANUARY
-        val janThisYear = calendar.timeInMillis
+        calendar.timeInMillis = DATE_START_SEARCH_NEO
+        calendar[Calendar.JANUARY] = Calendar.JANUARY
+        val startYear = calendar.timeInMillis
 
-        calendar.timeInMillis = today
-        calendar[Calendar.MONTH] = Calendar.DECEMBER
-        val decThisYear = calendar.timeInMillis
+        calendar.timeInMillis = DATE_FINAL_SEARCH_NEO
+        calendar[Calendar.DECEMBER] = Calendar.DECEMBER
+        val finalYear = calendar.timeInMillis
 
         val constraintsBuilder =
             CalendarConstraints.Builder()
-                .setStart(janThisYear)
-                .setEnd(decThisYear)
+                .setStart(startYear)
+                .setEnd(finalYear)
+
         datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Select date")
-            .setCalendarConstraints(constraintsBuilder.build())
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .setCalendarConstraints(constraintsBuilder.build())
             .build()
     }
 
