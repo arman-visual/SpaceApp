@@ -7,12 +7,20 @@ import kotlinx.coroutines.withContext
 
 class NeoRepository {
 
-    suspend fun findPhotosRoverFromServer(
+    suspend fun findNeoByRangeDate(
         dateInit: String,
         dateFinish: String,
         apiKey:String
     ): NearEarthObjectResult =
         withContext(Dispatchers.IO) {
             NasaClient.nasaService.searchNeoWsByDate(dateInit, dateFinish, apiKey)
+        }
+
+    suspend fun findNeoByOnlyStartDate(
+        startDate: String,
+        apiKey: String
+    ): NearEarthObjectResult =
+        withContext(Dispatchers.IO) {
+            NasaClient.nasaService.searchNeoWsByOnlyStartDate(startDate, apiKey)
         }
 }
