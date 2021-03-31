@@ -1,5 +1,6 @@
 package com.avisual.spaceapp.model.asteroidsNeoWsResponse
 
+import com.avisual.spaceapp.model.Neo
 import com.google.gson.annotations.SerializedName
 
 data class NearEarthObjectResult(
@@ -38,6 +39,21 @@ data class NearEarthObject(
 
     @SerializedName("is_sentry_object")
     val isSentryObject: Boolean
+)
+fun NearEarthObject.toNeo(bindDay:String) = Neo(
+    this.id,
+    this.name,
+    this.isPotentiallyHazardousAsteroid,
+    this.absoluteMagnitudeH,
+    this.nasaJplURL,
+    this.estimatedDiameter.kilometers.estimatedDiameterMin,
+    this.estimatedDiameter.kilometers.estimatedDiameterMax,
+    this.closeApproachData[0].relativeVelocity.kilometersPerSecond,
+    this.closeApproachData[0].relativeVelocity.kilometersPerHour,
+    this.closeApproachData[0].closeApproachDateFull,
+    this.closeApproachData[0].closeApproachDate,
+    this.closeApproachData[0].missDistance.kilometers,
+    bindDay
 )
 
 data class EstimatedDiameter(

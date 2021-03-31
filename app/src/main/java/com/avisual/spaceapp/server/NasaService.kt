@@ -18,4 +18,10 @@ interface NasaService {
         @Query("end_date") endDate: String,
         @Query("api_key") apiKey: String
     ): NearEarthObjectResult
+
+    @GET("neo/rest/v1/feed")
+    suspend fun searchNeoWsByOnlyStartDate(
+        @Query("start_date") startDate: String,
+        @Query("api_key") apiKey: String
+    ): NearEarthObjectResult
 }
