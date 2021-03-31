@@ -46,6 +46,13 @@ fun NearEarthObject.toNeo(bindDay:String) = Neo(
     this.isPotentiallyHazardousAsteroid,
     this.absoluteMagnitudeH,
     this.nasaJplURL,
+    this.estimatedDiameter.kilometers.estimatedDiameterMin,
+    this.estimatedDiameter.kilometers.estimatedDiameterMax,
+    this.closeApproachData[0].relativeVelocity.kilometersPerSecond,
+    this.closeApproachData[0].relativeVelocity.kilometersPerHour,
+    this.closeApproachData[0].closeApproachDateFull,
+    this.closeApproachData[0].closeApproachDate,
+    this.closeApproachData[0].missDistance.kilometers,
     bindDay
 )
 
