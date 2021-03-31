@@ -31,12 +31,12 @@ class AsteroidsNeoAdapter(var listTotalNeo: List<Neo>) :
     class ViewHolder(var binding: ItemNeoAsteroidBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(neo: Neo) {
-            binding.idNeo.text = neo.id
+            binding.ivAsteroid.setImageResource(R.drawable.asteroid)
             binding.nameNeo.text = neo.name
             binding.missDistance.text = neo.missDistance
             when(neo.isPotentiallyHazardousAsteroid){
-                true -> binding.danger.setImageResource(R.drawable.photo_saved)
-                false ->binding.danger.setImageResource(R.drawable.photo_no_saved)
+                true -> binding.danger.setImageResource(R.drawable.danger_on)
+                false ->binding.danger.setImageResource(R.drawable.danger_off)
             }
         }
     }
