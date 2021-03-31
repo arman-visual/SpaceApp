@@ -1,10 +1,7 @@
 package com.avisual.spaceapp.ui.asteroidsNeo.adapter
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.RecyclerView
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ItemNeoAsteroidBinding
@@ -34,9 +31,9 @@ class AsteroidsNeoAdapter(var listTotalNeo: List<Neo>) :
             binding.ivAsteroid.setImageResource(R.drawable.asteroid)
             binding.nameNeo.text = neo.name
             binding.missDistance.text = neo.missDistance
-            when(neo.isPotentiallyHazardousAsteroid){
+            when (neo.isPotentiallyHazardousAsteroid) {
                 true -> binding.danger.setImageResource(R.drawable.danger_on)
-                false ->binding.danger.setImageResource(R.drawable.danger_off)
+                false -> binding.danger.setImageResource(R.drawable.danger_off)
             }
         }
     }
