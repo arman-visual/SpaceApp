@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.avisual.spaceapp.R
@@ -20,21 +19,18 @@ import java.util.*
 
 class ShowNeoFragment : Fragment() {
 
-    private lateinit var viewModel: ShowNeoViewModel
-    private lateinit var binding: ShowNeoFragmentBinding
-    private lateinit var neoRepository: NeoRepository
-    private lateinit var adapter: AsteroidsNeoAdapter
-    private lateinit var datePicker: MaterialDatePicker<Long>
-
-    private val outputDateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).apply {
-        timeZone = TimeZone.getTimeZone("UTC")
-    }
-
     companion object {
         const val DATE_START_SEARCH_NEO = -2208952800000
         const val DATE_FINAL_SEARCH_NEO = 2556054000000
         const val TIME_ZONE = "UTC"
     }
+
+    private lateinit var viewModel: ShowNeoViewModel
+    private lateinit var binding: ShowNeoFragmentBinding
+    private lateinit var neoRepository: NeoRepository
+    private lateinit var adapter: AsteroidsNeoAdapter
+    private lateinit var datePicker: MaterialDatePicker<Long>
+    private lateinit var outputDateFormat: SimpleDateFormat
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,16 +39,47 @@ class ShowNeoFragment : Fragment() {
         dependencies()
         viewModel = buildViewModel()
         configureCalendar()
+        configureUi()
+        return binding.root
+    }
+
+    private fun configureUi() {
         binding = ShowNeoFragmentBinding.inflate(layoutInflater)
 
-        binding.buttonCalendar.setOnClickListener {
+        binding.showInput.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "DATA_PICKER")
-            datePicker.addOnPositiveButtonClickListener {
-                val text = outputDateFormat.format(it)
-                Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
+            datePicker.addOnPositiveButtonClickListener { epochDate ->
+                binding.showInput.text = giveFormatOutputDate(epochDate)
             }
         }
-        return binding.root
+        binding.search.setOnClickListener {
+            viewModel.getAsteroidsByOnlyDate(
+                binding.showInput.text.toString(),
+                getString(R.string.api_key)
+            )
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adapter = AsteroidsNeoAdapter(emptyList())
+        binding.recycler.adapter = adapter
+        subscribe()
+    }
+
+    private fun dependencies() {
+        neoRepository = NeoRepository()
+    }
+
+    private fun buildViewModel(): ShowNeoViewModel {
+        val factory = ShowNeoViewModelFactory(neoRepository)
+        return ViewModelProvider(this, factory).get(ShowNeoViewModel::class.java)
+    }
+
+    private fun subscribe() {
+        viewModel.listAsteroids.observe(requireActivity()) {
+            adapter.setItems(it)
+        }
     }
 
     private fun configureCalendar() {
@@ -78,29 +105,10 @@ class ShowNeoFragment : Fragment() {
             .build()
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.getAsteroidsByDate("2021-02-21", "2021-02-26", getString(R.string.api_key))
-        adapter = AsteroidsNeoAdapter(emptyList())
-        binding.recycler.adapter = adapter
-        subscribe()
-    }
-
-    private fun subscribe() {
-        viewModel.listAsteroids.observe(requireActivity()) {
-            adapter.setItems(it)
+    private fun giveFormatOutputDate(epochDate: Long): String {
+        outputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).apply {
+            timeZone = TimeZone.getTimeZone(TIME_ZONE)
         }
+        return outputDateFormat.format(epochDate)
     }
-
-    private fun dependencies() {
-        neoRepository = NeoRepository()
-    }
-
-    private fun buildViewModel(): ShowNeoViewModel {
-        val factory = ShowNeoViewModelFactory(neoRepository)
-        return ViewModelProvider(this, factory).get(ShowNeoViewModel::class.java)
-    }
-
-
 }
