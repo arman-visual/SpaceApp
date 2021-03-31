@@ -21,12 +21,11 @@ class ShowNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
             val response = neoRepository.findNeoByOnlyStartDate(dateStart, apiKey)
 
             val totalDays = response.registerDay.size
-            var keys = response.registerDay.keys.sorted()
+            val keys = response.registerDay.keys.sorted()
 
             for (i in 0 until totalDays) {
                 response.registerDay.getValue(keys[i]).map { neo -> totalAsteroids.add(neo.toNeo(keys[i])) }
             }
-            println("Total de objetos almacenados : ${totalAsteroids.toList().size}")
             _listsAsteroids.postValue(totalAsteroids)
         }
     }
