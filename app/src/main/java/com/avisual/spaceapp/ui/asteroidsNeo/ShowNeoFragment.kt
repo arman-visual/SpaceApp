@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avisual.spaceapp.R
+import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
 import com.avisual.spaceapp.repository.NeoRepository
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
+import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoUi
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModelFactory
 import com.google.android.material.datepicker.CalendarConstraints
@@ -77,9 +80,22 @@ class ShowNeoFragment : Fragment() {
     }
 
     private fun subscribe() {
-        viewModel.listAsteroids.observe(requireActivity()) {
-            adapter.setItems(it)
+        viewModel.listAsteroids.observe(requireActivity(), Observer(::updateUi))
+    }
+
+    private fun updateUi(model: ShowNeoUi) {
+        binding.progressBarNeo.visibility =
+            if (model is ShowNeoUi.Loading) View.VISIBLE else View.GONE
+
+        if (model is ShowNeoUi.Content) {
+            if (model.asteroids.isNotEmpty()) {
+                adapter.setItems(model.asteroids)
+            } else {
+                adapter.setItems(model.asteroids)
+                requireActivity().toast(getString(R.string.message_no_photos))
+            }
         }
+
     }
 
     private fun configureCalendar() {
