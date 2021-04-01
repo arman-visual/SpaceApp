@@ -7,18 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.DetailNeoFragmentBinding
 import com.avisual.spaceapp.model.Neo
 
 class DetailNeoFragment : Fragment() {
 
     private val args: DetailNeoFragmentArgs by navArgs()
-    private lateinit var neo: Neo
-
-    companion object {
-        fun newInstance() = DetailNeoFragment()
-    }
-
+    private lateinit var asteroid: Neo
     private lateinit var viewModel: DetailNeoViewModel
     private lateinit var binding: DetailNeoFragmentBinding
 
@@ -26,7 +22,7 @@ class DetailNeoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        neo = args.neoArg!!
+        asteroid = args.neoArg!!
         binding = DetailNeoFragmentBinding.inflate(layoutInflater)
         setupUi()
         return binding.root
@@ -40,7 +36,17 @@ class DetailNeoFragment : Fragment() {
 
     private fun setupUi() {
         binding.apply {
-            nameNeo.text = neo.name
+            nameNeo.text = asteroid.name
+            minDiameter.text = asteroid.minDiameter.toString()
+            maxDiameter.text = asteroid.maxDiameter.toString()
+            relativeVelocity.text = asteroid.relativeVelocityHour
+            absoulteMagnitud.text = asteroid.absoluteMagnitudeH.toString()
+            missDistance.text = asteroid.missDistance
+            if (asteroid.isPotentiallyHazardousAsteroid) {
+                danger.setImageResource(R.drawable.danger_on)
+            } else {
+                danger.setImageResource(R.drawable.danger_off)
+            }
         }
     }
 }
