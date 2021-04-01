@@ -1,5 +1,9 @@
 package com.avisual.spaceapp.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Neo(
     var id: String,
     val name: String,
@@ -14,4 +18,4 @@ data class Neo(
     val approachDateFull:String,
     val missDistance: String,
     val dayRegister: String
-)
+):Parcelable
