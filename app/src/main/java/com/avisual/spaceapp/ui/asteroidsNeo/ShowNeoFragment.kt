@@ -51,11 +51,12 @@ class ShowNeoFragment : Fragment() {
         dependencies()
         viewModel = buildViewModel()
         configureCalendar()
-        configureUi()
+        setUpUi()
+        subscribe()
         return binding.root
     }
 
-    private fun configureUi() {
+    private fun setUpUi() {
         binding = ShowNeoFragmentBinding.inflate(layoutInflater)
 
         binding.showInput.setOnClickListener {
@@ -70,14 +71,13 @@ class ShowNeoFragment : Fragment() {
                 getString(R.string.api_key)
             )
         }
+        adapter = AsteroidsNeoAdapter(emptyList()) { onClickPhoto(it) }
+        binding.recycler.adapter = adapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
-        adapter = AsteroidsNeoAdapter(emptyList()) { onClickPhoto(it) }
-        binding.recycler.adapter = adapter
-        subscribe()
     }
 
     private fun dependencies() {
