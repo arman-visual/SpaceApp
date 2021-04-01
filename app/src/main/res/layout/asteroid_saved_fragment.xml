@@ -29,7 +29,7 @@
         app:spanCount="1"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="76dp"
-        tools:listitem="@layout/item_neo_asteroid">
+        tools:listitem="@layout/item_neo_saved">
 
     </androidx.recyclerview.widget.RecyclerView>
 
