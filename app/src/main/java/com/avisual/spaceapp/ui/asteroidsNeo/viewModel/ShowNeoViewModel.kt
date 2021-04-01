@@ -23,12 +23,9 @@ class ShowNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
 
             val response = neoRepository.findNeoByOnlyStartDate(dateStart, apiKey)
 
-            if (response.registerDay.isNotEmpty()){
-                convertToOneListDate(response, totalAsteroids)
-                _listsAsteroids.value = ShowNeoUi.Content(totalAsteroids)
-            }else{
-                _listsAsteroids.value = ShowNeoUi.Content(emptyList())
-            }
+            convertToOneListDate(response, totalAsteroids)
+
+            _listsAsteroids.value = ShowNeoUi.Content(totalAsteroids)
         }
     }
 
@@ -47,7 +44,7 @@ class ShowNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
 
 }
 
-sealed class ShowNeoUi{
-        object Loading : ShowNeoUi()
-        class Content(val asteroids: List<Neo>) : ShowNeoUi()
+sealed class ShowNeoUi {
+    object Loading : ShowNeoUi()
+    class Content(val asteroids: List<Neo>) : ShowNeoUi()
 }
