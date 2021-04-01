@@ -7,7 +7,10 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ItemNeoAsteroidBinding
 import com.avisual.spaceapp.model.Neo
 
-class AsteroidsNeoAdapter(var listTotalNeo: List<Neo>) :
+class AsteroidsNeoAdapter(
+    var asteroids: List<Neo>,
+    var neoOnClick: (Neo) -> Unit
+) :
     RecyclerView.Adapter<AsteroidsNeoAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,10 +23,11 @@ class AsteroidsNeoAdapter(var listTotalNeo: List<Neo>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listTotalNeo[position])
+        holder.bind(asteroids[position])
+        holder.itemView.setOnClickListener { neoOnClick(asteroids[position]) }
     }
 
-    override fun getItemCount(): Int = listTotalNeo.size
+    override fun getItemCount(): Int = asteroids.size
 
     class ViewHolder(var binding: ItemNeoAsteroidBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -39,7 +43,7 @@ class AsteroidsNeoAdapter(var listTotalNeo: List<Neo>) :
     }
 
     fun setItems(asteroids: List<Neo>) {
-        this.listTotalNeo = asteroids
+        this.asteroids = asteroids
         notifyDataSetChanged()
     }
 }

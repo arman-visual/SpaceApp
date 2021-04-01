@@ -5,11 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
+import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
+import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.repository.NeoRepository
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
+import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoUi
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModelFactory
 import com.google.android.material.datepicker.CalendarConstraints
@@ -29,9 +36,14 @@ class ShowNeoFragment : Fragment() {
     private lateinit var binding: ShowNeoFragmentBinding
     private lateinit var neoRepository: NeoRepository
     private lateinit var adapter: AsteroidsNeoAdapter
+    private lateinit var navController: NavController
     private lateinit var datePicker: MaterialDatePicker<Long>
     private lateinit var outputDateFormat: SimpleDateFormat
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,11 +51,12 @@ class ShowNeoFragment : Fragment() {
         dependencies()
         viewModel = buildViewModel()
         configureCalendar()
-        configureUi()
+        setUpUi()
+        subscribe()
         return binding.root
     }
 
-    private fun configureUi() {
+    private fun setUpUi() {
         binding = ShowNeoFragmentBinding.inflate(layoutInflater)
 
         binding.showInput.setOnClickListener {
@@ -58,13 +71,13 @@ class ShowNeoFragment : Fragment() {
                 getString(R.string.api_key)
             )
         }
+        adapter = AsteroidsNeoAdapter(emptyList()) { onClickPhoto(it) }
+        binding.recycler.adapter = adapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = AsteroidsNeoAdapter(emptyList())
-        binding.recycler.adapter = adapter
-        subscribe()
+        navController = view.findNavController()
     }
 
     private fun dependencies() {
@@ -77,9 +90,22 @@ class ShowNeoFragment : Fragment() {
     }
 
     private fun subscribe() {
-        viewModel.listAsteroids.observe(requireActivity()) {
-            adapter.setItems(it)
+        viewModel.listAsteroids.observe(requireActivity(), Observer(::updateUi))
+    }
+
+    private fun updateUi(model: ShowNeoUi) {
+        binding.progressBarNeo.visibility =
+            if (model is ShowNeoUi.Loading) View.VISIBLE else View.GONE
+
+        if (model is ShowNeoUi.Content) {
+            if (model.asteroids.isNotEmpty()) {
+                adapter.setItems(model.asteroids)
+            } else {
+                adapter.setItems(model.asteroids)
+                requireActivity().toast(getString(R.string.message_no_near))
+            }
         }
+
     }
 
     private fun configureCalendar() {
@@ -110,5 +136,10 @@ class ShowNeoFragment : Fragment() {
             timeZone = TimeZone.getTimeZone(TIME_ZONE)
         }
         return outputDateFormat.format(epochDate)
+    }
+
+    private fun onClickPhoto(neo: Neo) {
+        val action = ShowNeoFragmentDirections.actionShowNeoFragmentToDetailNeoFragment4(neo)
+        findNavController().navigate(action)
     }
 }
