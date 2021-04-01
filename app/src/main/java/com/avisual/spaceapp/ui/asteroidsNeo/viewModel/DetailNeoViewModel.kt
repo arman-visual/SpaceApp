@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.asteroidsNeo
+package com.avisual.spaceapp.ui.asteroidsNeo.viewModel
 
 import androidx.lifecycle.ViewModel
 
