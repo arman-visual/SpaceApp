@@ -6,12 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.avisual.spaceapp.R
+import com.avisual.spaceapp.databinding.ActivityNavGalleryBinding
 import com.avisual.spaceapp.databinding.ActivityNeowsBinding
 
 class AsteroidsNeoActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityNeowsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityNeowsBinding.inflate(layoutInflater)
+        binding = ActivityNeowsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navHostFragment =
