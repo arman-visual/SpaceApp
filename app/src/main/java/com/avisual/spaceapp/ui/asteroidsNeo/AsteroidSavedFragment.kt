@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.databinding.AsteroidSavedFragmentBinding
 import com.avisual.spaceapp.model.Neo
@@ -18,7 +20,8 @@ class AsteroidSavedFragment : Fragment() {
 
     private lateinit var binding: AsteroidSavedFragmentBinding
     private lateinit var viewModel: AsteroidSavedViewModel
-    private lateinit var adapter: AsteroidsSavedAdapter
+    private var adapter =
+        AsteroidsSavedAdapter(emptyList(), onDeleteBtnClicked(), onClickedAsteroid())
     private lateinit var neoRepository: NeoRepository
 
 
@@ -27,13 +30,20 @@ class AsteroidSavedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         buildDependencies()
-        adapter = AsteroidsSavedAdapter(emptyList()) { onClickItemButton(it) }
         binding = AsteroidSavedFragmentBinding.inflate(layoutInflater)
+        binding.recycler.adapter = adapter
         return binding.root
     }
 
-    private fun onClickItemButton(asteroid: Neo) {
+    private fun onDeleteBtnClicked(): (Neo) -> Unit = { asteroid ->
         viewModel.removeAsteroidSaved(asteroid)
+        requireActivity().toast("Asteroid with name: ${asteroid.name} is deleted")
+    }
+
+    private fun onClickedAsteroid(): (Neo) -> Unit = { asteroid ->
+        val action = AsteroidSavedFragmentDirections
+            .actionAsteroidSavedFragmentToDetailNeoFragment4(asteroid)
+        findNavController().navigate(action)
     }
 
     private fun buildDependencies() {

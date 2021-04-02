@@ -9,7 +9,8 @@ import com.avisual.spaceapp.model.Neo
 
 class AsteroidsSavedAdapter(
     var asteroids: List<Neo>,
-    var onButtonRemoveClick: (Neo) -> Unit
+    var onButtonRemoveClick: (Neo) -> Unit,
+    var onClickAsteroid:(Neo) -> Unit
 ) :
     RecyclerView.Adapter<AsteroidsSavedAdapter.ViewHolder>() {
 
@@ -24,12 +25,15 @@ class AsteroidsSavedAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(asteroids[position])
-        holder.itemView.setOnClickListener { onButtonRemoveClick(asteroids[position]) }
+        holder.deleteButton.setOnClickListener { onButtonRemoveClick(asteroids[position]) }
+        holder.itemView.setOnClickListener { onClickAsteroid(asteroids[position]) }
     }
 
     override fun getItemCount(): Int = asteroids.size
 
     class ViewHolder(var binding: ItemNeoSavedBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        val deleteButton = binding.buttonRemove
 
         fun bind(asteroid: Neo) {
             binding.ivAsteroid.setImageResource(R.drawable.asteroid)
