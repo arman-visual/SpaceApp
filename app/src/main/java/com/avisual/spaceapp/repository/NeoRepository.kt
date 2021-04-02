@@ -35,6 +35,15 @@ class NeoRepository(var database: Db) {
             asteroidDao.delete(asteroid)
         }
 
+    suspend fun insertAsteroid(asteroid: Neo) =
+        withContext(Dispatchers.IO) {
+            asteroidDao.insert(asteroid)
+        }
+
+    suspend fun getAsteroidById(id: String): Neo? = withContext(Dispatchers.IO) {
+        asteroidDao.getById(id)
+    }
+
     fun getAllAsteroidsSaved(): LiveData<List<Neo>> {
         return asteroidDao.getAllLiveData()
     }
