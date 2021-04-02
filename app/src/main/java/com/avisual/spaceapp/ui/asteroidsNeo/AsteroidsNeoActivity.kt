@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.databinding.ActivityNavGalleryBinding
 import com.avisual.spaceapp.databinding.ActivityNeowsBinding
 
 class AsteroidsNeoActivity : AppCompatActivity() {
@@ -19,9 +18,9 @@ class AsteroidsNeoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.neo_host_fragment) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavNeo.setupWithNavController(navController)
-        Log.i("AsteroidsNeoActivity","Iniciando esta actividad")
+        Log.i("AsteroidsNeoActivity", "Iniciando esta actividad")
     }
 }

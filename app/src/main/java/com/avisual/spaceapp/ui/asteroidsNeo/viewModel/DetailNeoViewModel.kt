@@ -21,12 +21,6 @@ class DetailNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
         }
     }
 
-    fun saveAsteroid(asteroid: Neo) {
-        launch {
-            neoRepository.insertAsteroid(asteroid)
-        }
-    }
-
     private suspend fun isPhotoInDB(asteroid: Neo): Boolean {
         return neoRepository.getAsteroidById(asteroid.id) != null
     }
