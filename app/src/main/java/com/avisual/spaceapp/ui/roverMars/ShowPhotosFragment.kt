@@ -20,10 +20,6 @@ import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModelFactory
 
 class ShowPhotosFragment : Fragment() {
 
-    companion object {
-        private const val DEFAULT_DATE_EARTH = "2015-06-03"
-    }
-
     private lateinit var binding: FragmentShowPhotosBinding
     private lateinit var adapter: PhotosRoverAdapter
     private lateinit var viewModel: ShowPhotosViewModel
@@ -35,19 +31,9 @@ class ShowPhotosFragment : Fragment() {
     ): View? {
         buildDependencies()
         viewModel = buildViewModel()
-        binding = FragmentShowPhotosBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        adapter = PhotosRoverAdapter(emptyList()) {
-            onClickPhoto(it)
-        }
-        binding.recycler.adapter = adapter
-        viewModel.findPhotosByDate(DEFAULT_DATE_EARTH, apiKey = getString(R.string.api_key))
-        binding.button.setOnClickListener { onClickSearchButton() }
+        setupUi()
         subscribeUi()
+        return binding.root
     }
 
     private fun buildDependencies() {
@@ -57,6 +43,15 @@ class ShowPhotosFragment : Fragment() {
     private fun buildViewModel(): ShowPhotosViewModel {
         val factory = ShowPhotosViewModelFactory(photoRoverRepository)
         return ViewModelProvider(this, factory).get(ShowPhotosViewModel::class.java)
+    }
+
+    private fun setupUi() {
+        binding = FragmentShowPhotosBinding.inflate(layoutInflater)
+        adapter = PhotosRoverAdapter(emptyList()) {
+            onClickPhoto(it)
+        }
+        binding.recycler.adapter = adapter
+        binding.button.setOnClickListener { onClickSearchButton() }
     }
 
     private fun subscribeUi() {
