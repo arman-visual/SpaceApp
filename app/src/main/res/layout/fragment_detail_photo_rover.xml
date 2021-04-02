@@ -22,8 +22,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:contentDescription="@string/image_of_nasa"
-                android:scaleType="centerCrop"
-                tools:src="@tools:sample/backgrounds/scenic" />
+                android:scaleType="fitCenter"
+                tools:src="@tools:sample/backgrounds/scenic"
+                tools:srcCompat="@drawable/spacemenu" />
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton

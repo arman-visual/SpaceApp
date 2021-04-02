@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.avisual.spaceapp.common.loadUrl
 import com.avisual.spaceapp.databinding.FragmentDetailPhotoRoverBinding
@@ -48,8 +46,6 @@ class DetailPhotoRoverFragment : Fragment() {
     private fun setUpUi() {
         binding = FragmentDetailPhotoRoverBinding.inflate(layoutInflater)
 
-        configureOnBackPressed()
-
         binding.apply {
             imagePhoto.loadUrl(photo.img_src)
             titlePhotoDetail.text = photo.full_name
@@ -57,11 +53,4 @@ class DetailPhotoRoverFragment : Fragment() {
         }
     }
 
-    private fun configureOnBackPressed() {
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            val action =
-                DetailPhotoRoverFragmentDirections.actionDetailPhotoRoverFragmentToShowPhotosFragment()
-            findNavController().navigate(action)
-        }
-    }
 }
