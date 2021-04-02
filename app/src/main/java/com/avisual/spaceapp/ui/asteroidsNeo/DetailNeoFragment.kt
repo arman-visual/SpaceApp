@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.DetailNeoFragmentBinding
 import com.avisual.spaceapp.model.Neo
+import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.DetailNeoViewModel
 
 class DetailNeoFragment : Fragment() {
 

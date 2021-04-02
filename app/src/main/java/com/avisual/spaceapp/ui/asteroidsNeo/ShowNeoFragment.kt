@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.toast
+import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
 import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.repository.NeoRepository
@@ -81,7 +82,8 @@ class ShowNeoFragment : Fragment() {
     }
 
     private fun dependencies() {
-        neoRepository = NeoRepository()
+        val database = Db.getDatabase(requireContext())
+        neoRepository = NeoRepository(database)
     }
 
     private fun buildViewModel(): ShowNeoViewModel {
