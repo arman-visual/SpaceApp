@@ -26,7 +26,7 @@
             android:id="@+id/title_screen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mars Rover Photos"
+            android:text="@string/title_mars_rover_photos"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Introduce date:"
+                android:text="@string/introduce_date"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/purple_700"
                 android:textSize="18sp" />

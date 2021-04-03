@@ -8,10 +8,13 @@
     <string name="buttom_for_save_or_remove_of_favorite_photos">Buttom for save or remove of favorite photos</string>
     <string name="info">Photo deleted</string>
     <string name="undo">Undo</string>
-    <string name="message_no_photos">Does not exist photos for this date</string>
+    <string name="message_no_photos">No photos with this date have been found</string>
     <string name="message_input_error">All fields are required</string>
     <string name="touch_here">Touch here</string>
     <string name="neo_search">Search</string>
     <string name="title_scree_neows">Asteroids - NeoWs</string>
     <string name="message_no_near">No nearby asteroids on this date</string>
+    <string name="message_no_found_photos">No photos found with this word</string>
+    <string name="introduce_date">Introduce date:</string>
+    <string name="title_mars_rover_photos">Mars Rover Photos</string>
 </resources>
