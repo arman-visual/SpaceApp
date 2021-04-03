@@ -15,25 +15,34 @@ class ShowGalleryViewModel(private val photoGalleryRepository: PhotoGalleryRepos
         private const val DEFAULT_KEYWORD = "Nasa"
     }
 
-    private val _photosLibrary = MutableLiveData<List<PhotoGallery>>()
-    val photosLibrary: LiveData<List<PhotoGallery>>
-        get() = _photosLibrary
+    private val _photos = MutableLiveData<GalleryUi>()
+    val photos: LiveData<GalleryUi>
+        get() = _photos
 
     init {
         refresh()
     }
 
     private fun refresh() = launch {
+        _photos.value = GalleryUi.Loading
+
         val response = photoGalleryRepository.findPhotosGallery(DEFAULT_KEYWORD)
-        _photosLibrary.value = response.collection.items.map { it.convertToPhotoGallery() }
+        _photos.value =
+            GalleryUi.Content(response.collection.items.map { it.convertToPhotoGallery() })
     }
 
     fun findPhotosByKeyword(keyword: String) {
         launch {
+            _photos.value = GalleryUi.Loading
+
             val searchResponse = photoGalleryRepository.findPhotosGallery(keyword)
-            _photosLibrary.value =
-                searchResponse.collection.items.map { it.convertToPhotoGallery() }
+            _photos.value =
+                GalleryUi.Content(searchResponse.collection.items.map { it.convertToPhotoGallery() })
         }
     }
 }
 
+sealed class GalleryUi {
+    object Loading : GalleryUi()
+    class Content(val photos: List<PhotoGallery>) : GalleryUi()
+}
