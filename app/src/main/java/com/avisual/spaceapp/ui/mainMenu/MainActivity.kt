@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
-        binding.imageView.setImageResource(R.drawable.spacemenu)
+        binding.background.setImageResource(R.drawable.button_creen_neo)
         setContentView(binding.root)
 
         binding.btNeows.setOnClickListener {
