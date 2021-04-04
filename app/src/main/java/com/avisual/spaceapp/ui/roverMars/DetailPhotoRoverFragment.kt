@@ -49,7 +49,11 @@ class DetailPhotoRoverFragment : Fragment() {
         binding.apply {
             imagePhoto.loadUrl(photo.img_src)
             titlePhotoDetail.text = photo.full_name
-            descriptionPhotoDetail.text = photo.rover_name
+            roverName.text = photo.rover_name
+            roverStatus.text = photo.status
+            earthDate.text = photo.earth_date
+            launchDate.text = photo.launch_date
+            laundingDate.text = photo.landing_date
         }
     }
 
