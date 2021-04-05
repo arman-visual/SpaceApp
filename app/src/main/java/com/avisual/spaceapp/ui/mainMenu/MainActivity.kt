@@ -1,14 +1,13 @@
 package com.avisual.spaceapp.ui.mainMenu
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ActivityNavigator
 import com.avisual.spaceapp.R
+import com.avisual.spaceapp.common.startActivity
 import com.avisual.spaceapp.databinding.ActivityMainBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
-import com.avisual.spaceapp.ui.searchGallery.NavGalleryActivity
 import com.avisual.spaceapp.ui.roverMars.NavRoverMarsActivity
+import com.avisual.spaceapp.ui.searchGallery.NavGalleryActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,21 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding.background.setImageResource(R.drawable.button_creen_neo)
         setContentView(binding.root)
 
-        binding.btNeows.setOnClickListener {
-            navigateToOption(Intent(this, AsteroidsNeoActivity::class.java))
-        }
-        binding.btNasagallery.setOnClickListener {
-            navigateToOption(Intent(this, NavGalleryActivity::class.java))
-        }
-        binding.btSearchrover.setOnClickListener {
-            navigateToOption(Intent(this, NavRoverMarsActivity::class.java))
-        }
-    }
-
-    private fun navigateToOption(intent: Intent) {
-        val activityNavigator = ActivityNavigator(this)
-        activityNavigator.navigate(
-            activityNavigator.createDestination().setIntent(intent), null, null, null
-        )
+        binding.btNeows.setOnClickListener { startActivity<AsteroidsNeoActivity>() }
+        binding.btNasagallery.setOnClickListener { startActivity<NavGalleryActivity>() }
+        binding.btSearchrover.setOnClickListener { startActivity<NavRoverMarsActivity>() }
     }
 }

@@ -1,6 +1,8 @@
 package com.avisual.spaceapp.common
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -25,4 +27,9 @@ fun ImageView.loadUrl(url: String) {
 
 fun Context.toast(message:String){
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+inline fun <reified T : Activity> Context.startActivity() {
+    val intent = Intent(this, T::class.java)
+    startActivity(intent)
 }
