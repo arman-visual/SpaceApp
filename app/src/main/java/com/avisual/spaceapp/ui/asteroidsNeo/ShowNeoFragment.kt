@@ -49,12 +49,27 @@ class ShowNeoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dependencies()
+        buildDependencies()
         viewModel = buildViewModel()
         configureCalendar()
         setUpUi()
         subscribe()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = view.findNavController()
+    }
+
+    private fun buildDependencies() {
+        val database = Db.getDatabase(requireContext())
+        neoRepository = NeoRepository(database)
+    }
+
+    private fun buildViewModel(): ShowNeoViewModel {
+        val factory = ShowNeoViewModelFactory(neoRepository)
+        return ViewModelProvider(this, factory).get(ShowNeoViewModel::class.java)
     }
 
     private fun setUpUi() {
@@ -74,21 +89,6 @@ class ShowNeoFragment : Fragment() {
         }
         adapter = AsteroidsNeoAdapter(emptyList()) { onClickPhoto(it) }
         binding.recycler.adapter = adapter
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        navController = view.findNavController()
-    }
-
-    private fun dependencies() {
-        val database = Db.getDatabase(requireContext())
-        neoRepository = NeoRepository(database)
-    }
-
-    private fun buildViewModel(): ShowNeoViewModel {
-        val factory = ShowNeoViewModelFactory(neoRepository)
-        return ViewModelProvider(this, factory).get(ShowNeoViewModel::class.java)
     }
 
     private fun subscribe() {

@@ -93,19 +93,6 @@ class ShowPhotosFragment : Fragment() {
         }
     }
 
-    private fun onClickSearchButton() {
-        viewModel.findPhotosByDate(
-            binding.showInput.text.toString(),
-            getString(R.string.api_key)
-        )
-    }
-
-    private fun onClickPhoto(photo: PhotoRover) {
-        val action =
-            ShowPhotosFragmentDirections.actionShowPhotosFragmentToDetailPhotoRoverFragment(photo)
-        findNavController().navigate(action)
-    }
-
     private fun configureCalendar() {
         val calendar = Calendar.getInstance(TimeZone.getTimeZone(TIME_ZONE))
         val today = MaterialDatePicker.todayInUtcMilliseconds()
@@ -136,4 +123,18 @@ class ShowPhotosFragment : Fragment() {
         }
         return outputDateFormat.format(epochDate)
     }
+
+    private fun onClickSearchButton() {
+        viewModel.findPhotosByDate(
+            binding.showInput.text.toString(),
+            getString(R.string.api_key)
+        )
+    }
+
+    private fun onClickPhoto(photo: PhotoRover) {
+        val action =
+            ShowPhotosFragmentDirections.actionShowPhotosFragmentToDetailPhotoRoverFragment(photo)
+        findNavController().navigate(action)
+    }
+
 }

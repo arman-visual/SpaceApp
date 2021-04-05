@@ -65,14 +65,6 @@ class SavedPhotosFragment : Fragment() {
         }
     }
 
-    private fun navToDetailPhoto(photo: PhotoGallery) {
-        val action =
-            SavedPhotosFragmentDirections.actionSavedPhotosFragmentToDetailPhotoGalleryFragment(
-                photo
-            )
-        findNavController().navigate(action)
-    }
-
     private fun itemTouchHelperConfigure() = object : ItemTouchHelper.Callback() {
         override fun getMovementFlags(
             recyclerView: RecyclerView,
@@ -99,5 +91,13 @@ class SavedPhotosFragment : Fragment() {
                 .setAction(R.string.undo){viewModel.savePhoto(photo)}
                 .show()
         }
+    }
+
+    private fun navToDetailPhoto(photo: PhotoGallery) {
+        val action =
+            SavedPhotosFragmentDirections.actionSavedPhotosFragmentToDetailPhotoGalleryFragment(
+                photo
+            )
+        findNavController().navigate(action)
     }
 }
