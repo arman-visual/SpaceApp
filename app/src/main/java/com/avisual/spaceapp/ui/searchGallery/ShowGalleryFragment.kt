@@ -50,6 +50,11 @@ class ShowGalleryFragment : Fragment() {
         navController = view.findNavController()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        configureSearchView(inflater, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
     private fun buildDependencies() {
         val database = Db.getDatabase(requireContext())
         photoGalleryRepository = PhotoGalleryRepository(database)
@@ -70,17 +75,6 @@ class ShowGalleryFragment : Fragment() {
 
     private fun subscribeUi() {
         viewModel.photos.observe(requireActivity(), Observer(::updateUi))
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        configureSearchView(inflater, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    private fun onClickPhoto(photo: PhotoGallery) {
-        val action = ShowGalleryFragmentDirections
-            .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
-        findNavController().navigate(action)
     }
 
     private fun updateUi(model: GalleryUi){
@@ -119,5 +113,12 @@ class ShowGalleryFragment : Fragment() {
                 return false
             }
         })
+    }
+
+
+    private fun onClickPhoto(photo: PhotoGallery) {
+        val action = ShowGalleryFragmentDirections
+            .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
+        findNavController().navigate(action)
     }
 }

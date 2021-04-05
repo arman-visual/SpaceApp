@@ -52,12 +52,12 @@ class DetailPhotoGalleryFragment : Fragment() {
         buildDependencies()
         viewModel = buildViewModel()
         setUpUi()
+        subscribeUi()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        subscribeUi()
         viewModel.checkIfPhotoSaved(photo)
     }
 

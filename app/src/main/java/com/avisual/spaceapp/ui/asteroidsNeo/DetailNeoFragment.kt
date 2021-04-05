@@ -28,16 +28,15 @@ class DetailNeoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         asteroid = args.neoArg!!
-        dependencies()
+        buildDependencies()
         viewModel = buildViewModel()
-        binding = DetailNeoFragmentBinding.inflate(layoutInflater)
         setupUi()
+        subscribe()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        subscribe()
         viewModel.checkIfPhotoSaved(asteroid)
     }
 
@@ -46,12 +45,14 @@ class DetailNeoFragment : Fragment() {
         return ViewModelProvider(this, factory).get(DetailNeoViewModel::class.java)
     }
 
-    private fun dependencies() {
+    private fun buildDependencies() {
         val database = Db.getDatabase(requireContext())
         neoRepository = NeoRepository(database)
     }
 
     private fun setupUi() {
+        binding = DetailNeoFragmentBinding.inflate(layoutInflater)
+
         binding.apply {
             nameNeo.text = asteroid.name
             minDiameter.text = asteroid.minDiameter.toString()

@@ -30,20 +30,10 @@ class AsteroidSavedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         buildDependencies()
-        binding = AsteroidSavedFragmentBinding.inflate(layoutInflater)
-        binding.recycler.adapter = adapter
+        viewModel = buildViewModel()
+        setUpUi()
+        subscribe()
         return binding.root
-    }
-
-    private fun onDeleteBtnClicked(): (Neo) -> Unit = { asteroid ->
-        viewModel.removeAsteroidSaved(asteroid)
-        requireActivity().toast("Asteroid with name: ${asteroid.name} is deleted")
-    }
-
-    private fun onClickedAsteroid(): (Neo) -> Unit = { asteroid ->
-        val action = AsteroidSavedFragmentDirections
-            .actionAsteroidSavedFragmentToDetailNeoFragment4(asteroid)
-        findNavController().navigate(action)
     }
 
     private fun buildDependencies() {
@@ -51,10 +41,9 @@ class AsteroidSavedFragment : Fragment() {
         neoRepository = NeoRepository(database)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = buildViewModel()
-        subscribe()
+    private fun setUpUi() {
+        binding = AsteroidSavedFragmentBinding.inflate(layoutInflater)
+        binding.recycler.adapter = adapter
     }
 
     private fun subscribe() {
@@ -68,4 +57,14 @@ class AsteroidSavedFragment : Fragment() {
         return ViewModelProvider(this, factory).get(AsteroidSavedViewModel::class.java)
     }
 
+    private fun onDeleteBtnClicked(): (Neo) -> Unit = { asteroid ->
+        viewModel.removeAsteroidSaved(asteroid)
+        requireActivity().toast("Asteroid with name: ${asteroid.name} is deleted")
+    }
+
+    private fun onClickedAsteroid(): (Neo) -> Unit = { asteroid ->
+        val action = AsteroidSavedFragmentDirections
+            .actionAsteroidSavedFragmentToDetailNeoFragment4(asteroid)
+        findNavController().navigate(action)
+    }
 }
