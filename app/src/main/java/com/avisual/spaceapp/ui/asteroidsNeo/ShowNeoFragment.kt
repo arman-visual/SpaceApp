@@ -63,8 +63,9 @@ class ShowNeoFragment : Fragment() {
     }
 
     private fun buildDependencies() {
+        val apiKey =  getString(R.string.api_key)
         val database = Db.getDatabase(requireContext())
-        neoRepository = NeoRepository(database)
+        neoRepository = NeoRepository(database, apiKey)
     }
 
     private fun buildViewModel(): ShowNeoViewModel {
@@ -83,8 +84,7 @@ class ShowNeoFragment : Fragment() {
         }
         binding.search.setOnClickListener {
             viewModel.getAsteroidsByOnlyDate(
-                binding.showInput.text.toString(),
-                getString(R.string.api_key)
+                binding.showInput.text.toString()
             )
         }
         adapter = AsteroidsNeoAdapter(emptyList()) { onClickPhoto(it) }

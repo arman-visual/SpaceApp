@@ -49,7 +49,8 @@ class ShowPhotosFragment : Fragment() {
     }
 
     private fun buildDependencies() {
-        photoRoverRepository = PhotoRoverRepository()
+        val apiKey = getString(R.string.api_key)
+        photoRoverRepository = PhotoRoverRepository(apiKey)
     }
 
     private fun buildViewModel(): ShowPhotosViewModel {
@@ -126,9 +127,7 @@ class ShowPhotosFragment : Fragment() {
 
     private fun onClickSearchButton() {
         viewModel.findPhotosByDate(
-            binding.showInput.text.toString(),
-            getString(R.string.api_key)
-        )
+            binding.showInput.text.toString())
     }
 
     private fun onClickPhoto(photo: PhotoRover) {

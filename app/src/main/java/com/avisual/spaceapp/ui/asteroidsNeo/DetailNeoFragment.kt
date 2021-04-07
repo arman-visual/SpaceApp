@@ -46,8 +46,9 @@ class DetailNeoFragment : Fragment() {
     }
 
     private fun buildDependencies() {
+        val apiKey =  getString(R.string.api_key)
         val database = Db.getDatabase(requireContext())
-        neoRepository = NeoRepository(database)
+        neoRepository = NeoRepository(database, apiKey)
     }
 
     private fun setupUi() {

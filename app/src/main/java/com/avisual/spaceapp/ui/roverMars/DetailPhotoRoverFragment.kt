@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.loadUrl
 import com.avisual.spaceapp.databinding.FragmentDetailPhotoRoverBinding
 import com.avisual.spaceapp.model.PhotoRover
@@ -35,7 +36,8 @@ class DetailPhotoRoverFragment : Fragment() {
     }
 
     private fun buildDependencies() {
-        photoRoverRepository = PhotoRoverRepository()
+        val apiKey =  getString(R.string.api_key)
+        photoRoverRepository = PhotoRoverRepository(apiKey)
     }
 
     private fun buildViewModel(): DetailPhotoRoverViewModel {
