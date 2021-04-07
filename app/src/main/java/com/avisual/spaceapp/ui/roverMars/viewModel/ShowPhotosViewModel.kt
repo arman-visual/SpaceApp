@@ -15,11 +15,11 @@ class ShowPhotosViewModel(var photoRoverRepository: PhotoRoverRepository) :
     private val _model = MutableLiveData<ShowPhotosUi>()
     val model: LiveData<ShowPhotosUi> get() = _model
 
-    fun findPhotosByDate(date: String, apiKey: String) {
+    fun findPhotosByDate(date: String) {
         launch {
             _model.value = ShowPhotosUi.Loading
             try {
-                val response = photoRoverRepository.findPhotosRoverFromServer(date, apiKey)
+                val response = photoRoverRepository.findPhotosRoverFromServer(date)
                 _model.value =
                     ShowPhotosUi.Content(response.photos.map { it.convertToPhotoRover() })
             } catch (exception: HttpException) {

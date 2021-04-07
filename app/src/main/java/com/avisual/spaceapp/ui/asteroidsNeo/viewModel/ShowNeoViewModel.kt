@@ -14,14 +14,14 @@ class ShowNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
     private val _listsAsteroids = MutableLiveData<ShowNeoUi>()
     val listAsteroids: LiveData<ShowNeoUi> get() = _listsAsteroids
 
-    fun getAsteroidsByOnlyDate(dateStart: String, apiKey: String) {
+    fun getAsteroidsByOnlyDate(dateStart: String) {
 
         var totalAsteroids = mutableListOf<Neo>()
 
         launch {
             _listsAsteroids.value = ShowNeoUi.Loading
 
-            val response = neoRepository.findNeoByOnlyStartDate(dateStart, apiKey)
+            val response = neoRepository.findNeoByOnlyStartDate(dateStart)
 
             convertToOneListDate(response, totalAsteroids)
 

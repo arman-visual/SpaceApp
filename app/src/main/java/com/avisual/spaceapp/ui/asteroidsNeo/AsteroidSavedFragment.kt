@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.databinding.AsteroidSavedFragmentBinding
@@ -37,8 +38,9 @@ class AsteroidSavedFragment : Fragment() {
     }
 
     private fun buildDependencies() {
+        val apiKey =  getString(R.string.api_key)
         val database = Db.getDatabase(requireContext())
-        neoRepository = NeoRepository(database)
+        neoRepository = NeoRepository(database, apiKey)
     }
 
     private fun setUpUi() {
