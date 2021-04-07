@@ -5,9 +5,9 @@ import com.avisual.spaceapp.server.NasaClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class PhotoRoverRepository {
+class PhotoRoverRepository(private val apiKey: String) {
 
-    suspend fun findPhotosRoverFromServer(date: String, apiKey: String): RoverPhotosResult =
+    suspend fun findPhotosRoverFromServer(date: String): RoverPhotosResult =
         withContext(Dispatchers.IO) {
             NasaClient.service.marsRoverPhotosByEarthDate(date, apiKey)
         }
