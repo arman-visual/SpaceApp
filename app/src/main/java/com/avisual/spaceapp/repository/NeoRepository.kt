@@ -19,7 +19,7 @@ class NeoRepository(var database: Db) {
         apiKey: String
     ): NearEarthObjectResult =
         withContext(Dispatchers.IO) {
-            NasaClient.nasaService.searchNeoWsByDate(dateInit, dateFinish, apiKey)
+            NasaClient.service.searchNeoWsByDate(dateInit, dateFinish, apiKey)
         }
 
     suspend fun findNeoByOnlyStartDate(
@@ -27,7 +27,7 @@ class NeoRepository(var database: Db) {
         apiKey: String
     ): NearEarthObjectResult =
         withContext(Dispatchers.IO) {
-            NasaClient.nasaService.searchNeoWsByOnlyStartDate(startDate, apiKey)
+            NasaClient.service.searchNeoWsByOnlyStartDate(startDate, apiKey)
         }
 
     suspend fun removeAsteroid(asteroid: Neo) =

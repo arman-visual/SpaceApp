@@ -9,7 +9,7 @@ class PhotoRoverRepository {
 
     suspend fun findPhotosRoverFromServer(date: String, apiKey: String): RoverPhotosResult =
         withContext(Dispatchers.IO) {
-            NasaClient.nasaService.marsRoverPhotosByEarthDate(date, apiKey)
+            NasaClient.service.marsRoverPhotosByEarthDate(date, apiKey)
         }
 
 }
