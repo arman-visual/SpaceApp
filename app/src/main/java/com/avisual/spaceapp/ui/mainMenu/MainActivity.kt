@@ -2,7 +2,6 @@ package com.avisual.spaceapp.ui.mainMenu
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.startActivity
 import com.avisual.spaceapp.databinding.ActivityMainBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
