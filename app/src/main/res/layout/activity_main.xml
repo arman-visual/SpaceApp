@@ -29,33 +29,34 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/logo"
+            android:id="@+id/title_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Space App v.0.1"
+            android:background="#CD1976D2"
+            android:fontFamily="sans-serif-condensed"
+            android:text="What do you want to search?"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/bt_neows"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search Near Asteroids" />
+            android:text="Near Asteroids" />
 
         <Button
             android:id="@+id/bt_searchrover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="search photos mars rover" />
+            android:text="photos mars rover" />
 
         <Button
             android:id="@+id/bt_nasagallery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search images in gallery" />
+            android:text="images in nasa gallery" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
