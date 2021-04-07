@@ -5,7 +5,7 @@ import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.database.PhotoGalleryDao
 import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.model.nasaLibraryResponse.CollectionNasaResult
-import com.avisual.spaceapp.server.NasaClient
+import com.avisual.spaceapp.server.NasaGalleryClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -14,7 +14,7 @@ class PhotoGalleryRepository(database: Db) {
     private var photoGalleryDao: PhotoGalleryDao = database.photoDao()
 
     suspend fun findPhotosGallery(keyword: String): CollectionNasaResult {
-        return NasaClient.libraryService.searchContain(keyword)
+        return NasaGalleryClient.service.searchContain(keyword)
     }
 
     suspend fun savePhoto(photoGallery: PhotoGallery) = withContext(Dispatchers.IO) {
