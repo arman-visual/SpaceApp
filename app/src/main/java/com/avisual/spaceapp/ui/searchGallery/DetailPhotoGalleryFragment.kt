@@ -95,7 +95,7 @@ class DetailPhotoGalleryFragment : Fragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             askPermissions()
         } else {
-            downloadImage(photo.url)
+            downloadImageDManager(photo.url)
         }
     }
 
@@ -136,7 +136,7 @@ class DetailPhotoGalleryFragment : Fragment() {
             }
         } else {
             // Permission has already been granted
-            downloadImage(photo.url)
+            downloadImageDManager(photo.url)
         }
     }
 
@@ -150,7 +150,7 @@ class DetailPhotoGalleryFragment : Fragment() {
                 // If request is cancelled, the result arrays are empty.
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     Log.i("PERMISO", "NO VACIO y OTORGADO")
-                    downloadImage(photo.url)
+                    downloadImageDManager(photo.url)
                 }
                 return
             }
@@ -220,6 +220,30 @@ class DetailPhotoGalleryFragment : Fragment() {
             DownloadManager.STATUS_SUCCESSFUL -> "Image downloaded successfully in $directory"
             else -> "There's nothing to download"
         }
+    }
+
+    private fun downloadImageDManager(url: String) {
+
+        val directory = File(Environment.DIRECTORY_PICTURES)
+
+        if (!directory.exists()) {
+            directory.mkdirs()
+        }
+
+        val request = DownloadManager.Request(Uri.parse(url)).apply {
+            setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setTitle(url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~")))
+                .setDescription("Downloading...")
+                .setDestinationInExternalPublicDir(
+                    directory.toString(),
+                    url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~"))
+                )
+        }
+
+        val downloadManager =
+            requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        downloadManager.enqueue(request)
     }
 
     companion object {
