@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
 import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailPhotoViewModel(
@@ -18,7 +17,7 @@ class DetailPhotoViewModel(
         get() = _statusFavorite
 
     fun checkIfPhotoSaved(photoGallery: PhotoGallery) {
-        launch(Dispatchers.IO) {
+        launch {
             _statusFavorite.postValue(isPhotoInDB(photoGallery))
         }
     }
@@ -40,7 +39,7 @@ class DetailPhotoViewModel(
     }
 
     fun changeSaveStatusOfPhoto(photoGallery: PhotoGallery) {
-        launch(Dispatchers.IO) {
+        launch {
             val newFavoriteStatus = if (isPhotoInDB(photoGallery)) {
                 deletePhotoInDB(photoGallery)
                 false

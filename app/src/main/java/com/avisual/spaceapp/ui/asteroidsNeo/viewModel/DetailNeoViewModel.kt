@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
 import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.repository.NeoRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
@@ -16,7 +15,7 @@ class DetailNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
 
 
     fun checkIfPhotoSaved(asteroid: Neo) {
-        launch(Dispatchers.IO) {
+        launch {
             _statusDb.postValue(isPhotoInDB(asteroid))
         }
     }
@@ -26,7 +25,7 @@ class DetailNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
     }
 
     fun changeSaveStatusOfPhoto(asteroid: Neo) {
-        launch(Dispatchers.IO) {
+        launch {
             val newFavoriteStatus = if (isPhotoInDB(asteroid)) {
                 deletePhotoInDB(asteroid)
                 false
