@@ -4,11 +4,13 @@ import android.Manifest
 import android.annotation.TargetApi
 import android.app.DownloadManager
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +29,13 @@ import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModel
 import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import java.io.File
 
 
@@ -71,7 +80,7 @@ class DetailPhotoGalleryFragment : Fragment() {
         binding.titlePhotoDetail.text = photo.title
         binding.descriptionPhotoDetail.text = photo.description
         binding.fbtSaveFavorite.setOnClickListener { viewModel.changeSaveStatusOfPhoto(photo) }
-        binding.fbtDownload.setOnClickListener { checkVersion() }
+        binding.fbtDownload.setOnClickListener { useDexterRequestPermission() }
     }
 
     private fun subscribeUi() {
@@ -173,6 +182,43 @@ class DetailPhotoGalleryFragment : Fragment() {
         val downloadManager =
             requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         downloadManager.enqueue(request)
+    }
+
+    /**
+     * Dexter
+     */
+
+    private fun useDexterRequestPermission() {
+        Dexter
+            .withActivity(requireActivity())
+            .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .withListener(object : PermissionListener {
+                override fun onPermissionGranted(response: PermissionGrantedResponse?) {
+                    downloadImageDManager(photo.url)
+                }
+
+                override fun onPermissionDenied(response: PermissionDeniedResponse?) {
+                    MaterialAlertDialogBuilder(requireActivity())
+                        .setTitle("Permission required")
+                        .setMessage("Permission required to save photos from the Web.")
+                        .setPositiveButton("GOTO SETTINGS") { dialog, wich ->
+                            dialog.cancel()
+                            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                            val uri = Uri.fromParts("package", requireActivity().packageName, null)
+                            intent.data = uri
+                            startActivity(intent)
+                        }
+                        .show()
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permission: PermissionRequest?,
+                    token: PermissionToken?
+                ) {
+                    token?.continuePermissionRequest()
+                }
+            })
+            .check()
     }
 
     companion object {
