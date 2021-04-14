@@ -3,10 +3,12 @@ package com.avisual.spaceapp.ui.searchGallery
 import android.Manifest
 import android.app.DownloadManager
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,10 +25,11 @@ import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.repository.PhotoGalleryRepository
 import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModel
 import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModelFactory
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.File
 
 
-@RequiresApi(Build.VERSION_CODES.Q)
+@RequiresApi(Build.VERSION_CODES.R)
 class DetailPhotoGalleryFragment : Fragment() {
 
     private val args: DetailPhotoGalleryFragmentArgs by navArgs()
@@ -48,7 +51,6 @@ class DetailPhotoGalleryFragment : Fragment() {
             Manifest.permission.ACCESS_MEDIA_LOCATION
         )
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,26 +85,21 @@ class DetailPhotoGalleryFragment : Fragment() {
         binding.titlePhotoDetail.text = photo.title
         binding.descriptionPhotoDetail.text = photo.description
         binding.fbtSaveFavorite.setOnClickListener { viewModel.changeSaveStatusOfPhoto(photo) }
-        binding.fbtDownload.setOnClickListener { useDexterFar() }
+        binding.fbtDownload.setOnClickListener { checkPermissionWithDexter() }
     }
 
-    private fun useDexterFar() {
+    private fun checkPermissionWithDexter() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             oldPermissionStorageRequester.request { isGranted ->
-                if (isGranted) {
-                    downloadImageDManager(photo.url)
-                }
+                if (isGranted) downloadImageDManager(photo.url) else showAlertMessageUi()
             }
-        } else {
-            newPermissionAccessMediaRequester.request {
-                if (it){
-                    downloadImageDManager(photo.url)
-                }
+        } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+            newPermissionAccessMediaRequester.request { isGranted ->
+                if (isGranted) downloadImageDManager(photo.url) else showAlertMessageUi()
             }
         }
     }
-
 
     private fun subscribeUi() {
         viewModel.statusFavorite.observe(requireActivity()) { isSaved ->
@@ -117,7 +114,7 @@ class DetailPhotoGalleryFragment : Fragment() {
 
     private fun downloadImageDManager(url: String) {
 
-        val directory = File(Environment.DIRECTORY_PICTURES)
+        val directory = File(Environment.DIRECTORY_DOWNLOADS)
 
         if (!directory.exists()) {
             directory.mkdirs()
@@ -137,5 +134,19 @@ class DetailPhotoGalleryFragment : Fragment() {
         val downloadManager =
             requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         downloadManager.enqueue(request)
+    }
+
+    private fun showAlertMessageUi() {
+        MaterialAlertDialogBuilder(requireActivity())
+            .setTitle("Permission required")
+            .setMessage("Permission required to save photos from the Web.")
+            .setPositiveButton("GOTO SETTINGS") { dialog, _ ->
+                dialog.cancel()
+                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                val uri = Uri.fromParts("package", requireActivity().packageName, null)
+                intent.data = uri
+                requireActivity().startActivity(intent)
+            }
+            .show()
     }
 }
