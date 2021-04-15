@@ -15,12 +15,12 @@ data class Item(
 
 
 fun Item.convertToPhotoGallery() = PhotoGallery(
-    this.data_photo[0].nasa_id ?: "Do not exist nasa id information",
+    this.data_photo[0].nasa_id ?: "There aren't information from Nasa",
+    this.href ?: "There aren't information from Nasa",
     this.links[0].href ?: "Do not exist image",
-    this.data_photo[0].date_created ?: "Do not exist date of created information",
-    this.data_photo[0].description ?: "Do not exist description information",
-    this.data_photo[0].media_type ?: "Do not exist media type information",
-    this.data_photo[0].photographer ?: "Do not exist photographer information",
-    this.data_photo[0].title ?: "Do not exist title information",
-    false
+    this.data_photo[0].date_created ?: "There aren't information from Nasa",
+    this.data_photo[0].description ?: "There aren't information from Nasa",
+    this.data_photo[0].media_type ?: "There aren't information from Nasa",
+    this.data_photo[0].photographer ?: "There aren't information from Nasa",
+    this.data_photo[0].title ?: "There aren't information from Nasa"
 )
