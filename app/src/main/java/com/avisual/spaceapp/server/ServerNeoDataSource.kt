@@ -5,7 +5,7 @@ import com.avisual.domain.Neo
 
 class ServerNeoDataSource(private val nasaClient: NasaClient) : NeoRemoteDataSource {
 
-    override suspend fun getNeo(startDate: String, apiKey: String): List<Neo> {
+    override suspend fun getAllNeoByDate(startDate: String, apiKey: String): List<Neo> {
         return nasaClient.service
             .searchNeoWsByOnlyStartDate(startDate, apiKey)
             .toFrameworkNeo()//<-- Mapping to NeoResult to -> FrameworkNeo
