@@ -6,6 +6,7 @@ import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
 import com.avisual.spaceapp.server.NasaClient
+import com.avisual.spaceapp.server.toFrameworkNeo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

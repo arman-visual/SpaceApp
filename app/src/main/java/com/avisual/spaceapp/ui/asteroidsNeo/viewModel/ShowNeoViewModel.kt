@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
 import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
-import com.avisual.spaceapp.model.asteroidsNeoWsResponse.toNeo
+import com.avisual.spaceapp.model.asteroidsNeoWsResponse.toFrameworkNeo
 import com.avisual.spaceapp.repository.NeoRepository
 import kotlinx.coroutines.launch
 
@@ -38,7 +38,7 @@ class ShowNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
 
         for (i in 0 until totalDays) {
             response.registerDay.getValue(keys[i])
-                .map { neo -> totalAsteroids.add(neo.toNeo(keys[i])) }
+                .map { neo -> totalAsteroids.add(neo.toFrameworkNeo(keys[i])) }
         }
     }
 

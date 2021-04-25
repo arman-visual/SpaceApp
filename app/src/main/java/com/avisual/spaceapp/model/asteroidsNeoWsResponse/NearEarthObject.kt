@@ -11,6 +11,7 @@ data class NearEarthObjectResult(
 
     @SerializedName("near_earth_objects")
     val registerDay: Map<String, List<NearEarthObject>>
+
 )
 
 data class NearEarthObject(
@@ -40,7 +41,7 @@ data class NearEarthObject(
     @SerializedName("is_sentry_object")
     val isSentryObject: Boolean
 )
-fun NearEarthObject.toNeo(bindDay:String) = Neo(
+fun NearEarthObject.toFrameworkNeo(bindDay:String) = Neo(
     this.id,
     this.name,
     this.isPotentiallyHazardousAsteroid,
