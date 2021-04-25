@@ -1,19 +1,35 @@
 package com.avisual.spaceapp.server
 
-import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
-import com.avisual.spaceapp.model.asteroidsNeoWsResponse.toNeo
+import com.avisual.spaceapp.model.asteroidsNeoWsResponse.toFrameworkNeo
+import com.avisual.domain.Neo as DomainNeo
+import com.avisual.spaceapp.model.Neo as FrameworkNeo
 
-fun convertToOneListDate(
-    response: NearEarthObjectResult,
-    totalAsteroids: MutableList<Neo>
-): List<Neo> {
-    val totalDays = response.registerDay.size
-    val keys = response.registerDay.keys.sorted()
+fun NearEarthObjectResult.toFrameworkNeo(): List<FrameworkNeo> {
+
+    val frameworkNeos: MutableList<FrameworkNeo> = mutableListOf()
+    val totalDays = registerDay.size
+    val keys = registerDay.keys.sorted()
 
     for (i in 0 until totalDays) {
-        response.registerDay.getValue(keys[i])
-            .map { neo -> totalAsteroids.add(neo.toNeo(keys[i])) }
+        registerDay.getValue(keys[i])
+            .map { neo -> frameworkNeos.add(neo.toFrameworkNeo(keys[i])) }
     }
-    return totalAsteroids
+    return frameworkNeos
 }
+
+fun FrameworkNeo.toDomainNeo(): DomainNeo = DomainNeo(
+    id,
+    name,
+    isPotentiallyHazardousAsteroid,
+    absoluteMagnitudeH,
+    nasaJplURL,
+    minDiameter,
+    maxDiameter,
+    relativeVelocitySeconds,
+    relativeVelocityHour,
+    approachDate,
+    approachDateFull,
+    missDistance,
+    dayRegister
+)
