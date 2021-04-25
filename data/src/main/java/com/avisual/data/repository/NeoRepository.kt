@@ -1,21 +1,21 @@
 package com.avisual.data.repository
 
+import com.avisual.data.source.NeoLocalDataSource
+import com.avisual.data.source.NeoRemoteDataSource
 import com.avisual.domain.Neo
+import kotlinx.coroutines.flow.Flow
 
 class NeoRepository(
-    val localDataSource: LocalDataSource,
-    val remoteDataSource: RemoteDataSource,
-    val apiKey: String
+    private val localDataSource: NeoLocalDataSource,
+    private val remoteDataSource: NeoRemoteDataSource,
+    private val apiKey: String
 ) {
 
-     fun findNeoByOnlyStartDate(): List<Neo> {
-        return remoteDataSource.findNeoByRangeDate()
+    suspend fun getAllNeoByDate(startDate: String): List<Neo> {
+        return remoteDataSource.getAllNeoByDate(startDate, apiKey)
     }
-}
 
-
-interface LocalDataSource
-
-interface RemoteDataSource {
-    fun findNeoByRangeDate():List<Neo>
+    fun getAllSavedNeo(startDate: String): Flow<List<Neo>> {
+        return localDataSource.getAllStoredNeo()
+    }
 }
