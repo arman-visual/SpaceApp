@@ -16,15 +16,15 @@ class RoomNeoDataSource(private val db: Db) : NeoLocalDataSource {
             listNeoFramework.map { frameworkNeo -> frameworkNeo.toDomainNeo() }
         }
 
-    override suspend fun removeAsteroid(asteroid: DomainNeo) {
-        neoDao.delete(asteroid.toFrameworkNeo())
+    override suspend fun removeNeo(neo: DomainNeo) {
+        neoDao.delete(neo.toFrameworkNeo())
     }
 
-    override suspend fun insertAsteroid(asteroid: DomainNeo) {
-        neoDao.insert(asteroid.toFrameworkNeo())
+    override suspend fun insertNeo(neo: DomainNeo) {
+        neoDao.insert(neo.toFrameworkNeo())
     }
 
-    override suspend fun getAsteroidById(id: String): DomainNeo {
-        return neoDao.getById(id)?.toDomainNeo()!!
+    override suspend fun getNeoById(id: String): DomainNeo? {
+        return neoDao.getById(id)?.toDomainNeo()
     }
 }
