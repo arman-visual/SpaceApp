@@ -7,15 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.avisual.data.repository.NeoRepository
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.database.RoomNeoDataSource
 import com.avisual.spaceapp.databinding.NeoStoredFragmentBinding
 import com.avisual.spaceapp.model.Neo
-import com.avisual.spaceapp.repository.NeoRepository
+import com.avisual.spaceapp.server.ServerNeoDataSource
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsSavedAdapter
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.StoredNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.StoredNeoViewModelFactory
+import com.avisual.usecases.GetStoredNeos
 
 class StoredNeoFragment : Fragment() {
 
@@ -23,7 +26,7 @@ class StoredNeoFragment : Fragment() {
     private lateinit var viewModel: StoredNeoViewModel
     private lateinit var adapter: AsteroidsSavedAdapter
     private lateinit var neoRepository: NeoRepository
-
+    private lateinit var getStoredNeos: GetStoredNeos
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +42,10 @@ class StoredNeoFragment : Fragment() {
     private fun buildDependencies() {
         val apiKey =  getString(R.string.api_key)
         val database = Db.getDatabase(requireContext())
-        neoRepository = NeoRepository(database, apiKey)
+        val local = RoomNeoDataSource(database)
+        val remote = ServerNeoDataSource()
+        neoRepository = NeoRepository(local, remote, apiKey)
+        getStoredNeos = GetStoredNeos(neoRepository)
     }
 
     private fun setUpUi() {
@@ -55,7 +61,7 @@ class StoredNeoFragment : Fragment() {
     }
 
     private fun buildViewModel(): StoredNeoViewModel {
-        val factory = StoredNeoViewModelFactory(neoRepository)
+        val factory = StoredNeoViewModelFactory(getStoredNeos)
         return ViewModelProvider(this, factory).get(StoredNeoViewModel::class.java)
     }
 
@@ -65,8 +71,7 @@ class StoredNeoFragment : Fragment() {
     }
 
     private fun onClickedAsteroid(): (Neo) -> Unit = { asteroid ->
-        val action = AsteroidSavedFragmentDirections
-            .actionAsteroidSavedFragmentToDetailNeoFragment4(asteroid)
+        val action = StoredNeoFragmentDirections.actionStoredNeoFragmentToDetailNeoFragment4(asteroid)
         findNavController().navigate(action)
     }
 }

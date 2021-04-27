@@ -2,11 +2,11 @@ package com.avisual.spaceapp.ui.asteroidsNeo.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.avisual.spaceapp.repository.NeoRepository
+import com.avisual.usecases.GetStoredNeos
 
 class StoredNeoViewModelFactory constructor(
-    private var neoRepository: NeoRepository
+    private var getStoredNeos: GetStoredNeos
 ) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>) =
-        StoredNeoViewModel(neoRepository) as T
+        StoredNeoViewModel(getStoredNeos) as T
 }
