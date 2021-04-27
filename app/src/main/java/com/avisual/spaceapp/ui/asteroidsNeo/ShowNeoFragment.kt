@@ -10,16 +10,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.avisual.data.repository.NeoRepository
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.database.RoomNeoDataSource
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
 import com.avisual.spaceapp.model.Neo
-import com.avisual.spaceapp.repository.NeoRepository
+import com.avisual.spaceapp.server.ServerNeoDataSource
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoUi
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModelFactory
+import com.avisual.usecases.GetAllNeoByDate
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
@@ -40,6 +43,7 @@ class ShowNeoFragment : Fragment() {
     private lateinit var navController: NavController
     private lateinit var datePicker: MaterialDatePicker<Long>
     private lateinit var outputDateFormat: SimpleDateFormat
+    private lateinit var getAllNeoByDate: GetAllNeoByDate
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -65,11 +69,14 @@ class ShowNeoFragment : Fragment() {
     private fun buildDependencies() {
         val apiKey =  getString(R.string.api_key)
         val database = Db.getDatabase(requireContext())
-        neoRepository = NeoRepository(database, apiKey)
+        val local = RoomNeoDataSource(database)
+        val remote = ServerNeoDataSource()
+        neoRepository = NeoRepository(local, remote, apiKey)
+        getAllNeoByDate = GetAllNeoByDate(neoRepository)
     }
 
     private fun buildViewModel(): ShowNeoViewModel {
-        val factory = ShowNeoViewModelFactory(neoRepository)
+        val factory = ShowNeoViewModelFactory(getAllNeoByDate)
         return ViewModelProvider(this, factory).get(ShowNeoViewModel::class.java)
     }
 
