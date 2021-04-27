@@ -10,19 +10,18 @@ import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.database.Db
-import com.avisual.spaceapp.databinding.AsteroidSavedFragmentBinding
+import com.avisual.spaceapp.databinding.NeoStoredFragmentBinding
 import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.repository.NeoRepository
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsSavedAdapter
-import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.AsteroidSavedViewModel
-import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.AsteroidSavedViewModelFactory
+import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.StoredNeoViewModel
+import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.StoredNeoViewModelFactory
 
-class AsteroidSavedFragment : Fragment() {
+class StoredNeoFragment : Fragment() {
 
-    private lateinit var binding: AsteroidSavedFragmentBinding
-    private lateinit var viewModel: AsteroidSavedViewModel
-    private var adapter =
-        AsteroidsSavedAdapter(emptyList(), onDeleteBtnClicked(), onClickedAsteroid())
+    private lateinit var binding: NeoStoredFragmentBinding
+    private lateinit var viewModel: StoredNeoViewModel
+    private lateinit var adapter: AsteroidsSavedAdapter
     private lateinit var neoRepository: NeoRepository
 
 
@@ -44,7 +43,8 @@ class AsteroidSavedFragment : Fragment() {
     }
 
     private fun setUpUi() {
-        binding = AsteroidSavedFragmentBinding.inflate(layoutInflater)
+        adapter = AsteroidsSavedAdapter(emptyList(), onDeleteBtnClicked(), onClickedAsteroid())
+        binding = NeoStoredFragmentBinding.inflate(layoutInflater)
         binding.recycler.adapter = adapter
     }
 
@@ -54,9 +54,9 @@ class AsteroidSavedFragment : Fragment() {
         }
     }
 
-    private fun buildViewModel(): AsteroidSavedViewModel {
-        val factory = AsteroidSavedViewModelFactory(neoRepository)
-        return ViewModelProvider(this, factory).get(AsteroidSavedViewModel::class.java)
+    private fun buildViewModel(): StoredNeoViewModel {
+        val factory = StoredNeoViewModelFactory(neoRepository)
+        return ViewModelProvider(this, factory).get(StoredNeoViewModel::class.java)
     }
 
     private fun onDeleteBtnClicked(): (Neo) -> Unit = { asteroid ->

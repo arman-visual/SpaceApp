@@ -6,7 +6,7 @@ import com.avisual.spaceapp.model.Neo
 import com.avisual.spaceapp.repository.NeoRepository
 import kotlinx.coroutines.launch
 
-class AsteroidSavedViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
+class StoredNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
 
     val asteroidsSaved: LiveData<List<Neo>> get() = neoRepository.getAllAsteroidsSaved()
 
