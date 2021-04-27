@@ -3,7 +3,9 @@ package com.avisual.data.repository
 import com.avisual.data.source.NeoLocalDataSource
 import com.avisual.data.source.NeoRemoteDataSource
 import com.avisual.domain.Neo
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 
 class NeoRepository(
     private val localDataSource: NeoLocalDataSource,
@@ -15,7 +17,12 @@ class NeoRepository(
         return remoteDataSource.getAllNeoByDate(startDate, apiKey)
     }
 
-    fun getAllSavedNeo(startDate: String): Flow<List<Neo>> {
+    fun getAllSavedNeo(): Flow<List<Neo>> {
         return localDataSource.getAllStoredNeo()
     }
+
+    suspend fun removeAsteroid(asteroid: Neo) =
+        withContext(Dispatchers.IO) {
+            localDataSource.removeAsteroid(asteroid)
+        }
 }
