@@ -26,12 +26,12 @@
             android:defaultValue="@null" />
     </fragment>
     <fragment
-        android:id="@+id/asteroidSavedFragment"
+        android:id="@+id/storedNeoFragment"
         android:name="com.avisual.spaceapp.ui.asteroidsNeo.StoredNeoFragment"
-        android:label="asteroid_saved_fragment"
+        android:label="neo_stored_fragment"
         tools:layout="@layout/neo_stored_fragment" >
         <action
-            android:id="@+id/action_asteroidSavedFragment_to_detailNeoFragment4"
+            android:id="@+id/action_storedNeoFragment_to_detailNeoFragment4"
             app:destination="@id/detailNeoFragment4" />
     </fragment>
 </navigation>
