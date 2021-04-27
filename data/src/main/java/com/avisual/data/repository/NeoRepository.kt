@@ -21,8 +21,18 @@ class NeoRepository(
         return localDataSource.getAllStoredNeo()
     }
 
-    suspend fun removeAsteroid(asteroid: Neo) =
+    suspend fun removeAsteroid(neo: Neo) =
         withContext(Dispatchers.IO) {
-            localDataSource.removeAsteroid(asteroid)
+            localDataSource.removeNeo(neo)
+        }
+
+    suspend fun insertNeo(neo: Neo) =
+        withContext(Dispatchers.IO) {
+            localDataSource.insertNeo(neo)
+        }
+
+    suspend fun getNeoById(id: String) =
+        withContext(Dispatchers.IO) {
+            localDataSource.getNeoById(id)
         }
 }
