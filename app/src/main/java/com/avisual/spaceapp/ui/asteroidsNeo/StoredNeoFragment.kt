@@ -19,6 +19,7 @@ import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsSavedAdapter
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.StoredNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.StoredNeoViewModelFactory
 import com.avisual.usecases.GetStoredNeos
+import com.avisual.usecases.RemoveNeo
 
 class StoredNeoFragment : Fragment() {
 
@@ -27,6 +28,7 @@ class StoredNeoFragment : Fragment() {
     private lateinit var adapter: AsteroidsSavedAdapter
     private lateinit var neoRepository: NeoRepository
     private lateinit var getStoredNeos: GetStoredNeos
+    private lateinit var removeNeo: RemoveNeo
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +48,7 @@ class StoredNeoFragment : Fragment() {
         val remote = ServerNeoDataSource()
         neoRepository = NeoRepository(local, remote, apiKey)
         getStoredNeos = GetStoredNeos(neoRepository)
+        removeNeo = RemoveNeo(neoRepository)
     }
 
     private fun setUpUi() {
@@ -61,7 +64,7 @@ class StoredNeoFragment : Fragment() {
     }
 
     private fun buildViewModel(): StoredNeoViewModel {
-        val factory = StoredNeoViewModelFactory(getStoredNeos)
+        val factory = StoredNeoViewModelFactory(getStoredNeos, removeNeo)
         return ViewModelProvider(this, factory).get(StoredNeoViewModel::class.java)
     }
 

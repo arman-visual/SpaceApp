@@ -4,12 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
 import com.avisual.spaceapp.model.Neo
+import com.avisual.spaceapp.server.toDomainNeo
 import com.avisual.spaceapp.server.toFrameworkNeo
 import com.avisual.usecases.GetStoredNeos
+import com.avisual.usecases.RemoveNeo
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class StoredNeoViewModel(private var getStoredNeos: GetStoredNeos) : ScopeViewModel() {
+class StoredNeoViewModel(
+    private var getStoredNeos: GetStoredNeos,
+    private var removeNeo: RemoveNeo
+) : ScopeViewModel() {
 
     private val _storedNeos = MutableLiveData<List<Neo>>(emptyList())
     val asteroidsSaved: LiveData<List<Neo>> get() = _storedNeos
@@ -29,8 +34,7 @@ class StoredNeoViewModel(private var getStoredNeos: GetStoredNeos) : ScopeViewMo
 
     fun removeAsteroidSaved(asteroid: Neo) {
         launch {
-            //neoRepository.removeAsteroid(asteroid)
-            TODO()
+            removeNeo.invoke(asteroid.toDomainNeo())
         }
     }
 }
