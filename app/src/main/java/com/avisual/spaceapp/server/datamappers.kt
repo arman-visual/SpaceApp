@@ -33,3 +33,19 @@ fun FrameworkNeo.toDomainNeo(): DomainNeo = DomainNeo(
     missDistance,
     dayRegister
 )
+
+fun DomainNeo.toFrameworkNeo(): FrameworkNeo = FrameworkNeo(
+    id,
+    name,
+    isPotentiallyHazardousAsteroid,
+    absoluteMagnitudeH,
+    nasaJplURL,
+    minDiameter,
+    maxDiameter,
+    relativeVelocitySeconds,
+    relativeVelocityHour,
+    approachDate,
+    approachDateFull,
+    missDistance,
+    dayRegister
+)
