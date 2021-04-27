@@ -7,27 +7,35 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.avisual.data.repository.NeoRepository
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.database.RoomNeoDataSource
 import com.avisual.spaceapp.databinding.DetailNeoFragmentBinding
 import com.avisual.spaceapp.model.Neo
-import com.avisual.spaceapp.repository.NeoRepository
+import com.avisual.spaceapp.server.ServerNeoDataSource
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.DetailNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.DetailNeoViewModelFactory
+import com.avisual.usecases.GetNeoById
+import com.avisual.usecases.RemoveNeo
+import com.avisual.usecases.SaveNeoInDb
 
 class DetailNeoFragment : Fragment() {
 
     private val args: DetailNeoFragmentArgs by navArgs()
-    private lateinit var asteroid: Neo
+    private lateinit var neo: Neo
     private lateinit var viewModel: DetailNeoViewModel
     private lateinit var binding: DetailNeoFragmentBinding
     private lateinit var neoRepository: NeoRepository
+    private lateinit var saveNeoInDb: SaveNeoInDb
+    private lateinit var getNeoById: GetNeoById
+    private lateinit var removeNeo: RemoveNeo
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        asteroid = args.neoArg!!
+        neo = args.neoArg!!
         buildDependencies()
         viewModel = buildViewModel()
         setupUi()
@@ -37,36 +45,41 @@ class DetailNeoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.checkIfPhotoSaved(asteroid)
+        viewModel.checkIfPhotoSaved(neo)
     }
 
     private fun buildViewModel(): DetailNeoViewModel {
-        val factory = DetailNeoViewModelFactory(neoRepository)
+        val factory = DetailNeoViewModelFactory(saveNeoInDb, getNeoById, removeNeo)
         return ViewModelProvider(this, factory).get(DetailNeoViewModel::class.java)
     }
 
     private fun buildDependencies() {
-        val apiKey =  getString(R.string.api_key)
+        val apiKey = getString(R.string.api_key)
         val database = Db.getDatabase(requireContext())
-        neoRepository = NeoRepository(database, apiKey)
+        val local = RoomNeoDataSource(database)
+        val remote = ServerNeoDataSource()
+        neoRepository = NeoRepository(local, remote, apiKey)
+        saveNeoInDb = SaveNeoInDb(neoRepository)
+        getNeoById = GetNeoById(neoRepository)
+        removeNeo = RemoveNeo(neoRepository)
     }
 
     private fun setupUi() {
         binding = DetailNeoFragmentBinding.inflate(layoutInflater)
 
         binding.apply {
-            nameNeo.text = asteroid.name
-            minDiameter.text = asteroid.minDiameter.toString()
-            maxDiameter.text = asteroid.maxDiameter.toString()
-            relativeVelocity.text = asteroid.relativeVelocityHour
-            absoulteMagnitud.text = asteroid.absoluteMagnitudeH.toString()
-            missDistance.text = asteroid.missDistance
-            if (asteroid.isPotentiallyHazardousAsteroid) {
+            nameNeo.text = neo.name
+            minDiameter.text = neo.minDiameter.toString()
+            maxDiameter.text = neo.maxDiameter.toString()
+            relativeVelocity.text = neo.relativeVelocityHour
+            absoulteMagnitud.text = neo.absoluteMagnitudeH.toString()
+            missDistance.text = neo.missDistance
+            if (neo.isPotentiallyHazardousAsteroid) {
                 danger.setImageResource(R.drawable.danger_on)
             } else {
                 danger.setImageResource(R.drawable.danger_off)
             }
-            fbtSaveFavorite.setOnClickListener { viewModel.changeSaveStatusOfPhoto(this@DetailNeoFragment.asteroid) }
+            fbtSaveFavorite.setOnClickListener { viewModel.changeSaveStatusOfPhoto(this@DetailNeoFragment.neo) }
         }
     }
 
