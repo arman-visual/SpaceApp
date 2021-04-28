@@ -2,10 +2,13 @@ package com.avisual.spaceapp.server
 
 import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
 import com.avisual.spaceapp.model.asteroidsNeoWsResponse.toFrameworkNeo
+import com.avisual.spaceapp.model.nasaLibraryResponse.Item as ServerModelGallery
 import com.avisual.spaceapp.model.nasaRoverResponse.Photo
 import com.avisual.domain.Neo as DomainNeo
+import com.avisual.domain.PhotoGallery as GalleryDomain
 import com.avisual.domain.PhotoRover as RoverDomain
 import com.avisual.spaceapp.model.Neo as FrameworkNeo
+import com.avisual.spaceapp.model.PhotoGallery as FrameworkGallery
 import com.avisual.spaceapp.model.PhotoRover as FrameworkRover
 
 fun NearEarthObjectResult.toFrameworkNeo(): List<FrameworkNeo> {
@@ -79,4 +82,26 @@ fun RoverDomain.toFrameworkRover() = FrameworkRover(
     rover_name,
     status,
     sol
+)
+
+fun ServerModelGallery.toGalleryDomain() = GalleryDomain(
+    this.data_photo[0].nasa_id ?: "There aren't information from Nasa",
+    this.href ?: "There aren't information from Nasa",
+    this.links[0].href ?: "Do not exist image",
+    this.data_photo[0].date_created ?: "There aren't information from Nasa",
+    this.data_photo[0].description ?: "There aren't information from Nasa",
+    this.data_photo[0].media_type ?: "There aren't information from Nasa",
+    this.data_photo[0].photographer ?: "There aren't information from Nasa",
+    this.data_photo[0].title ?: "There aren't information from Nasa"
+)
+
+fun GalleryDomain.toGalleryFramework() = FrameworkGallery(
+    nasa_id,
+    jsonAllSized,
+    url,
+    date_created,
+    description,
+    media_type,
+    photographer,
+    title
 )
