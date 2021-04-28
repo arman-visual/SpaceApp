@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.server
+package com.avisual.spaceapp.data.server
 
 import com.avisual.data.source.NeoRemoteDataSource
 import com.avisual.domain.Neo

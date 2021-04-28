@@ -10,10 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.avisual.data.repository.RoverRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.common.toast
+import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
-import com.avisual.spaceapp.model.PhotoRover
-import com.avisual.spaceapp.server.ServerRoverDataSource
+import com.avisual.spaceapp.data.model.PhotoRover
+import com.avisual.spaceapp.data.server.ServerRoverDataSource
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosUi
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModel

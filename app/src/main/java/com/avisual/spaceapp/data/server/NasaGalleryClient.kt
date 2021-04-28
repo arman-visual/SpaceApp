@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.server
+package com.avisual.spaceapp.data.server
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

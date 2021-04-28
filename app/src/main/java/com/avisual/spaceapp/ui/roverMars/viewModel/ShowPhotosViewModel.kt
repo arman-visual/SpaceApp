@@ -2,9 +2,9 @@ package com.avisual.spaceapp.ui.roverMars.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.common.ScopeViewModel
-import com.avisual.spaceapp.model.PhotoRover
-import com.avisual.spaceapp.server.toFrameworkRover
+import com.avisual.spaceapp.ui.common.ScopeViewModel
+import com.avisual.spaceapp.data.model.PhotoRover
+import com.avisual.spaceapp.data.server.toFrameworkRover
 import com.avisual.usecases.GetRoverPhotosByDate
 import kotlinx.coroutines.launch
 import retrofit2.HttpException

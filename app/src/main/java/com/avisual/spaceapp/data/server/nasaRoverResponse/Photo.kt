@@ -1,6 +1,6 @@
-package com.avisual.spaceapp.model.nasaRoverResponse
+package com.avisual.spaceapp.data.server.nasaRoverResponse
 
-import com.avisual.spaceapp.model.PhotoRover
+import com.avisual.spaceapp.data.model.PhotoRover
 
 data class Photo(
     val camera: Camera,

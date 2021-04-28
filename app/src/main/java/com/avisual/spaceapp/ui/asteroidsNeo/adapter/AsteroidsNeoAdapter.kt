@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ItemNeoAsteroidBinding
-import com.avisual.spaceapp.model.Neo
+import com.avisual.spaceapp.data.model.Neo
 
 class AsteroidsNeoAdapter(
     var asteroids: List<Neo>,

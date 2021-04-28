@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.avisual.data.repository.GalleryRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.database.Db
-import com.avisual.spaceapp.database.RoomGalleryDataSource
+import com.avisual.spaceapp.data.database.Db
+import com.avisual.spaceapp.data.database.RoomGalleryDataSource
 import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
-import com.avisual.spaceapp.model.PhotoGallery
-import com.avisual.spaceapp.server.ServerGalleryDataSource
+import com.avisual.spaceapp.data.model.PhotoGallery
+import com.avisual.spaceapp.data.server.ServerGalleryDataSource
 import com.avisual.spaceapp.ui.searchGallery.adapter.SavedPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModel
 import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModelFactory

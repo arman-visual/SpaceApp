@@ -9,11 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.avisual.data.repository.NeoRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.database.Db
-import com.avisual.spaceapp.database.RoomNeoDataSource
+import com.avisual.spaceapp.data.database.Db
+import com.avisual.spaceapp.data.database.RoomNeoDataSource
 import com.avisual.spaceapp.databinding.DetailNeoFragmentBinding
-import com.avisual.spaceapp.model.Neo
-import com.avisual.spaceapp.server.ServerNeoDataSource
+import com.avisual.spaceapp.data.model.Neo
+import com.avisual.spaceapp.data.server.ServerNeoDataSource
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.DetailNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.DetailNeoViewModelFactory
 import com.avisual.usecases.GetNeoById

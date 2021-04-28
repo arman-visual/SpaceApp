@@ -1,9 +1,8 @@
-package com.avisual.spaceapp.database
+package com.avisual.spaceapp.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.avisual.spaceapp.model.Neo
-import com.avisual.spaceapp.model.PhotoGallery
+import com.avisual.spaceapp.data.model.Neo
 import kotlinx.coroutines.flow.Flow
 
 @Dao

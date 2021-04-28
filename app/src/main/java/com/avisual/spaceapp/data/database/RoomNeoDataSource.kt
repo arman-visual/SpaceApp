@@ -1,8 +1,8 @@
-package com.avisual.spaceapp.database
+package com.avisual.spaceapp.data.database
 
 import com.avisual.data.source.NeoLocalDataSource
-import com.avisual.spaceapp.server.toDomainNeo
-import com.avisual.spaceapp.server.toFrameworkNeo
+import com.avisual.spaceapp.data.server.toDomainNeo
+import com.avisual.spaceapp.data.server.toFrameworkNeo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import com.avisual.domain.Neo as DomainNeo

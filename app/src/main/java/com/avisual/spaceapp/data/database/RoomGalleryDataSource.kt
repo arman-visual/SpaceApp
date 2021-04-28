@@ -1,9 +1,9 @@
-package com.avisual.spaceapp.database
+package com.avisual.spaceapp.data.database
 
 import com.avisual.data.source.GalleryLocalDataSource
 import com.avisual.domain.PhotoGallery
-import com.avisual.spaceapp.server.toGalleryDomain
-import com.avisual.spaceapp.server.toGalleryFramework
+import com.avisual.spaceapp.data.server.toGalleryDomain
+import com.avisual.spaceapp.data.server.toGalleryFramework
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

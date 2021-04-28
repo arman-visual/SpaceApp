@@ -2,9 +2,9 @@ package com.avisual.spaceapp.ui.searchGallery.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.common.ScopeViewModel
-import com.avisual.spaceapp.model.PhotoGallery
-import com.avisual.spaceapp.server.toGalleryFramework
+import com.avisual.spaceapp.ui.common.ScopeViewModel
+import com.avisual.spaceapp.data.model.PhotoGallery
+import com.avisual.spaceapp.data.server.toGalleryFramework
 import com.avisual.usecases.GetGalleryPhotosByKeyword
 import kotlinx.coroutines.launch
 

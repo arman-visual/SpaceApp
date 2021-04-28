@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.model.asteroidsNeoWsResponse
+package com.avisual.spaceapp.data.server.asteroidsNeoWsResponse
 
 import com.google.gson.annotations.SerializedName
 

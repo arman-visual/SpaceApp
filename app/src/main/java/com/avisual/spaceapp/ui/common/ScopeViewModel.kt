@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.common
+package com.avisual.spaceapp.ui.common
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel

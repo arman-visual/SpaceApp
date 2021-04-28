@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.common
+package com.avisual.spaceapp.ui.common
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

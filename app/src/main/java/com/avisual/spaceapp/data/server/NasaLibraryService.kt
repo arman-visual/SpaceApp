@@ -1,6 +1,6 @@
-package com.avisual.spaceapp.server
+package com.avisual.spaceapp.data.server
 
-import com.avisual.spaceapp.model.nasaLibraryResponse.CollectionNasaResult
+import com.avisual.spaceapp.data.server.nasaLibraryResponse.CollectionNasaResult
 import retrofit2.http.GET
 import retrofit2.http.Query
 

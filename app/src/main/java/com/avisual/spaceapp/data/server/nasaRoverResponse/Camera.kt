@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.model.nasaRoverResponse
+package com.avisual.spaceapp.data.server.nasaRoverResponse
 
 data class Camera(
     val full_name: String,

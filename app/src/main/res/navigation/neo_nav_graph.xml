@@ -21,7 +21,7 @@
         tools:layout="@layout/detail_neo_fragment">
         <argument
             android:name="neoArg"
-            app:argType="com.avisual.spaceapp.model.Neo"
+            app:argType="com.avisual.spaceapp.data.model.Neo"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>

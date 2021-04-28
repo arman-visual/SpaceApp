@@ -1,11 +1,11 @@
-package com.avisual.spaceapp.database
+package com.avisual.spaceapp.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.avisual.spaceapp.model.Neo
-import com.avisual.spaceapp.model.PhotoGallery
+import com.avisual.spaceapp.data.model.Neo
+import com.avisual.spaceapp.data.model.PhotoGallery
 
 
 @Database(entities = [PhotoGallery::class, Neo::class], version = 1)

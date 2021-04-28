@@ -1,7 +1,7 @@
-package com.avisual.spaceapp.server
+package com.avisual.spaceapp.data.server
 
-import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
-import com.avisual.spaceapp.model.nasaRoverResponse.RoverPhotosResult
+import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.NearEarthObjectResult
+import com.avisual.spaceapp.data.server.nasaRoverResponse.RoverPhotosResult
 import retrofit2.http.GET
 import retrofit2.http.Query
 

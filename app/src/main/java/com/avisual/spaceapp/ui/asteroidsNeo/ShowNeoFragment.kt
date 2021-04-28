@@ -12,12 +12,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.data.repository.NeoRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.common.toast
-import com.avisual.spaceapp.database.Db
-import com.avisual.spaceapp.database.RoomNeoDataSource
+import com.avisual.spaceapp.ui.common.toast
+import com.avisual.spaceapp.data.database.Db
+import com.avisual.spaceapp.data.database.RoomNeoDataSource
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
-import com.avisual.spaceapp.model.Neo
-import com.avisual.spaceapp.server.ServerNeoDataSource
+import com.avisual.spaceapp.data.model.Neo
+import com.avisual.spaceapp.data.server.ServerNeoDataSource
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoUi
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModel

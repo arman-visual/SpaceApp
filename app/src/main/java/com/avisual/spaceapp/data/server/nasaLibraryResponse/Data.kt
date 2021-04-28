@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.model.nasaLibraryResponse
+package com.avisual.spaceapp.data.server.nasaLibraryResponse
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -1,15 +1,15 @@
-package com.avisual.spaceapp.server
+package com.avisual.spaceapp.data.server
 
-import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
-import com.avisual.spaceapp.model.asteroidsNeoWsResponse.toFrameworkNeo
-import com.avisual.spaceapp.model.nasaRoverResponse.Photo
+import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.NearEarthObjectResult
+import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.toFrameworkNeo
+import com.avisual.spaceapp.data.server.nasaRoverResponse.Photo
 import com.avisual.domain.Neo as DomainNeo
 import com.avisual.domain.PhotoGallery as GalleryDomain
 import com.avisual.domain.PhotoRover as RoverDomain
-import com.avisual.spaceapp.model.Neo as FrameworkNeo
-import com.avisual.spaceapp.model.PhotoGallery as FrameworkGallery
-import com.avisual.spaceapp.model.PhotoRover as FrameworkRover
-import com.avisual.spaceapp.model.nasaLibraryResponse.Item as ServerModelGallery
+import com.avisual.spaceapp.data.model.Neo as FrameworkNeo
+import com.avisual.spaceapp.data.model.PhotoGallery as FrameworkGallery
+import com.avisual.spaceapp.data.model.PhotoRover as FrameworkRover
+import com.avisual.spaceapp.data.server.nasaLibraryResponse.Item as ServerModelGallery
 
 fun NearEarthObjectResult.toFrameworkNeo(): List<FrameworkNeo> {
 

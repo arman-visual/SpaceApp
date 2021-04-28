@@ -1,7 +1,7 @@
-package com.avisual.spaceapp.model.nasaLibraryResponse
+package com.avisual.spaceapp.data.server.nasaLibraryResponse
 
 import android.os.Parcelable
-import com.avisual.spaceapp.model.PhotoGallery
+import com.avisual.spaceapp.data.model.PhotoGallery
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 

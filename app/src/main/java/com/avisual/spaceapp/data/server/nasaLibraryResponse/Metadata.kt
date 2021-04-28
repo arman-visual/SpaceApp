@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.model.nasaLibraryResponse
+package com.avisual.spaceapp.data.server.nasaLibraryResponse
 
 data class Metadata(
     val total_hits: Int

@@ -1,6 +1,6 @@
-package com.avisual.spaceapp.model.asteroidsNeoWsResponse
+package com.avisual.spaceapp.data.server.asteroidsNeoWsResponse
 
-import com.avisual.spaceapp.model.Neo
+import com.avisual.spaceapp.data.model.Neo
 import com.google.gson.annotations.SerializedName
 
 data class NearEarthObjectResult(

@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.server
+package com.avisual.spaceapp.data.server
 
 import com.avisual.data.source.GalleryRemoteDataSource
 import com.avisual.domain.PhotoGallery
