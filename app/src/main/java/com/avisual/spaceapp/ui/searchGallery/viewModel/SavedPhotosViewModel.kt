@@ -1,24 +1,51 @@
 package com.avisual.spaceapp.ui.searchGallery.viewModel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.common.ScopeViewModel
 import com.avisual.spaceapp.model.PhotoGallery
-import com.avisual.spaceapp.repository.PhotoGalleryRepository
+import com.avisual.spaceapp.server.toGalleryDomain
+import com.avisual.spaceapp.server.toGalleryFramework
+import com.avisual.usecases.DeleteGalleryPhoto
+import com.avisual.usecases.GetAllStoredPhotos
+import com.avisual.usecases.SaveGalleryPhoto
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class SavedPhotosViewModel(private val photoGalleryRepository: PhotoGalleryRepository) :
+class SavedPhotosViewModel(
+    private val saveGalleryPhoto: SaveGalleryPhoto,
+    private val deleteGalleryPhoto: DeleteGalleryPhoto,
+    private val getAllStoredPhotos: GetAllStoredPhotos
+) :
     ScopeViewModel() {
 
-    val saveLivePhotos = photoGalleryRepository.getAllPhotosLiveData()
+    private val _storedPhotos = MutableLiveData<List<PhotoGallery>>()
+    val storedPhotos: LiveData<List<PhotoGallery>> get() = _storedPhotos
+
+    init {
+        startCollectingPhotos()
+    }
+
+    private fun startCollectingPhotos() {
+        launch {
+            getAllStoredPhotos.invoke().collect { listPhotoGalleryDomain ->
+                _storedPhotos.value = listPhotoGalleryDomain.map {
+                    it.toGalleryFramework()
+                }
+            }
+        }
+
+    }
 
     fun deletePhoto(photoGallery: PhotoGallery) {
         launch {
-            photoGalleryRepository.deletePhoto(photoGallery)
+            deleteGalleryPhoto.invoke(photoGallery.toGalleryDomain())
         }
     }
 
     fun savePhoto(photoGallery: PhotoGallery) {
         launch {
-            photoGalleryRepository.savePhoto(photoGallery)
+            saveGalleryPhoto.invoke(photoGallery.toGalleryDomain())
         }
     }
 }
