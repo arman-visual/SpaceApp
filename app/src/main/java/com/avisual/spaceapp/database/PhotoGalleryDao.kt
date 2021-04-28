@@ -2,6 +2,7 @@ package com.avisual.spaceapp.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 import com.avisual.spaceapp.model.PhotoGallery
 
 @Dao
@@ -9,6 +10,9 @@ interface PhotoGalleryDao {
 
     @Query("SELECT * FROM  photos_gallery ORDER BY nasa_id DESC")
     fun getAllLiveData(): LiveData<List<PhotoGallery>>
+
+    @Query("SELECT * FROM  photos_gallery ORDER BY nasa_id DESC")
+    fun getStoredPhotos(): Flow<List<PhotoGallery>>
 
     @Query("SELECT * FROM photos_gallery")
     suspend fun getAll(): List<PhotoGallery>
