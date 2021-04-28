@@ -2,7 +2,6 @@ package com.avisual.spaceapp.server
 
 import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
 import com.avisual.spaceapp.model.asteroidsNeoWsResponse.toFrameworkNeo
-import com.avisual.spaceapp.model.nasaLibraryResponse.Item as ServerModelGallery
 import com.avisual.spaceapp.model.nasaRoverResponse.Photo
 import com.avisual.domain.Neo as DomainNeo
 import com.avisual.domain.PhotoGallery as GalleryDomain
@@ -10,6 +9,7 @@ import com.avisual.domain.PhotoRover as RoverDomain
 import com.avisual.spaceapp.model.Neo as FrameworkNeo
 import com.avisual.spaceapp.model.PhotoGallery as FrameworkGallery
 import com.avisual.spaceapp.model.PhotoRover as FrameworkRover
+import com.avisual.spaceapp.model.nasaLibraryResponse.Item as ServerModelGallery
 
 fun NearEarthObjectResult.toFrameworkNeo(): List<FrameworkNeo> {
 
@@ -96,6 +96,17 @@ fun ServerModelGallery.toGalleryDomain() = GalleryDomain(
 )
 
 fun GalleryDomain.toGalleryFramework() = FrameworkGallery(
+    nasa_id,
+    jsonAllSized,
+    url,
+    date_created,
+    description,
+    media_type,
+    photographer,
+    title
+)
+
+fun FrameworkGallery.toGalleryDomain() = GalleryDomain(
     nasa_id,
     jsonAllSized,
     url,
