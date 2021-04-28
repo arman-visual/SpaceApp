@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.avisual.data.repository.GalleryRepository
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.toast
+import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.database.RoomGalleryDataSource
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.model.PhotoGallery
 import com.avisual.spaceapp.server.ServerGalleryDataSource
@@ -58,8 +60,10 @@ class ShowGalleryFragment : Fragment() {
     }
 
     private fun buildDependencies() {
+        val database = Db.getDatabase(requireContext())
         val remote = ServerGalleryDataSource()
-        galleryRepository = GalleryRepository(remote)
+        val local = RoomGalleryDataSource(database)
+        galleryRepository = GalleryRepository(remote, local)
         getGalleryPhotosByKeyword = GetGalleryPhotosByKeyword(galleryRepository)
     }
 
