@@ -10,16 +10,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.avisual.data.repository.GalleryRepository
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.toast
 import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.model.PhotoGallery
-import com.avisual.spaceapp.repository.PhotoGalleryRepository
+
+import com.avisual.spaceapp.server.ServerGalleryDataSource
 import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.GalleryUi
 import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
 import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModelFactory
+import com.avisual.usecases.GetGalleryPhotosByKeyword
 
 class ShowGalleryFragment : Fragment() {
 
@@ -27,7 +30,8 @@ class ShowGalleryFragment : Fragment() {
     private lateinit var viewModel: ShowGalleryViewModel
     private lateinit var adapter: GalleryPhotosAdapter
     private lateinit var navController: NavController
-    private lateinit var photoGalleryRepository: PhotoGalleryRepository
+    private lateinit var galleryRepository: GalleryRepository
+    private lateinit var getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -56,12 +60,13 @@ class ShowGalleryFragment : Fragment() {
     }
 
     private fun buildDependencies() {
-        val database = Db.getDatabase(requireContext())
-        photoGalleryRepository = PhotoGalleryRepository(database)
+        val remote = ServerGalleryDataSource()
+        galleryRepository = GalleryRepository(remote)
+        getGalleryPhotosByKeyword = GetGalleryPhotosByKeyword(galleryRepository)
     }
 
     private fun buildViewModel(): ShowGalleryViewModel {
-        val factory = ShowGalleryViewModelFactory(photoGalleryRepository)
+        val factory = ShowGalleryViewModelFactory(getGalleryPhotosByKeyword)
         return ViewModelProvider(this, factory).get(ShowGalleryViewModel::class.java)
     }
 
