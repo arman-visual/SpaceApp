@@ -2,11 +2,11 @@ package com.avisual.spaceapp.ui.roverMars.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.avisual.spaceapp.repository.PhotoRoverRepository
+import com.avisual.usecases.GetRoverPhotosByDate
 
 class DetailRoverPhotoViewModelFactory constructor(
-    private val photoRoverRepository: PhotoRoverRepository
+    private val getRoverPhotosByDate: GetRoverPhotosByDate
 ) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>) =
-        DetailPhotoRoverViewModel(photoRoverRepository) as T
+        DetailPhotoRoverViewModel(getRoverPhotosByDate) as T
 }

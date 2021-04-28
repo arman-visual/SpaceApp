@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.avisual.data.repository.RoverRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.common.loadUrl
+import com.avisual.spaceapp.ui.common.loadUrl
 import com.avisual.spaceapp.databinding.FragmentDetailPhotoRoverBinding
-import com.avisual.spaceapp.model.PhotoRover
-import com.avisual.spaceapp.repository.PhotoRoverRepository
+import com.avisual.spaceapp.data.model.PhotoRover
+import com.avisual.spaceapp.data.server.ServerRoverDataSource
 import com.avisual.spaceapp.ui.roverMars.viewModel.DetailPhotoRoverViewModel
 import com.avisual.spaceapp.ui.roverMars.viewModel.DetailRoverPhotoViewModelFactory
+import com.avisual.usecases.GetRoverPhotosByDate
 
 
 class DetailPhotoRoverFragment : Fragment() {
@@ -21,8 +23,9 @@ class DetailPhotoRoverFragment : Fragment() {
     private val args: DetailPhotoRoverFragmentArgs by navArgs()
     private lateinit var binding: FragmentDetailPhotoRoverBinding
     private lateinit var viewModel: DetailPhotoRoverViewModel
-    private lateinit var photoRoverRepository: PhotoRoverRepository
+    private lateinit var roverRepository: RoverRepository
     private lateinit var photo: PhotoRover
+    private lateinit var getRoverPhotosByDate: GetRoverPhotosByDate
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,11 +40,13 @@ class DetailPhotoRoverFragment : Fragment() {
 
     private fun buildDependencies() {
         val apiKey =  getString(R.string.api_key)
-        photoRoverRepository = PhotoRoverRepository(apiKey)
+        val remote = ServerRoverDataSource()
+        roverRepository = RoverRepository(remote,apiKey)
+        getRoverPhotosByDate = GetRoverPhotosByDate(roverRepository)
     }
 
     private fun buildViewModel(): DetailPhotoRoverViewModel {
-        val factory = DetailRoverPhotoViewModelFactory(photoRoverRepository)
+        val factory = DetailRoverPhotoViewModelFactory(getRoverPhotosByDate)
         return ViewModelProvider(this, factory).get(DetailPhotoRoverViewModel::class.java)
     }
 
