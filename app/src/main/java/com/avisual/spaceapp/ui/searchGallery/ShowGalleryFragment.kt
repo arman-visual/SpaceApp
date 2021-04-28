@@ -13,10 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.avisual.data.repository.GalleryRepository
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.common.toast
-import com.avisual.spaceapp.database.Db
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.model.PhotoGallery
-
 import com.avisual.spaceapp.server.ServerGalleryDataSource
 import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.GalleryUi
@@ -82,7 +80,7 @@ class ShowGalleryFragment : Fragment() {
         viewModel.photos.observe(requireActivity(), Observer(::updateUi))
     }
 
-    private fun updateUi(model: GalleryUi){
+    private fun updateUi(model: GalleryUi) {
         binding.progressBar.visibility =
             if (model is GalleryUi.Loading) View.VISIBLE else View.GONE
 
