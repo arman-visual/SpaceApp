@@ -16,15 +16,20 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.avisual.data.repository.GalleryRepository
 import com.avisual.spaceapp.PermissionRequester
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.common.loadUrl
-import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.data.database.Db
+import com.avisual.spaceapp.data.database.RoomGalleryDataSource
+import com.avisual.spaceapp.data.model.PhotoGallery
+import com.avisual.spaceapp.data.server.ServerGalleryDataSource
 import com.avisual.spaceapp.databinding.FragmentDetailPhotoGalleryBinding
-import com.avisual.spaceapp.model.PhotoGallery
-import com.avisual.spaceapp.repository.PhotoGalleryRepository
+import com.avisual.spaceapp.ui.common.loadUrl
 import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModel
 import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModelFactory
+import com.avisual.usecases.DeleteGalleryPhoto
+import com.avisual.usecases.GetGalleryPhotoById
+import com.avisual.usecases.SaveGalleryPhoto
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.File
 
@@ -36,7 +41,10 @@ class DetailPhotoGalleryFragment : Fragment() {
     private lateinit var binding: FragmentDetailPhotoGalleryBinding
     private lateinit var photo: PhotoGallery
     private lateinit var viewModel: DetailPhotoViewModel
-    private lateinit var photoGalleryRepository: PhotoGalleryRepository
+    private lateinit var galleryRepository: GalleryRepository
+    private lateinit var saveGalleryPhoto: SaveGalleryPhoto
+    private lateinit var deleteGalleryPhoto: DeleteGalleryPhoto
+    private lateinit var getGalleryPhotoById: GetGalleryPhotoById
 
     private val oldPermissionStorageRequester by lazy {
         PermissionRequester(
@@ -71,11 +79,17 @@ class DetailPhotoGalleryFragment : Fragment() {
 
     private fun buildDependencies() {
         val database = Db.getDatabase(requireContext())
-        photoGalleryRepository = PhotoGalleryRepository(database)
+        val local = RoomGalleryDataSource(database)
+        val remote = ServerGalleryDataSource()
+        galleryRepository = GalleryRepository(remote, local)
+        saveGalleryPhoto = SaveGalleryPhoto(galleryRepository)
+        deleteGalleryPhoto = DeleteGalleryPhoto(galleryRepository)
+        getGalleryPhotoById = GetGalleryPhotoById(galleryRepository)
     }
 
     private fun buildViewModel(): DetailPhotoViewModel {
-        val factory = DetailPhotoViewModelFactory(photoGalleryRepository)
+        val factory =
+            DetailPhotoViewModelFactory(saveGalleryPhoto, deleteGalleryPhoto, getGalleryPhotoById)
         return ViewModelProvider(this, factory).get(DetailPhotoViewModel::class.java)
     }
 
