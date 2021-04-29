@@ -1,7 +1,7 @@
 package com.avisual.spaceapp.data.server
 
+import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.NearEarthObject as ServerNeo
 import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.NearEarthObjectResult
-import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.toFrameworkNeo
 import com.avisual.spaceapp.data.server.nasaRoverResponse.Photo
 import com.avisual.domain.Neo as DomainNeo
 import com.avisual.domain.PhotoGallery as GalleryDomain
@@ -23,6 +23,22 @@ fun NearEarthObjectResult.toFrameworkNeo(): List<FrameworkNeo> {
     }
     return frameworkNeos
 }
+
+fun ServerNeo.toFrameworkNeo(bindDay:String) = FrameworkNeo(
+    this.id,
+    this.name,
+    this.isPotentiallyHazardousAsteroid,
+    this.absoluteMagnitudeH,
+    this.nasaJplURL,
+    this.estimatedDiameter.kilometers.estimatedDiameterMin,
+    this.estimatedDiameter.kilometers.estimatedDiameterMax,
+    this.closeApproachData[0].relativeVelocity.kilometersPerSecond,
+    this.closeApproachData[0].relativeVelocity.kilometersPerHour,
+    this.closeApproachData[0].closeApproachDateFull,
+    this.closeApproachData[0].closeApproachDate,
+    this.closeApproachData[0].missDistance.kilometers,
+    bindDay
+)
 
 fun FrameworkNeo.toDomainNeo(): DomainNeo = DomainNeo(
     id,
@@ -85,14 +101,14 @@ fun RoverDomain.toFrameworkRover() = FrameworkRover(
 )
 
 fun ServerModelGallery.toGalleryDomain() = GalleryDomain(
-    this.data_photo[0].nasa_id ?: "There aren't information from Nasa",
-    this.href ?: "There aren't information from Nasa",
-    this.links[0].href ?: "Do not exist image",
-    this.data_photo[0].date_created ?: "There aren't information from Nasa",
-    this.data_photo[0].description ?: "There aren't information from Nasa",
-    this.data_photo[0].media_type ?: "There aren't information from Nasa",
-    this.data_photo[0].photographer ?: "There aren't information from Nasa",
-    this.data_photo[0].title ?: "There aren't information from Nasa"
+    this.data_photo[0].nasa_id,
+    this.href,
+    this.links[0].href,
+    this.data_photo[0].date_created,
+    this.data_photo[0].description,
+    this.data_photo[0].media_type,
+    this.data_photo[0].photographer,
+    this.data_photo[0].title
 )
 
 fun GalleryDomain.toGalleryFramework() = FrameworkGallery(
