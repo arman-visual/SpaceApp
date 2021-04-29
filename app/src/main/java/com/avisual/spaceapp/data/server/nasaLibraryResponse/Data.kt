@@ -5,16 +5,16 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Data(
-    val album: List<String>,
-    val center: String,
-    val date_created: String,
-    val description: String,
-    val description_508: String,
-    val keywords: List<String>,
-    val location: String,
-    val media_type: String,
-    val nasa_id: String,
-    val photographer: String,
-    val secondary_creator: String,
-    val title: String
-): Parcelable
+    val album: List<String> = emptyList(),
+    val center: String = "There aren't information from Server Nasa",
+    val date_created: String = "There aren't information from Server Nasa",
+    val description: String = "There aren't information from Server Nasa",
+    val description_508: String = "There aren't information from Server Nasa",
+    val keywords: List<String> = emptyList(),
+    val location: String = "There aren't information from Server Nasa",
+    val media_type: String = "There aren't information from Server Nasa",
+    val nasa_id: String = "There aren't information from Server Nasa",
+    val photographer: String = "There aren't information from Server Nasa",
+    val secondary_creator: String = "There aren't information from Server Nasa",
+    val title: String = "There aren't information from Server Nasa"
+) : Parcelable
