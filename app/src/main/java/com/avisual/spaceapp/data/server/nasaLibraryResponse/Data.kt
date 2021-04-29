@@ -1,9 +1,5 @@
 package com.avisual.spaceapp.data.server.nasaLibraryResponse
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
 data class Data(
     val album: List<String> = emptyList(),
     val center: String = "There aren't information from Server Nasa",
@@ -17,4 +13,4 @@ data class Data(
     val photographer: String = "There aren't information from Server Nasa",
     val secondary_creator: String = "There aren't information from Server Nasa",
     val title: String = "There aren't information from Server Nasa"
-) : Parcelable
+)
