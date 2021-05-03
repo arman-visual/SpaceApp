@@ -14,9 +14,6 @@ interface PhotoGalleryDao {
     @Query("SELECT * FROM  photos_gallery ORDER BY nasa_id DESC")
     fun getStoredPhotos(): Flow<List<PhotoGallery>>
 
-    @Query("SELECT * FROM photos_gallery")
-    suspend fun getAll(): List<PhotoGallery>
-
     @Query("SELECT * FROM photos_gallery WHERE nasa_id = :nasaId")
     suspend fun getByNasaId(nasaId: String): PhotoGallery?
 
