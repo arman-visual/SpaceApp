@@ -1,13 +1,13 @@
 package com.avisual.spaceapp.data.database
 
 import com.avisual.data.source.NeoLocalDataSource
-import com.avisual.spaceapp.data.server.toDomainNeo
-import com.avisual.spaceapp.data.server.toFrameworkNeo
+import com.avisual.spaceapp.data.toDomainNeo
+import com.avisual.spaceapp.data.toFrameworkNeo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import com.avisual.domain.Neo as DomainNeo
 
-class RoomNeoDataSource(private val db: Db) : NeoLocalDataSource {
+class RoomNeoDataSource(db: Db) : NeoLocalDataSource {
 
     private val neoDao = db.asteroidDao()
 

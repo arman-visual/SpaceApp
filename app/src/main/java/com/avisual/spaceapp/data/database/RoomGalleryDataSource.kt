@@ -2,14 +2,14 @@ package com.avisual.spaceapp.data.database
 
 import com.avisual.data.source.GalleryLocalDataSource
 import com.avisual.domain.PhotoGallery
-import com.avisual.spaceapp.data.server.toGalleryDomain
-import com.avisual.spaceapp.data.server.toGalleryFramework
+import com.avisual.spaceapp.data.toGalleryDomain
+import com.avisual.spaceapp.data.toGalleryFramework
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
-class RoomGalleryDataSource(private val db: Db) : GalleryLocalDataSource {
+class RoomGalleryDataSource(db: Db) : GalleryLocalDataSource {
 
     private val galleryDao = db.photoDao()
 
