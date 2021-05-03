@@ -2,13 +2,13 @@ package com.avisual.spaceapp.ui.searchGallery.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.common.ScopeViewModel
-import com.avisual.spaceapp.model.PhotoGallery
-import com.avisual.spaceapp.model.nasaLibraryResponse.convertToPhotoGallery
-import com.avisual.spaceapp.repository.PhotoGalleryRepository
+import com.avisual.spaceapp.data.model.PhotoGallery
+import com.avisual.spaceapp.data.toGalleryFramework
+import com.avisual.spaceapp.ui.common.ScopeViewModel
+import com.avisual.usecases.GetGalleryPhotosByKeyword
 import kotlinx.coroutines.launch
 
-class ShowGalleryViewModel(private val photoGalleryRepository: PhotoGalleryRepository) :
+class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword) :
     ScopeViewModel() {
 
     companion object {
@@ -26,18 +26,20 @@ class ShowGalleryViewModel(private val photoGalleryRepository: PhotoGalleryRepos
     private fun refresh() = launch {
         _photos.value = GalleryUi.Loading
 
-        val response = photoGalleryRepository.findPhotosGallery(DEFAULT_KEYWORD)
+        val response = getGalleryPhotosByKeyword.invoke(DEFAULT_KEYWORD)
+            .map { galleryDomain -> galleryDomain.toGalleryFramework() }
         _photos.value =
-            GalleryUi.Content(response.collection.items.map { it.convertToPhotoGallery() })
+            GalleryUi.Content(response)
     }
 
     fun findPhotosByKeyword(keyword: String) {
         launch {
             _photos.value = GalleryUi.Loading
 
-            val searchResponse = photoGalleryRepository.findPhotosGallery(keyword)
+            val response = getGalleryPhotosByKeyword.invoke(keyword)
+                .map { galleryDomain -> galleryDomain.toGalleryFramework() }
             _photos.value =
-                GalleryUi.Content(searchResponse.collection.items.map { it.convertToPhotoGallery() })
+                GalleryUi.Content(response)
         }
     }
 }

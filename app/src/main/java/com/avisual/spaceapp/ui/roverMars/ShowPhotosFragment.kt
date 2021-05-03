@@ -8,15 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.avisual.data.repository.RoverRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.common.toast
+import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
-import com.avisual.spaceapp.model.PhotoRover
-import com.avisual.spaceapp.repository.PhotoRoverRepository
+import com.avisual.spaceapp.data.model.PhotoRover
+import com.avisual.spaceapp.data.server.ServerRoverDataSource
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosUi
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModel
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModelFactory
+import com.avisual.usecases.GetRoverPhotosByDate
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
@@ -32,9 +34,10 @@ class ShowPhotosFragment : Fragment() {
     private lateinit var binding: FragmentShowPhotosBinding
     private lateinit var adapter: PhotosRoverAdapter
     private lateinit var viewModel: ShowPhotosViewModel
-    private lateinit var photoRoverRepository: PhotoRoverRepository
+    private lateinit var roverRepository: RoverRepository
     private lateinit var datePicker: MaterialDatePicker<Long>
     private lateinit var outputDateFormat: SimpleDateFormat
+    private lateinit var getRoverPhotosByDate: GetRoverPhotosByDate
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,12 +52,14 @@ class ShowPhotosFragment : Fragment() {
     }
 
     private fun buildDependencies() {
+        val remote = ServerRoverDataSource()
         val apiKey = getString(R.string.api_key)
-        photoRoverRepository = PhotoRoverRepository(apiKey)
+        roverRepository = RoverRepository(remote, apiKey)
+        getRoverPhotosByDate = GetRoverPhotosByDate(roverRepository)
     }
 
     private fun buildViewModel(): ShowPhotosViewModel {
-        val factory = ShowPhotosViewModelFactory(photoRoverRepository)
+        val factory = ShowPhotosViewModelFactory(getRoverPhotosByDate)
         return ViewModelProvider(this, factory).get(ShowPhotosViewModel::class.java)
     }
 
@@ -127,7 +132,8 @@ class ShowPhotosFragment : Fragment() {
 
     private fun onClickSearchButton() {
         viewModel.findPhotosByDate(
-            binding.showInput.text.toString())
+            binding.showInput.text.toString()
+        )
     }
 
     private fun onClickPhoto(photo: PhotoRover) {

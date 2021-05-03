@@ -3,9 +3,9 @@ package com.avisual.spaceapp.ui.roverMars.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.avisual.spaceapp.common.loadUrl
+import com.avisual.spaceapp.ui.common.loadUrl
 import com.avisual.spaceapp.databinding.ItemRoverMarsBinding
-import com.avisual.spaceapp.model.PhotoRover
+import com.avisual.spaceapp.data.model.PhotoRover
 
 class PhotosRoverAdapter(
     var photosRover: List<PhotoRover>,

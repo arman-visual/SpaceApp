@@ -9,22 +9,30 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.avisual.data.repository.GalleryRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.data.database.Db
+import com.avisual.spaceapp.data.database.RoomGalleryDataSource
 import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
-import com.avisual.spaceapp.model.PhotoGallery
-import com.avisual.spaceapp.repository.PhotoGalleryRepository
+import com.avisual.spaceapp.data.model.PhotoGallery
+import com.avisual.spaceapp.data.server.ServerGalleryDataSource
 import com.avisual.spaceapp.ui.searchGallery.adapter.SavedPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModel
 import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModelFactory
+import com.avisual.usecases.DeleteGalleryPhoto
+import com.avisual.usecases.GetAllStoredPhotos
+import com.avisual.usecases.SaveGalleryPhoto
 import com.google.android.material.snackbar.Snackbar
 
 class SavedPhotosFragment : Fragment() {
 
     private lateinit var binding: FragmentSavedPhotosBinding
     private lateinit var viewModel: SavedPhotosViewModel
-    private lateinit var photoGalleryRepository: PhotoGalleryRepository
     private lateinit var photosAdapter: SavedPhotosAdapter
+    private lateinit var galleryRepository: GalleryRepository
+    private lateinit var saveGalleryPhoto: SaveGalleryPhoto
+    private lateinit var deleteGalleryPhoto: DeleteGalleryPhoto
+    private lateinit var getAllStoredPhotos: GetAllStoredPhotos
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,11 +47,17 @@ class SavedPhotosFragment : Fragment() {
 
     private fun buildDependencies() {
         val database = Db.getDatabase(requireContext())
-        photoGalleryRepository = PhotoGalleryRepository(database)
+        val remote = ServerGalleryDataSource()
+        val local = RoomGalleryDataSource(database)
+        galleryRepository = GalleryRepository(remote, local)
+        saveGalleryPhoto = SaveGalleryPhoto(galleryRepository)
+        deleteGalleryPhoto = DeleteGalleryPhoto(galleryRepository)
+        getAllStoredPhotos = GetAllStoredPhotos(galleryRepository)
     }
 
     private fun buildViewModel(): SavedPhotosViewModel {
-        val factory = SavedPhotosViewModelFactory(photoGalleryRepository)
+        val factory =
+            SavedPhotosViewModelFactory(saveGalleryPhoto, deleteGalleryPhoto, getAllStoredPhotos)
         return ViewModelProvider(this, factory).get(SavedPhotosViewModel::class.java)
     }
 
@@ -60,7 +74,7 @@ class SavedPhotosFragment : Fragment() {
 
 
     private fun subscribeUi() {
-        viewModel.saveLivePhotos.observe(requireActivity()) {
+        viewModel.storedPhotos.observe(requireActivity()) {
             photosAdapter.setItems(it)
         }
     }
@@ -88,7 +102,7 @@ class SavedPhotosFragment : Fragment() {
             val photo = photosAdapter.getPhotoPosition(position)
             viewModel.deletePhoto(photo)
             Snackbar.make(binding.root, R.string.info, Snackbar.LENGTH_LONG)
-                .setAction(R.string.undo){viewModel.savePhoto(photo)}
+                .setAction(R.string.undo) { viewModel.savePhoto(photo) }
                 .show()
         }
     }

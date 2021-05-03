@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_detail_photo_rover" >
         <argument
             android:name="photoRoverArgs"
-            app:argType="com.avisual.spaceapp.model.PhotoRover"
+            app:argType="com.avisual.spaceapp.data.model.PhotoRover"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>

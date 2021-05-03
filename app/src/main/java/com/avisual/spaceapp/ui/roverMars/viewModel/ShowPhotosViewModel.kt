@@ -2,14 +2,14 @@ package com.avisual.spaceapp.ui.roverMars.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.common.ScopeViewModel
-import com.avisual.spaceapp.model.PhotoRover
-import com.avisual.spaceapp.model.nasaRoverResponse.convertToPhotoRover
-import com.avisual.spaceapp.repository.PhotoRoverRepository
+import com.avisual.spaceapp.ui.common.ScopeViewModel
+import com.avisual.spaceapp.data.model.PhotoRover
+import com.avisual.spaceapp.data.toFrameworkRover
+import com.avisual.usecases.GetRoverPhotosByDate
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class ShowPhotosViewModel(var photoRoverRepository: PhotoRoverRepository) :
+class ShowPhotosViewModel(var getRoverPhotosByDate: GetRoverPhotosByDate) :
     ScopeViewModel() {
 
     private val _model = MutableLiveData<ShowPhotosUi>()
@@ -19,9 +19,9 @@ class ShowPhotosViewModel(var photoRoverRepository: PhotoRoverRepository) :
         launch {
             _model.value = ShowPhotosUi.Loading
             try {
-                val response = photoRoverRepository.findPhotosRoverFromServer(date)
+                val response = getRoverPhotosByDate.invoke(date)
                 _model.value =
-                    ShowPhotosUi.Content(response.photos.map { it.convertToPhotoRover() })
+                    ShowPhotosUi.Content(response.map { photoDomain -> photoDomain.toFrameworkRover() })
             } catch (exception: HttpException) {
                 _model.value = ShowPhotosUi.Content(emptyList())
             }

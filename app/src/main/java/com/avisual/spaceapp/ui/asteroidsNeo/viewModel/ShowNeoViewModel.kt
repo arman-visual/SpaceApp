@@ -2,46 +2,28 @@ package com.avisual.spaceapp.ui.asteroidsNeo.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.common.ScopeViewModel
-import com.avisual.spaceapp.model.Neo
-import com.avisual.spaceapp.model.asteroidsNeoWsResponse.NearEarthObjectResult
-import com.avisual.spaceapp.model.asteroidsNeoWsResponse.toNeo
-import com.avisual.spaceapp.repository.NeoRepository
+import com.avisual.spaceapp.ui.common.ScopeViewModel
+import com.avisual.spaceapp.data.model.Neo
+import com.avisual.spaceapp.data.toFrameworkNeo
+import com.avisual.usecases.GetAllNeoByDate
 import kotlinx.coroutines.launch
 
-class ShowNeoViewModel(var neoRepository: NeoRepository) : ScopeViewModel() {
+class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ScopeViewModel() {
 
     private val _listsAsteroids = MutableLiveData<ShowNeoUi>()
     val listAsteroids: LiveData<ShowNeoUi> get() = _listsAsteroids
 
     fun getAsteroidsByOnlyDate(dateStart: String) {
 
-        var totalAsteroids = mutableListOf<Neo>()
-
         launch {
             _listsAsteroids.value = ShowNeoUi.Loading
+            val response = getAllNeoByDate.invoke(dateStart).map { domainNeo ->
+                domainNeo.toFrameworkNeo()
+            }
 
-            val response = neoRepository.findNeoByOnlyStartDate(dateStart)
-
-            convertToOneListDate(response, totalAsteroids)
-
-            _listsAsteroids.value = ShowNeoUi.Content(totalAsteroids)
+            _listsAsteroids.value = ShowNeoUi.Content(response)
         }
     }
-
-    private fun convertToOneListDate(
-        response: NearEarthObjectResult,
-        totalAsteroids: MutableList<Neo>
-    ) {
-        val totalDays = response.registerDay.size
-        val keys = response.registerDay.keys.sorted()
-
-        for (i in 0 until totalDays) {
-            response.registerDay.getValue(keys[i])
-                .map { neo -> totalAsteroids.add(neo.toNeo(keys[i])) }
-        }
-    }
-
 }
 
 sealed class ShowNeoUi {
