@@ -2,9 +2,9 @@ package com.avisual.spaceapp.ui.searchGallery.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.ui.common.ScopeViewModel
 import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.data.toGalleryFramework
+import com.avisual.spaceapp.ui.common.ScopeViewModel
 import com.avisual.usecases.GetGalleryPhotosByKeyword
 import kotlinx.coroutines.launch
 
@@ -26,7 +26,8 @@ class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhot
     private fun refresh() = launch {
         _photos.value = GalleryUi.Loading
 
-        val response = getGalleryPhotosByKeyword.invoke(DEFAULT_KEYWORD).map { galleryDomain-> galleryDomain.toGalleryFramework() }
+        val response = getGalleryPhotosByKeyword.invoke(DEFAULT_KEYWORD)
+            .map { galleryDomain -> galleryDomain.toGalleryFramework() }
         _photos.value =
             GalleryUi.Content(response)
     }
@@ -35,8 +36,8 @@ class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhot
         launch {
             _photos.value = GalleryUi.Loading
 
-            val response = getGalleryPhotosByKeyword.invoke(keyword).map { galleryDomain-> galleryDomain.toGalleryFramework() }
-            //val searchResponse = photoGalleryRepository.findPhotosGallery(keyword)
+            val response = getGalleryPhotosByKeyword.invoke(keyword)
+                .map { galleryDomain -> galleryDomain.toGalleryFramework() }
             _photos.value =
                 GalleryUi.Content(response)
         }
