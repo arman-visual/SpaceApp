@@ -3,7 +3,7 @@ package com.avisual.spaceapp.ui.searchGallery.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.data.model.PhotoGallery
-import com.avisual.spaceapp.data.server.toGalleryDomain
+import com.avisual.spaceapp.data.toGalleryDomain
 import com.avisual.spaceapp.ui.common.ScopeViewModel
 import com.avisual.usecases.DeleteGalleryPhoto
 import com.avisual.usecases.GetGalleryPhotoById

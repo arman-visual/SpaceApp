@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.data.server
+package com.avisual.spaceapp.data
 
 import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.NearEarthObject as ServerNeo
 import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.NearEarthObjectResult

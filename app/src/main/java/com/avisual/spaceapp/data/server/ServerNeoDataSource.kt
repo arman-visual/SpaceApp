@@ -2,6 +2,8 @@ package com.avisual.spaceapp.data.server
 
 import com.avisual.data.source.NeoRemoteDataSource
 import com.avisual.domain.Neo
+import com.avisual.spaceapp.data.toDomainNeo
+import com.avisual.spaceapp.data.toFrameworkNeo
 
 class ServerNeoDataSource : NeoRemoteDataSource {
 

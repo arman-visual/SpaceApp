@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.avisual.spaceapp.ui.common.ScopeViewModel
 import com.avisual.spaceapp.data.model.Neo
-import com.avisual.spaceapp.data.server.toDomainNeo
+import com.avisual.spaceapp.data.toDomainNeo
 import com.avisual.usecases.GetNeoById
 import com.avisual.usecases.RemoveNeo
 import com.avisual.usecases.SaveNeoInDb
