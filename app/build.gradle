@@ -86,4 +86,6 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.2.6'
 
     implementation 'com.karumi:dexter:6.0.2'
+
+    implementation "org.koin:koin-androidx-viewmodel:2.2.2"
 }
