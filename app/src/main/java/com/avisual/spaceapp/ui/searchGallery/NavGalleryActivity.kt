@@ -2,13 +2,13 @@ package com.avisual.spaceapp.ui.searchGallery
 
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityNavGalleryBinding
+import org.koin.androidx.scope.ScopeActivity
 
-class NavGalleryActivity : AppCompatActivity() {
+class NavGalleryActivity : ScopeActivity() {
 
     private lateinit var binding: ActivityNavGalleryBinding
     override fun onCreate(savedInstanceState: Bundle?) {

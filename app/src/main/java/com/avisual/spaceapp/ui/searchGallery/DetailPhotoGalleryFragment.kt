@@ -13,38 +13,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import com.avisual.data.repository.GalleryRepository
 import com.avisual.spaceapp.PermissionRequester
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.data.database.Db
-import com.avisual.spaceapp.data.database.RoomGalleryDataSource
 import com.avisual.spaceapp.data.model.PhotoGallery
-import com.avisual.spaceapp.data.server.ServerGalleryDataSource
 import com.avisual.spaceapp.databinding.FragmentDetailPhotoGalleryBinding
 import com.avisual.spaceapp.ui.common.loadUrl
 import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModel
-import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModelFactory
-import com.avisual.usecases.DeleteGalleryPhoto
-import com.avisual.usecases.GetGalleryPhotoById
-import com.avisual.usecases.SaveGalleryPhoto
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.koin.androidx.scope.ScopeFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
 
 @RequiresApi(Build.VERSION_CODES.R)
-class DetailPhotoGalleryFragment : Fragment() {
+class DetailPhotoGalleryFragment : ScopeFragment() {
 
     private val args: DetailPhotoGalleryFragmentArgs by navArgs()
     private lateinit var binding: FragmentDetailPhotoGalleryBinding
     private lateinit var photo: PhotoGallery
-    private lateinit var viewModel: DetailPhotoViewModel
-    private lateinit var galleryRepository: GalleryRepository
-    private lateinit var saveGalleryPhoto: SaveGalleryPhoto
-    private lateinit var deleteGalleryPhoto: DeleteGalleryPhoto
-    private lateinit var getGalleryPhotoById: GetGalleryPhotoById
+    private val viewModel: DetailPhotoViewModel by viewModel()
 
     private val oldPermissionStorageRequester by lazy {
         PermissionRequester(
@@ -65,8 +53,6 @@ class DetailPhotoGalleryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         photo = args.photoArg!!
-        buildDependencies()
-        viewModel = buildViewModel()
         setUpUi()
         subscribeUi()
         return binding.root
@@ -75,22 +61,6 @@ class DetailPhotoGalleryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.checkIfPhotoSaved(photo)
-    }
-
-    private fun buildDependencies() {
-        val database = Db.getDatabase(requireContext())
-        val local = RoomGalleryDataSource(database)
-        val remote = ServerGalleryDataSource()
-        galleryRepository = GalleryRepository(remote, local)
-        saveGalleryPhoto = SaveGalleryPhoto(galleryRepository)
-        deleteGalleryPhoto = DeleteGalleryPhoto(galleryRepository)
-        getGalleryPhotoById = GetGalleryPhotoById(galleryRepository)
-    }
-
-    private fun buildViewModel(): DetailPhotoViewModel {
-        val factory =
-            DetailPhotoViewModelFactory(saveGalleryPhoto, deleteGalleryPhoto, getGalleryPhotoById)
-        return ViewModelProvider(this, factory).get(DetailPhotoViewModel::class.java)
     }
 
     private fun setUpUi() {
