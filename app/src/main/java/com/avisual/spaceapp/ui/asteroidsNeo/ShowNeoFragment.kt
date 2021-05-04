@@ -4,31 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.avisual.data.repository.NeoRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.ui.common.toast
-import com.avisual.spaceapp.data.database.Db
-import com.avisual.spaceapp.data.database.RoomNeoDataSource
-import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
 import com.avisual.spaceapp.data.model.Neo
-import com.avisual.spaceapp.data.server.ServerNeoDataSource
+import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoUi
 import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModel
-import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModelFactory
-import com.avisual.usecases.GetAllNeoByDate
+import com.avisual.spaceapp.ui.common.toast
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import org.koin.androidx.scope.ScopeFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ShowNeoFragment : Fragment() {
+class ShowNeoFragment : ScopeFragment() {
 
     companion object {
         const val DATE_START_SEARCH_NEO = -2208952800000
@@ -36,25 +30,22 @@ class ShowNeoFragment : Fragment() {
         const val TIME_ZONE = "UTC"
     }
 
-    private lateinit var viewModel: ShowNeoViewModel
+    private val viewModel: ShowNeoViewModel by viewModel()
     private lateinit var binding: ShowNeoFragmentBinding
-    private lateinit var neoRepository: NeoRepository
     private lateinit var adapter: AsteroidsNeoAdapter
     private lateinit var navController: NavController
     private lateinit var datePicker: MaterialDatePicker<Long>
     private lateinit var outputDateFormat: SimpleDateFormat
-    private lateinit var getAllNeoByDate: GetAllNeoByDate
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        buildDependencies()
-        viewModel = buildViewModel()
         configureCalendar()
         setUpUi()
         subscribe()
@@ -64,20 +55,6 @@ class ShowNeoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
-    }
-
-    private fun buildDependencies() {
-        val apiKey =  getString(R.string.api_key)
-        val database = Db.getDatabase(requireContext())
-        val local = RoomNeoDataSource(database)
-        val remote = ServerNeoDataSource()
-        neoRepository = NeoRepository(local, remote, apiKey)
-        getAllNeoByDate = GetAllNeoByDate(neoRepository)
-    }
-
-    private fun buildViewModel(): ShowNeoViewModel {
-        val factory = ShowNeoViewModelFactory(getAllNeoByDate)
-        return ViewModelProvider(this, factory).get(ShowNeoViewModel::class.java)
     }
 
     private fun setUpUi() {
