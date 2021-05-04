@@ -1,10 +1,10 @@
-package com.avisual.spaceapp
+package com.avisual.spaceapp.di
 
-import android.app.Application
 import com.avisual.data.repository.GalleryRepository
 import com.avisual.data.repository.NeoRepository
 import com.avisual.data.repository.RoverRepository
 import com.avisual.data.source.*
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.database.Db
 import com.avisual.spaceapp.data.database.RoomGalleryDataSource
 import com.avisual.spaceapp.data.database.RoomNeoDataSource
@@ -32,24 +32,16 @@ import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModel
 import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
 import com.avisual.usecases.*
 import org.koin.android.ext.koin.androidApplication
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-fun Application.initDI() {
-    startKoin {
-        androidLogger()
-        androidContext(this@initDI)
-        modules(listOf(appModule, dataModule, useCasesModule, scopesModule))
-    }
-}
-
-private val appModule = module {
+val appModule = module {
     single(named("apiKey")) { androidApplication().getString(R.string.api_key) }
     single { Db.getDatabase(get()) }
+}
+
+val dataSource = module {
     factory<GalleryLocalDataSource> { RoomGalleryDataSource(get()) }
     factory<GalleryRemoteDataSource> { ServerGalleryDataSource() }
     factory<NeoLocalDataSource> { RoomNeoDataSource(get()) }
@@ -57,13 +49,14 @@ private val appModule = module {
     factory<RoverRemoteDataSource> { ServerRoverDataSource() }
 }
 
-private val dataModule = module {
+val repoModule = module {
     factory { GalleryRepository(get(), get()) }
     factory { NeoRepository(get(), get(), get(named("apiKey"))) }
-    factory { RoverRepository(get(), get()) }
+    factory { RoverRepository(get(), get(named("apiKey"))) }
 }
 
-private val scopesModule = module {
+val scopesModule = module {
+
     scope(named<NavGalleryActivity>()) {}
     scope(named<ShowGalleryFragment>()) {
         viewModel { ShowGalleryViewModel(get()) }
@@ -75,24 +68,24 @@ private val scopesModule = module {
         viewModel { SavedPhotosViewModel(get(), get(), get()) }
     }
 
-    scope(named<NavRoverMarsActivity>()){}
-    scope(named<ShowPhotosFragment>()) {
-        viewModel { ShowPhotosViewModel(get()) }
-    }
-    scope(named<DetailPhotoRoverFragment>()) {
-        viewModel { DetailPhotoRoverViewModel(get()) }
-    }
+    scope(named<NavRoverMarsActivity>()) {}
+        scope(named<ShowPhotosFragment>()) {
+            viewModel { ShowPhotosViewModel(get()) }
+        }
+        scope(named<DetailPhotoRoverFragment>()) {
+            viewModel { DetailPhotoRoverViewModel(get()) }
+        }
 
-    scope(named<AsteroidsNeoActivity>()){}
-    scope(named<ShowNeoFragment>()) {
-        viewModel { ShowNeoViewModel(get()) }
-    }
-    scope(named<DetailNeoFragment>()) {
-        viewModel { DetailNeoViewModel(get(), get(), get()) }
-    }
-    scope(named<StoredNeoFragment>()) {
-        viewModel { StoredNeoViewModel(get(), get()) }
-    }
+    scope(named<AsteroidsNeoActivity>()) {}
+        scope(named<ShowNeoFragment>()) {
+            viewModel { ShowNeoViewModel(get()) }
+        }
+        scope(named<DetailNeoFragment>()) {
+            viewModel { DetailNeoViewModel(get(), get(), get()) }
+        }
+        scope(named<StoredNeoFragment>()) {
+            viewModel { StoredNeoViewModel(get(), get()) }
+        }
 }
 
 val useCasesModule = module {
