@@ -2,13 +2,13 @@ package com.avisual.spaceapp.ui.asteroidsNeo
 
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityNeowsBinding
+import org.koin.androidx.scope.ScopeActivity
 
-class AsteroidsNeoActivity : AppCompatActivity() {
+class AsteroidsNeoActivity : ScopeActivity() {
 
     private lateinit var binding: ActivityNeowsBinding
 

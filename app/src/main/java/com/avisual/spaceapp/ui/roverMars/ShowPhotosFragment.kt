@@ -4,27 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.avisual.data.repository.RoverRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.ui.common.toast
-import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
 import com.avisual.spaceapp.data.model.PhotoRover
-import com.avisual.spaceapp.data.server.ServerRoverDataSource
+import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
+import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosUi
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModel
-import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModelFactory
-import com.avisual.usecases.GetRoverPhotosByDate
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import org.koin.androidx.scope.ScopeFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ShowPhotosFragment : Fragment() {
+class ShowPhotosFragment : ScopeFragment() {
 
     companion object {
         const val DATE_START_SEARCH_NEO = 1344272400000
@@ -33,34 +29,18 @@ class ShowPhotosFragment : Fragment() {
 
     private lateinit var binding: FragmentShowPhotosBinding
     private lateinit var adapter: PhotosRoverAdapter
-    private lateinit var viewModel: ShowPhotosViewModel
-    private lateinit var roverRepository: RoverRepository
+    private val viewModel: ShowPhotosViewModel by viewModel()
     private lateinit var datePicker: MaterialDatePicker<Long>
     private lateinit var outputDateFormat: SimpleDateFormat
-    private lateinit var getRoverPhotosByDate: GetRoverPhotosByDate
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        buildDependencies()
-        viewModel = buildViewModel()
         configureCalendar()
         setupUi()
         subscribeUi()
         return binding.root
-    }
-
-    private fun buildDependencies() {
-        val remote = ServerRoverDataSource()
-        val apiKey = getString(R.string.api_key)
-        roverRepository = RoverRepository(remote, apiKey)
-        getRoverPhotosByDate = GetRoverPhotosByDate(roverRepository)
-    }
-
-    private fun buildViewModel(): ShowPhotosViewModel {
-        val factory = ShowPhotosViewModelFactory(getRoverPhotosByDate)
-        return ViewModelProvider(this, factory).get(ShowPhotosViewModel::class.java)
     }
 
     private fun setupUi() {

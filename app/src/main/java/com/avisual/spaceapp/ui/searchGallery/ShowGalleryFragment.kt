@@ -4,34 +4,27 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.avisual.data.repository.GalleryRepository
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.ui.common.toast
-import com.avisual.spaceapp.data.database.Db
-import com.avisual.spaceapp.data.database.RoomGalleryDataSource
-import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.data.model.PhotoGallery
-import com.avisual.spaceapp.data.server.ServerGalleryDataSource
+import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
+import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
 import com.avisual.spaceapp.ui.searchGallery.viewModel.GalleryUi
 import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
-import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModelFactory
-import com.avisual.usecases.GetGalleryPhotosByKeyword
+import org.koin.androidx.scope.ScopeFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ShowGalleryFragment : Fragment() {
+
+class ShowGalleryFragment : ScopeFragment() {
 
     private lateinit var binding: FragmentExploreGalleryBinding
-    private lateinit var viewModel: ShowGalleryViewModel
+    private val viewModel: ShowGalleryViewModel by viewModel()
     private lateinit var adapter: GalleryPhotosAdapter
     private lateinit var navController: NavController
-    private lateinit var galleryRepository: GalleryRepository
-    private lateinit var getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -42,8 +35,6 @@ class ShowGalleryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        buildDependencies()
-        viewModel = buildViewModel()
         setUpUi()
         subscribeUi()
         return binding.root
@@ -57,19 +48,6 @@ class ShowGalleryFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         configureSearchView(inflater, menu)
         super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    private fun buildDependencies() {
-        val database = Db.getDatabase(requireContext())
-        val remote = ServerGalleryDataSource()
-        val local = RoomGalleryDataSource(database)
-        galleryRepository = GalleryRepository(remote, local)
-        getGalleryPhotosByKeyword = GetGalleryPhotosByKeyword(galleryRepository)
-    }
-
-    private fun buildViewModel(): ShowGalleryViewModel {
-        val factory = ShowGalleryViewModelFactory(getGalleryPhotosByKeyword)
-        return ViewModelProvider(this, factory).get(ShowGalleryViewModel::class.java)
     }
 
     private fun setUpUi() {
@@ -121,7 +99,6 @@ class ShowGalleryFragment : Fragment() {
             }
         })
     }
-
 
     private fun onClickPhoto(photo: PhotoGallery) {
         val action = ShowGalleryFragmentDirections
