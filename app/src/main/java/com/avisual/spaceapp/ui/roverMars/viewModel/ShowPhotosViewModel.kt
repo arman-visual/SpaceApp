@@ -9,9 +9,8 @@ import com.avisual.usecases.GetRoverPhotosByDate
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class ShowPhotosViewModel(var getRoverPhotosByDate: GetRoverPhotosByDate) :
+class ShowPhotosViewModel(private var getRoverPhotosByDate: GetRoverPhotosByDate) :
     ScopeViewModel() {
-
     private val _model = MutableLiveData<ShowPhotosUi>()
     val model: LiveData<ShowPhotosUi> get() = _model
 
