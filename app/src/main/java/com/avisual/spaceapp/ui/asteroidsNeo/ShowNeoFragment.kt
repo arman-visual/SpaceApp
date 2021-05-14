@@ -62,9 +62,6 @@ class ShowNeoFragment : ScopeFragment() {
 
         binding.showInput.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "DATA_PICKER")
-            datePicker.addOnPositiveButtonClickListener { epochDate ->
-                binding.showInput.text = giveFormatOutputDate(epochDate)
-            }
         }
         binding.search.setOnClickListener {
             viewModel.getAsteroidsByOnlyDate(
@@ -114,7 +111,11 @@ class ShowNeoFragment : ScopeFragment() {
             .setTitleText("Select date")
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .setCalendarConstraints(constraintsBuilder.build())
-            .build()
+            .build().apply {
+                addOnPositiveButtonClickListener { epochDate ->
+                    binding.showInput.text = giveFormatOutputDate(epochDate)
+                }
+            }
     }
 
     private fun giveFormatOutputDate(epochDate: Long): String {
