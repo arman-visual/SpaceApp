@@ -1,21 +1,22 @@
 
-# SpaceApp 
+# SpaceApp :rocket:
  ![space App logo](Space_App_banner.png)
 
 SpaceApp is an Application for search Neows, images and rover photos from NASA.
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/287px-NASA_logo.svg.png)
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/287px-NASA_logo.svg.png" width="240">
 
 ```bash
 Application make with Android and Kotlin
 ```
 
-## Best practice
+## Best practice :key:
 
 - S.O.L.I.D
 - MVVM (architect components)
 - Architecture Clean Code
 
-## Libraries used in this project
+## Libraries used in this project :books:
 
 - Retrofit
 - Gradle
@@ -24,7 +25,7 @@ Application make with Android and Kotlin
 - Room (persistence)
 - Coroutines & Flow from KTX 
 
-## Features
+## Features :calling:
 
 - Show photos of Rover Mars (Curiosity)
 - Show all photos of Gallery from NASA. You can search NASA images if you introduce a keyword, then you can see result.
@@ -32,7 +33,7 @@ Application make with Android and Kotlin
 
 - Download images from Gallery NASA and save it in database
 
-## Upcoming Features
+## Upcoming Features :hourglass_flowing_sand:
 
 - Show next launch of rockets with all available information.
 - Put notify from next launch programed.
