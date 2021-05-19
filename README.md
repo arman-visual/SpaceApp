@@ -19,7 +19,7 @@ Application make with Android and Kotlin
 ## Libraries used in this project :books:
 
 - Retrofit
-- Gradle
+- Glide
 - Koin (DI)
 - Android Jetpack (Navigation and safeArgs)
 - Room (persistence)
