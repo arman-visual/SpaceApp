@@ -23,7 +23,9 @@ Application make with Android and Kotlin
 - Koin (DI)
 - Android Jetpack (Navigation and safeArgs)
 - Room (persistence)
-- Coroutines & Flow from KTX 
+- Coroutines KTX
+- View Binding
+- Livedata & Flow 
 
 ## Features :calling:
 
