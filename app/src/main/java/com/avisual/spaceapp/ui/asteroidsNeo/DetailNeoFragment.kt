@@ -43,6 +43,7 @@ class DetailNeoFragment : ScopeFragment() {
             maxDiameter.text = neo.maxDiameter.toString()
             relativeVelocity.text = neo.relativeVelocityHour
             absoulteMagnitud.text = neo.absoluteMagnitudeH.toString()
+            imageNeo.setImageResource(R.drawable.asteroid)
             missDistance.text = neo.missDistance
             if (neo.isPotentiallyHazardousAsteroid) {
                 danger.setImageResource(R.drawable.danger_on)
