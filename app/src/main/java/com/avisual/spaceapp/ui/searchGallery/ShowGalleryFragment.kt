@@ -4,27 +4,27 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
-import com.avisual.spaceapp.database.Db
+import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
-import com.avisual.spaceapp.model.PhotoGallery
-import com.avisual.spaceapp.repository.PhotoGalleryRepository
+import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
+import com.avisual.spaceapp.ui.searchGallery.viewModel.GalleryUi
 import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
-import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModelFactory
+import org.koin.androidx.scope.ScopeFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ShowGalleryFragment : Fragment() {
+
+class ShowGalleryFragment : ScopeFragment() {
 
     private lateinit var binding: FragmentExploreGalleryBinding
-    private lateinit var viewModel: ShowGalleryViewModel
-    private lateinit var photosAdapter: GalleryPhotosAdapter
+    private val viewModel: ShowGalleryViewModel by viewModel()
+    private lateinit var adapter: GalleryPhotosAdapter
     private lateinit var navController: NavController
-    private lateinit var photoGalleryRepository: PhotoGalleryRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -35,8 +35,6 @@ class ShowGalleryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        buildDependencies()
-        viewModel = buildViewModel()
         setUpUi()
         subscribeUi()
         return binding.root
@@ -47,48 +45,35 @@ class ShowGalleryFragment : Fragment() {
         navController = view.findNavController()
     }
 
-    private fun buildDependencies() {
-        val database = Db.getDatabase(requireContext())
-        photoGalleryRepository = PhotoGalleryRepository(database)
-    }
-
-    private fun buildViewModel(): ShowGalleryViewModel {
-        val factory = ShowGalleryViewModelFactory(photoGalleryRepository)
-        return ViewModelProvider(this, factory).get(ShowGalleryViewModel::class.java)
-    }
-
-    private fun setUpUi() {
-        binding = FragmentExploreGalleryBinding.inflate(layoutInflater)
-        photosAdapter = GalleryPhotosAdapter(emptyList()) {
-            onClickPhoto(it)
-        }
-        binding.recycler.adapter = photosAdapter
-    }
-
-    private fun subscribeUi() {
-        viewModel.photosLibrary.observe(requireActivity()) {
-            if (!it.isNullOrEmpty()) {
-                photosAdapter.setItems(it)
-            } else {
-                Toast.makeText(
-                    requireActivity(),
-                    "Does not exist photos for this word",
-                    Toast.LENGTH_LONG
-                )
-                    .show()
-            }
-        }
-    }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         configureSearchView(inflater, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    private fun onClickPhoto(photo: PhotoGallery) {
-        val action = ShowGalleryFragmentDirections
-            .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
-        findNavController().navigate(action)
+    private fun setUpUi() {
+        binding = FragmentExploreGalleryBinding.inflate(layoutInflater)
+        adapter = GalleryPhotosAdapter(emptyList()) {
+            onClickPhoto(it)
+        }
+        binding.recycler.adapter = adapter
+    }
+
+    private fun subscribeUi() {
+        viewModel.photos.observe(requireActivity(), Observer(::updateUi))
+    }
+
+    private fun updateUi(model: GalleryUi) {
+        binding.progressBar.visibility =
+            if (model is GalleryUi.Loading) View.VISIBLE else View.GONE
+
+        if (model is GalleryUi.Content) {
+            if (model.photos.isNotEmpty()) {
+                adapter.setItems(model.photos)
+            } else {
+                adapter.setItems(model.photos)
+                requireActivity().toast(getString(R.string.message_no_found_photos))
+            }
+        }
     }
 
     private fun configureSearchView(inflater: MenuInflater, menu: Menu) {
@@ -113,5 +98,11 @@ class ShowGalleryFragment : Fragment() {
                 return false
             }
         })
+    }
+
+    private fun onClickPhoto(photo: PhotoGallery) {
+        val action = ShowGalleryFragmentDirections
+            .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
+        findNavController().navigate(action)
     }
 }

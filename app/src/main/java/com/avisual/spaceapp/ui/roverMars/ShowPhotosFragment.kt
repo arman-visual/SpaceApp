@@ -4,63 +4,58 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
+import com.avisual.spaceapp.data.model.PhotoRover
 import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
-import com.avisual.spaceapp.repository.PhotoRoverRepository
+import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosUi
 import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModel
-import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModelFactory
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.MaterialDatePicker
+import org.koin.androidx.scope.ScopeFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
-class ShowPhotosFragment : Fragment() {
+class ShowPhotosFragment : ScopeFragment() {
 
     companion object {
-        private const val DEFAULT_DATE_EARTH = "2015-06-03"
+        const val DATE_START_SEARCH_NEO = 1344272400000
+        const val TIME_ZONE = "UTC"
     }
 
     private lateinit var binding: FragmentShowPhotosBinding
     private lateinit var adapter: PhotosRoverAdapter
-    private lateinit var viewModel: ShowPhotosViewModel
-    private lateinit var photoRoverRepository: PhotoRoverRepository
+    private val viewModel: ShowPhotosViewModel by viewModel()
+    private lateinit var datePicker: MaterialDatePicker<Long>
+    private lateinit var outputDateFormat: SimpleDateFormat
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        buildDependencies()
-        viewModel = buildViewModel()
-        binding = FragmentShowPhotosBinding.inflate(layoutInflater)
+        configureCalendar()
+        setupUi()
+        subscribeUi()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        adapter = PhotosRoverAdapter(emptyList())
+    private fun setupUi() {
+        binding = FragmentShowPhotosBinding.inflate(layoutInflater)
+        adapter = PhotosRoverAdapter(emptyList()) {
+            onClickPhoto(it)
+        }
         binding.recycler.adapter = adapter
-        viewModel.findPhotosByDate(DEFAULT_DATE_EARTH, apiKey = getString(R.string.api_key))
-        binding.button.setOnClickListener { onClickSearchButton() }
-        subscribeUi()
-    }
 
-    private fun onClickSearchButton() {
-        var inputDay = binding.dyear.text
-        var inputMoth = binding.dmonth.text
-        var inputYear = binding.dyear.text
+        binding.showInput.setOnClickListener {
+            datePicker.show(requireActivity().supportFragmentManager, "DATA_PICKER")
+        }
 
-        var inputDate = "$inputYear-$inputMoth-$inputDay"
-        viewModel.findPhotosByDate(inputDate, apiKey = getString(R.string.api_key))
-    }
+        binding.search.setOnClickListener { onClickSearchButton() }
 
-    private fun buildDependencies() {
-        photoRoverRepository = PhotoRoverRepository()
-    }
-
-    private fun buildViewModel(): ShowPhotosViewModel {
-        val factory = ShowPhotosViewModelFactory(photoRoverRepository)
-        return ViewModelProvider(this, factory).get(ShowPhotosViewModel::class.java)
     }
 
     private fun subscribeUi() {
@@ -71,7 +66,60 @@ class ShowPhotosFragment : Fragment() {
         binding.progressBarM.visibility =
             if (model is ShowPhotosUi.Loading) View.VISIBLE else View.GONE
 
-        val photos = if (model is ShowPhotosUi.Content) model.photos else emptyList()
-        adapter.setItems(photos)
+        if (model is ShowPhotosUi.Content) {
+            if (model.photos.isNotEmpty()) {
+                adapter.setItems(model.photos)
+            } else {
+                adapter.setItems(model.photos)
+                requireActivity().toast(getString(R.string.message_no_photos))
+            }
+        }
     }
+
+    private fun configureCalendar() {
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone(TIME_ZONE))
+        val today = MaterialDatePicker.todayInUtcMilliseconds()
+
+        calendar.timeInMillis = DATE_START_SEARCH_NEO
+        calendar[Calendar.JANUARY] = Calendar.JANUARY
+        val startYear = calendar.timeInMillis
+
+        calendar.timeInMillis = today
+        calendar[Calendar.DECEMBER] = Calendar.DECEMBER
+        val finalYear = calendar.timeInMillis
+
+        val constraintsBuilder =
+            CalendarConstraints.Builder()
+                .setStart(startYear)
+                .setEnd(finalYear)
+
+        datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Select date")
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .setCalendarConstraints(constraintsBuilder.build())
+            .build().apply {
+                addOnPositiveButtonClickListener { epochDate ->
+                    binding.showInput.text = giveFormatOutputDate(epochDate) }
+            }
+    }
+
+    private fun giveFormatOutputDate(epochDate: Long): String {
+        outputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).apply {
+            timeZone = TimeZone.getTimeZone(TIME_ZONE)
+        }
+        return outputDateFormat.format(epochDate)
+    }
+
+    private fun onClickSearchButton() {
+        viewModel.findPhotosByDate(
+            binding.showInput.text.toString()
+        )
+    }
+
+    private fun onClickPhoto(photo: PhotoRover) {
+        val action =
+            ShowPhotosFragmentDirections.actionShowPhotosFragmentToDetailPhotoRoverFragment(photo)
+        findNavController().navigate(action)
+    }
+
 }

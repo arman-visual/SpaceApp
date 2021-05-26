@@ -2,14 +2,25 @@ package com.avisual.spaceapp.ui.asteroidsNeo
 
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityNeowsBinding
+import org.koin.androidx.scope.ScopeActivity
 
-class AsteroidsNeoActivity : AppCompatActivity() {
+class AsteroidsNeoActivity : ScopeActivity() {
+
+    private lateinit var binding: ActivityNeowsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityNeowsBinding.inflate(layoutInflater)
+        binding = ActivityNeowsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Log.i("AsteroidsNeoActivity","Iniciando esta actividad")
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        binding.bottomNavNeo.setupWithNavController(navController)
+        Log.i("AsteroidsNeoActivity", "Iniciando esta actividad")
     }
 }

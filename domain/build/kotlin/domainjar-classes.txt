@@ -1,0 +1,1 @@
+C:\Users\Arman\Documents\android_boost_training\SpaceApp\domain\build\classes\kotlin\main\com\avisual\domain\Neo.class;C:\Users\Arman\Documents\android_boost_training\SpaceApp\domain\build\classes\kotlin\main\com\avisual\domain\PhotoGallery.class;C:\Users\Arman\Documents\android_boost_training\SpaceApp\domain\build\classes\kotlin\main\com\avisual\domain\PhotoRover.class

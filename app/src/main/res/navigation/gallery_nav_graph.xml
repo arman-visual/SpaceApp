@@ -20,7 +20,7 @@
         tools:layout="@layout/fragment_detail_photo_gallery" >
         <argument
             android:name="photoArg"
-            app:argType="com.avisual.spaceapp.model.PhotoGallery"
+            app:argType="com.avisual.spaceapp.data.model.PhotoGallery"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>

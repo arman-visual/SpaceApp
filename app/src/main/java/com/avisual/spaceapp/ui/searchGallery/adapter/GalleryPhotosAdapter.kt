@@ -3,7 +3,7 @@ package com.avisual.spaceapp.ui.searchGallery.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.avisual.spaceapp.model.PhotoGallery
+import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.databinding.ItemGalleryPhotosBinding
 import com.bumptech.glide.Glide
 
