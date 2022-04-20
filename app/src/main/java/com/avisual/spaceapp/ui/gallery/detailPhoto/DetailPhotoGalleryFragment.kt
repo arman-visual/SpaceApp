@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.searchGallery
+package com.avisual.spaceapp.ui.gallery.detailPhoto
 
 import android.Manifest
 import android.app.DownloadManager
@@ -19,7 +19,7 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentDetailPhotoGalleryBinding
 import com.avisual.spaceapp.ui.common.loadUrl
-import com.avisual.spaceapp.ui.searchGallery.viewModel.DetailPhotoViewModel
+import com.avisual.spaceapp.ui.gallery.detailPhoto.viewModel.DetailPhotoViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel

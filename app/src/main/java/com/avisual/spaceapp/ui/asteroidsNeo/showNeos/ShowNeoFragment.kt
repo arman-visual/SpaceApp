@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.asteroidsNeo
+package com.avisual.spaceapp.ui.asteroidsNeo.showNeos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
-import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoUi
-import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.ShowNeoViewModel
+import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.ShowNeoUi
+import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.ShowNeoViewModel
 import com.avisual.spaceapp.ui.common.toast
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker

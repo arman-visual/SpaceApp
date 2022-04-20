@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
         android:orientation="vertical"
-        tools:context=".ui.searchGallery.DetailPhotoGalleryFragment">
+        tools:context=".ui.gallery.detailPhoto.DetailPhotoGalleryFragment">
 
         <RelativeLayout
             android:layout_width="match_parent"

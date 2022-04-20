@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.searchGallery
+package com.avisual.spaceapp.ui.gallery
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,7 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityNavGalleryBinding
 import org.koin.androidx.scope.ScopeActivity
 
-class NavGalleryActivity : ScopeActivity() {
+class GalleryActivity : ScopeActivity() {
 
     private lateinit var binding: ActivityNavGalleryBinding
     override fun onCreate(savedInstanceState: Bundle?) {

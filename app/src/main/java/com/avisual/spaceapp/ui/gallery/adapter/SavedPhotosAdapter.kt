@@ -1,20 +1,20 @@
-package com.avisual.spaceapp.ui.searchGallery.adapter
+package com.avisual.spaceapp.ui.gallery.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.avisual.spaceapp.R
+import com.avisual.spaceapp.databinding.ItemGallerySavephotoBinding
 import com.avisual.spaceapp.data.model.PhotoGallery
-import com.avisual.spaceapp.databinding.ItemGalleryPhotosBinding
-import com.bumptech.glide.Glide
 
-class GalleryPhotosAdapter(
+class SavedPhotosAdapter(
     var photos: List<PhotoGallery>,
     var photoOnClickLister: (PhotoGallery) -> Unit
 ) :
-    RecyclerView.Adapter<GalleryPhotosAdapter.ViewHolder>() {
+    RecyclerView.Adapter<SavedPhotosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemGalleryPhotosBinding
+        val binding = ItemGallerySavephotoBinding
             .inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -28,13 +28,16 @@ class GalleryPhotosAdapter(
         holder.itemView.setOnClickListener { photoOnClickLister(photos[position]) }
     }
 
-    override fun getItemCount(): Int = photos.size
+    override fun getItemCount(): Int {
+        return photos.size
+    }
 
-    class ViewHolder(var binding: ItemGalleryPhotosBinding) :
+    class ViewHolder(var binding: ItemGallerySavephotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(photo: PhotoGallery) {
-            Glide.with(binding.root.context).load(photo.url).into(binding.photoNasa)
+            binding.ivPhoto.setImageResource(R.drawable.ic_photo_saved)
+            binding.titlePhoto.text = photo.title
+            binding.photographer.text = photo.photographer
         }
     }
 
@@ -43,4 +46,7 @@ class GalleryPhotosAdapter(
         notifyDataSetChanged()
     }
 
+    fun getPhotoPosition(position: Int): PhotoGallery {
+        return photos[position]
+    }
 }

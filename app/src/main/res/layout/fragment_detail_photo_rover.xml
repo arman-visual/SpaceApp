@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:orientation="vertical"
-        tools:context=".ui.roverMars.DetailPhotoRoverFragment">
+        tools:context=".ui.roverMars.detailRover.DetailPhotoRoverFragment">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.roverMars
+package com.avisual.spaceapp.ui.roverMars.showRoverPhotos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import com.avisual.spaceapp.data.model.PhotoRover
 import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
 import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
-import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosUi
-import com.avisual.spaceapp.ui.roverMars.viewModel.ShowPhotosViewModel
+import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosUi
+import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.scope.ScopeFragment

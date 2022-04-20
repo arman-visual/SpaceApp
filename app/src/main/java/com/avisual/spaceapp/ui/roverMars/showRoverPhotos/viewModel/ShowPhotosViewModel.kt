@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.roverMars.viewModel
+package com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

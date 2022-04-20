@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.asteroidsNeo
+package com.avisual.spaceapp.ui.asteroidsNeo.storedNeos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.databinding.NeoStoredFragmentBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsSavedAdapter
-import com.avisual.spaceapp.ui.asteroidsNeo.viewModel.StoredNeoViewModel
+import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.StoredNeoViewModel
 import com.avisual.spaceapp.ui.common.toast
 import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel

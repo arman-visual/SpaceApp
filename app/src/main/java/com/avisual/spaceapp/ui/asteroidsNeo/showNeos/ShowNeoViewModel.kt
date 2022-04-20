@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.asteroidsNeo.viewModel
+package com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

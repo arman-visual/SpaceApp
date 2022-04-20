@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.roverMars
+package com.avisual.spaceapp.ui.roverMars.detailRover
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.navigation.fragment.navArgs
 import com.avisual.spaceapp.data.model.PhotoRover
 import com.avisual.spaceapp.databinding.FragmentDetailPhotoRoverBinding
 import com.avisual.spaceapp.ui.common.loadUrl
-import com.avisual.spaceapp.ui.roverMars.viewModel.DetailPhotoRoverViewModel
+import com.avisual.spaceapp.ui.roverMars.detailRover.viewModel.DetailPhotoRoverViewModel
 import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

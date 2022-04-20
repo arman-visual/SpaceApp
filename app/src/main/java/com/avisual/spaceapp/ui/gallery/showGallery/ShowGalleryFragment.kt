@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.searchGallery
+package com.avisual.spaceapp.ui.gallery.showGallery
 
 import android.os.Bundle
 import android.view.*
@@ -12,9 +12,9 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.ui.common.toast
-import com.avisual.spaceapp.ui.searchGallery.adapter.GalleryPhotosAdapter
-import com.avisual.spaceapp.ui.searchGallery.viewModel.GalleryUi
-import com.avisual.spaceapp.ui.searchGallery.viewModel.ShowGalleryViewModel
+import com.avisual.spaceapp.ui.gallery.adapter.GalleryPhotosAdapter
+import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.GalleryUi
+import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel
 import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.searchGallery
+package com.avisual.spaceapp.ui.gallery.savedPhoto
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
-import com.avisual.spaceapp.ui.searchGallery.adapter.SavedPhotosAdapter
-import com.avisual.spaceapp.ui.searchGallery.viewModel.SavedPhotosViewModel
+import com.avisual.spaceapp.ui.gallery.adapter.SavedPhotosAdapter
+import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel

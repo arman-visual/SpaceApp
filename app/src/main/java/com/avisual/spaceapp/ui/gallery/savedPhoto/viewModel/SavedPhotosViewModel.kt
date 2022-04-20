@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.searchGallery.viewModel
+package com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="4dp"
     android:padding="8dp"
-    tools:context=".ui.roverMars.ShowPhotosFragment">
+    tools:context=".ui.roverMars.showRoverPhotos.ShowPhotosFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"

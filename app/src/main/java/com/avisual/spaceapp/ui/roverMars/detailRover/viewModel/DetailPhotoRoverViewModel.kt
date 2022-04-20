@@ -1,4 +1,4 @@
-package com.avisual.spaceapp.ui.roverMars.viewModel
+package com.avisual.spaceapp.ui.roverMars.detailRover.viewModel
 
 import com.avisual.spaceapp.ui.common.ScopeViewModel
 import com.avisual.usecases.GetRoverPhotosByDate

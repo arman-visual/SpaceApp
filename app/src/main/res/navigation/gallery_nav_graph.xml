@@ -6,7 +6,7 @@
     app:startDestination="@id/exploreGalleryFragment">
     <fragment
         android:id="@+id/exploreGalleryFragment"
-        android:name="com.avisual.spaceapp.ui.searchGallery.ShowGalleryFragment"
+        android:name="com.avisual.spaceapp.ui.gallery.showGallery.ShowGalleryFragment"
         android:label="fragment_explore_gallery"
         tools:layout="@layout/fragment_explore_gallery" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailPhotoGalleryFragment"
-        android:name="com.avisual.spaceapp.ui.searchGallery.DetailPhotoGalleryFragment"
+        android:name="com.avisual.spaceapp.ui.gallery.detailPhoto.DetailPhotoGalleryFragment"
         android:label="fragment_detail_photo_gallery"
         tools:layout="@layout/fragment_detail_photo_gallery" >
         <argument
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/savedPhotosFragment"
-        android:name="com.avisual.spaceapp.ui.searchGallery.SavedPhotosFragment"
+        android:name="com.avisual.spaceapp.ui.gallery.savedPhoto.SavedPhotosFragment"
         android:label="fragment_saved_photos"
         tools:layout="@layout/fragment_saved_photos" >
         <action
