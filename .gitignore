@@ -13,3 +13,37 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Generated files
+bin/
+gen/
+out/
+
+# Gradle files
+.gradle/
+build/
+
+# Intellij
+*.iml .idea/ .idea/workspace.xml
+
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+
+#amplify
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/mock-data
+amplify/backend/amplify-meta.json
+amplify/backend/awscloudformation
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplify-build-config.json
+amplify-gradle-config.json
+amplifytools.xcconfig
