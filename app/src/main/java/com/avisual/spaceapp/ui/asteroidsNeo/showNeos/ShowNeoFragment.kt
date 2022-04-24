@@ -12,8 +12,6 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
-import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.ShowNeoUi
-import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.ShowNeoViewModel
 import com.avisual.spaceapp.ui.common.toast
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker

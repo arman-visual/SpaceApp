@@ -11,22 +11,11 @@ import com.avisual.spaceapp.data.database.RoomNeoDataSource
 import com.avisual.spaceapp.data.server.ServerGalleryDataSource
 import com.avisual.spaceapp.data.server.ServerNeoDataSource
 import com.avisual.spaceapp.data.server.ServerRoverDataSource
-import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
-import com.avisual.spaceapp.ui.asteroidsNeo.detailNeo.DetailNeoFragment
-import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoFragment
-import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.StoredNeoFragment
 import com.avisual.spaceapp.ui.asteroidsNeo.detailNeo.DetailNeoViewModel
-import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.ShowNeoViewModel
+import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.StoredNeoViewModel
-import com.avisual.spaceapp.ui.roverMars.detailRover.DetailPhotoRoverFragment
-import com.avisual.spaceapp.ui.roverMars.NavRoverMarsActivity
-import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.ShowPhotosFragment
 import com.avisual.spaceapp.ui.roverMars.detailRover.viewModel.DetailPhotoRoverViewModel
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
-import com.avisual.spaceapp.ui.gallery.detailPhoto.DetailPhotoGalleryFragment
-import com.avisual.spaceapp.ui.gallery.GalleryActivity
-import com.avisual.spaceapp.ui.gallery.savedPhoto.SavedPhotosFragment
-import com.avisual.spaceapp.ui.gallery.showGallery.ShowGalleryFragment
 import com.avisual.spaceapp.ui.gallery.detailPhoto.viewModel.DetailPhotoViewModel
 import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel
@@ -56,48 +45,26 @@ val repoModule = module {
 }
 
 val scopesModule = module {
-
-    scope(named<GalleryActivity>()) {}
-    scope(named<ShowGalleryFragment>()) {
-        viewModel { ShowGalleryViewModel(get()) }
-    }
-    scope(named<DetailPhotoGalleryFragment>()) {
-        viewModel { DetailPhotoViewModel(get(), get(), get()) }
-    }
-    scope(named<SavedPhotosFragment>()) {
-        viewModel { SavedPhotosViewModel(get(), get(), get()) }
-    }
-
-    scope(named<NavRoverMarsActivity>()) {}
-        scope(named<ShowPhotosFragment>()) {
-            viewModel { ShowPhotosViewModel(get()) }
-        }
-        scope(named<DetailPhotoRoverFragment>()) {
-            viewModel { DetailPhotoRoverViewModel(get()) }
-        }
-
-    scope(named<AsteroidsNeoActivity>()) {}
-        scope(named<ShowNeoFragment>()) {
-            viewModel { ShowNeoViewModel(get()) }
-        }
-        scope(named<DetailNeoFragment>()) {
-            viewModel { DetailNeoViewModel(get(), get(), get()) }
-        }
-        scope(named<StoredNeoFragment>()) {
-            viewModel { StoredNeoViewModel(get(), get()) }
-        }
+    viewModel { ShowGalleryViewModel(get()) }
+    viewModel { DetailPhotoViewModel(get(), get(), get()) }
+    viewModel { SavedPhotosViewModel(get(), get(), get()) }
+    viewModel { ShowPhotosViewModel(get()) }
+    viewModel { DetailPhotoRoverViewModel(get()) }
+    viewModel { ShowNeoViewModel(get()) }
+    viewModel { DetailNeoViewModel(get(), get(), get()) }
+    viewModel { StoredNeoViewModel(get(), get()) }
 }
 
 val useCasesModule = module {
-    single { DeleteGalleryPhoto(get()) }
-    single { GetGalleryPhotoById(get()) }
-    single { GetGalleryPhotosByKeyword(get()) }
-    single { SaveGalleryPhoto(get()) }
-    single { GetAllStoredPhotos(get()) }
-    single { SaveNeoInDb(get()) }
-    single { GetNeoById(get()) }
-    single { GetStoredNeos(get()) }
-    single { RemoveNeo(get()) }
-    single { GetAllNeoByDate(get()) }
-    single { GetRoverPhotosByDate(get()) }
+    factory { DeleteGalleryPhoto(get()) }
+    factory { GetGalleryPhotoById(get()) }
+    factory { GetGalleryPhotosByKeyword(get()) }
+    factory { SaveGalleryPhoto(get()) }
+    factory { GetAllStoredPhotos(get()) }
+    factory { SaveNeoInDb(get()) }
+    factory { GetNeoById(get()) }
+    factory { GetStoredNeos(get()) }
+    factory { RemoveNeo(get()) }
+    factory { GetAllNeoByDate(get()) }
+    factory { GetRoverPhotosByDate(get()) }
 }
