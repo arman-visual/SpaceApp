@@ -2,49 +2,48 @@ package com.avisual.spaceapp.ui.gallery.showGallery.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.data.model.PhotoGallery
-import com.avisual.spaceapp.data.toGalleryFramework
-import com.avisual.spaceapp.ui.common.ScopeViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.avisual.domain.PhotoGallery
 import com.avisual.usecases.GetGalleryPhotosByKeyword
 import kotlinx.coroutines.launch
 
 class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword) :
-    ScopeViewModel() {
+    ViewModel() {
 
     companion object {
         private const val DEFAULT_KEYWORD = "Nasa"
     }
 
-    private val _photos = MutableLiveData<GalleryUi>()
-    val photos: LiveData<GalleryUi>
-        get() = _photos
+    private val _model = MutableLiveData<GalleryUi>()
+    val model: LiveData<GalleryUi>
+        get() {
+            if (_model.value == null) refresh()
+            return _model
+        }
 
-    init {
-        refresh()
-    }
-
-    private fun refresh() = launch {
-        _photos.value = GalleryUi.Loading
+    private fun refresh() = viewModelScope.launch {
+        _model.value = GalleryUi.Loading
 
         val response = getGalleryPhotosByKeyword.invoke(DEFAULT_KEYWORD)
-            .map { galleryDomain -> galleryDomain.toGalleryFramework() }
-        _photos.value =
+
+        _model.value =
             GalleryUi.Content(response)
     }
 
     fun findPhotosByKeyword(keyword: String) {
-        launch {
-            _photos.value = GalleryUi.Loading
+        viewModelScope.launch {
+            _model.value = GalleryUi.Loading
 
             val response = getGalleryPhotosByKeyword.invoke(keyword)
-                .map { galleryDomain -> galleryDomain.toGalleryFramework() }
-            _photos.value =
+            _model.value =
                 GalleryUi.Content(response)
         }
     }
+
+    sealed class GalleryUi {
+        object Loading : GalleryUi()
+        class Content(val photos: List<PhotoGallery>) : GalleryUi()
+    }
 }
 
-sealed class GalleryUi {
-    object Loading : GalleryUi()
-    class Content(val photos: List<PhotoGallery>) : GalleryUi()
-}

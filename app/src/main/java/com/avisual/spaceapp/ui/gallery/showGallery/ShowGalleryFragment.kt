@@ -10,11 +10,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.PhotoGallery
+import com.avisual.spaceapp.data.toGalleryFramework
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
 import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.gallery.adapter.GalleryPhotosAdapter
-import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.GalleryUi
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel
+import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel.*
 import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,6 +44,7 @@ class ShowGalleryFragment : ScopeFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
+        //viewModel.refresh()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -59,7 +61,7 @@ class ShowGalleryFragment : ScopeFragment() {
     }
 
     private fun subscribeUi() {
-        viewModel.photos.observe(requireActivity(), Observer(::updateUi))
+        viewModel.model.observe(viewLifecycleOwner, Observer(::updateUi))
     }
 
     private fun updateUi(model: GalleryUi) {
@@ -68,9 +70,9 @@ class ShowGalleryFragment : ScopeFragment() {
 
         if (model is GalleryUi.Content) {
             if (model.photos.isNotEmpty()) {
-                adapter.setItems(model.photos)
+                adapter.setItems(model.photos.map { it.toGalleryFramework() })
             } else {
-                adapter.setItems(model.photos)
+                adapter.setItems(model.photos.map { it.toGalleryFramework() })
                 requireActivity().toast(getString(R.string.message_no_found_photos))
             }
         }
