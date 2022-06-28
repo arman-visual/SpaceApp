@@ -69,10 +69,9 @@ class ShowGalleryFragment : ScopeFragment() {
             if (model is GalleryUi.Loading) View.VISIBLE else View.GONE
 
         if (model is GalleryUi.Content) {
-            if (model.photos.isNotEmpty()) {
+            if (!model.photos.isNullOrEmpty()) {
                 adapter.setItems(model.photos.map { it.toGalleryFramework() })
             } else {
-                adapter.setItems(model.photos.map { it.toGalleryFramework() })
                 requireActivity().toast(getString(R.string.message_no_found_photos))
             }
         }

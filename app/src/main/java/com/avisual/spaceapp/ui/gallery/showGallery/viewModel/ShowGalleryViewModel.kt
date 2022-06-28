@@ -36,14 +36,18 @@ class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhot
             _model.value = GalleryUi.Loading
 
             val response = getGalleryPhotosByKeyword.invoke(keyword)
-            _model.value =
-                GalleryUi.Content(response)
+            response?.let {
+                _model.value =
+                    GalleryUi.Content(it)
+            }?:run {
+                _model.value = GalleryUi.Content(emptyList())
+            }
         }
     }
 
     sealed class GalleryUi {
         object Loading : GalleryUi()
-        class Content(val photos: List<PhotoGallery>) : GalleryUi()
+        data class Content(val photos: List<PhotoGallery>? = null) : GalleryUi()
     }
 }
 
