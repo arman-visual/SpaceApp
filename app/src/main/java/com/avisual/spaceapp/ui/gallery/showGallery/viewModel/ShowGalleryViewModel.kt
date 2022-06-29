@@ -27,8 +27,12 @@ class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhot
 
         val response = getGalleryPhotosByKeyword.invoke(DEFAULT_KEYWORD)
 
-        _model.value =
-            GalleryUi.Content(response)
+        response?.let {
+            _model.value =
+                GalleryUi.Content(it)
+        }?:run {
+            _model.value = GalleryUi.Content(emptyList())
+        }
     }
 
     fun findPhotosByKeyword(keyword: String) {

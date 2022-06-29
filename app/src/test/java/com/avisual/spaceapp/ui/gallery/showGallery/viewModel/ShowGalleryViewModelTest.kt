@@ -1,6 +1,7 @@
 package com.avisual.spaceapp.ui.gallery.showGallery.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import com.avisual.domain.PhotoGallery
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel.GalleryUi
 import com.avisual.usecases.GetGalleryPhotosByKeyword
@@ -18,6 +19,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
@@ -30,6 +32,9 @@ class ShowGalleryViewModelTest {
 
     @Mock
     lateinit var getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword
+
+    @Mock
+    private lateinit var observer: Observer<GalleryUi>
 
     private lateinit var viewModel: ShowGalleryViewModel
 
@@ -48,7 +53,7 @@ class ShowGalleryViewModelTest {
 
     @Before
     fun setUp() {
-        Dispatchers.setMain(UnconfinedTestDispatcher())//UnconfinedTestDispatcher()
+        Dispatchers.setMain(UnconfinedTestDispatcher())
         viewModel = ShowGalleryViewModel(getGalleryPhotosByKeyword)
     }
 
@@ -58,32 +63,56 @@ class ShowGalleryViewModelTest {
             //Given
             val photos = listOf(fakePhoto.copy(nasa_id = "1"))
             whenever(getGalleryPhotosByKeyword.invoke("Nasa")).thenReturn(photos)
+            viewModel.model.observeForever(observer)
             //When
-
             //Then
-            assertEquals(GalleryUi.Content(photos), viewModel.model.value)//Valor esperado - Valor obtenido
-            assert(viewModel.model.value == GalleryUi.Content(photos))
+            assertEquals(GalleryUi.Content(photos), viewModel.model.value)
         }
 
     @Test
-    fun `observing LiveData when findByKeyword returns null`() =
+    fun `when viewModel is initialized it will be launched default search and return null`() =
         runTest {
             //Given
             whenever(getGalleryPhotosByKeyword.invoke("Nasa")).thenReturn(null)
+            viewModel.model.observeForever(observer)
             //When
-            viewModel.findPhotosByKeyword("Nasa")
             //Then
-            assertEquals(GalleryUi.Content(emptyList()), viewModel.model.value)//Valor esperado - Valor obtenido
+            verify(observer).onChanged(GalleryUi.Content(emptyList()))
         }
 
     @Test
-    fun `observing LiveData when findByKeyword returns photos`() =
+    fun `when viewModel is initialized then it will be launched default search and return photos by Keyword Nasa`() =
         runTest {
             //Given
             val photos = listOf(fakePhoto.copy(nasa_id = "1"))
             whenever(getGalleryPhotosByKeyword.invoke("Nasa")).thenReturn(photos)
+            viewModel.model.observeForever(observer)
+            //When
+            //Then
+            verify(observer).onChanged(GalleryUi.Content(photos))
+        }
+
+    @Test
+    fun `when called findByKeyword then returns null`() =
+        runTest {
+            //Given
+            whenever(getGalleryPhotosByKeyword.invoke("Nasa")).thenReturn(null)
+            viewModel.model.observeForever(observer)
             //When
             viewModel.findPhotosByKeyword("Nasa")
+            //Then
+            assertEquals(GalleryUi.Content(emptyList()), viewModel.model.value)
+        }
+
+    @Test
+    fun `when called findByKeyword then returns photos`() =
+        runTest {
+            //Given
+            val photos = listOf(fakePhoto.copy(nasa_id = "1"))
+            whenever(getGalleryPhotosByKeyword.invoke("Marth")).thenReturn(photos)
+            viewModel.model.observeForever(observer)
+            //When
+            viewModel.findPhotosByKeyword("Marth")
             //Then
             assertEquals(GalleryUi.Content(photos), viewModel.model.value)
         }

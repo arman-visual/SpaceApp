@@ -24,9 +24,9 @@ class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ScopeView
             _listsAsteroids.value = ShowNeoUi.Content(response)
         }
     }
-}
 
-sealed class ShowNeoUi {
-    object Loading : ShowNeoUi()
-    class Content(val asteroids: List<Neo>) : ShowNeoUi()
+    sealed class ShowNeoUi {
+        object Loading : ShowNeoUi()
+        class Content(val asteroids: List<Neo>) : ShowNeoUi()
+    }
 }
