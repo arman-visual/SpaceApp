@@ -2,9 +2,10 @@ package com.avisual.spaceapp.ui.gallery.detailPhoto.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.data.toGalleryDomain
-import com.avisual.spaceapp.ui.common.ScopeViewModel
 import com.avisual.usecases.DeleteGalleryPhoto
 import com.avisual.usecases.GetGalleryPhotoById
 import com.avisual.usecases.SaveGalleryPhoto
@@ -15,14 +16,14 @@ class DetailPhotoViewModel(
     private val deleteGalleryPhoto: DeleteGalleryPhoto,
     private val getGalleryPhotoById: GetGalleryPhotoById
 ) :
-    ScopeViewModel() {
+    ViewModel() {
 
     private val _statusFavorite = MutableLiveData(false)
     val statusFavorite: LiveData<Boolean>
         get() = _statusFavorite
 
     fun checkIfPhotoSaved(photoGallery: PhotoGallery) {
-        launch {
+        viewModelScope.launch {
             _statusFavorite.postValue(isPhotoInDB(photoGallery))
         }
     }
@@ -32,19 +33,19 @@ class DetailPhotoViewModel(
     }
 
     private fun savePhotoInDb(photoGallery: PhotoGallery) {
-        launch {
+        viewModelScope.launch {
             saveGalleryPhoto.invoke(photoGallery.toGalleryDomain())
         }
     }
 
     private fun deletePhotoInDB(photoGallery: PhotoGallery) {
-        launch {
+        viewModelScope.launch {
             deleteGalleryPhoto.invoke(photoGallery.toGalleryDomain())
         }
     }
 
     fun changeSaveStatusOfPhoto(photoGallery: PhotoGallery) {
-        launch {
+        viewModelScope.launch {
             val newFavoriteStatus = if (isPhotoInDB(photoGallery)) {
                 deletePhotoInDB(photoGallery)
                 false
