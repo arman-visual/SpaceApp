@@ -1,6 +1,7 @@
 package com.avisual.spaceapp.ui.gallery.savedPhoto
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,8 +44,19 @@ class SavedPhotosFragment : ScopeFragment() {
     }
 
     private fun subscribeUi() {
-        viewModel.storedPhotos.observe(requireActivity()) {
-            photosAdapter.setItems(it)
+        viewModel.modelSavedPhotos.observe(requireActivity()) { model ->
+            if (model == null)
+                Log.e("SavedPhotosFragment", "Modelo NULL")
+            else {
+                when (model) {
+                    is SavedPhotosViewModel.SavedPhotosUi.Content -> {
+                        if (model.storedPhotos != null)
+                            Log.e("SavedPhotosFragment", "No hay fotos guardadas")
+                        else
+                            photosAdapter.setItems(model.storedPhotos!!)
+                    }
+                }
+            }
         }
     }
 

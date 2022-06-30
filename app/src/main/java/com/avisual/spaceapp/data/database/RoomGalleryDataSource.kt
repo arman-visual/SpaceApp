@@ -13,9 +13,13 @@ class RoomGalleryDataSource(db: Db) : GalleryLocalDataSource {
 
     private val galleryDao = db.photoDao()
 
-    override fun getStoredPhotosInDb(): Flow<List<PhotoGallery>> {
-        return galleryDao.getStoredPhotos().map { listFramework ->
-            listFramework.map { frameworkGallery -> frameworkGallery.toGalleryDomain() }
+    override fun getStoredPhotosInDb(): Flow<List<PhotoGallery>>? {
+        return galleryDao.getStoredPhotos()?.let { flow ->
+            flow.map { listPhotosRoom ->
+                listPhotosRoom.map { it.toGalleryDomain() }
+            }
+        } ?: run {
+            null
         }
     }
 
