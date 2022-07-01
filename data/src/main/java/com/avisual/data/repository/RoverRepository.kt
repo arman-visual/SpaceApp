@@ -8,7 +8,7 @@ class RoverRepository(
     private val apiKey: String
 ) {
 
-    suspend fun getRoverPhotosByDate(date: String): List<PhotoRover> {
+    suspend fun getRoverPhotosByDate(date: String): List<PhotoRover>? {
         return roverRemoteDataSource.getPhotosRoverByDate(date, apiKey)
     }
 }
