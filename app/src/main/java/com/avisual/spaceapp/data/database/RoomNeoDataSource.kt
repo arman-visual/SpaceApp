@@ -11,8 +11,8 @@ class RoomNeoDataSource(db: Db) : NeoLocalDataSource {
 
     private val neoDao = db.asteroidDao()
 
-    override fun getAllStoredNeo(): Flow<List<DomainNeo>> =
-        neoDao.getNeoWithFlow().map { listNeoFramework ->
+    override fun getAllStoredNeo(): Flow<List<DomainNeo>>? =
+        neoDao.getNeoWithFlow()?.map { listNeoFramework ->
             listNeoFramework.map { frameworkNeo -> frameworkNeo.toDomainNeo() }
         }
 

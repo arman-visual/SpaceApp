@@ -17,7 +17,7 @@ class NeoRepository(
         return remoteDataSource.getAllNeoByDate(startDate, apiKey)
     }
 
-    fun getAllSavedNeo(): Flow<List<Neo>> {
+    fun getAllSavedNeo(): Flow<List<Neo>>? {
         return localDataSource.getAllStoredNeo()
     }
 

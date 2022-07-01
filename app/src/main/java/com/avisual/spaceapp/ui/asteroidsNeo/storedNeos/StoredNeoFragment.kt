@@ -35,8 +35,11 @@ class StoredNeoFragment : ScopeFragment() {
     }
 
     private fun subscribe() {
-        viewModel.asteroidsSaved.observe(requireActivity()) {
-            adapter.setItems(it)
+        viewModel.asteroidsSaved.observe(viewLifecycleOwner) { neos ->
+            if (!neos.isNullOrEmpty())
+                adapter.setItems(neos)
+            else
+                requireActivity().toast("No hay Asteroides Almacenados")
         }
     }
 
