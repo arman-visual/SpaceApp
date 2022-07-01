@@ -2,31 +2,31 @@ package com.avisual.spaceapp.ui.asteroidsNeo.showNeos
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.ui.common.ScopeViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.data.toFrameworkNeo
 import com.avisual.usecases.GetAllNeoByDate
 import kotlinx.coroutines.launch
 
-class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ScopeViewModel() {
+class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ViewModel() {
 
-    private val _listsAsteroids = MutableLiveData<ShowNeoUi>()
-    val listAsteroids: LiveData<ShowNeoUi> get() = _listsAsteroids
+    private val _model = MutableLiveData<ShowNeoUi>()
+    val model: LiveData<ShowNeoUi> get() = _model
 
     fun getAsteroidsByOnlyDate(dateStart: String) {
 
-        launch {
-            _listsAsteroids.value = ShowNeoUi.Loading
-            val response = getAllNeoByDate.invoke(dateStart).map { domainNeo ->
+        viewModelScope.launch {
+            _model.value = ShowNeoUi.Loading
+            val response = getAllNeoByDate.invoke(dateStart)?.map { domainNeo ->
                 domainNeo.toFrameworkNeo()
             }
-
-            _listsAsteroids.value = ShowNeoUi.Content(response)
+            _model.value = ShowNeoUi.Content(response)
         }
     }
 
     sealed class ShowNeoUi {
         object Loading : ShowNeoUi()
-        class Content(val asteroids: List<Neo>) : ShowNeoUi()
+        data class Content(val asteroids: List<Neo>? = null) : ShowNeoUi()
     }
 }

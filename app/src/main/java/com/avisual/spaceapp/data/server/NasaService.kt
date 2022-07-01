@@ -23,5 +23,5 @@ interface NasaService {
     suspend fun searchNeoWsByOnlyStartDate(
         @Query("start_date") startDate: String,
         @Query("api_key") apiKey: String
-    ): NearEarthObjectResult
+    ): NearEarthObjectResult?
 }

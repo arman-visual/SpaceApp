@@ -1,5 +1,7 @@
 package com.avisual.spaceapp.ui.asteroidsNeo.showNeos
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +14,7 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.databinding.ShowNeoFragmentBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsNeoAdapter
-import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoViewModel.*
+import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoViewModel.ShowNeoUi
 import com.avisual.spaceapp.ui.common.toast
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -62,28 +64,32 @@ class ShowNeoFragment : ScopeFragment() {
         binding.showInput.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "DATA_PICKER")
         }
-        binding.search.setOnClickListener {
-            viewModel.getAsteroidsByOnlyDate(
-                binding.showInput.text.toString()
-            )
+        binding.search.setOnClickListener {//TODO aquispe controlar consultas sin conexion
+            val cm = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (cm.activeNetworkInfo!=null && cm.activeNetworkInfo!!.isAvailable)
+                viewModel.getAsteroidsByOnlyDate(
+                    binding.showInput.text.toString()
+                )
+            else
+                requireActivity().toast("No hay internet")
         }
         adapter = AsteroidsNeoAdapter(emptyList()) { onClickPhoto(it) }
         binding.recycler.adapter = adapter
     }
 
     private fun subscribe() {
-        viewModel.listAsteroids.observe(requireActivity(), Observer(::updateUi))
+        viewModel.model.observe(requireActivity(), Observer(::updateUi))
     }
 
     private fun updateUi(model: ShowNeoUi) {
+
         binding.progressBarNeo.visibility =
             if (model is ShowNeoUi.Loading) View.VISIBLE else View.GONE
 
         if (model is ShowNeoUi.Content) {
-            if (model.asteroids.isNotEmpty()) {
+            if (!model.asteroids.isNullOrEmpty()) {
                 adapter.setItems(model.asteroids)
             } else {
-                adapter.setItems(model.asteroids)
                 requireActivity().toast(getString(R.string.message_no_near))
             }
         }
