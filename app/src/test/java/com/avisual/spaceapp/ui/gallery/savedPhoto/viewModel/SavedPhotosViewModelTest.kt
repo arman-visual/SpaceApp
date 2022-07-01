@@ -76,7 +76,6 @@ class SavedPhotosViewModelTest {
             //WHEN
             viewModel.startCollectingPhotos()
             //THEN
-            verify(observer).onChanged(null)
             verify(observer).onChanged(SavedPhotosUi.Content(photos.map { it.toGalleryFramework() }))
             assertEquals(SavedPhotosUi.Content(photos.map { it.toGalleryFramework() }), viewModel.modelSavedPhotos.value)
         }
@@ -90,7 +89,6 @@ class SavedPhotosViewModelTest {
             //WHEN
             viewModel.startCollectingPhotos()
             //THEN
-            verify(observer).onChanged(null)
             assertEquals(null, viewModel.modelSavedPhotos.value)
         }
 

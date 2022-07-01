@@ -19,7 +19,7 @@ class SavedPhotosViewModel(
 ) :
     ViewModel() {
 
-    private val _modelSavedPhotos = MutableLiveData<SavedPhotosUi>(null)
+    private val _modelSavedPhotos = MutableLiveData<SavedPhotosUi>()
     val modelSavedPhotos: LiveData<SavedPhotosUi> get() = _modelSavedPhotos
 
     init {
