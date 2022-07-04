@@ -68,6 +68,7 @@ class ShowPhotosViewModelTest {
             viewModel.findPhotosByDate("22-02-2021")
             //WHEN
             assert(viewModel.model.value == ShowPhotosUi.Content(photosRover.map { it.toFrameworkRover() }))
+            verify(observe).onChanged(ShowPhotosUi.Content(photosRover.map { it.toFrameworkRover() }))
         }
 
     @Test
@@ -80,7 +81,7 @@ class ShowPhotosViewModelTest {
             viewModel.findPhotosByDate("22-02-2021")
             //WHEN
             assert(viewModel.model.value == ShowPhotosUi.Content(null))
-            verify()
+            verify(observe).onChanged(ShowPhotosUi.Content(null))
         }
 
     @After
