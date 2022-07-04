@@ -1,5 +1,6 @@
 package com.avisual.spaceapp.ui.gallery.showGallery
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
@@ -12,6 +13,7 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.data.toGalleryFramework
 import com.avisual.spaceapp.databinding.FragmentExploreGalleryBinding
+import com.avisual.spaceapp.ui.common.checkInternetConnection
 import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.gallery.adapter.GalleryPhotosAdapter
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel
@@ -54,9 +56,7 @@ class ShowGalleryFragment : ScopeFragment() {
 
     private fun setUpUi() {
         binding = FragmentExploreGalleryBinding.inflate(layoutInflater)
-        adapter = GalleryPhotosAdapter(emptyList()) {
-            onClickPhoto(it)
-        }
+        adapter = GalleryPhotosAdapter(emptyList()) { onClickPhoto(it) }
         binding.recycler.adapter = adapter
     }
 
@@ -85,7 +85,7 @@ class ShowGalleryFragment : ScopeFragment() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(keyword: String?): Boolean {
-                if (keyword != null) viewModel.findPhotosByKeyword(keyword)
+                if (keyword != null && requireActivity().checkInternetConnection(Context.CONNECTIVITY_SERVICE)) viewModel.findPhotosByKeyword(keyword)
                 else Toast.makeText(
                     requireActivity(),
                     "You have insert a word!",
