@@ -4,7 +4,6 @@ import com.avisual.data.source.*
 import com.avisual.domain.Neo
 import com.avisual.domain.PhotoGallery
 import com.avisual.domain.PhotoRover
-import com.avisual.spaceapp.data.database.Db
 import com.avisual.spaceapp.di.repoModule
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -30,7 +29,7 @@ private val mockedDataSource = module {
     single<NeoRemoteDataSource> { FakeNeoRemoteDataSource() }
     single<RoverRemoteDataSource> { FakeRoverRemoteDataSource() }
 }
-private val fakePhoto =
+val fakePhoto =
     PhotoGallery(
         nasa_id = "U1",
         jsonAllSized = "XX",
@@ -43,7 +42,7 @@ private val fakePhoto =
 
     )
 
-private val fakeNeo = Neo(
+val fakeNeo = Neo(
     "AST1",
     "Apofis",
     true,
@@ -59,7 +58,7 @@ private val fakeNeo = Neo(
     "22-01-2022"
 )
 
-private val fakeRover = PhotoRover(
+val fakeRover = PhotoRover(
     1,
     "www.nasa.org",
     "afternoon in mars",
@@ -92,9 +91,12 @@ val defaultFakeRoverPhotos = listOf(
     fakeRover.copy(id = 3),
 )
 
+var defaultStoredPhotos: MutableList<PhotoGallery> =
+    mutableListOf(fakePhoto.copy(nasa_id = "S1"), fakePhoto.copy(nasa_id = "S2"))
+
 class FakeGalleryLocalDataSource : GalleryLocalDataSource {
-    var storedPhotos: MutableList<PhotoGallery> =
-        mutableListOf(fakePhoto.copy(nasa_id = "S1"), fakePhoto.copy(nasa_id = "S2"))
+
+    var storedPhotos = defaultStoredPhotos
 
     override fun getStoredPhotosInDb(): Flow<List<PhotoGallery>>? = flowOf(storedPhotos) ?: null
 
