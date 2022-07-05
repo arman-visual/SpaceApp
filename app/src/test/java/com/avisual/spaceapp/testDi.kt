@@ -86,9 +86,9 @@ val defaultFakeNeoPhotos = listOf(
 )
 
 val defaultFakeRoverPhotos = listOf(
-    fakeRover.copy(id = 1),
-    fakeRover.copy(id = 2),
-    fakeRover.copy(id = 3),
+    fakeRover.copy(id = 1, earth_date = "23-02-12"),
+    fakeRover.copy(id = 2, earth_date = "23-02-12"),
+    fakeRover.copy(id = 3, earth_date = "23-02-12"),
 )
 
 var defaultStoredPhotos: MutableList<PhotoGallery> =
@@ -154,7 +154,7 @@ class FakeRoverRemoteDataSource : RoverRemoteDataSource {
 
     private val roverPhotos = defaultFakeRoverPhotos
     override suspend fun getPhotosRoverByDate(date: String, apiKey: String): List<PhotoRover>? {
-        return defaultFakeRoverPhotos ?: null
+        return roverPhotos ?: null
     }
 
 }
