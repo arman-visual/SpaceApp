@@ -55,24 +55,24 @@ class DetailPhotoIntegrationTest : KoinTest {
     }
 
     @Test
-    fun `when check if the current photo is favorite`() {
+    fun `observing LiveData when check photo is favorite`() {
         //GIVEN
         viewModel.statusFavorite.observeForever(observer)
         //WHEN
         viewModel.checkIfPhotoSaved(fakePhoto.toGalleryFramework().copy(nasa_id = "S2"))
         //THEN
-        verify(observer, times(1)).onChanged(viewModel.statusFavorite.value)
+        verify(observer, times(1)).onChanged(true)
         assert(viewModel.statusFavorite.value == true)
     }
 
     @Test
-    fun `when pressed favorite`() {
+    fun `observing LiveData when change favorite status of photo`() {
         //GIVEN
         viewModel.statusFavorite.observeForever(observer)
         //WHEN
         viewModel.changeSaveStatusOfPhoto(fakePhoto.toGalleryFramework().copy(nasa_id = "S2"))
         //THEN
-        verify(observer, times(2)).onChanged(viewModel.statusFavorite.value)
+        verify(observer, times(2)).onChanged(false)
         assert(viewModel.statusFavorite.value == false)
     }
 
