@@ -23,10 +23,10 @@ class SavedPhotosViewModel(
     val modelSavedPhotos: LiveData<SavedPhotosUi> get() = _modelSavedPhotos
 
     init {
-        startCollectingPhotos()
+        getPhotosFromDb()
     }
 
-    fun startCollectingPhotos() {
+    fun getPhotosFromDb() {//TODO aquispe quizas deberia ponerlo como livedata
         viewModelScope.launch {
             getAllStoredPhotos.invoke()?.collect { listPhotoGalleryDomain ->
                 _modelSavedPhotos.value = SavedPhotosUi.Content(listPhotoGalleryDomain.map { it.toGalleryFramework() })
@@ -37,12 +37,14 @@ class SavedPhotosViewModel(
     fun deletePhoto(photoGallery: PhotoGallery) {
         viewModelScope.launch {
             deleteGalleryPhoto.invoke(photoGallery.toGalleryDomain())
+            getPhotosFromDb()
         }
     }
 
     fun savePhoto(photoGallery: PhotoGallery) {
         viewModelScope.launch {
             saveGalleryPhoto.invoke(photoGallery.toGalleryDomain())
+            getPhotosFromDb()
         }
     }
 

@@ -44,13 +44,13 @@ class SavedPhotosFragment : ScopeFragment() {
     }
 
     private fun subscribeUi() {
-        viewModel.modelSavedPhotos.observe(requireActivity()) { model ->
+        viewModel.modelSavedPhotos.observe(viewLifecycleOwner) { model ->
             when (model) {
                 is SavedPhotosViewModel.SavedPhotosUi.Content -> {
-                    if (model.storedPhotos != null)
-                        Log.e("SavedPhotosFragment", "No hay fotos guardadas")
-                    else
+                    if (!model.storedPhotos.isNullOrEmpty())
                         photosAdapter.setItems(model.storedPhotos!!)
+                    else
+                        Log.e("SavedPhotosFragment", "No hay fotos guardadas")
                 }
             }
 

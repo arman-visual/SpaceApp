@@ -74,7 +74,7 @@ class SavedPhotosViewModelTest {
             whenever(getAllStoredPhotos.invoke()).thenReturn(flowOf(photos))
             viewModel.modelSavedPhotos.observeForever(observer)
             //WHEN
-            viewModel.startCollectingPhotos()
+            viewModel.getPhotosFromDb()
             //THEN
             verify(observer).onChanged(SavedPhotosUi.Content(photos.map { it.toGalleryFramework() }))
             assertEquals(SavedPhotosUi.Content(photos.map { it.toGalleryFramework() }), viewModel.modelSavedPhotos.value)
@@ -87,7 +87,7 @@ class SavedPhotosViewModelTest {
             whenever(getAllStoredPhotos.invoke()).thenReturn(null)
             viewModel.modelSavedPhotos.observeForever(observer)
             //WHEN
-            viewModel.startCollectingPhotos()
+            viewModel.getPhotosFromDb()
             //THEN
             assertEquals(null, viewModel.modelSavedPhotos.value)
         }
