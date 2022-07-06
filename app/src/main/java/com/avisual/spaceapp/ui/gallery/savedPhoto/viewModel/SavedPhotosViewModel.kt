@@ -37,14 +37,12 @@ class SavedPhotosViewModel(
     fun deletePhoto(photoGallery: PhotoGallery) {
         viewModelScope.launch {
             deleteGalleryPhoto.invoke(photoGallery.toGalleryDomain())
-            getPhotosFromDb()
         }
     }
 
     fun savePhoto(photoGallery: PhotoGallery) {
         viewModelScope.launch {
             saveGalleryPhoto.invoke(photoGallery.toGalleryDomain())
-            getPhotosFromDb()
         }
     }
 

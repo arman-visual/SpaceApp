@@ -73,6 +73,7 @@ class SavedPhotosIntegrationTest : KoinTest {
         val localDataSource = get<GalleryLocalDataSource>() as FakeGalleryLocalDataSource
         //WHEN
         viewModel.deletePhoto(fakePhoto.copy(nasa_id = "S2").toGalleryFramework())
+        viewModel.getPhotosFromDb()
         //THEN
         verify(observer, times(1)).onChanged(SavedPhotosUi.Content(localDataSource.storedPhotos.map { it.toGalleryFramework() }))
     }
@@ -84,6 +85,7 @@ class SavedPhotosIntegrationTest : KoinTest {
         val localDataSource = get<GalleryLocalDataSource>() as FakeGalleryLocalDataSource
         //WHEN
         viewModel.savePhoto(fakePhoto.copy(nasa_id = "S3").toGalleryFramework())
+        viewModel.getPhotosFromDb()
         //THEN
         verify(observer, times(1))
             .onChanged(SavedPhotosUi.Content(localDataSource.storedPhotos.map { it.toGalleryFramework() }))
