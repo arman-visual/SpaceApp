@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object NasaGalleryClient {
+class NasaGalleryClient(baseUrlNasaImages:String) {
 
     private val clientSetup = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
@@ -13,11 +13,14 @@ object NasaGalleryClient {
         .readTimeout(30, TimeUnit.SECONDS)
         .build()
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://images-api.nasa.gov/")
+    val service: NasaLibraryService = Retrofit.Builder()
+        .baseUrl(baseUrlNasaImages)
         .addConverterFactory(GsonConverterFactory.create())
         .client(clientSetup)
         .build()
+        .run {
+            create((NasaLibraryService::class.java))
+        }
 
-    val service: NasaLibraryService = retrofit.create(NasaLibraryService::class.java)
+//    val service: NasaLibraryService = retrofit.create(NasaLibraryService::class.java)
 }

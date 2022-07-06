@@ -8,17 +8,15 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.database.Db
 import com.avisual.spaceapp.data.database.RoomGalleryDataSource
 import com.avisual.spaceapp.data.database.RoomNeoDataSource
-import com.avisual.spaceapp.data.server.ServerGalleryDataSource
-import com.avisual.spaceapp.data.server.ServerNeoDataSource
-import com.avisual.spaceapp.data.server.ServerRoverDataSource
+import com.avisual.spaceapp.data.server.*
 import com.avisual.spaceapp.ui.asteroidsNeo.detailNeo.DetailNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.StoredNeoViewModel
-import com.avisual.spaceapp.ui.roverMars.detailRover.viewModel.DetailPhotoRoverViewModel
-import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
 import com.avisual.spaceapp.ui.gallery.detailPhoto.viewModel.DetailPhotoViewModel
 import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel
+import com.avisual.spaceapp.ui.roverMars.detailRover.viewModel.DetailPhotoRoverViewModel
+import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
 import com.avisual.usecases.*
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -28,14 +26,18 @@ import org.koin.dsl.module
 val appModule = module {
     single(named("apiKey")) { androidApplication().getString(R.string.api_key) }
     single { Db.getDatabase(get()) }
+    single(named("baseUrlNasaImages")) { "https://images-api.nasa.gov/" }
+    single(named("baseUrlApiNasa")) { "https://api.nasa.gov/" }
+    single { NasaGalleryClient(get(named("baseUrlNasaImages"))) }
+    single { NasaClient(get(named("baseUrlApiNasa"))) }
 }
 
 val dataSource = module {
     factory<GalleryLocalDataSource> { RoomGalleryDataSource(get()) }
-    factory<GalleryRemoteDataSource> { ServerGalleryDataSource() }
+    factory<GalleryRemoteDataSource> { ServerGalleryDataSource(get()) }
     factory<NeoLocalDataSource> { RoomNeoDataSource(get()) }
-    factory<NeoRemoteDataSource> { ServerNeoDataSource() }
-    factory<RoverRemoteDataSource> { ServerRoverDataSource() }
+    factory<NeoRemoteDataSource> { ServerNeoDataSource(get()) }
+    factory<RoverRemoteDataSource> { ServerRoverDataSource(get()) }
 }
 
 val repoModule = module {

@@ -4,10 +4,10 @@ import com.avisual.data.source.RoverRemoteDataSource
 import com.avisual.domain.PhotoRover
 import com.avisual.spaceapp.data.toDomainRover
 
-class ServerRoverDataSource : RoverRemoteDataSource {
+class ServerRoverDataSource(private val nasaClient: NasaClient) : RoverRemoteDataSource {
 
     override suspend fun getPhotosRoverByDate(date: String, apiKey: String): List<PhotoRover>? {
-        return NasaClient.service.marsRoverPhotosByEarthDate(date, apiKey)?.photos?.map {
+        return nasaClient.service.marsRoverPhotosByEarthDate(date, apiKey)?.photos?.map {
             it.toDomainRover()
         }
     }

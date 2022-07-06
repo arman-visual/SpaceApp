@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object NasaClient {
+class NasaClient(baseUrlApiNasa:String) {
 
     private val clientSetup = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
@@ -13,11 +13,11 @@ object NasaClient {
         .readTimeout(30, TimeUnit.SECONDS)
         .build()
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.nasa.gov/")
+     val service: NasaService = Retrofit.Builder()
+        .baseUrl(baseUrlApiNasa)
         .addConverterFactory(GsonConverterFactory.create())
         .client(clientSetup)
         .build()
-
-    val service: NasaService = retrofit.create(NasaService::class.java)
+        .run { create(NasaService::class.java) }
+    //val service: NasaService = retrofit.create(NasaService::class.java)
 }
