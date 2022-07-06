@@ -54,13 +54,13 @@ class ShowPhotosIntegrationTest : KoinTest {
     }
 
     @Test
-    fun `observing Livedata finds photos`() {
+    fun `observing Livedata finds photos from server`() {
         //GIVEN
         viewModel.model.observeForever(observer)
         //WHEN
         viewModel.findPhotosByDate("23-02-12")
         //THEN
-        verify(observer, times(1)).onChanged(ShowPhotosUi.Content(defaultFakeRoverPhotos.map { it.toFrameworkRover() }))
+        verify(observer).onChanged(ShowPhotosUi.Content(defaultFakeRoverPhotos.map { it.toFrameworkRover() }))
         assert(viewModel.model.value == ShowPhotosUi.Content(defaultFakeRoverPhotos.map { it.toFrameworkRover() }))
     }
 
