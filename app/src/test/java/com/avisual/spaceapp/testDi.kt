@@ -123,7 +123,7 @@ class FakeGalleryRemoteDataSource : GalleryRemoteDataSource {
 
 class FakeNeoLocalDataSource : NeoLocalDataSource {
 
-    private var storedNeos: MutableList<Neo> = defaultFakeNeoPhotos.toMutableList()
+    var storedNeos: MutableList<Neo> = defaultFakeNeoPhotos.toMutableList()
 
     override fun getAllStoredNeo(): Flow<List<Neo>>? = flowOf(storedNeos) ?: null
 
@@ -145,7 +145,7 @@ class FakeNeoRemoteDataSource : NeoRemoteDataSource {
 
     private val neos = defaultFakeNeoPhotos
     override suspend fun getAllNeoByDate(startDate: String, apiKey: String): List<Neo>? {
-        return defaultFakeNeoPhotos ?: null
+        return neos ?: null
     }
 
 }

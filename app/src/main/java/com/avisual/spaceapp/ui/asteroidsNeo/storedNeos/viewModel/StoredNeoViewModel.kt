@@ -4,13 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.avisual.spaceapp.ui.common.ScopeViewModel
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.data.toDomainNeo
 import com.avisual.spaceapp.data.toFrameworkNeo
 import com.avisual.usecases.GetStoredNeos
 import com.avisual.usecases.RemoveNeo
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class StoredNeoViewModel(
@@ -18,19 +16,19 @@ class StoredNeoViewModel(
     private var removeNeo: RemoveNeo
 ) : ViewModel() {
 
-    private val _storedNeos = MutableLiveData<List<Neo>?>(null)
-    val asteroidsSaved: LiveData<List<Neo>?> get() = _storedNeos
+    private val _model = MutableLiveData<StoredNeoUi>()
+    val model: LiveData<StoredNeoUi> get() = _model
 
     init {
-        startCollectingNeos()
+        getStoredNeosFromDb()
     }
 
-
-    fun startCollectingNeos() {
+    fun getStoredNeosFromDb() {
 
         viewModelScope.launch {
             getStoredNeos.invoke()?.collect { listDomainNeo ->
-                _storedNeos.value = listDomainNeo.map { domainNeo -> domainNeo.toFrameworkNeo() }
+                _model.value =
+                    StoredNeoUi.Content(listDomainNeo.map { domainNeo -> domainNeo.toFrameworkNeo() })
             }
         }
     }
@@ -39,5 +37,9 @@ class StoredNeoViewModel(
         viewModelScope.launch {
             removeNeo.invoke(asteroid.toDomainNeo())
         }
+    }
+
+    sealed class StoredNeoUi {
+        data class Content(val neos: List<Neo>? = null) : StoredNeoUi()
     }
 }
