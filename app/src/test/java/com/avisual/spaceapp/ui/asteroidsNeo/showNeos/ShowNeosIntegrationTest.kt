@@ -54,10 +54,7 @@ class ShowNeosIntegrationTest : KoinTest {
         //WHEN
         viewModel.getAsteroidsByOnlyDate("12-02-12")
         //THEN
-        verify(
-            observer,
-            times(1)
-        ).onChanged(ShowNeoUi.Content(defaultFakeNeoPhotos.map { it.toFrameworkNeo() }))
+        verify(observer).onChanged(ShowNeoUi.Content(defaultFakeNeoPhotos.map { it.toFrameworkNeo() }))
     }
 
     @After

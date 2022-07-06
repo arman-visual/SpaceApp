@@ -61,7 +61,7 @@ class DetailPhotoIntegrationTest : KoinTest {
         //WHEN
         viewModel.checkIfPhotoSaved(fakePhoto.toGalleryFramework().copy(nasa_id = "S2"))
         //THEN
-        verify(observer, times(1)).onChanged(true)
+        verify(observer).onChanged(true)
         assert(viewModel.statusFavorite.value == true)
     }
 

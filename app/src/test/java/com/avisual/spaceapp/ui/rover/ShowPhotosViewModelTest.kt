@@ -1,9 +1,10 @@
-package com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel
+package com.avisual.spaceapp.ui.rover
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.avisual.domain.PhotoRover
 import com.avisual.spaceapp.data.toFrameworkRover
+import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel.ShowPhotosUi
 import com.avisual.usecases.GetRoverPhotosByDate
 import kotlinx.coroutines.Dispatchers

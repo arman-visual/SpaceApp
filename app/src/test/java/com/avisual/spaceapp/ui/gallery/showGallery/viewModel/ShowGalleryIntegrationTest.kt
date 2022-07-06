@@ -53,7 +53,7 @@ class ShowGalleryIntegrationTest : KoinTest {
         viewModel.model.observeForever(observer)
         //WHEN
         //THEN
-        verify(observer, times(1)).onChanged(GalleryUi.Content(defaultFakeGalleryPhotos))
+        verify(observer).onChanged(GalleryUi.Content(defaultFakeGalleryPhotos))
     }
 
     @Test

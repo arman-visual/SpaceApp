@@ -3,9 +3,11 @@ package com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.avisual.data.source.GalleryLocalDataSource
-import com.avisual.domain.PhotoGallery
-import com.avisual.spaceapp.*
+import com.avisual.spaceapp.FakeGalleryLocalDataSource
 import com.avisual.spaceapp.data.toGalleryFramework
+import com.avisual.spaceapp.defaultStoredPhotos
+import com.avisual.spaceapp.fakePhoto
+import com.avisual.spaceapp.initMockedDI
 import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel.SavedPhotosUi
 import com.avisual.usecases.DeleteGalleryPhoto
 import com.avisual.usecases.GetAllStoredPhotos
@@ -62,7 +64,7 @@ class SavedPhotosIntegrationTest : KoinTest {
         viewModel.modelSavedPhotos.observeForever(observer)
         //WHEN
         //THEN
-        verify(observer, times(1))
+        verify(observer)
             .onChanged(SavedPhotosUi.Content(defaultStoredPhotos.map { it.toGalleryFramework() }))
     }
 
@@ -75,7 +77,7 @@ class SavedPhotosIntegrationTest : KoinTest {
         viewModel.deletePhoto(fakePhoto.copy(nasa_id = "S2").toGalleryFramework())
         viewModel.getPhotosFromDb()
         //THEN
-        verify(observer, times(1)).onChanged(SavedPhotosUi.Content(localDataSource.storedPhotos.map { it.toGalleryFramework() }))
+        verify(observer).onChanged(SavedPhotosUi.Content(localDataSource.storedPhotos.map { it.toGalleryFramework() }))
     }
 
     @Test
