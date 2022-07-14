@@ -21,13 +21,16 @@ import com.avisual.spaceapp.ui.fromJson
 import okhttp3.mockwebserver.MockResponse
 import org.hamcrest.Matcher
 import org.junit.Before
+import org.junit.FixMethodOrder
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
+import org.junit.runners.MethodSorters
 import org.koin.test.KoinTest
 import org.koin.test.get
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4::class)
 class UiTest : KoinTest {
 

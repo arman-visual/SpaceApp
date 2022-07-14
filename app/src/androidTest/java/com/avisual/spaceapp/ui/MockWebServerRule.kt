@@ -15,7 +15,7 @@ class MockWebServerRule : TestRule {
     override fun apply(base: Statement, description: Description): Statement =
         object : Statement() {
             override fun evaluate() {
-                server.start()
+                server.start(8080)
                 replaceBaseUrl()
                 base.evaluate()
                 server.shutdown()
