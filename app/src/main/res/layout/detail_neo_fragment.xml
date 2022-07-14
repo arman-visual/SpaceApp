@@ -32,7 +32,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:contentDescription="@string/buttom_for_save_or_remove_of_favorite_photos"
                 android:scaleType="centerInside"
                 app:fabSize="mini"
@@ -51,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="@string/hello_blank_fragment"
+                tools:text="Title Neo"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <LinearLayout
@@ -72,7 +75,7 @@
                     android:id="@+id/minDiameter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="123456789.123456" />
+                    tools:text="123456789.123456" />
 
             </LinearLayout>
 
@@ -117,7 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="31208.8486419758" />
+                    tools:text="31208.8486419758" />
             </LinearLayout>
 
             <LinearLayout
@@ -139,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="18.2" />
+                    tools:text="18.2" />
 
             </LinearLayout>
 
@@ -162,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2021-Apr-06 19:55" />
+                    tools:text="2021-Apr-06 19:55" />
             </LinearLayout>
 
             <LinearLayout
@@ -184,7 +187,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="19956251.707962906" />
+                    tools:text="19956251.707962906" />
             </LinearLayout>
 
             <LinearLayout
