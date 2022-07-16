@@ -16,19 +16,23 @@ import com.avisual.spaceapp.ui.MockWebServerRule
 import com.avisual.spaceapp.ui.OkHttp3IdlingResource
 import com.avisual.spaceapp.ui.fromJson
 import okhttp3.mockwebserver.MockResponse
-import org.junit.*
+import org.junit.Before
+import org.junit.FixMethodOrder
+import org.junit.Rule
+import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 import org.junit.runners.MethodSorters
 import org.koin.test.KoinTest
 import org.koin.test.get
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4::class)
 class UiTest : KoinTest {
 
     private val mockWebServerRule = MockWebServerRule()
 
-    private lateinit var resource:OkHttp3IdlingResource
+    private lateinit var resource: OkHttp3IdlingResource
 
     @get:Rule
     val testRule: RuleChain = RuleChain
@@ -85,6 +89,7 @@ class UiTest : KoinTest {
             .check(matches(withText("Mars Curiosity Wheel Mock-up")))
             .perform(pressBack())
     }
+
     @Test
     fun test_3_navigate_to_stored_gallery_photo_and_delete_with_swipe_from_database() {
         onView(withId(R.id.savedPhotosFragment)).perform(click())
@@ -94,10 +99,5 @@ class UiTest : KoinTest {
                 swipeLeft()
             )
         )
-    }
-
-    @After
-    fun tearDown() {
-        //IdlingRegistry.getInstance().unregister(resource)
     }
 }

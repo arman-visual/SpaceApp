@@ -3,9 +3,8 @@ package com.avisual.spaceapp.ui.neos
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.GeneralSwipeAction
-import androidx.test.espresso.action.Swipe
-import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.pressBack
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -19,7 +18,6 @@ import com.avisual.spaceapp.ui.OkHttp3IdlingResource
 import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
 import com.avisual.spaceapp.ui.fromJson
 import okhttp3.mockwebserver.MockResponse
-import org.hamcrest.Matcher
 import org.junit.Before
 import org.junit.FixMethodOrder
 import org.junit.Rule
@@ -52,7 +50,7 @@ class UiTest : KoinTest {
     }
 
     @Test
-    fun search_neos_by_only_date() {
+    fun test1_search_neos_by_only_date() {
         onView(withId(R.id.show_input)).perform(click())
         onView(withText("ACEPTAR")).perform(click())
         onView(withId(R.id.search)).perform(click())
@@ -90,7 +88,7 @@ class UiTest : KoinTest {
     }
 
     @Test
-    fun navigate_to_stored_neos() {
+    fun test2_navigate_to_stored_neos() {
         onView(withId(R.id.storedNeoFragment)).perform(click())
 
         onView(withText("(2019 TK5)")).perform(click())

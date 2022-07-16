@@ -49,7 +49,7 @@ class UiTest : KoinTest {
     }
 
     @Test
-    fun clickAButtonNavigatesToGalleryPhotos() {
+    fun test1_search_and_navigate_to_detail() {
         onView(withId(R.id.show_input)).perform(click())
         onView(withText("ACEPTAR")).perform(click())
         onView(withId(R.id.search)).perform(click())
@@ -76,8 +76,4 @@ class UiTest : KoinTest {
             .check(ViewAssertions.matches(withText("2012-08-06")))
     }
 
-    @Test
-    fun click_a_search_button_in_menu() {
-
-    }
 }
