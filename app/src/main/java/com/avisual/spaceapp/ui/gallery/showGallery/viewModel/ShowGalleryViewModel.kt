@@ -24,34 +24,21 @@ class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhot
 
     private fun refresh() = viewModelScope.launch {
         _model.value = GalleryUi.Loading
-
         val response = getGalleryPhotosByKeyword.invoke(DEFAULT_KEYWORD)
-
-        response?.let {
-            _model.value =
-                GalleryUi.Content(it)
-        }?:run {
-            _model.value = GalleryUi.Content(emptyList())
-        }
+        _model.value = GalleryUi.Content(response)
     }
 
     fun findPhotosByKeyword(keyword: String) {
         viewModelScope.launch {
             _model.value = GalleryUi.Loading
-
             val response = getGalleryPhotosByKeyword.invoke(keyword)
-            response?.let {
-                _model.value =
-                    GalleryUi.Content(it)
-            }?:run {
-                _model.value = GalleryUi.Content(emptyList())
-            }
+            _model.value = GalleryUi.Content(response)
         }
     }
 
     sealed class GalleryUi {
         object Loading : GalleryUi()
-        data class Content(val photos: List<PhotoGallery>? = null) : GalleryUi()
+        data class Content(val photos: List<PhotoGallery> = emptyList()) : GalleryUi()
     }
 }
 
