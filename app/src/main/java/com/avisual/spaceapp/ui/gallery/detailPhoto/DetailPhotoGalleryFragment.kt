@@ -109,10 +109,7 @@ class DetailPhotoGalleryFragment : ScopeFragment() {
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                 .setTitle(url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~")))
                 .setDescription("Downloading...")
-                .setDestinationInExternalPublicDir(
-                    directory.toString(),
-                    url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~"))
-                )
+                .setDestinationInExternalPublicDir(directory.toString(), url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~")) + ".jpg")
         }
 
         val downloadManager =
