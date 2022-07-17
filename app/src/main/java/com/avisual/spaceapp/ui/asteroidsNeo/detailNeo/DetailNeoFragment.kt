@@ -44,6 +44,7 @@ class DetailNeoFragment : ScopeFragment() {
             absoulteMagnitud.text = neo.absoluteMagnitudeH.toString()
             imageNeo.setImageResource(R.drawable.asteroid)
             missDistance.text = neo.missDistance
+            approachDate.text = neo.approachDateFull
             if (neo.isPotentiallyHazardousAsteroid) {
                 danger.setImageResource(R.drawable.danger_on)
             } else {

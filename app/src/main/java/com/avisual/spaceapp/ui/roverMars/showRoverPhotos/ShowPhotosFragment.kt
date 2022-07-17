@@ -11,8 +11,8 @@ import com.avisual.spaceapp.data.model.PhotoRover
 import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
 import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
-import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosUi
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
+import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel.*
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import org.koin.androidx.scope.ScopeFragment
@@ -67,10 +67,9 @@ class ShowPhotosFragment : ScopeFragment() {
             if (model is ShowPhotosUi.Loading) View.VISIBLE else View.GONE
 
         if (model is ShowPhotosUi.Content) {
-            if (model.photos.isNotEmpty()) {
+            if (!model.photos.isNullOrEmpty()) {
                 adapter.setItems(model.photos)
             } else {
-                adapter.setItems(model.photos)
                 requireActivity().toast(getString(R.string.message_no_photos))
             }
         }

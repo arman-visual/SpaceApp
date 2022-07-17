@@ -2,7 +2,8 @@ package com.avisual.spaceapp.ui.asteroidsNeo.detailNeo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.avisual.spaceapp.ui.common.ScopeViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.data.toDomainNeo
 import com.avisual.usecases.GetNeoById
@@ -14,7 +15,7 @@ class DetailNeoViewModel(
     var saveNeoInDb: SaveNeoInDb,
     var getNeoById: GetNeoById,
     var removeNeo: RemoveNeo
-) : ScopeViewModel() {
+) : ViewModel() {
 
     private val _statusDb = MutableLiveData(false)
     val statusDb: LiveData<Boolean>
@@ -22,7 +23,7 @@ class DetailNeoViewModel(
 
 
     fun checkIfPhotoSaved(neo: Neo) {
-        launch {
+        viewModelScope.launch {
             _statusDb.postValue(isPhotoInDB(neo))
         }
     }
@@ -32,7 +33,7 @@ class DetailNeoViewModel(
     }
 
     fun changeSaveStatusOfPhoto(neo: Neo) {
-        launch {
+        viewModelScope.launch {
             val newFavoriteStatus = if (isPhotoInDB(neo)) {
                 deletePhotoInDB(neo)
                 false
@@ -45,13 +46,13 @@ class DetailNeoViewModel(
     }
 
     private fun savePhotoInDb(neo: Neo) {
-        launch {
+        viewModelScope.launch {
             saveNeoInDb.invoke(neo.toDomainNeo())
         }
     }
 
     private fun deletePhotoInDB(neo: Neo) {
-        launch {
+        viewModelScope.launch {
             removeNeo.invoke(neo.toDomainNeo())
         }
     }

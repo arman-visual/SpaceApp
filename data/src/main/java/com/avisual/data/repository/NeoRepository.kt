@@ -13,11 +13,11 @@ class NeoRepository(
     private val apiKey: String
 ) {
 
-    suspend fun getAllNeoByDate(startDate: String): List<Neo> {
+    suspend fun getAllNeoByDate(startDate: String): List<Neo>? {
         return remoteDataSource.getAllNeoByDate(startDate, apiKey)
     }
 
-    fun getAllSavedNeo(): Flow<List<Neo>> {
+    fun getAllSavedNeo(): Flow<List<Neo>>? {
         return localDataSource.getAllStoredNeo()
     }
 

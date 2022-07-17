@@ -1,0 +1,2654 @@
+{
+  "collection": {
+    "version": "1.0",
+    "href": "http://images-api.nasa.gov/search?q=Curiosity&media_type=image",
+    "items": [
+      {
+        "href": "https://images-assets.nasa.gov/image/LRC-2013-00667/collection.json",
+        "data": [
+          {
+            "center": "LRC",
+            "title": "Mars Curiosity Wheel Mock-up",
+            "photographer": "Sandra Gibbs",
+            "keywords": [
+              "Mars",
+              "Curiosity"
+            ],
+            "nasa_id": "LRC-2013-00667",
+            "media_type": "image",
+            "date_created": "2013-10-24T00:00:00Z",
+            "description": "Mars Curiosity Wheel Mock-up"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/LRC-2013-00667/LRC-2013-00667~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/LRC-2013-00662/collection.json",
+        "data": [
+          {
+            "center": "LRC",
+            "title": "Mars Curiosity Wheel Mock-up",
+            "photographer": "Sandra Gibbs",
+            "keywords": [
+              "Mars",
+              "Curiosity"
+            ],
+            "nasa_id": "LRC-2013-00662",
+            "media_type": "image",
+            "date_created": "2013-10-24T00:00:00Z",
+            "description": "Mars Curiosity Wheel Mock-up"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/LRC-2013-00662/LRC-2013-00662~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/LRC-2013-00663/collection.json",
+        "data": [
+          {
+            "center": "LRC",
+            "title": "Mars Curiosity Wheel Mock-up",
+            "photographer": "Sandra Gibbs",
+            "keywords": [
+              "Mars",
+              "Curiosity"
+            ],
+            "nasa_id": "LRC-2013-00663",
+            "media_type": "image",
+            "date_created": "2013-10-24T00:00:00Z",
+            "description": "Mars Curiosity Wheel Mock-up"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/LRC-2013-00663/LRC-2013-00663~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/LRC-2013-00664/collection.json",
+        "data": [
+          {
+            "center": "LRC",
+            "title": "Mars Curiosity Wheel Mock-up",
+            "photographer": "Sandra Gibbs",
+            "keywords": [
+              "Mars",
+              "Curiosity"
+            ],
+            "nasa_id": "LRC-2013-00664",
+            "media_type": "image",
+            "date_created": "2013-10-24T00:00:00Z",
+            "description": "Mars Curiosity Wheel Mock-up"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/LRC-2013-00664/LRC-2013-00664~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/LRC-2013-00665/collection.json",
+        "data": [
+          {
+            "center": "LRC",
+            "title": "Mars Curiosity Wheel Mock-up",
+            "photographer": "Sandra Gibbs",
+            "keywords": [
+              "Mars",
+              "Curiosity"
+            ],
+            "nasa_id": "LRC-2013-00665",
+            "media_type": "image",
+            "date_created": "2013-10-24T00:00:00Z",
+            "description": "Mars Curiosity Wheel Mock-up"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/LRC-2013-00665/LRC-2013-00665~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/LRC-2013-00666/collection.json",
+        "data": [
+          {
+            "center": "LRC",
+            "title": "Mars Curiosity Wheel Mock-up",
+            "photographer": "Sandra Gibbs",
+            "keywords": [
+              "Mars",
+              "Curiosity"
+            ],
+            "nasa_id": "LRC-2013-00666",
+            "media_type": "image",
+            "date_created": "2013-10-24T00:00:00Z",
+            "description": "Mars Curiosity Wheel Mock-up"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/LRC-2013-00666/LRC-2013-00666~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22207/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Mount Sharp 'Photobombs' Curiosity",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Curiosity",
+              "Curiosity selfie",
+              "Mars"
+            ],
+            "nasa_id": "PIA22207",
+            "date_created": "2018-01-31T00:00:00Z",
+            "media_type": "image",
+            "description_508": "This self-portrait of NASA's Curiosity Mars, taken on Jan 23, 2018, rover shows the vehicle on Vera Rubin Ridge, which it's been investigating for the past several months.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This self-portrait of NASA's Curiosity Mars rover shows the vehicle on Vera Rubin Ridge, which it's been investigating for the past several months. Directly behind the rover is the start of a clay-rich slope scientists are eager to begin exploring. In the coming week, Curiosity will begin to climb this slope. North is on the left and west is on the right, with Gale Crater's rim on the horizon of both edges.  Poking up just behind Curiosity's mast is Mount Sharp, photobombing the robot's selfie. Curiosity landed on Mars five years ago with the intention of studying lower Mount Sharp, where it will remain for all of its time on Mars. The mountain's base provides access to layers formed over millions of years. These layers formed in the presence of water -- likely due to a lake or lakes that sat at the bottom of the mountain, which sits inside of Gale Crater.  This mosaic was assembled from dozens of images taken by Curiosity's Mars Hands Lens Imager (MAHLI). They were all taken on Jan. 23, 2018, during Sol 1943.  The view does not include the rover's arm nor the MAHLI camera itself, except in the miniature scene reflected upside down in the parabolic mirror at the top of the mast. That mirror is part of Curiosity's Chemistry and Camera (ChemCam) instrument. MAHLI appears in the center of the mirror.  Wrist motions and turret rotations on the arm allowed MAHLI to acquire the mosaic's component images. The arm was positioned out of the shot in the images, or portions of images, that were used in this mosaic.  A full-resolution image is available at https://photojournal.jpl.nasa.gov/catalog/PIA22207"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22207/PIA22207~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22312/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity is Ready for Clay (Highlighted)",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars",
+              "Curiosity",
+              "MastCam"
+            ],
+            "nasa_id": "PIA22312",
+            "date_created": "2018-03-22T00:00:00Z",
+            "media_type": "image",
+            "description_508": "This mosaic taken by NASA's Mars Curiosity rover looks uphill at Mount Sharp. Highlighted is an area in white with clay-bearing rocks that scientists are eager to explore.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This mosaic taken by NASA's Mars Curiosity rover looks uphill at Mount Sharp, which Curiosity has been climbing. Highlighted in white is an area with clay-bearing rocks that scientists are eager to explore; it could shed additional light on the role of water in creating Mount Sharp. The mosaic was assembled from dozens of images taken by Curiosity's Mast Camera (Mastcam). It was taken on Sol 1931 back in January.  Mount Sharp stands in the middle of Gale Crater, which is 96 miles (154 kilometers) in diameter. This mound, which Curiosity has been climbing since 2014, likely formed in the presence of water at various points of time in Mars ancient history. That makes it an ideal place to study how water influenced the habitability of Mars billions of years ago.  The scene has been white-balanced so the colors of the rock materials resemble how they would appear under daytime lighting conditions on Earth.  https://photojournal.jpl.nasa.gov/catalog/PIA22312"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22312/PIA22312~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22486/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity's Dusty Selfie",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars",
+              "Curiosity",
+              "selfie"
+            ],
+            "nasa_id": "PIA22486",
+            "date_created": "2018-06-20T00:00:00Z",
+            "media_type": "image",
+            "description_508": "A self-portrait of NASA's Curiosity rover taken on Sol 2082 (June 15, 2018). A Martian dust storm has reduced sunlight and visibility at the rover's location in Gale Crater.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "A self-portrait of NASA's Curiosity rover taken on Sol 2082 (June 15, 2018). A Martian dust storm has reduced sunlight and visibility at the rover's location in Gale Crater. Self-portraits are created using images taken by Curiosity's Mars Hands Lens Imager (MAHLI).  https://photojournal.jpl.nasa.gov/catalog/PIA22486"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22486/PIA22486~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22313/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity is Ready for Clay",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars",
+              "Mastcam",
+              "Curiosity"
+            ],
+            "nasa_id": "PIA22313",
+            "date_created": "2018-03-22T00:00:00Z",
+            "media_type": "image",
+            "description_508": "This mosaic taken by NASA's Mars Curiosity rover looks uphill at Mount Sharp. The scene has been white-balanced so the colors of the rock materials resemble how they would appear under daytime lighting conditions on Earth.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This mosaic taken by NASA's Mars Curiosity rover looks uphill at Mount Sharp, which Curiosity has been climbing. Spanning the center of the image is an area with clay-bearing rocks that scientists are eager to explore; it could shed additional light on the role of water in creating Mount Sharp. The mosaic was assembled from dozens of images taken by Curiosity's Mast Camera (Mastcam). It was taken on Sol 1931 back in January.  Mount Sharp stands in the middle of Gale Crater, which is 96 miles (154 kilometers) in diameter. This mound, which Curiosity has been climbing since 2014, likely formed in the presence of water at various points of time in Mars ancient history. That makes it an ideal place to study how water influenced the habitability of Mars billions of years ago.  The scene has been white-balanced so the colors of the rock materials resemble how they would appear under daytime lighting conditions on Earth.  https://photojournal.jpl.nasa.gov/catalog/PIA22313"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22313/PIA22313~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22326/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Successfully Drills \"Duluth\"",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars",
+              "Curiosity",
+              "drill",
+              "Mastcam"
+            ],
+            "nasa_id": "PIA22326",
+            "date_created": "2018-05-23T00:00:00Z",
+            "media_type": "image",
+            "description_508": "A close-up image of a 2-inch-deep hole produced using a new drilling technique for NASA's Curiosity rover. Curiosity drilled this hole in a target called 'Duluth' on May 20, 2018.  It has been white balanced and contrast-enhanced.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "A close-up image of a 2-inch-deep hole produced using a new drilling technique for NASA's Curiosity rover. The hole is about 0.6 inches (1.6 centimeters) in diameter. This image was taken by Curiosity's Mast Camera (Mastcam) on Sol 2057. It has been white balanced and contrast-enhanced.  Curiosity drilled this hole in a target called \"Duluth\" on May 20, 2018. It was the first rock sample captured by the drill since October 2016. A mechanical issue took the drill offline in December 2016.  https://photojournal.jpl.nasa.gov/catalog/PIA22326"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22326/PIA22326~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/SSC-20120804-S01459SE/collection.json",
+        "data": [
+          {
+            "center": "SSC",
+            "title": "Mars Curiosity mission",
+            "keywords": [
+              "INFINITY; visitor center; Mars landing; Curiosity rover"
+            ],
+            "nasa_id": "SSC-20120804-S01459SE",
+            "date_created": "2012-08-04T00:00:00Z",
+            "media_type": "image",
+            "description": "NASA welcomed hundreds of children and accompanying adults to its INFINITY visitor center on Aug. 4, offering Mars-related activities that focused attention on the space agency's Curiosity mission to the Red Planet. Parents and children, such as Myron and Trey (age 3) Cummings, enjoyed exploring Mars using an interactive touch table. Midway through the day of activities, visitors in the Science on a Sphere auditorium also enjoyed a presentation on Mars and the Curiosity mission by Dr. Steven Williams, a NASA expert on Mars."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/SSC-20120804-S01459SE/SSC-20120804-S01459SE~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/SSC-20120804-S01459V/collection.json",
+        "data": [
+          {
+            "center": "SSC",
+            "title": "Mars Curiosity mission",
+            "keywords": [
+              "INFINITY; visitor center; Mars landing; Curiosity rover"
+            ],
+            "nasa_id": "SSC-20120804-S01459V",
+            "date_created": "2012-08-04T00:00:00Z",
+            "media_type": "image",
+            "description": "NASA welcomed hundreds of children and accompanying adults to its INFINITY visitor center on Aug. 4, offering Mars-related activities that focused attention on the space agency's Curiosity mission to the Red Planet. Parents and children, such as Myron and Trey (age 3) Cummings, enjoyed exploring Mars using an interactive touch table (top right photo). Midway through the day of activities, visitors in the Science on a Sphere auditorium also enjoyed a presentation on Mars and the Curiosity mission by Dr. Steven Williams, a NASA expert on Mars."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/SSC-20120804-S01459V/SSC-20120804-S01459V~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA20316/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Self-Portrait at Martian Sand Dune",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "Curiosity",
+              "selfie"
+            ],
+            "nasa_id": "PIA20316",
+            "date_created": "2016-01-29T00:00:00Z",
+            "media_type": "image",
+            "description_508": "This self-portrait of NASA's Curiosity Mars rover shows the vehicle at 'Namib Dune,' where the rover's activities included scuffing into the dune with a wheel and scooping samples of sand for laboratory analysis.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This self-portrait of NASA's Curiosity Mars rover shows the vehicle at \"Namib Dune,\" where the rover's activities included scuffing into the dune with a wheel and scooping samples of sand for laboratory analysis.  The scene combines 57 images taken on Jan. 19, 2016, during the 1,228th Martian day, or sol, of Curiosity's work on Mars. The camera used for this is the Mars Hand Lens Imager (MAHLI) at the end of the rover's robotic arm.  Namib Dune is part of the dark-sand \"Bagnold Dune Field\" along the northwestern flank of Mount Sharp. Images taken from orbit have shown that dunes in the Bagnold field move as much as about 3 feet (1 meter) per Earth year.  The location of Namib Dune is show on a map of Curiosity's route at http://mars.nasa.gov/msl/multimedia/images/?ImageID=7640. The relationship of Bagnold Dune Field to the lower portion of Mount Sharp is shown in a map at PIA16064.  The view does not include the rover's arm. Wrist motions and turret rotations on the arm allowed MAHLI to acquire the mosaic's component images. The arm was positioned out of the shot in the images, or portions of images, that were used in this mosaic. This process was used previously in acquiring and assembling Curiosity self-portraits taken at sample-collection sites, including \"Rocknest\" (PIA16468), \"Windjana\" (PIA18390) and \"Buckskin\" (PIA19807).  For scale, the rover's wheels are 20 inches (50 centimeters) in diameter and about 16 inches (40 centimeters) wide.   Other Curiosity self-portraits are available at http://photojournal.jpl.nasa.gov/catalog/PIA20316"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA20316/PIA20316~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060001HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Curiosity",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "Model",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060001HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "A small-scaled model of NASA's Curiosity rover is seen at a public event observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060001HQ/201308060001HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060003HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Curiosity",
+              "Jim Green",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060003HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "Jim Green, director, Planetary Division, NASA's Science Mission Directorate, speaks at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060003HQ/201308060003HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060005HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Curiosity",
+              "Jim Green",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060005HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "Jim Green, director, Planetary Division, NASA's Science Mission Directorate, answers a question at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060005HQ/201308060005HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060007HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Curiosity",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Sam Scimemi",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060007HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "Sam Scimemi, director, NASA's International Space Station Program, speaks at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060007HQ/201308060007HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060013HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Charles Bolden",
+              "Curiosity",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060013HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "NASA Administrator Charles Bolden speaks at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060013HQ/201308060013HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060004HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Curiosity",
+              "Jim Green",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060004HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "Jim Green, director, Planetary Division, NASA's Science Mission Directorate, speaks at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060004HQ/201308060004HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060006HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Curiosity",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Prasun Desai",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060006HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "Prasun Desai, acting director, Strategic Integration, NASA's Space Technology Mission Directorate, speaks at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060006HQ/201308060006HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060011HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Charles Bolden",
+              "Curiosity",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060011HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "NASA Administrator Charles Bolden speaks at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060011HQ/201308060011HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060012HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Charles Bolden",
+              "Curiosity",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060012HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "NASA Administrator Charles Bolden speaks at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060012HQ/201308060012HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA19398/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Looking Toward Curiosity Study Areas, Spring 2015",
+            "nasa_id": "PIA19398",
+            "date_created": "2015-05-08T17:13:52Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL",
+              "Curiosity"
+            ],
+            "media_type": "image",
+            "description_508": "This April 16, 2015, panorama from the Mast Camera on NASA Curiosity Mars rover shows a detailed view toward two areas, Mount Shields and Logan Pass, on lower Mount Sharp, chosen for close-up inspection in subsequent weeks.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This detailed panorama from the Mast Camera (Mastcam) on NASA's Curiosity Mars rover shows a view toward two areas on lower Mount Sharp chosen for close-up inspection: \"Mount Shields\" and \"Logan Pass.\"  The scene is a mosaic of images taken with Mastcam's right-eye camera, which has a telephoto lens, on April 16, 2015, during the 957th Martian day, or sol, of Curiosity's work on Mars, before that sol's drive. The view spans from southwest, at left, to west-northwest. The color has been approximately white-balanced to resemble how the scene would appear under daytime lighting conditions on Earth.  By 10 sols later, Curiosity had driven about 328 meters (1,076 feet) from the location where it made this observation to an outcrop at the base of \"Mount Shields.\" A 5-meter scale bar has been superimposed near the center of this scene beside the outcrop that the rover then examined in detail. (Five meters is 16.4 feet.) This study location was chosen on the basis of Mount Shields displaying a feature that geologists recognized from images like this as likely to be a site where an ancient valley was incised into bedrock, then refilled with other sediment.  After a few sols examining the outcrop at the base of Mount Shields, Curiosity resumed driving toward a study area at Logan Pass, near the 5-meter scale bar in the left half of this scene. That location was selected earlier, on the basis of images from orbit indicating contact there between two different geological units. The rover's route from Mount Shields to Logan Pass runs behind \"Jocko Butte\" from the viewpoint where this panorama was taken.  http://photojournal.jpl.nasa.gov/catalog/PIA19398"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA19398/PIA19398~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15978/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Spotted on Parachute by Orbiter",
+            "nasa_id": "PIA15978",
+            "date_created": "2012-08-06T16:27:05Z",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO,Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Curiosity rover and its parachute were spotted by NASA Mars Reconnaissance Orbiter as Curiosity descended to the surface. The HiRISE camera captured this image of Curiosity while the orbiter was listening to transmissions from the rover.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "NASA Curiosity rover and its parachute were spotted by NASA Mars Reconnaissance Orbiter as Curiosity descended to the surface. The HiRISE camera captured this image of Curiosity while the orbiter was listening to transmissions from the rover."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15978/PIA15978~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15979/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Spotted on Parachute by Orbiter",
+            "nasa_id": "PIA15979",
+            "date_created": "2012-08-06T16:27:06Z",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO,Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Curiosity rover and its parachute were spotted by NASA Mars Reconnaissance Orbiter as Curiosity descended to the surface. The HiRISE camera captured this image of Curiosity while the orbiter was listening to transmissions from the rover.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "NASA Curiosity rover and its parachute were spotted by NASA Mars Reconnaissance Orbiter as Curiosity descended to the surface. The HiRISE camera captured this image of Curiosity while the orbiter was listening to transmissions from the rover."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15979/PIA15979~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15983/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Flying Over Mars",
+            "nasa_id": "PIA15983",
+            "date_created": "2012-08-06T16:27:56Z",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO,Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Curiosity rover and its parachute were spotted by NASA Mars Reconnaissance Orbiter as Curiosity descended to the surface on Aug. 5 PDT Aug. 6 EDT. Curiosity and its parachute are in the small white box at center.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "NASA Curiosity rover and its parachute were spotted by NASA Mars Reconnaissance Orbiter as Curiosity descended to the surface on Aug. 5 PDT Aug. 6 EDT. Curiosity and its parachute are in the small white box at center."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15983/PIA15983~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15984/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Explore Mars With Curiosity",
+            "nasa_id": "PIA15984",
+            "date_created": "2012-08-06T20:33:04Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This image shows the approximate true position of NASA Curiosity rover on Mars. A 3-D virtual model of Curiosity is shown inside Gale Crater, near Mount Sharp, Curiosity ultimate destination.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This image shows the approximate true position of NASA Curiosity rover on Mars. A 3-D virtual model of Curiosity is shown inside Gale Crater, near Mount Sharp, Curiosity ultimate destination."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15984/PIA15984~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15980/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Spotted on Parachute by Orbiter",
+            "nasa_id": "PIA15980",
+            "date_created": "2012-08-06T16:27:07Z",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO,Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Curiosity rover and its parachute were spotted by NASA Mars Reconnaissance Orbiter as Curiosity descended to the surface on Aug. 5 PDT Aug. 6 EDT. Curiosity and its parachute are in the center of the white box.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "NASA Curiosity rover and its parachute were spotted by NASA Mars Reconnaissance Orbiter as Curiosity descended to the surface on Aug. 5 PDT Aug. 6 EDT. Curiosity and its parachute are in the center of the white box."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15980/PIA15980~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060008HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Curiosity",
+              "Jason Townsend",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060008HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "Jason Townsend, NASA's Deputy Social Media Manager, asks a question on behalf of a NASA Twitter follower at a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  The Mars Science Laboratory mission successfully placed the one-ton Curiosity rover on the surface of Mars on Aug. 6, 2012, about 1 mile from the center of its 12-mile-long target area.  Within the first eight months of a planned 23-months primary mission, Curiosity met its major science objective of finding evidence of a past environment well-suited to support microbial life.  Photo Credit: (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060008HQ/201308060008HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA20602/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Self-Portrait at Okoruso Drill Hole",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL",
+              "Curiosity self-portrait"
+            ],
+            "nasa_id": "PIA20602",
+            "date_created": "2016-06-13T20:15:01Z",
+            "media_type": "image",
+            "description_508": "This self-portrait of NASA's Curiosity Mars rover shows the vehicle at a drilled sample site called Okoruso, on the Naukluft Plateau of lower Mount Sharp.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This self-portrait of NASA's Curiosity Mars rover shows the vehicle at a drilled sample site called \"Okoruso,\" on the \"Naukluft Plateau\" of lower Mount Sharp. The scene combines multiple images taken with the rover's Mars Hand Lens Imager (MAHLI) on May 11, 2016, during the 1,338th Martian day, or sol, of the rover's work on Mars.  In front of the rover is the hole, surrounded by grayish drill cuttings, created by using Curiosity's drill to collect sample rock powder at Okoruo, plus a patch of powder dumped onto the ground after delivery of a portion to the rover's internal Chemistry and Mineralogy (CheMin) laboratory instrument.  The rover team compared the rock powder from drilling at Okoruso to material from the nearby \"Lubango\" drilling site, which is visible behind the rover, just to the left of the mast. The Lubango site was selected within a pale zone, or \"halo,\" beside a fracture in the area's sandstone bedrock. Okoruso is in less-altered bedrock farther from any fractures. Note that the Okoruso drill cuttings appear darker than the Lubango drill cuttings. The Lubango sample was found to be enriched in silica and sulfates, relative to Okoruso.  To the left of the rover, in this scene, several broken rocks reveal grayish interiors. Here, Curiosity was driven over the rocks in a fracture-associated halo, so that freshly exposed surfaces could be examined with MAHLI, Mast Camera (Mastcam) and Chemistry and Camera (ChemCam) instruments.  An upper portion of Mount Sharp is prominent on the horizon.  http://photojournal.jpl.nasa.gov/catalog/PIA20602"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA20602/PIA20602~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA23624/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity at the Hutton Drill Site",
+            "nasa_id": "PIA23624",
+            "date_created": "2020-03-20T00:00:00Z",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars"
+            ],
+            "media_type": "image",
+            "description_508": "This selfie was taken by NASA's Curiosity Mars rover on Feb. 26, 2020. The crumbling rock layer at the top of the image is the Greenheugh Pediment, which Curiosity climbed soon after taking the image.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This selfie was taken by NASA's Curiosity Mars rover on Feb. 26, 2020 (the 2,687th Martian day, or sol, of the mission). The crumbling rock layer at the top of the image is the Greenheugh Pediment, which Curiosity climbed soon after taking the image.  Directly to the left of Curiosity's foremost wheel is a hole the rover drilled at a rock feature called \"Hutton.\" The selfie includes 86 individual images taken by the Mars Hand Lens Imager (MAHLI) camera on the end of Curiosity's robotic arm. The images were then stitched into a panorama.  https://photojournal.jpl.nasa.gov/catalog/PIA23624"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA23624/PIA23624~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15952/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Seventeen Cameras on Curiosity Artist Concept",
+            "nasa_id": "PIA15952",
+            "date_created": "2012-08-02T22:00:02Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This graphic shows the locations of the cameras on NASA Curiosity rover.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This graphic shows the locations of the cameras on NASA Curiosity rover."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15952/PIA15952~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22520/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity's View of the June 2018 Dust Storm",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars",
+              "dust storm",
+              "Curiosity"
+            ],
+            "nasa_id": "PIA22520",
+            "date_created": "2018-06-13T00:00:00Z",
+            "media_type": "image",
+            "description_508": "These two views from NASA's Curiosity rover, acquired specifically to measure the amount of dust inside Gale Crater, show that dust has increased over three days from a major Martian dust storm.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "These two views from NASA's Curiosity rover, acquired specifically to measure the amount of dust inside Gale Crater, show that dust has increased over three days from a major Martian dust storm. The left-hand image shows a view of the east-northeast rim of Gale Crater on June 7, 2018 (Sol 2074); the right-hand image shows a view of the same feature on June 10, 2018 (Sol 2077). The images were taken by the rover's Mastcam.  https://photojournal.jpl.nasa.gov/catalog/PIA22520"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22520/PIA22520~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16702/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Neighborhood for Curiosity First Drilling Campaign",
+            "nasa_id": "PIA16702",
+            "date_created": "2013-01-15T18:18:35Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This wide view of the John Klein location selected for the first rock drilling by NASA Mars rover Curiosity is a mosaic taken by Curiosity right Mast Camera Mastcam.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This wide view of the John Klein location selected for the first rock drilling by NASA Mars rover Curiosity is a mosaic taken by Curiosity right Mast Camera Mastcam."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16702/PIA16702~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060010HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Chris Cassidy",
+              "Curiosity",
+              "Karen Nyberg",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060010HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "Expedition 35/36 NASA astronaut Karen Nyberg, right on screen, is seen on a live feed from the International Space Station as they participate in a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  Photo Credit:  (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060010HQ/201308060010HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/201308060009HQ/collection.json",
+        "data": [
+          {
+            "center": "HQ",
+            "title": "Curiosity Rover's First Anniversary ",
+            "photographer": "NASA/Carla Cioffi",
+            "keywords": [
+              "Chris Cassidy",
+              "Curiosity",
+              "Karen Nyberg",
+              "Mars",
+              "Mars Science Laboratory (MSL)",
+              "NASA Headquarters",
+              "Washington, DC"
+            ],
+            "nasa_id": "201308060009HQ",
+            "media_type": "image",
+            "date_created": "2013-08-06T00:00:00Z",
+            "description": "Expedition 35/36 NASA astronaut Chris Cassidy, left on screen, is seen on a live feed from the International Space Station as they participate in a public event at NASA Headquarters observing the first anniversary of the Curiosity rover's landing on Mars, Tuesday, August 6th, 2013 in Washington.  Photo Credit:  (NASA/Carla Cioffi)"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/201308060009HQ/201308060009HQ~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22327/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Inlet Cover On the Curiosity Rover",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars"
+            ],
+            "nasa_id": "PIA22327",
+            "date_created": "2018-06-04T00:00:00Z",
+            "media_type": "image",
+            "description_508": "The drill bit of NASA's Curiosity Mars rover over one of the sample inlets on the rover's deck. The inlets lead to Curiosity's onboard laboratories.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "The drill bit of NASA's Curiosity Mars rover over one of the sample inlets on the rover's deck. The inlets lead to Curiosity's onboard laboratories. This image was taken on Sol 2068 by the rover's Mast Camera (Mastcam).  https://photojournal.jpl.nasa.gov/catalog/PIA22327"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22327/PIA22327~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16096/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity First Arm Extension, Full Resolution",
+            "nasa_id": "PIA16096",
+            "date_created": "2012-08-22T22:21:37Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "The extended robotic arm of NASA Mars rover Curiosity can be seen in this mosaic of full-resolution images from Curiosity Navigation camera Navcam. Curiosity extended its arm on Aug. 20, 2012.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "The extended robotic arm of NASA Mars rover Curiosity can be seen in this mosaic of full-resolution images from Curiosity Navigation camera Navcam. Curiosity extended its arm on Aug. 20, 2012."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16096/PIA16096~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15992/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Wheel During Descent",
+            "nasa_id": "PIA15992",
+            "date_created": "2012-08-07T00:00:05Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This color thumbnail image was obtained by NASA Curiosity rover illustrating the first appearance of the left front wheel of the Curiosity rover after deployment of the suspension system as the vehicle was about to touch down on Mars.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This color thumbnail image was obtained by NASA Curiosity rover illustrating the first appearance of the left front wheel of the Curiosity rover after deployment of the suspension system as the vehicle was about to touch down on Mars."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15992/PIA15992~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16137/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Panorama of Curiosity Belly Check",
+            "nasa_id": "PIA16137",
+            "date_created": "2012-09-10T20:40:03Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This view of the lower front and underbelly areas of NASA Mars rover Curiosity combines nine images taken by the rover MAHLI camera during the 34th Martian day, or sol, of Curiosity work on Mars.",
+            "secondary_creator": "NASA/JPL-Caltech/Malin Space Science Systems",
+            "description": "This view of the lower front and underbelly areas of NASA Mars rover Curiosity combines nine images taken by the rover MAHLI camera during the 34th Martian day, or sol, of Curiosity work on Mars."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16137/PIA16137~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15990/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Kicking up Dust",
+            "nasa_id": "PIA15990",
+            "date_created": "2012-08-07T00:00:03Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This color thumbnail image was obtained by NASA Curiosity rover. A dust cloud was generated when the Curiosity rover was being lowered to the surface while the sky crane hovered above.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This color thumbnail image was obtained by NASA Curiosity rover. A dust cloud was generated when the Curiosity rover was being lowered to the surface while the sky crane hovered above."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15990/PIA15990~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16060/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity View From Below",
+            "nasa_id": "PIA16060",
+            "date_created": "2012-08-17T22:45:06Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "The Curiosity engineering team created this cylindrical projection view from images taken by NASA Curiosity rover front hazard avoidance cameras underneath the rover deck on Sol 0. Pictured here are are the pigeon-toed the wheels.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "The Curiosity engineering team created this cylindrical projection view from images taken by NASA Curiosity rover front hazard avoidance cameras underneath the rover deck on Sol 0. Pictured here are are the pigeon-toed the wheels."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16060/PIA16060~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA23517/collection.json",
+        "data": [
+          {
+            "album": [
+              "Mars_2020_Perseverance"
+            ],
+            "description": "Illustrations of NASA's Curiosity and Mars 2020 rovers. While the newest rover borrows from Curiosity's design, each has its own role in the ongoing exploration of Mars and the search for ancient life.  https://photojournal.jpl.nasa.gov/catalog/PIA23517",
+            "title": "Side-by-Side: Curiosity and Mars 2020",
+            "nasa_id": "PIA23517",
+            "media_type": "image",
+            "keywords": [
+              "Mars 2020 Rover"
+            ],
+            "date_created": "2019-12-10T00:00:00Z",
+            "description_508": "This image shows illustrations of NASA's Curiosity and Mars 2020 rovers.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "center": "JPL"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA23517/PIA23517~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA21710/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Rover on Mount Sharp, Seen from Mars Orbit",
+            "keywords": [
+              "Mars Reconnaissance Orbiter (MRO),Mars Science Laboratory (MSL)",
+              "Curiosity",
+              "Mars Science Laboratory (MSL)",
+              "Mars",
+              "Mount Sharp",
+              "HiRISE"
+            ],
+            "nasa_id": "PIA21710",
+            "date_created": "2017-06-20T00:00:00Z",
+            "media_type": "image",
+            "description_508": "The feature that appears bright blue at the center of this scene is NASA's Curiosity Mars rover on the northwestern flank of Mount Sharp, viewed by NASA's Mars Reconnaissance Orbiter.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "The feature that appears bright blue at the center of this scene is NASA's Curiosity Mars rover on the northwestern flank of Mount Sharp, viewed by NASA's Mars Reconnaissance Orbiter. Curiosity is approximately 10 feet long and 9 feet wide (3.0 meters by 2.8 meters).  The view is a cutout from observation ESP_050897_1750 taken by the High Resolution Imaging Science Experiment (HiRISE) camera on the orbiter on June 5, 2017. HiRISE has been imaging Curiosity about every three months, to monitor the surrounding features for changes such as dune migration or erosion.   When the image was taken, Curiosity was partway between its investigation of active sand dunes lower on Mount Sharp, and \"Vera Rubin Ridge,\" a destination uphill where the rover team intends to examine outcrops where hematite has been identified from Mars orbit. The rover's surroundings include tan rocks and patches of dark sand.   As in previous HiRISE color images of Curiosity since the rover was at its landing site, the rover appears bluer than it really is. HiRISE color observations are recorded in a red band, a blue-green band and an infrared band, and displayed in red, green and blue. This helps make differences in Mars surface materials apparent, but does not show natural color as seen by the human eye.  Lower Mount Sharp was chosen as a destination for the Curiosity mission because the layers of the mountain offer exposures of rocks that record environmental conditions from different times in the early history of the Red Planet. Curiosity has found evidence for ancient wet environments that offered conditions favorable for microbial life, if Mars has ever hosted life.  https://photojournal.jpl.nasa.gov/catalog/PIA21710"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA21710/PIA21710~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14303/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Mawrth Vallis, a Finalist Not Selected as a Landing Site for Curiosity",
+            "nasa_id": "PIA14303",
+            "date_created": "2011-07-22T14:00:12Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "Mawrth Vallis, a Finalist Not Selected as a Landing Site for Curiosity",
+            "secondary_creator": "NASA/JPL-Caltech/UA",
+            "description": "Mawrth Vallis, a Finalist Not Selected as a Landing Site for Curiosity"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14303/PIA14303~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14301/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Gale Crater, the Selected Landing Site for Curiosity",
+            "nasa_id": "PIA14301",
+            "date_created": "2011-07-22T14:00:10Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "Gale Crater, the Selected Landing Site for Curiosity",
+            "secondary_creator": "NASA/JPL-Caltech/UA",
+            "description": "Gale Crater, the Selected Landing Site for Curiosity"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14301/PIA14301~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14300/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Eberswalde Crater, a Finalist Not Selected as Landing Site for Curiosity",
+            "nasa_id": "PIA14300",
+            "date_created": "2011-07-22T14:00:09Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "Eberswalde Crater, a Finalist Not Selected as Landing Site for Curiosity",
+            "secondary_creator": "NASA/JPL-Caltech/UA",
+            "description": "Eberswalde Crater, a Finalist Not Selected as Landing Site for Curiosity"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14300/PIA14300~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14302/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Holden Crater, a Finalist Not Selected as Landing Site for Curiosity",
+            "nasa_id": "PIA14302",
+            "date_created": "2011-07-22T14:00:11Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "Holden Crater, a Finalist Not Selected as Landing Site for Curiosity",
+            "secondary_creator": "NASA/JPL-Caltech/UA",
+            "description": "Holden Crater, a Finalist Not Selected as Landing Site for Curiosity"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14302/PIA14302~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA19115/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Site of Curiosity Second Bite of Mount Sharp",
+            "nasa_id": "PIA19115",
+            "date_created": "2015-02-05T21:30:25Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "Gray cuttings from Curiosity drilling into a target called Mojave 2 are visible surrounding the sample-collection hole in this image from NASA Curiosity rover.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "Gray cuttings from Curiosity drilling into a target called Mojave 2 are visible surrounding the sample-collection hole in this image from NASA Curiosity rover."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA19115/PIA19115~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15991/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Color Close-Up upon Landing",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "nasa_id": "PIA15991",
+            "date_created": "2012-08-07T00:00:04Z",
+            "media_type": "image",
+            "description_508": "This color thumbnail image was obtained by NASA Curiosity rover and is representative of the images acquired once the Curiosity rover was resting on the surface of Mars after touchdown.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This color thumbnail image was obtained by NASA Curiosity rover and is representative of the images acquired once the Curiosity rover was resting on the surface of Mars after touchdown."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15991/PIA15991~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA13807/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity on Tilt Table with Mast Up",
+            "nasa_id": "PIA13807",
+            "date_created": "2011-03-25T18:56:45Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "The Mast Camera Mastcam on NASA Mars rover Curiosity has two rectangular eyes near the top of the rover remote sensing mast. This image shows Curiosity on a tilt table NASA Jet Propulsion Laboratory, Pasadena, California.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "The Mast Camera Mastcam on NASA Mars rover Curiosity has two rectangular eyes near the top of the rover remote sensing mast. This image shows Curiosity on a tilt table NASA Jet Propulsion Laboratory, Pasadena, California."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA13807/PIA13807~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14131/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Mast Camera View of Curiosity Deck",
+            "nasa_id": "PIA14131",
+            "date_created": "2011-05-31T21:00:56Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Mars rover Curiosity took the images combined into this mosaic of the rover upper deck. The images were taken in March 2011. At the time, Curiosity was inside a space simulation chamber at NASA Jet Propulsion Laboratory, Pasadena, Calif.",
+            "secondary_creator": "NASA/JPL-Caltech/Malin Space Science Systems",
+            "description": "NASA Mars rover Curiosity took the images combined into this mosaic of the rover upper deck. The images were taken in March 2011. At the time, Curiosity was inside a space simulation chamber at NASA Jet Propulsion Laboratory, Pasadena, Calif."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14131/PIA14131~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14253/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Mars Rover Curiosity Raising Turret",
+            "nasa_id": "PIA14253",
+            "date_created": "2011-06-13T19:00:02Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This photograph of the NASA Mars Science Laboratory rover, Curiosity, was taken during testing on June 3, 2011. The turret at the end of Curiosity robotic arm holds five devices.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This photograph of the NASA Mars Science Laboratory rover, Curiosity, was taken during testing on June 3, 2011. The turret at the end of Curiosity robotic arm holds five devices."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14253/PIA14253~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16458/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Self-Portrait of Curiosity Stunt Double",
+            "nasa_id": "PIA16458",
+            "date_created": "2012-12-11T22:00:02Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "Camera and robotic-arm maneuvers for taking a self-portrait of the NASA Curiosity rover on Mars were checked first, at NASA Jet Propulsion Laboratory in Pasadena, Calif., using the main test rover for the Curiosity.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "Camera and robotic-arm maneuvers for taking a self-portrait of the NASA Curiosity rover on Mars were checked first, at NASA Jet Propulsion Laboratory in Pasadena, Calif., using the main test rover for the Curiosity."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16458/PIA16458~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16155/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Jake Matijevic Contact Target for Curiosity",
+            "nasa_id": "PIA16155",
+            "date_created": "2012-09-19T18:04:17Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "The drive by NASA Mars rover Curiosity during the mission 43rd Martian day ended with this rock front of the rover. The rover team has assessed it as a suitable target for the first use of Curiosity contact instruments on a rock.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "The drive by NASA Mars rover Curiosity during the mission 43rd Martian day ended with this rock front of the rover. The rover team has assessed it as a suitable target for the first use of Curiosity contact instruments on a rock."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16155/PIA16155~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA18581/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Offside!",
+            "nasa_id": "PIA18581",
+            "date_created": "2014-07-08T18:39:04Z",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Mars Reconnaissance Orbiter captured this image on 27 June 2014, when Curiosity had just crossed the edge of the 3-sigma landing.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "NASA Mars Reconnaissance Orbiter captured this image on 27 June 2014, when Curiosity had just crossed the edge of the 3-sigma landing."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA18581/PIA18581~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16173/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Digs In",
+            "nasa_id": "PIA16173",
+            "date_created": "2012-10-30T18:20:04Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This pair of images shows a bite mark where NASA Curiosity rover scooped up some Martian soil left, and the scoop carrying soil.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This pair of images shows a bite mark where NASA Curiosity rover scooped up some Martian soil left, and the scoop carrying soil."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16173/PIA16173~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001528/collection.json",
+        "data": [
+          {
+            "album": [
+              "Test"
+            ],
+            "center": "GSFC",
+            "title": "View From Camera Not Used During Curiosity's First Six Months on Mars",
+            "keywords": [
+              "View From Camera Not Used During Curiosity's First Six Months on Mars"
+            ],
+            "location": "Greenbelt, MD",
+            "nasa_id": "GSFC_20171208_Archive_e001528",
+            "date_created": "2017-12-08T00:00:00Z",
+            "media_type": "image",
+            "description": "This view of Curiosity's left-front and left-center wheels and of marks made by wheels on the ground in the &quot;Yellowknife Bay&quot; area comes from one of six cameras used on Mars for the first time more than six months after the rover landed. The left Navigation Camera (Navcam) linked to Curiosity's B-side computer took this image during the 223rd Martian day, or sol, of Curiosity's work on Mars (March 22, 2013). The wheels are 20 inches (50 centimeters) in diameter.  Curiosity carries a pair of main computers, redundant to each other, in order to have a backup available if one fails. Each of the computers, A-side and B-side, also has other redundant subsystems linked to just that computer. Curiosity operated on its A-side from before the August 2012 landing until Feb. 28, when engineers commanded a switch to the B-side in response to a memory glitch on the A-side. One set of activities after switching to the B-side computer has been to check the six engineering cameras that are hard-linked to that computer. The rover's science instruments, including five science cameras, can each be operated by either the A-side or B-side computer, whichever is active. However, each of Curiosity's 12 engineering cameras is linked to just one of the computers. The engineering cameras are the Navigation Camera (Navcam), the Front Hazard-Avoidance Camera (Front Hazcam) and Rear Hazard-Avoidance Camera (Rear Hazcam). Each of those three named cameras has four cameras as part of it: two stereo pairs of cameras, with one pair linked to each computer. Only the pairs linked to the active computer can be used, and the A-side computer was active from before landing, in August, until Feb. 28.  All six of the B-side engineering cameras have been used during March 2013 and checked out OK.   Image Credit: NASA/JPL-Caltech   <b><a href=\"http://www.nasa.gov/audience/formedia/features/MP_Photo_Guidelines.html\" rel=\"nofollow\">NASA image use policy.</a></b>  <b><a href=\"http://www.nasa.gov/centers/goddard/home/index.html\" rel=\"nofollow\">NASA Goddard Space Flight Center</a></b> enables NASA’s mission through four scientific endeavors: Earth Science, Heliophysics, Solar System Exploration, and Astrophysics. Goddard plays a leading role in NASA’s accomplishments by contributing compelling scientific knowledge to advance the Agency’s mission.  <b>Follow us on <a href=\"http://twitter.com/NASA_GoddardPix\" rel=\"nofollow\">Twitter</a></b>  <b>Like us on <a href=\"http://www.facebook.com/pages/Greenbelt-MD/NASA-Goddard/395013845897?ref=tsd\" rel=\"nofollow\">Facebook</a></b>  <b>Find us on <a href=\"http://instagram.com/nasagoddard?vm=grid\" rel=\"nofollow\">Instagram</a></b>"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001528/GSFC_20171208_Archive_e001528~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16107/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Speaks Volumes",
+            "nasa_id": "PIA16107",
+            "date_created": "2012-08-27T20:00:10Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This chart shows increases in the volume of data coming back from NASA Mars Curiosity over recent sols. New capabilities of the Electra relay-radios on MRO and Curiosity have greatly increased the volume of data the rover is sending back from Mars.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This chart shows increases in the volume of data coming back from NASA Mars Curiosity over recent sols. New capabilities of the Electra relay-radios on MRO and Curiosity have greatly increased the volume of data the rover is sending back from Mars."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16107/PIA16107~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16083/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Laying the Groundwork for Curiosity DAN",
+            "nasa_id": "PIA16083",
+            "date_created": "2012-08-21T17:00:04Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "The heritage for investigations with the Dynamic Albedo of Neutrons instrument on NASA Curiosity rover comes from NASA Odyssey orbiter.",
+            "secondary_creator": "NASA/JPL-Caltech/Russian Space Research Institute",
+            "description": "The heritage for investigations with the Dynamic Albedo of Neutrons instrument on NASA Curiosity rover comes from NASA Odyssey orbiter."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16083/PIA16083~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16084/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Blasts Ground with Neutrons",
+            "nasa_id": "PIA16084",
+            "date_created": "2012-08-21T17:00:05Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Curiosity rover pinged the ground with neutrons for the first time, a process called active neutron sounding, on August 17, 2012.",
+            "secondary_creator": "NASA/JPL-Caltech/Russian Space Research Institute",
+            "description": "NASA Curiosity rover pinged the ground with neutrons for the first time, a process called active neutron sounding, on August 17, 2012."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16084/PIA16084~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16727/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Views of Curiosity Drill",
+            "nasa_id": "PIA16727",
+            "date_created": "2013-02-20T19:55:07Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "These schematic drawings show a top view and a cutaway view of a section of the drill on NASA Curiosity rover on Mars.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "These schematic drawings show a top view and a cutaway view of a section of the drill on NASA Curiosity rover on Mars."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16727/PIA16727~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22208/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Locator Map for Features in Curiosity Panorama",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars",
+              "Curiosity locator map",
+              "Mars Express Orbiter"
+            ],
+            "nasa_id": "PIA22208",
+            "date_created": "2018-01-30T00:00:00Z",
+            "media_type": "image",
+            "description_508": "This image of the northwestern portion of Mars' Gale Crater and terrain north of it, from the ESA's Mars Express orbiter, provides a locator map for some features visible in an October 2017 panorama from NASA's Curiosity Mars rover.",
+            "secondary_creator": "ESA/DLR/FU Berlin/NASA/JPL-Caltech",
+            "description": "This image of the northwestern portion of Mars' Gale Crater and terrain north of it, from the European Space Agency's Mars Express orbiter, provides a locator map for some features visible in an October 2017 panorama from NASA's Curiosity Mars rover (see PIA22210, Fig. 1).  A blue star marks the rover's landing site, on the floor of Gale Crater near the base of Mount Sharp. That layered mountain occupies the middle of the crater. The black line indicates the path of the rover's traverse from its August 2012 landing to about the location on lower Mount Sharp, where the panorama was acquired.  North is toward the top. At lower right is a 20-kilometer (12.4-mile) scale bar. The base-map image was taken by the High Resolution Stereo Camera on Mars Express.  https://photojournal.jpl.nasa.gov/catalog/PIA22208"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22208/PIA22208~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA18408/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Sandy Martian Valleys in Curiosity Near Future",
+            "nasa_id": "PIA18408",
+            "date_created": "2014-08-01T17:13:37Z",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO,Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "The main map shows landforms near NASA Curiosity Mars rover as the rover second anniversary of landing on Mars nears. The gold traverse line ends at Curiosity position as of July 31, 2014 Sol 705.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "The main map shows landforms near NASA Curiosity Mars rover as the rover second anniversary of landing on Mars nears. The gold traverse line ends at Curiosity position as of July 31, 2014 Sol 705."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA18408/PIA18408~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14164/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Mars Rover Curiosity in Artist Concept, Tall",
+            "nasa_id": "PIA14164",
+            "date_created": "2011-05-26T18:17:17Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This artist concept features NASA Mars Science Laboratory Curiosity rover, a mobile robot for investigating Mars past or present ability to sustain microbial life. Curiosity is being tested in preparation for launch in the fall of 2011.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This artist concept features NASA Mars Science Laboratory Curiosity rover, a mobile robot for investigating Mars past or present ability to sustain microbial life. Curiosity is being tested in preparation for launch in the fall of 2011."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14164/PIA14164~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14258/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Mars Rover Curiosity Arm Held High",
+            "nasa_id": "PIA14258",
+            "date_created": "2011-06-13T19:00:07Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This photograph of the NASA Mars Science Laboratory rover, Curiosity, was taken during testing on June 3, 2011. The turret at the end of Curiosity robotic arm holds five devices. In this view, the drill is at the six oclock position.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This photograph of the NASA Mars Science Laboratory rover, Curiosity, was taken during testing on June 3, 2011. The turret at the end of Curiosity robotic arm holds five devices. In this view, the drill is at the six oclock position."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14258/PIA14258~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15696/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Orbiter View of Curiosity From Nearly Straight Overhead",
+            "nasa_id": "PIA15696",
+            "date_created": "2012-08-31T17:30:23Z",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO,Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "Details such as the shadow of the mast on NASA Mars rover Curiosity appear in an image taken Aug. 17, 2012, by the HiRISE camera on NASA Mars Reconnaissance Orbiter, from more directly overhead than previous HiRISE images of Curiosity.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona/USGS",
+            "description": "Details such as the shadow of the mast on NASA Mars rover Curiosity appear in an image taken Aug. 17, 2012, by the HiRISE camera on NASA Mars Reconnaissance Orbiter, from more directly overhead than previous HiRISE images of Curiosity."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15696/PIA15696~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14165/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Mars Rover Curiosity in Artist Concept, Wide",
+            "nasa_id": "PIA14165",
+            "date_created": "2011-05-26T18:17:18Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This artist concept features NASA Mars Science Laboratory Curiosity rover, a mobile robot for investigating Mars past or present ability to sustain microbial life. Curiosity is being tested in preparation for launch in the fall of 2011.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This artist concept features NASA Mars Science Laboratory Curiosity rover, a mobile robot for investigating Mars past or present ability to sustain microbial life. Curiosity is being tested in preparation for launch in the fall of 2011."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14165/PIA14165~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16937/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Updated Curiosity Self-Portrait at John Klein",
+            "nasa_id": "PIA16937",
+            "date_created": "2013-05-21T15:50:18Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This self-portrait of NASA Mars rover Curiosity combines dozens of exposures to show gray-powder and two holes where Curiosity used its drill on the rock target John Klein.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This self-portrait of NASA Mars rover Curiosity combines dozens of exposures to show gray-powder and two holes where Curiosity used its drill on the rock target John Klein."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16937/PIA16937~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA17944/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Color View of Martian Dune After Crossing It",
+            "nasa_id": "PIA17944",
+            "date_created": "2014-02-19T19:07:27Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This look back at a dune that NASA Curiosity Mars rover drove across was taken by the rover Mast Camera Mastcam during the 538th Martian day, or sol, of Curiosity work on Mars Feb. 9, 2014.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This look back at a dune that NASA Curiosity Mars rover drove across was taken by the rover Mast Camera Mastcam during the 538th Martian day, or sol, of Curiosity work on Mars Feb. 9, 2014."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA17944/PIA17944~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA17068/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Mars Rover Drilling Into Its Second Rock",
+            "nasa_id": "PIA17068",
+            "date_created": "2013-06-05T18:30:04Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This frame from an animation from NASA Mars rover Curiosity shows the rover drilling into rock target Cumberland. The drilling was performed during the 279th Martian day, or sol, of the Curiosity work on Mars May 19, 2013.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This frame from an animation from NASA Mars rover Curiosity shows the rover drilling into rock target Cumberland. The drilling was performed during the 279th Martian day, or sol, of the Curiosity work on Mars May 19, 2013."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA17068/PIA17068~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16447/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Post-Drive View on Curiosity Sol 102",
+            "nasa_id": "PIA16447",
+            "date_created": "2012-11-20T21:02:05Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Mars rover Curiosity drove 83 feet eastward during the 102nd Martian day, or sol, of the mission Nov. 18, 2012. At the end of the drive, Curiosity view was toward Yellowknife Bay in the Glenelg area of Gale Crater.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "NASA Mars rover Curiosity drove 83 feet eastward during the 102nd Martian day, or sol, of the mission Nov. 18, 2012. At the end of the drive, Curiosity view was toward Yellowknife Bay in the Glenelg area of Gale Crater."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16447/PIA16447~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16568/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Diversity in Vicinity of Curiosity First Drilling Target",
+            "nasa_id": "PIA16568",
+            "date_created": "2013-01-15T18:18:32Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "The right Mast Camera Mastcam of NASA Curiosity Mars rover provided this contextual view of the vicinity of the location called John Klein, selected as Curiosity first drilling site.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "The right Mast Camera Mastcam of NASA Curiosity Mars rover provided this contextual view of the vicinity of the location called John Klein, selected as Curiosity first drilling site."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16568/PIA16568~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16000/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Spotted!",
+            "nasa_id": "PIA16000",
+            "date_created": "2012-08-07T17:27:06Z",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO,Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This close-up view shows NASA Curiosity rover on the surface of Mars. The image was captured by the NASA Mars Reconnaissance Orbiter about 24 hours after the rover made its grand appearance on Mars.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "This close-up view shows NASA Curiosity rover on the surface of Mars. The image was captured by the NASA Mars Reconnaissance Orbiter about 24 hours after the rover made its grand appearance on Mars."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16000/PIA16000~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA17751/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Left-Front Wheel of Curiosity Rover, Approaching Three Miles",
+            "nasa_id": "PIA17751",
+            "date_created": "2013-12-20T17:00:03Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "The left-front wheel of NASA Curiosity Mars rover shows dents and holes in this image taken by the MAHLI camera, which is mounted at the end of Curiosity robotic arm.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "The left-front wheel of NASA Curiosity Mars rover shows dents and holes in this image taken by the MAHLI camera, which is mounted at the end of Curiosity robotic arm."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA17751/PIA17751~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16918/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Billion-Pixel View From Curiosity at Rock Nest, White-Balanced",
+            "nasa_id": "PIA16918",
+            "date_created": "2013-06-19T17:27:01Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This image from NASA Curiosity Mars rover shows Curiosity at the Rocknest site where the rover scooped up samples of windblown dust and sand.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This image from NASA Curiosity Mars rover shows Curiosity at the Rocknest site where the rover scooped up samples of windblown dust and sand."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16918/PIA16918~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA17766/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Mars Rover Approaches Dingo Gap, Mastcam View",
+            "nasa_id": "PIA17766",
+            "date_created": "2014-01-29T22:41:55Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This image from NASA Curiosity Mars rover, Curiosity, has been white-balanced to show what the rocks would look like if they were on Earth.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This image from NASA Curiosity Mars rover, Curiosity, has been white-balanced to show what the rocks would look like if they were on Earth."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA17766/PIA17766~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16919/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Billion-Pixel View From Curiosity at Rock Nest, Raw Color",
+            "nasa_id": "PIA16919",
+            "date_created": "2013-06-19T17:27:02Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This image from NASA Curiosity Mars rover shows Curiosity at the Rocknest site where the rover scooped up samples of windblown dust and sand.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This image from NASA Curiosity Mars rover shows Curiosity at the Rocknest site where the rover scooped up samples of windblown dust and sand."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16919/PIA16919~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA25046/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Mastcam's View of Edinburgh",
+            "nasa_id": "PIA25046",
+            "media_type": "image",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars"
+            ],
+            "date_created": "2022-01-25T00:00:00Z",
+            "description_508": "NASA's Curiosity Mars rover used its Mast Camera, or Mastcam, to capture this scene of a drill hole named Edinburgh. The images used to create the scene were taken on March 22 and 23, 2020.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "NASA's Curiosity Mars rover used its Mast Camera, or Mastcam, to capture this scene around a drill hole named \"Edinburgh.\" The images used to create the scene were taken on March 22 and 23, 2020, which were the 2,711th and 2,712th Martian days, or sols, of the mission.  The scene was captured while Curiosity was parked on top of a feature called the \"Greenheugh Pediment.\" Looming above in the background is the top of Mount Sharp, the 3-mile-tall (5-kilometer-tall) mountain that Curiosity has been ascending since 2014.  The color balance of the scene was processed to reflect the way it would look to the human eye under daytime lighting on Earth.  https://photojournal.jpl.nasa.gov/catalog/PIA25046"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA25046/PIA25046~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA24173/collection.json",
+        "data": [
+          {
+            "description": "NASA's Curiosity Mars rover took this selfie at a location nicknamed \"Mary Anning\" after a 19th century English paleontologist. Curiosity snagged three samples of drilled rock at this site on its way out of the Glen Torridon region, which scientists believe was a site where ancient conditions would have been favorable to supporting life, if it ever was present.  Curiosity took the selfie using a camera called the Mars Hand Lens Imager located on the end of its robotic arm (videos explaining how Curiosity's selfies are taken can be found here). A close-up detail from within the selfie shows the three holes that a rock drill, also found on the end of Curiosity's arm, added to the surface. The three drill holes are named \"Mary Anning,\" \"Mary Anning 3\" and \"Groken,\" the last name coming from a site of geological interest in the Scottish countryside.  https://photojournal.jpl.nasa.gov/catalog/PIA24173",
+            "title": "Curiosity's Selfie at the 'Mary Anning' location on Mars",
+            "nasa_id": "PIA24173",
+            "media_type": "image",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars"
+            ],
+            "date_created": "2020-11-12T00:00:00Z",
+            "description_508": "NASA's Curiosity Mars rover took this selfie at a location nicknamed Mary Anning after a 19th century English paleontologist. Curiosity snagged three samples of drilled rock at this site on its way out of the Glen Torridon region.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "center": "JPL"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA24173/PIA24173~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16132/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Calibration Target for Curiosity Arm Camera",
+            "nasa_id": "PIA16132",
+            "date_created": "2012-09-10T05:49:03Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This view of the calibration target for the MAHLI camera aboard NASA Mars rover Curiosity combines two images taken by that camera during Sept. 9, 2012. Part of Curiosity left-front and center wheels and a patch of Martian ground are also visible.",
+            "secondary_creator": "NASA/JPL-Caltech/Malin Space Science Systems",
+            "description": "This view of the calibration target for the MAHLI camera aboard NASA Mars rover Curiosity combines two images taken by that camera during Sept. 9, 2012. Part of Curiosity left-front and center wheels and a patch of Martian ground are also visible."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16132/PIA16132~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16922/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Accurate Pointing by Curiosity",
+            "nasa_id": "PIA16922",
+            "date_created": "2013-04-12T20:00:06Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "NASA Curiosity Mars rover targeted the laser of the ChemCam instrument with remarkable accuracy for assessing the composition of the wall of a drilled hole and tailings that resulted from the drilling.",
+            "secondary_creator": "NASA/JPL-Caltech/LANL/CNES/IRAP/LPGNantes/CNRS/IAS",
+            "description": "NASA Curiosity Mars rover targeted the laser of the ChemCam instrument with remarkable accuracy for assessing the composition of the wall of a drilled hole and tailings that resulted from the drilling."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16922/PIA16922~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15965/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Communicating with Curiosity Artist Concept",
+            "nasa_id": "PIA15965",
+            "date_created": "2012-08-04T23:46:54Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This frame from an artist animation shows how NASA Curiosity rover will communicate with Earth via two of NASA Mars orbiters, Mars Reconnaissance Orbiter and Odyssey.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This frame from an artist animation shows how NASA Curiosity rover will communicate with Earth via two of NASA Mars orbiters, Mars Reconnaissance Orbiter and Odyssey."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15965/PIA15965~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16726/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity First Sample Drilling",
+            "nasa_id": "PIA16726",
+            "date_created": "2013-02-09T15:58:02Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "At the center of this image from NASA Curiosity rover is the hole in a rock called John Klein where the rover conducted its first sample drilling on Mars.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "At the center of this image from NASA Curiosity rover is the hole in a rock called John Klein where the rover conducted its first sample drilling on Mars."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16726/PIA16726~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16062/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Bird Eye View of Curiosity",
+            "nasa_id": "PIA16062",
+            "date_created": "2012-08-17T17:30:01Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This self-portrait shows the deck of NASA Curiosity rover from the rover Navigation camera. The rim of Gale Crater can be seen at upper right.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This self-portrait shows the deck of NASA Curiosity rover from the rover Navigation camera. The rim of Gale Crater can be seen at upper right."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16062/PIA16062~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16082/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Location of DAN on Curiosity",
+            "nasa_id": "PIA16082",
+            "date_created": "2012-08-21T17:00:03Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This image of NASA Curiosity rover shows the location of the two components of the Dynamic Albedo of Neutrons instrument. The neutron generator is mounted on the right hip and the detectors are on the opposite hip.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This image of NASA Curiosity rover shows the location of the two components of the Dynamic Albedo of Neutrons instrument. The neutron generator is mounted on the right hip and the detectors are on the opposite hip."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16082/PIA16082~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA12839/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Robotic Arm and Tools",
+            "nasa_id": "PIA12839",
+            "date_created": "2010-02-16T22:50:38Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "In this image, engineers from NASA Jet Propulsion Laboratory test and flex Curiosity robotic arm and tools. A video can be viewed at the Photojournal.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "In this image, engineers from NASA Jet Propulsion Laboratory test and flex Curiosity robotic arm and tools. A video can be viewed at the Photojournal."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA12839/PIA12839~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15106/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Head of Mast on Mars Rover Curiosity",
+            "nasa_id": "PIA15106",
+            "date_created": "2011-11-28T18:22:34Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This view of the head of the remote sensing mast on the Mars Science Laboratory mission rover, Curiosity, shows seven of the 17 cameras on the rover.",
+            "secondary_creator": "NASA/JPL-Caltech/LANL",
+            "description": "This view of the head of the remote sensing mast on the Mars Science Laboratory mission rover, Curiosity, shows seven of the 17 cameras on the rover."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15106/PIA15106~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16041/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Guided Tour of Curiosity Martian Landing",
+            "nasa_id": "PIA16041",
+            "date_created": "2012-08-10T17:00:41Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This is a still from an interactive web feature that guides you through the entry, descent and landing of NASA Curiosity rover.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This is a still from an interactive web feature that guides you through the entry, descent and landing of NASA Curiosity rover."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16041/PIA16041~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA16195/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Sand Filtered through Curiosity Sieve",
+            "nasa_id": "PIA16195",
+            "date_created": "2012-10-11T17:59:03Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This image shows fine sand from Mars that was filtered by NASA Curiosity rover as part of its first decontamination exercise.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This image shows fine sand from Mars that was filtered by NASA Curiosity rover as part of its first decontamination exercise."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA16195/PIA16195~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA14832/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Approaching Mars, Artist Concept",
+            "nasa_id": "PIA14832",
+            "date_created": "2011-10-03T18:00:03Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This is an artist concept of NASA Mars Science Laboratory spacecraft approaching Mars. The Curiosity rover is safely tucked inside the spacecraft aeroshell.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This is an artist concept of NASA Mars Science Laboratory spacecraft approaching Mars. The Curiosity rover is safely tucked inside the spacecraft aeroshell."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA14832/PIA14832~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15960/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Hazard Cameras Ready for Action",
+            "nasa_id": "PIA15960",
+            "date_created": "2012-08-03T21:00:01Z",
+            "keywords": [
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This frame from an animation shows the location of a set of Hazard-Avoidance cameras on the back of NASA Curiosity rover.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This frame from an animation shows the location of a set of Hazard-Avoidance cameras on the back of NASA Curiosity rover."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15960/PIA15960~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA23341/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "HiRISE Spots Curiosity at Woodland Bay",
+            "nasa_id": "PIA23341",
+            "media_type": "image",
+            "keywords": [
+              "Mars Reconnaissance Orbiter (MRO)",
+              "Mars"
+            ],
+            "date_created": "2019-07-12T00:00:00Z",
+            "description_508": "NASA's Curiosity Mars rover can be seen in this image taken from space on May 31, 2019, by the HiRISE camera aboard the Mars Reconnaissance Orbiter.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "NASA's Curiosity Mars rover can be seen in this image taken from space on May 31, 2019, by the High Resolution Imaging Science Experiment (HiRISE) camera aboard the Mars Reconnaissance Orbiter (MRO). In the image, Curiosity appears as a bluish speck.  The image shows Curiosity at a location called \"Woodland Bay.\" It's just one of many stops the rover has made in an area referred to as the \"clay-bearing unit\" on the side of Mount Sharp, a 3-mile-tall (5-kilometer-tall) mountain inside of Gale Crater.  Look carefully, and you can make out what it is likely Curiosity's \"head,\" technically known as the remote sensing mast. A bright spot appears in the upper-left corner of the rover. At the time this image was acquired, the rover was facing 65 degrees counterclockwise from north, which would put the mast in about the right location to produce this bright spot.  https://photojournal.jpl.nasa.gov/catalog/PIA23341"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA23341/PIA23341~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA23240/collection.json",
+        "data": [
+          {
+            "description": "NASA's Curiosity Mars rover took this selfie on May 12, 2019 (the 2,405th Martian day, or sol, of the mission). To the lower-left of the rover are its two recent drill holes, at targets called \"Aberlady\" and \"Kilmarie.\"  These are Curiosity's 20th and 21st drill sites.  The selfie is composed of 57 individual images taken by the rover's Mars Hand Lens Imager (MAHLI), a camera on the end of the rover's robotic arm. The images are stitched together into a panorama, and the robotic arm is digitally removed.  https://photojournal.jpl.nasa.gov/catalog/PIA23240",
+            "title": "Curiosity's Selfie at \"Aberlady\" and \"Kilmarie\"",
+            "nasa_id": "PIA23240",
+            "date_created": "2019-05-29T00:00:00Z",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars"
+            ],
+            "media_type": "image",
+            "description_508": "NASA's Curiosity Mars rover took this selfie on May 12, 2019 (the 2,405th Martian day, or sol, of the mission). To the lower-left of the rover are its two recent drill holes, at targets called Aberlady and Kilmarie.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "center": "JPL"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA23240/PIA23240~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA20738/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity on the Naukluft Plateau",
+            "keywords": [
+              "Mars",
+              "Mars Reconnaissance Orbiter MRO"
+            ],
+            "nasa_id": "PIA20738",
+            "date_created": "2016-06-22T22:33:04Z",
+            "media_type": "image",
+            "description_508": "This image from NASA Mars Reconnaissance Orbiter spacecraft shows the Curiosity rover currently located on the Naukluft Plateau just north of the Bagnold Dune field.",
+            "secondary_creator": "NASA/JPL-Caltech/Univ. of Arizona",
+            "description": "This image from NASA Mars Reconnaissance Orbiter spacecraft shows the Curiosity rover currently located on the Naukluft Plateau just north of the Bagnold Dune field. Its position was captured by HiRISE on 25 March 2016 (MSL Sol 1291. Views from the surface at this location are available here and here.) The rover is within sandstone outcrops informally named the \"Stimson Formation.\" There are no obvious rover tracks in the HiRISE views indicating that this bedrock contains little dust that otherwise could be disturbed by the rover wheels as has been seen earlier in Curiosity's traverse.  http://photojournal.jpl.nasa.gov/catalog/PIA20738"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA20738/PIA20738~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22960/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity's Selfie at \"Rock Hall\"",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars"
+            ],
+            "nasa_id": "PIA22960",
+            "date_created": "2019-01-28T00:00:00Z",
+            "media_type": "image",
+            "description_508": "This image shows a selfie taken by NASA's Curiosity Mars rover on Sol 2291 (January 15) at the 'Rock Hall' drill site, located on Vera Rubin Ridge.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "A selfie taken by NASA's Curiosity Mars rover on Sol 2291 (January 15) at the \"Rock Hall\" drill site, located on Vera Rubin Ridge.  This was Curiosity's 19th drill site. The drill hole is visible to the rover's lower-left; the entire scene is slightly dustier than usual due to a regional dust storm affecting the area.  The selfie is composed of 57 individual images taken by the rover's Mars Hand Lens Imager (MAHLI), a camera on the end of the rover's robotic arm. The images are then stitched together into a panorama.  https://photojournal.jpl.nasa.gov/catalog/PIA22960"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22960/PIA22960~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA23346/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Surveys \"Teal Ridge\"",
+            "nasa_id": "PIA23346",
+            "media_type": "image",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "Mars"
+            ],
+            "date_created": "2019-08-05T00:00:00Z",
+            "description_508": "This 360-degree panorama of a location called 'Teal Ridge' was captured on Mars by the Mast Camera, or Mastcam, on NASA's Curiosity rover on June 18, 2019.",
+            "secondary_creator": "NASA/JPL-Caltech/MSSS",
+            "description": "This 360-degree panorama of a location called \"Teal Ridge\" was captured on Mars by the Mast Camera, or Mastcam, on NASA's Curiosity rover on June 18, 2019, the 2,440th Martian day, or sol, of the mission.  By driving up the side of Teal Ridge, the rover was able to reach rocks from the second of three subunits within the \"clay-bearing unit\" that are exposed in a valley-like region of Mount Sharp, which Curiosity is ascending.  The scene is presented with a color adjustment that approximates white balancing to resemble how the rocks and sand would appear under daytime lighting conditions on Earth.  https://photojournal.jpl.nasa.gov/catalog/PIA23346"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA23346/PIA23346~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA22324/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Percussive Drill Test at JPL",
+            "keywords": [
+              "Mars Science Laboratory (MSL)",
+              "drill",
+              "Curiosity"
+            ],
+            "nasa_id": "PIA22324",
+            "date_created": "2018-05-17T00:00:00Z",
+            "media_type": "image",
+            "description_508": "A test of a new percussive drilling technique at NASA's Jet Propulsion Laboratory in Pasadena, California. NASA's Curiosity rover will test percussive drilling on Mars for the first time since December 2016.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This video clip shows a test of a new percussive drilling technique at NASA's Jet Propulsion Laboratory in Pasadena, California. On May 19, NASA's Curiosity rover is scheduled to test percussive drilling on Mars for the first time since December 2016.  The video clip was shot on March 28, 2018. It has been sped up by 50 times.  Curiosity's drill was designed to pulverize rocks samples into powder, which can then be deposited into two chemistry laboratories carried inside of the rover. Curiosity's science team is eager to the rover using percussive drilling again; it will approach a clay-enriched area later this year that could shed new light on the history of water in Gale Crater.  An animation is available at https://photojournal.jpl.nasa.gov/catalog/PIA22324"
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA22324/PIA22324~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      },
+      {
+        "href": "https://images-assets.nasa.gov/image/PIA15973/collection.json",
+        "data": [
+          {
+            "center": "JPL",
+            "title": "Curiosity Surroundings",
+            "nasa_id": "PIA15973",
+            "date_created": "2012-08-06T08:57:46Z",
+            "keywords": [
+              "Mars",
+              "Mars Science Laboratory MSL"
+            ],
+            "media_type": "image",
+            "description_508": "This is one of the first images taken by NASA Curiosity rover, which landed on Mars the evening of Aug. 5 PDT morning of Aug. 6 EDT. The clear dust cover that protected the camera during landing has been sprung open.",
+            "secondary_creator": "NASA/JPL-Caltech",
+            "description": "This is one of the first images taken by NASA Curiosity rover, which landed on Mars the evening of Aug. 5 PDT morning of Aug. 6 EDT. The clear dust cover that protected the camera during landing has been sprung open."
+          }
+        ],
+        "links": [
+          {
+            "href": "https://images-assets.nasa.gov/image/PIA15973/PIA15973~thumb.jpg",
+            "rel": "preview",
+            "render": "image"
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "total_hits": 1767
+    },
+    "links": [
+      {
+        "rel": "next",
+        "prompt": "Next",
+        "href": "http://images-api.nasa.gov/search?q=Curiosity&media_type=image&page=2"
+      }
+    ]
+  }
+}

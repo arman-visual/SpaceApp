@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 class GetStoredNeos(private val neoRepository: NeoRepository) {
 
-    fun invoke(): Flow<List<Neo>> = neoRepository.getAllSavedNeo()
+    fun invoke(): Flow<List<Neo>>? = neoRepository.getAllSavedNeo()
 }

@@ -1,0 +1,4 @@
+neosbeetwendateresponse - queryparams: start_date:2022-06-23, end_date:2022-06-25
+neosonlydateresponse - queryparams: start_date:2022-06-24
+roverresponse - queryparams: earth_date:2020-06-24
+nasalibraryresponse - queryparams: q Curiosity, media_type image

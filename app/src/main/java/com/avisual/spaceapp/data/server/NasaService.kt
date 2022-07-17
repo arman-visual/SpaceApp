@@ -10,7 +10,7 @@ interface NasaService {
     suspend fun marsRoverPhotosByEarthDate(
         @Query("earth_date") earthDate: String,
         @Query("api_key") apiKey: String
-    ): RoverPhotosResult
+    ): RoverPhotosResult?
 
     @GET("neo/rest/v1/feed")
     suspend fun searchNeoWsByDate(
@@ -23,5 +23,5 @@ interface NasaService {
     suspend fun searchNeoWsByOnlyStartDate(
         @Query("start_date") startDate: String,
         @Query("api_key") apiKey: String
-    ): NearEarthObjectResult
+    ): NearEarthObjectResult?
 }
