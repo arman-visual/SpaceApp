@@ -1,5 +1,6 @@
 package com.avisual.spaceapp.ui.gallery
 
+import android.Manifest
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
@@ -9,6 +10,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.GrantPermissionRule
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.server.NasaGalleryClient
 import com.avisual.spaceapp.ui.EspressoTestMatchers
@@ -37,6 +39,7 @@ class UiTest : KoinTest {
     @get:Rule
     val testRule: RuleChain = RuleChain
         .outerRule(mockWebServerRule)
+        .around(GrantPermissionRule.grant(Manifest.permission.ACCESS_MEDIA_LOCATION))
         .around(ActivityScenarioRule(GalleryActivity::class.java))
 
     @Before
@@ -50,7 +53,7 @@ class UiTest : KoinTest {
     }
 
     @Test
-    fun test_1_click_a_photo_and_stored_photo_in_favorite() {
+    fun test1_click_a_photo_and_stored_photo_in_favorite() {
         onView(withId(R.id.recycler)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 4,
@@ -77,7 +80,7 @@ class UiTest : KoinTest {
     }
 
     @Test
-    fun test_2_navigate_to_stored_gallery_photo_and_navigate_to_detail() {
+    fun test2_navigate_to_stored_gallery_photo_and_navigate_to_detail() {
         onView(withId(R.id.savedPhotosFragment)).perform(click())
         onView(withText("Mars Curiosity Wheel Mock-up")).perform(
             click()
@@ -91,7 +94,7 @@ class UiTest : KoinTest {
     }
 
     @Test
-    fun test_3_navigate_to_stored_gallery_photo_and_delete_with_swipe_from_database() {
+    fun test3_navigate_to_stored_gallery_photo_and_delete_with_swipe_from_database() {
         onView(withId(R.id.savedPhotosFragment)).perform(click())
         onView(withId(R.id.recycler)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -99,5 +102,19 @@ class UiTest : KoinTest {
                 swipeLeft()
             )
         )
+    }
+
+    @Test
+    fun test4_click_detail_and_download_image() {
+        onView(withId(R.id.recycler)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                7,
+                click()
+            )
+        )
+        onView(withId(R.id.fbt_download)).check(matches(EspressoTestMatchers.withDrawable(R.drawable.ic_baseline_cloud_download_24)))
+            .perform(
+                click()
+            )
     }
 }
