@@ -2,6 +2,7 @@ package com.avisual.spaceapp.data.server
 
 import com.avisual.spaceapp.data.server.asteroidsNeoWsResponse.NearEarthObjectResult
 import com.avisual.spaceapp.data.server.nasaRoverResponse.RoverPhotosResult
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,18 +11,11 @@ interface NasaService {
     suspend fun marsRoverPhotosByEarthDate(
         @Query("earth_date") earthDate: String,
         @Query("api_key") apiKey: String
-    ): RoverPhotosResult?
-
-    @GET("neo/rest/v1/feed")
-    suspend fun searchNeoWsByDate(
-        @Query("start_date") startDate: String,
-        @Query("end_date") endDate: String,
-        @Query("api_key") apiKey: String
-    ): NearEarthObjectResult
+    ): Response<RoverPhotosResult>
 
     @GET("neo/rest/v1/feed")
     suspend fun searchNeoWsByOnlyStartDate(
         @Query("start_date") startDate: String,
         @Query("api_key") apiKey: String
-    ): NearEarthObjectResult?
+    ): Response<NearEarthObjectResult>
 }

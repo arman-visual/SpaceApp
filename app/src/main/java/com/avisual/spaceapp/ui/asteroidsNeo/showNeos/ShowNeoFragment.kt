@@ -87,7 +87,7 @@ class ShowNeoFragment : ScopeFragment() {
             if (model is ShowNeoUi.Loading) View.VISIBLE else View.GONE
 
         if (model is ShowNeoUi.Content) {
-            if (!model.asteroids.isNullOrEmpty()) {
+            if (model.asteroids.isNotEmpty()) {
                 adapter.setItems(model.asteroids)
             } else {
                 requireActivity().toast(getString(R.string.message_no_near))

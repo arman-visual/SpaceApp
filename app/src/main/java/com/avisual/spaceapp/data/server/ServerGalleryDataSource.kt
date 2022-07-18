@@ -4,16 +4,24 @@ import android.util.Log
 import com.avisual.data.source.GalleryRemoteDataSource
 import com.avisual.domain.PhotoGallery
 import com.avisual.spaceapp.data.toGalleryDomain
+import retrofit2.HttpException
+import java.io.IOException
 
 class ServerGalleryDataSource(private val nasaGalleryClient: NasaGalleryClient) :
     GalleryRemoteDataSource {
     override suspend fun findPhotosGallery(keyword: String): List<PhotoGallery> {
-        return if (nasaGalleryClient.service.searchContain(keyword).isSuccessful)
-            nasaGalleryClient.service.searchContain(keyword)
-                .body()!!.collection.items.map { it.toGalleryDomain() }
-        else {
-            val errorBody = nasaGalleryClient.service.searchContain(keyword).errorBody()
-            Log.e("ERROR", errorBody.toString())
+        return try {
+
+            val response = nasaGalleryClient.service.searchContain(keyword)
+            response.body()?.collection?.items?.map {
+                it.toGalleryDomain()
+            } ?: emptyList()
+
+        } catch (exception: IOException) {
+            Log.e("ServerRoverDataSource", "IOException, check internet connection")
+            emptyList()
+        } catch (exception: HttpException) {
+            Log.e("ServerRoverDataSource", exception.message())
             emptyList()
         }
     }

@@ -13,10 +13,9 @@ import com.avisual.spaceapp.databinding.FragmentShowPhotosBinding
 import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.roverMars.adapter.PhotosRoverAdapter
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
-import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel.*
+import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel.ShowPhotosUi
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
-import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -69,7 +68,7 @@ class ShowPhotosFragment : Fragment() {
             if (model is ShowPhotosUi.Loading) View.VISIBLE else View.GONE
 
         if (model is ShowPhotosUi.Content) {
-            if (!model.photos.isNullOrEmpty()) {
+            if (model.photos.isNotEmpty()) {
                 adapter.setItems(model.photos)
             } else {
                 requireActivity().toast(getString(R.string.message_no_photos))
@@ -100,7 +99,8 @@ class ShowPhotosFragment : Fragment() {
             .setCalendarConstraints(constraintsBuilder.build())
             .build().apply {
                 addOnPositiveButtonClickListener { epochDate ->
-                    binding.showInput.text = giveFormatOutputDate(epochDate) }
+                    binding.showInput.text = giveFormatOutputDate(epochDate)
+                }
             }
     }
 

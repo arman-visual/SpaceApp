@@ -18,7 +18,7 @@ class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ViewModel
 
         viewModelScope.launch {
             _model.value = ShowNeoUi.Loading
-            val response = getAllNeoByDate.invoke(dateStart)?.map { domainNeo ->
+            val response = getAllNeoByDate.invoke(dateStart).map { domainNeo ->
                 domainNeo.toFrameworkNeo()
             }
             _model.value = ShowNeoUi.Content(response)
@@ -27,6 +27,6 @@ class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ViewModel
 
     sealed class ShowNeoUi {
         object Loading : ShowNeoUi()
-        data class Content(val asteroids: List<Neo>? = null) : ShowNeoUi()
+        data class Content(val asteroids: List<Neo> = emptyList()) : ShowNeoUi()
     }
 }
