@@ -86,7 +86,7 @@ class ShowGalleryFragment : Fragment() {
         inflater.inflate(R.menu.menu_nav_gallery, menu)
         val searchItem = menu.findItem(R.id.nav_search)
         val searchView = searchItem.actionView as SearchView
-        searchView.queryHint = "Search photos of NASA..."
+        searchView.queryHint = getString(R.string.label_search_nasa)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(keyword: String?): Boolean {
@@ -96,12 +96,12 @@ class ShowGalleryFragment : Fragment() {
                     )
                     else Toast.makeText(
                         requireActivity(),
-                        "You have insert a word!",
+                        getString(R.string.label_require_field),
                         Toast.LENGTH_LONG
                     )
                         .show()
                 } else
-                    requireActivity().toast("Check your internet connection")
+                    requireActivity().toast(getString(R.string.label_check_connection))
                 return true
             }
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Space App</string>
+    <string name="explore_images_gallery">Explorar imágenes</string>
+    <string name="favorite_images">Imágenes favoritas</string>
+    <string name="image_of_nasa">Imagen de la NASA</string>
+    <string name="info">Foto borrada</string>
+    <string name="undo">Deshacer</string>
+    <string name="message_no_photos">No hay photos con esta fecha</string>
+    <string name="message_input_error">Todos los campos son requeridos</string>
+    <string name="touch_here">Toca aquí</string>
+    <string name="neo_search">Buscar</string>
+    <string name="title_scree_neows">Asteroides - Neows</string>
+    <string name="message_no_near">No hay asteroides cerca de esta fecha</string>
+    <string name="message_no_found_photos">No hay fotos asociadas con esta busqueda</string>
+    <string name="introduce_date">Introduce fecha:</string>
+    <string name="title_mars_rover_photos">Fotos de Rover</string>
+    <string name="no_searches_yet">No hay busquedas aun</string>
+    <string name="buttom_for_save_or_remove_of_favorite_photos">Boton para elminar favoritos</string>
+    <string name="buttom_of_download_image_from_nasa">Boton para descargar imagen</string>
+    <string name="label_check_connection">Revisa tu conexion a internet</string>
+    <string name="label_require_field">¡Debes insertar una palabra!</string>
+    <string name="label_search_nasa">Buscar fotos de la NASA…</string>
+    <string name="label_download">Descargando…</string>
+    <string name="label_no_there_stored_neos">No hay Asteroides Almacenados</string>
+    <string name="label_title_alert_permission">Permiso necesario</string>
+    <string name="label_message_required_permission">Permiso necesario para guardar la foto</string>
+    <string name="action_go_to_settings">IR A AJUSTES</string>
+    <string name="label_no_internet">No hay internet</string>
+    <string name="label_select_date">Selecciona fecha</string>
+    <string name="what_do_you_want_to_search">¿Que quieres buscar?</string>
+    <string name="near_asteroids">Asteroides cercanos</string>
+    <string name="photos_mars_rover">Fotos de Rovers en Marte</string>
+    <string name="images_in_nasa_gallery">Imágenes de la NASA</string>
+    <string name="label_neo_name">Asteriode con nombre:</string>
+    <string name="label_neo_state">fue borrada</string>
+</resources>

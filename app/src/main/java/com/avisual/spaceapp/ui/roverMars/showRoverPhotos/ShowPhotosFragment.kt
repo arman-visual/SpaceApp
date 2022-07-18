@@ -94,7 +94,7 @@ class ShowPhotosFragment : Fragment() {
                 .setEnd(finalYear)
 
         datePicker = MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Select date")
+            .setTitleText(getString(R.string.label_select_date))
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .setCalendarConstraints(constraintsBuilder.build())
             .build().apply {

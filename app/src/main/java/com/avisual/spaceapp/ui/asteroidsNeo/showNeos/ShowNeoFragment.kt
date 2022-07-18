@@ -64,14 +64,14 @@ class ShowNeoFragment : ScopeFragment() {
         binding.showInput.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "DATA_PICKER")
         }
-        binding.search.setOnClickListener {//TODO aquispe controlar consultas sin conexion
+        binding.search.setOnClickListener {
             val cm = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             if (cm.activeNetworkInfo!=null && cm.activeNetworkInfo!!.isAvailable)
                 viewModel.getAsteroidsByOnlyDate(
                     binding.showInput.text.toString()
                 )
             else
-                requireActivity().toast("No hay internet")
+                requireActivity().toast(getString(R.string.label_no_internet))
         }
         adapter = AsteroidsNeoAdapter(emptyList()) { onClickPhoto(it) }
         binding.recycler.adapter = adapter
@@ -113,7 +113,7 @@ class ShowNeoFragment : ScopeFragment() {
                 .setEnd(finalYear)
 
         datePicker = MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Select date")
+            .setTitleText(getString(R.string.label_select_date))
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .setCalendarConstraints(constraintsBuilder.build())
             .build().apply {

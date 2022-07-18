@@ -110,7 +110,7 @@ class DetailPhotoGalleryFragment : Fragment() {
             setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                 .setTitle(url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~")))
-                .setDescription("Downloading...")
+                .setDescription(getString(R.string.label_download))
                 .setDestinationInExternalPublicDir(
                     directory.toString(),
                     url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~")) + ".jpg"
@@ -124,9 +124,9 @@ class DetailPhotoGalleryFragment : Fragment() {
 
     private fun showAlertMessageUi() {
         MaterialAlertDialogBuilder(requireActivity())
-            .setTitle("Permission required")
-            .setMessage("Permission required to save photos from the Web.")
-            .setPositiveButton("GOTO SETTINGS") { dialog, _ ->
+            .setTitle(getString(R.string.label_title_alert_permission))
+            .setMessage(getString(R.string.label_message_required_permission))
+            .setPositiveButton(getString(R.string.action_go_to_settings)) { dialog, _ ->
                 dialog.cancel()
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                 val uri = Uri.fromParts("package", requireActivity().packageName, null)

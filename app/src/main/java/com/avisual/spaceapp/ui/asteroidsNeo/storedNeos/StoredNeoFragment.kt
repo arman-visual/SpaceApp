@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.databinding.NeoStoredFragmentBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsSavedAdapter
@@ -42,7 +43,7 @@ class StoredNeoFragment : Fragment() {
                     if (!model.neos.isNullOrEmpty())
                         adapter.setItems(model.neos)
                     else
-                        requireActivity().toast("No hay Asteroides Almacenados")
+                        requireActivity().toast(getString(R.string.label_no_there_stored_neos))
                 }
             }
 
@@ -51,7 +52,7 @@ class StoredNeoFragment : Fragment() {
 
     private fun onDeleteBtnClicked(): (Neo) -> Unit = { asteroid ->
         viewModel.removeAsteroidSaved(asteroid)
-        requireActivity().toast("Asteroid with name: ${asteroid.name} is deleted")
+        requireActivity().toast(getString(R.string.label_neo_name) + asteroid.name + getString(R.string.label_neo_state))
     }
 
     private fun onClickedAsteroid(): (Neo) -> Unit = { asteroid ->
