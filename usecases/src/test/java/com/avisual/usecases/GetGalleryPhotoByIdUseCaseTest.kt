@@ -10,17 +10,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetGalleryPhotoByIdTest {
+class GetGalleryPhotoByIdUseCaseTest {
 
     @MockK
     private lateinit var galleryRepository: GalleryRepository
 
-    private lateinit var getGalleryPhotoById: GetGalleryPhotoById
+    private lateinit var getGalleryPhotoByIdUseCase: GetGalleryPhotoByIdUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getGalleryPhotoById = GetGalleryPhotoById(galleryRepository)
+        getGalleryPhotoByIdUseCase = GetGalleryPhotoByIdUseCase(galleryRepository)
     }
 
     @Test
@@ -29,7 +29,7 @@ class GetGalleryPhotoByIdTest {
         val mockPhoto = PhotoGallery("U01AEA1", "", "", "", "", "", "", "")
         coEvery { galleryRepository.getPhotoById("U01A1EA1") } returns mockPhoto
         //When
-        val result = getGalleryPhotoById.invoke("U01A1EA1")
+        val result = getGalleryPhotoByIdUseCase.invoke("U01A1EA1")
         //Then
         assertEquals(mockPhoto, result)
     }

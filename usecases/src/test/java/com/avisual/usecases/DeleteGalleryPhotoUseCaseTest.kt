@@ -10,17 +10,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class DeleteGalleryPhotoTest {
+class DeleteGalleryPhotoUseCaseTest {
 
     @MockK
     private lateinit var galleryRepository: GalleryRepository
 
-    private lateinit var deleteGalleryPhoto: DeleteGalleryPhoto
+    private lateinit var deleteGalleryPhotoUseCase: DeleteGalleryPhotoUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        deleteGalleryPhoto = DeleteGalleryPhoto(galleryRepository)
+        deleteGalleryPhotoUseCase = DeleteGalleryPhotoUseCase(galleryRepository)
     }
 
     @Test
@@ -29,7 +29,7 @@ class DeleteGalleryPhotoTest {
         val mockPhoto = PhotoGallery("H1", "", "", "", "", "", "", "")
         coEvery { galleryRepository.deletePhoto(mockPhoto) } returns Unit
         //When
-        deleteGalleryPhoto.invoke(mockPhoto)
+        deleteGalleryPhotoUseCase.invoke(mockPhoto)
         //Then
         coVerify(exactly = 1) { galleryRepository.deletePhoto(any()) }
     }

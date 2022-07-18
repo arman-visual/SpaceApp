@@ -11,17 +11,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetRoverPhotosByDateTest {
+class GetRoverPhotosByDateUseCaseTest {
 
     @MockK
     private lateinit var roverRepository: RoverRepository
 
-    private lateinit var getRoverPhotosByDate: GetRoverPhotosByDate
+    private lateinit var getRoverPhotosByDateUseCase: GetRoverPhotosByDateUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getRoverPhotosByDate = GetRoverPhotosByDate(roverRepository)
+        getRoverPhotosByDateUseCase = GetRoverPhotosByDateUseCase(roverRepository)
     }
 
     @Test
@@ -31,7 +31,7 @@ class GetRoverPhotosByDateTest {
             val fakeRoverPhotos = listOf(PhotoRover(1, "", "", "", 1, "", "", "", "", "", 2))
             coEvery { roverRepository.getRoverPhotosByDate("22-02-2016") } returns fakeRoverPhotos
             //When
-            val result = getRoverPhotosByDate.invoke("22-02-2016")
+            val result = getRoverPhotosByDateUseCase.invoke("22-02-2016")
             //Then
             assertEquals(fakeRoverPhotos, result)
             coVerify { roverRepository.getRoverPhotosByDate(any()) }

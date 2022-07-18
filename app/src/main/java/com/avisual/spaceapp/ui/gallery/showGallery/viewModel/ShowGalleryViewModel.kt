@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.avisual.domain.PhotoGallery
-import com.avisual.usecases.GetGalleryPhotosByKeyword
+import com.avisual.usecases.GetGalleryPhotosByKeywordUseCase
 import kotlinx.coroutines.launch
 
-class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword) :
+class ShowGalleryViewModel(private val getGalleryPhotosByKeywordUseCase: GetGalleryPhotosByKeywordUseCase) :
     ViewModel() {
 
     companion object {
@@ -24,14 +24,14 @@ class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhot
 
     private fun refresh() = viewModelScope.launch {
         _model.value = GalleryUi.Loading
-        val response = getGalleryPhotosByKeyword.invoke(DEFAULT_KEYWORD)
+        val response = getGalleryPhotosByKeywordUseCase.invoke(DEFAULT_KEYWORD)
         _model.value = GalleryUi.Content(response)
     }
 
     fun findPhotosByKeyword(keyword: String) {
         viewModelScope.launch {
             _model.value = GalleryUi.Loading
-            val response = getGalleryPhotosByKeyword.invoke(keyword)
+            val response = getGalleryPhotosByKeywordUseCase.invoke(keyword)
             _model.value = GalleryUi.Content(response)
         }
     }

@@ -6,7 +6,7 @@ import com.avisual.spaceapp.data.toFrameworkNeo
 import com.avisual.spaceapp.defaultFakeNeoPhotos
 import com.avisual.spaceapp.initMockedDI
 import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoViewModel.ShowNeoUi
-import com.avisual.usecases.GetAllNeoByDate
+import com.avisual.usecases.GetAllNeoByDateUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -22,7 +22,6 @@ import org.koin.test.KoinTest
 import org.koin.test.get
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 
 @ExperimentalCoroutinesApi
@@ -41,7 +40,7 @@ class ShowNeosIntegrationTest : KoinTest {
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         val vmModule = module {
-            factory { ShowNeoViewModel(GetAllNeoByDate(get())) }
+            factory { ShowNeoViewModel(GetAllNeoByDateUseCase(get())) }
         }
         initMockedDI(vmModule)
         viewModel = get()

@@ -6,15 +6,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.data.toGalleryDomain
-import com.avisual.usecases.DeleteGalleryPhoto
-import com.avisual.usecases.GetGalleryPhotoById
-import com.avisual.usecases.SaveGalleryPhoto
+import com.avisual.usecases.DeleteGalleryPhotoUseCase
+import com.avisual.usecases.GetGalleryPhotoByIdUseCase
+import com.avisual.usecases.SaveGalleryPhotoUseCase
 import kotlinx.coroutines.launch
 
 class DetailPhotoViewModel(
-    private val saveGalleryPhoto: SaveGalleryPhoto,
-    private val deleteGalleryPhoto: DeleteGalleryPhoto,
-    private val getGalleryPhotoById: GetGalleryPhotoById
+    private val saveGalleryPhotoUseCase: SaveGalleryPhotoUseCase,
+    private val deleteGalleryPhotoUseCase: DeleteGalleryPhotoUseCase,
+    private val getGalleryPhotoByIdUseCase: GetGalleryPhotoByIdUseCase
 ) :
     ViewModel() {
 
@@ -29,18 +29,18 @@ class DetailPhotoViewModel(
     }
 
     private suspend fun isPhotoInDB(photoGallery: PhotoGallery): Boolean {
-        return getGalleryPhotoById.invoke(photoGallery.nasa_id) != null
+        return getGalleryPhotoByIdUseCase.invoke(photoGallery.nasa_id) != null
     }
 
     private fun savePhotoInDb(photoGallery: PhotoGallery) {
         viewModelScope.launch {
-            saveGalleryPhoto.invoke(photoGallery.toGalleryDomain())
+            saveGalleryPhotoUseCase.invoke(photoGallery.toGalleryDomain())
         }
     }
 
     private fun deletePhotoInDB(photoGallery: PhotoGallery) {
         viewModelScope.launch {
-            deleteGalleryPhoto.invoke(photoGallery.toGalleryDomain())
+            deleteGalleryPhotoUseCase.invoke(photoGallery.toGalleryDomain())
         }
     }
 

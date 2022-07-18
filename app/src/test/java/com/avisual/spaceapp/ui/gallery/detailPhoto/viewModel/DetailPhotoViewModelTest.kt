@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.avisual.domain.PhotoGallery
 import com.avisual.spaceapp.data.toGalleryFramework
-import com.avisual.usecases.DeleteGalleryPhoto
-import com.avisual.usecases.GetGalleryPhotoById
-import com.avisual.usecases.SaveGalleryPhoto
+import com.avisual.usecases.DeleteGalleryPhotoUseCase
+import com.avisual.usecases.GetGalleryPhotoByIdUseCase
+import com.avisual.usecases.SaveGalleryPhotoUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -30,13 +30,13 @@ class DetailPhotoViewModelTest {
     var rule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    lateinit var saveGalleryPhoto: SaveGalleryPhoto
+    lateinit var saveGalleryPhotoUseCase: SaveGalleryPhotoUseCase
 
     @Mock
-    lateinit var deleteGalleryPhoto: DeleteGalleryPhoto
+    lateinit var deleteGalleryPhotoUseCase: DeleteGalleryPhotoUseCase
 
     @Mock
-    lateinit var getGalleryPhotoById: GetGalleryPhotoById
+    lateinit var getGalleryPhotoByIdUseCase: GetGalleryPhotoByIdUseCase
 
     @Mock
     private lateinit var observer: Observer<Boolean>
@@ -58,7 +58,7 @@ class DetailPhotoViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        viewModel = DetailPhotoViewModel(saveGalleryPhoto, deleteGalleryPhoto, getGalleryPhotoById)
+        viewModel = DetailPhotoViewModel(saveGalleryPhotoUseCase, deleteGalleryPhotoUseCase, getGalleryPhotoByIdUseCase)
     }
 
     @Test
@@ -76,7 +76,7 @@ class DetailPhotoViewModelTest {
         runTest {
             //GIVEN
             val photo = mockPhoto.copy(nasa_id = "AS1")
-            whenever(getGalleryPhotoById.invoke("AS1")).thenReturn(photo)
+            whenever(getGalleryPhotoByIdUseCase.invoke("AS1")).thenReturn(photo)
             viewModel.statusFavorite.observeForever(observer)
             //WHEN
             viewModel.checkIfPhotoSaved(photo.toGalleryFramework())
@@ -89,7 +89,7 @@ class DetailPhotoViewModelTest {
         runTest {
             //GIVEN
             val photo = mockPhoto.copy(nasa_id = "AS1")
-            whenever(getGalleryPhotoById.invoke("AS1")).thenReturn(null)
+            whenever(getGalleryPhotoByIdUseCase.invoke("AS1")).thenReturn(null)
             viewModel.statusFavorite.observeForever(observer)
             //WHEN
             viewModel.checkIfPhotoSaved(photo.toGalleryFramework())
@@ -102,8 +102,8 @@ class DetailPhotoViewModelTest {
         runTest {
             //GIVEN
             val photo = mockPhoto.copy(nasa_id = "AS1")
-            whenever(getGalleryPhotoById.invoke("AS1")).thenReturn(photo)
-            whenever(deleteGalleryPhoto.invoke(photo)).thenReturn(Unit)
+            whenever(getGalleryPhotoByIdUseCase.invoke("AS1")).thenReturn(photo)
+            whenever(deleteGalleryPhotoUseCase.invoke(photo)).thenReturn(Unit)
             //whenever(saveGalleryPhoto.invoke(photo)).thenReturn(Unit)
             viewModel.statusFavorite.observeForever(observer)
             //WHEN
@@ -117,9 +117,9 @@ class DetailPhotoViewModelTest {
         runTest {
             //GIVEN
             val photo = mockPhoto.copy(nasa_id = "AS1")
-            whenever(getGalleryPhotoById.invoke("AS1")).thenReturn(null)
+            whenever(getGalleryPhotoByIdUseCase.invoke("AS1")).thenReturn(null)
             //whenever(deleteGalleryPhoto.invoke(photo)).thenReturn(Unit)
-            whenever(saveGalleryPhoto.invoke(photo)).thenReturn(Unit)
+            whenever(saveGalleryPhotoUseCase.invoke(photo)).thenReturn(Unit)
             viewModel.statusFavorite.observeForever(observer)
             //WHEN
             viewModel.changeSaveStatusOfPhoto(photo.toGalleryFramework())

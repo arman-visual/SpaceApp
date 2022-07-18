@@ -56,15 +56,15 @@ val scopesModule = module {
 }
 
 val useCasesModule = module {
-    factory { DeleteGalleryPhoto(get()) }
-    factory { GetGalleryPhotoById(get()) }
-    factory { GetGalleryPhotosByKeyword(get()) }
-    factory { SaveGalleryPhoto(get()) }
-    factory { GetAllStoredPhotos(get()) }
-    factory { SaveNeoInDb(get()) }
-    factory { GetNeoById(get()) }
-    factory { GetStoredNeos(get()) }
-    factory { RemoveNeo(get()) }
-    factory { GetAllNeoByDate(get()) }
-    factory { GetRoverPhotosByDate(get()) }
+    factory { DeleteGalleryPhotoUseCase(get()) }
+    factory { GetGalleryPhotoByIdUseCase(get()) }
+    factory { GetGalleryPhotosByKeywordUseCase(get()) }
+    factory { SaveGalleryPhotoUseCase(get()) }
+    factory { GetAllStoredPhotosUseCase(get()) }
+    factory { SaveNeoInDbUseCase(get()) }
+    factory { GetNeoByIdUseCase(get()) }
+    factory { GetStoredNeosUseCase(get()) }
+    factory { RemoveNeoUseCase(get()) }
+    factory { GetAllNeoByDateUseCase(get()) }
+    factory { GetRoverPhotosByDateUseCase(get()) }
 }

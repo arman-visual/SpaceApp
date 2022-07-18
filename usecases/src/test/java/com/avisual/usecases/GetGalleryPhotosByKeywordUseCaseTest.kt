@@ -11,17 +11,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetGalleryPhotosByKeywordTest {
+class GetGalleryPhotosByKeywordUseCaseTest {
 
     @MockK
     private lateinit var galleryRepository: GalleryRepository
 
-    private lateinit var getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword
+    private lateinit var getGalleryPhotosByKeywordUseCase: GetGalleryPhotosByKeywordUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getGalleryPhotosByKeyword = GetGalleryPhotosByKeyword(galleryRepository)
+        getGalleryPhotosByKeywordUseCase = GetGalleryPhotosByKeywordUseCase(galleryRepository)
     }
 
     @Test
@@ -33,7 +33,7 @@ class GetGalleryPhotosByKeywordTest {
         )
         coEvery { galleryRepository.getGalleryPhotosByKeyword("Moon") } returns fakePhotos
         //When
-        val result = getGalleryPhotosByKeyword.invoke("Moon")
+        val result = getGalleryPhotosByKeywordUseCase.invoke("Moon")
         //Then
         assertEquals(fakePhotos, result)
         coVerify(exactly = 1) { galleryRepository.getGalleryPhotosByKeyword(any()) }

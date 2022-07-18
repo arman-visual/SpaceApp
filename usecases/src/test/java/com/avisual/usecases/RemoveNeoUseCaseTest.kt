@@ -10,17 +10,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class RemoveNeoTest {
+class RemoveNeoUseCaseTest {
 
     @MockK
     private lateinit var neoRepository: NeoRepository
 
-    private lateinit var removeNeo: RemoveNeo
+    private lateinit var removeNeoUseCase: RemoveNeoUseCase
 
     @Before
     fun onfBefore() {
         MockKAnnotations.init(this)
-        removeNeo = RemoveNeo(neoRepository)
+        removeNeoUseCase = RemoveNeoUseCase(neoRepository)
     }
 
     @Test
@@ -44,7 +44,7 @@ class RemoveNeoTest {
             )
             coEvery { neoRepository.removeAsteroid(fakeNeo) }.returns(Unit)
             //When
-            removeNeo.invoke(fakeNeo)
+            removeNeoUseCase.invoke(fakeNeo)
             //Then
             coVerify(exactly = 1) { neoRepository.removeAsteroid(any()) }
         }

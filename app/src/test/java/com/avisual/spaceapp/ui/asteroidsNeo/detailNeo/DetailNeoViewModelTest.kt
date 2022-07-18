@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.avisual.domain.Neo
 import com.avisual.spaceapp.data.toFrameworkNeo
-import com.avisual.usecases.GetNeoById
-import com.avisual.usecases.RemoveNeo
-import com.avisual.usecases.SaveNeoInDb
+import com.avisual.usecases.GetNeoByIdUseCase
+import com.avisual.usecases.RemoveNeoUseCase
+import com.avisual.usecases.SaveNeoInDbUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -31,13 +31,13 @@ class DetailNeoViewModelTest {
     var rule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    private lateinit var saveNeoInDb: SaveNeoInDb
+    private lateinit var saveNeoInDbUseCase: SaveNeoInDbUseCase
 
     @Mock
-    private lateinit var getNeoById: GetNeoById
+    private lateinit var getNeoByIdUseCase: GetNeoByIdUseCase
 
     @Mock
-    private lateinit var removeNeo: RemoveNeo
+    private lateinit var removeNeoUseCase: RemoveNeoUseCase
 
     @Mock
     private lateinit var observer: Observer<Boolean>
@@ -63,7 +63,7 @@ class DetailNeoViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        viewModel = DetailNeoViewModel(saveNeoInDb, getNeoById, removeNeo)
+        viewModel = DetailNeoViewModel(saveNeoInDbUseCase, getNeoByIdUseCase, removeNeoUseCase)
     }
 
     @Test
@@ -71,7 +71,7 @@ class DetailNeoViewModelTest {
         runTest {
             //GIVEN
             val neo = mockNeo.copy(id = "NEO_TST_1")
-            whenever(getNeoById.invoke(neo.id)).thenReturn(neo)
+            whenever(getNeoByIdUseCase.invoke(neo.id)).thenReturn(neo)
             viewModel.statusDb.observeForever(observer)
             //WHEN
             viewModel.checkIfPhotoSaved(neo.toFrameworkNeo())
@@ -84,7 +84,7 @@ class DetailNeoViewModelTest {
         runTest {
             //GIVEN
             val neo = mockNeo.copy(id = "NEO_TST_1")
-            whenever(getNeoById.invoke(neo.id)).thenReturn(null)
+            whenever(getNeoByIdUseCase.invoke(neo.id)).thenReturn(null)
             viewModel.statusDb.observeForever(observer)
             //WHEN
             viewModel.checkIfPhotoSaved(neo.toFrameworkNeo())
@@ -97,13 +97,13 @@ class DetailNeoViewModelTest {
         runTest {
             //GIVEN
             val neo = mockNeo.copy(id = "NEO_TST_1")
-            whenever(getNeoById.invoke(neo.id)).thenReturn(neo)
-            whenever(removeNeo.invoke(neo)).thenReturn(Unit)
+            whenever(getNeoByIdUseCase.invoke(neo.id)).thenReturn(neo)
+            whenever(removeNeoUseCase.invoke(neo)).thenReturn(Unit)
             viewModel.statusDb.observeForever(observer)
             //WHEN
             viewModel.changeSaveStatusOfPhoto(neo.toFrameworkNeo())
             //THEN
-            verify(removeNeo).invoke(neo)
+            verify(removeNeoUseCase).invoke(neo)
         }
 
     @Test
@@ -111,13 +111,13 @@ class DetailNeoViewModelTest {
         runTest {
             //GIVEN
             val neo = mockNeo.copy(id = "NEO_TST_1")
-            whenever(getNeoById.invoke(neo.id)).thenReturn(null)
-            whenever(saveNeoInDb.invoke(neo)).thenReturn(Unit)
+            whenever(getNeoByIdUseCase.invoke(neo.id)).thenReturn(null)
+            whenever(saveNeoInDbUseCase.invoke(neo)).thenReturn(Unit)
             viewModel.statusDb.observeForever(observer)
             //WHEN
             viewModel.changeSaveStatusOfPhoto(neo.toFrameworkNeo())
             //THEN
-            verify(saveNeoInDb).invoke(neo)
+            verify(saveNeoInDbUseCase).invoke(neo)
         }
 
 

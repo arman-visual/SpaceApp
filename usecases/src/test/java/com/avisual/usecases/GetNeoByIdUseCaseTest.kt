@@ -11,17 +11,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetNeoByIdTest {
+class GetNeoByIdUseCaseTest {
 
     @MockK
     private lateinit var neoRepository: NeoRepository
 
-    private lateinit var getNeoById: GetNeoById
+    private lateinit var getNeoByIdUseCase: GetNeoByIdUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getNeoById = GetNeoById(neoRepository)
+        getNeoByIdUseCase = GetNeoByIdUseCase(neoRepository)
     }
 
     @Test
@@ -44,7 +44,7 @@ class GetNeoByIdTest {
         )
         coEvery { neoRepository.getNeoById("1") } returns fakeNeo
         //When
-        var result = getNeoById.invoke("1")
+        var result = getNeoByIdUseCase.invoke("1")
         //Then
         assertEquals(fakeNeo, result)
         coVerify(exactly = 1) { neoRepository.getNeoById(any()) }

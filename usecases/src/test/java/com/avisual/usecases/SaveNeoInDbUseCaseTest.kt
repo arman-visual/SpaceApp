@@ -10,17 +10,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class SaveNeoInDbTest {
+class SaveNeoInDbUseCaseTest {
 
     @MockK
     private lateinit var neoRepository: NeoRepository
 
-    private lateinit var saveNeoInDb: SaveNeoInDb
+    private lateinit var saveNeoInDbUseCase: SaveNeoInDbUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        saveNeoInDb = SaveNeoInDb(neoRepository)
+        saveNeoInDbUseCase = SaveNeoInDbUseCase(neoRepository)
     }
 
     @Test
@@ -44,7 +44,7 @@ class SaveNeoInDbTest {
             )
             coEvery { neoRepository.insertNeo(fakeNeo) } returns Unit
             //When
-            saveNeoInDb.invoke(fakeNeo)
+            saveNeoInDbUseCase.invoke(fakeNeo)
             //Then
             coVerify { neoRepository.insertNeo(any()) }
         }

@@ -3,14 +3,11 @@ package com.avisual.spaceapp.ui.asteroidsNeo.detailNeo
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.avisual.spaceapp.data.toFrameworkNeo
-import com.avisual.spaceapp.defaultFakeNeoPhotos
 import com.avisual.spaceapp.fakeNeo
 import com.avisual.spaceapp.initMockedDI
-import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoViewModel.ShowNeoUi
-import com.avisual.usecases.GetAllNeoByDate
-import com.avisual.usecases.GetNeoById
-import com.avisual.usecases.RemoveNeo
-import com.avisual.usecases.SaveNeoInDb
+import com.avisual.usecases.GetNeoByIdUseCase
+import com.avisual.usecases.RemoveNeoUseCase
+import com.avisual.usecases.SaveNeoInDbUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -27,7 +24,6 @@ import org.koin.test.KoinTest
 import org.koin.test.get
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.kotlin.times
 import org.mockito.kotlin.verify
 
 @ExperimentalCoroutinesApi
@@ -46,7 +42,7 @@ class DetailNeoIntegrationTest : KoinTest {
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         val vmModule = module {
-            viewModel { DetailNeoViewModel(SaveNeoInDb(get()), GetNeoById(get()), RemoveNeo(get())) }
+            viewModel { DetailNeoViewModel(SaveNeoInDbUseCase(get()), GetNeoByIdUseCase(get()), RemoveNeoUseCase(get())) }
         }
         initMockedDI(vmModule)
         viewModel = get()

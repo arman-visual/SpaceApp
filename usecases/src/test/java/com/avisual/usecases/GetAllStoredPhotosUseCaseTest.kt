@@ -12,17 +12,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetAllStoredPhotosTest {
+class GetAllStoredPhotosUseCaseTest {
 
     @MockK
     private lateinit var galleryRepository: GalleryRepository
 
-    private lateinit var getAllStoredPhotos: GetAllStoredPhotos
+    private lateinit var getAllStoredPhotosUseCase: GetAllStoredPhotosUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getAllStoredPhotos = GetAllStoredPhotos(galleryRepository)
+        getAllStoredPhotosUseCase = GetAllStoredPhotosUseCase(galleryRepository)
     }
 
     @Test
@@ -35,7 +35,7 @@ class GetAllStoredPhotosTest {
         val mockFlow = flowOf(mockPhotos)
         coEvery { galleryRepository.getAllStoredPhotos() } returns mockFlow
         //Then
-        val response = getAllStoredPhotos.invoke()
+        val response = getAllStoredPhotosUseCase.invoke()
         //Assert
         assertEquals(mockFlow, response)
         coVerify(exactly = 1){ galleryRepository.getAllStoredPhotos() }

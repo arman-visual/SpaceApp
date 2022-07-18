@@ -7,28 +7,27 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import junit.framework.Assert.assertEquals
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetStoredNeosTest {
+class GetAllNeoByDateUseCaseTest {
 
     @MockK
     private lateinit var neoRepository: NeoRepository
 
-    private lateinit var getStoredNeos: GetStoredNeos
+    private lateinit var getAllNeoByDateUseCase: GetAllNeoByDateUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getStoredNeos = GetStoredNeos(neoRepository)
+        getAllNeoByDateUseCase = GetAllNeoByDateUseCase(neoRepository)
     }
 
     @Test
-    fun `given when then`() = runBlocking {
+    fun `invoke getAllNeoByDate and returns Neos near of date `() = runBlocking {
         //Given
-        val fakeNeos = listOf(
+        val mockNeos = listOf(
             Neo(
                 "1",
                 "MockNeo",
@@ -43,15 +42,28 @@ class GetStoredNeosTest {
                 "100000",
                 "1.0000.000km",
                 "23-02-2022"
+            ),
+            Neo(
+                "2",
+                "MockNeo",
+                true,
+                2.0,
+                "",
+                3.0,
+                5.0,
+                "300 km/s",
+                "30000km/h",
+                "19-20-2020",
+                "100000",
+                "1.0000.000km",
+                "23-02-2022"
             )
         )
-        val fakeFlowResponse = flowOf(fakeNeos)
-        coEvery { neoRepository.getAllSavedNeo() } returns fakeFlowResponse
+        coEvery { neoRepository.getAllNeoByDate("22-02-2022") } returns mockNeos
         //When
-        val response = getStoredNeos.invoke()
+        val response = getAllNeoByDateUseCase.invoke("22-02-2022")
         //Then
-        assertEquals(fakeFlowResponse, response)
-        coVerify(exactly = 1) { neoRepository.getAllSavedNeo() }
+        coVerify(exactly = 1) { neoRepository.getAllNeoByDate(any()) }
+        assertEquals(mockNeos, response)
     }
-
 }

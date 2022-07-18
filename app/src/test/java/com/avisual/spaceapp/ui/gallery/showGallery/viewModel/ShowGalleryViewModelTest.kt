@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.avisual.domain.PhotoGallery
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel.GalleryUi
-import com.avisual.usecases.GetGalleryPhotosByKeyword
+import com.avisual.usecases.GetGalleryPhotosByKeywordUseCase
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -31,7 +31,7 @@ class ShowGalleryViewModelTest {
     var rule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    lateinit var getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword
+    lateinit var getGalleryPhotosByKeywordUseCase: GetGalleryPhotosByKeywordUseCase
 
     @Mock
     private lateinit var observer: Observer<GalleryUi>
@@ -54,7 +54,7 @@ class ShowGalleryViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        viewModel = ShowGalleryViewModel(getGalleryPhotosByKeyword)
+        viewModel = ShowGalleryViewModel(getGalleryPhotosByKeywordUseCase)
     }
 
     @Test
@@ -62,7 +62,7 @@ class ShowGalleryViewModelTest {
         runTest {
             //Given
             val photos = listOf(fakePhoto.copy(nasa_id = "1"))
-            whenever(getGalleryPhotosByKeyword.invoke("Nasa")).thenReturn(photos)
+            whenever(getGalleryPhotosByKeywordUseCase.invoke("Nasa")).thenReturn(photos)
             viewModel.model.observeForever(observer)
             //When
             //Then
@@ -73,7 +73,7 @@ class ShowGalleryViewModelTest {
     fun `when viewModel is initialized it will be launched default search and return null`() =
         runTest {
             //Given
-            whenever(getGalleryPhotosByKeyword.invoke("Nasa")).thenReturn(null)
+            whenever(getGalleryPhotosByKeywordUseCase.invoke("Nasa")).thenReturn(null)
             viewModel.model.observeForever(observer)
             //When
             //Then
@@ -85,7 +85,7 @@ class ShowGalleryViewModelTest {
         runTest {
             //Given
             val photos = listOf(fakePhoto.copy(nasa_id = "1"))
-            whenever(getGalleryPhotosByKeyword.invoke("Nasa")).thenReturn(photos)
+            whenever(getGalleryPhotosByKeywordUseCase.invoke("Nasa")).thenReturn(photos)
             viewModel.model.observeForever(observer)
             //When
             //Then
@@ -96,7 +96,7 @@ class ShowGalleryViewModelTest {
     fun `when called findByKeyword then returns null`() =
         runTest {
             //Given
-            whenever(getGalleryPhotosByKeyword.invoke("Nasa")).thenReturn(null)
+            whenever(getGalleryPhotosByKeywordUseCase.invoke("Nasa")).thenReturn(null)
             viewModel.model.observeForever(observer)
             //When
             viewModel.findPhotosByKeyword("Nasa")
@@ -109,7 +109,7 @@ class ShowGalleryViewModelTest {
         runTest {
             //Given
             val photos = listOf(fakePhoto.copy(nasa_id = "1"))
-            whenever(getGalleryPhotosByKeyword.invoke("Marth")).thenReturn(photos)
+            whenever(getGalleryPhotosByKeywordUseCase.invoke("Marth")).thenReturn(photos)
             viewModel.model.observeForever(observer)
             //When
             viewModel.findPhotosByKeyword("Marth")

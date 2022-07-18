@@ -6,7 +6,7 @@ import com.avisual.domain.PhotoRover
 import com.avisual.spaceapp.data.toFrameworkRover
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel.ShowPhotosUi
-import com.avisual.usecases.GetRoverPhotosByDate
+import com.avisual.usecases.GetRoverPhotosByDateUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -31,7 +31,7 @@ class ShowPhotosViewModelTest {
     var rule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    private lateinit var getRoverPhotosByDate: GetRoverPhotosByDate
+    private lateinit var getRoverPhotosByDateUseCase: GetRoverPhotosByDateUseCase
 
     @Mock
     private lateinit var observe: Observer<ShowPhotosUi>
@@ -55,7 +55,7 @@ class ShowPhotosViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        viewModel = ShowPhotosViewModel(getRoverPhotosByDate)
+        viewModel = ShowPhotosViewModel(getRoverPhotosByDateUseCase)
     }
 
     @Test
@@ -63,7 +63,7 @@ class ShowPhotosViewModelTest {
         runTest {
             //GIVEN
             val photosRover = listOf(mockRover.copy(id = 2))
-            whenever(getRoverPhotosByDate.invoke("22-02-2021")).thenReturn(photosRover)
+            whenever(getRoverPhotosByDateUseCase.invoke("22-02-2021")).thenReturn(photosRover)
             viewModel.model.observeForever(observe)
             //THEN
             viewModel.findPhotosByDate("22-02-2021")
@@ -76,7 +76,7 @@ class ShowPhotosViewModelTest {
     fun `when pressed search button with date then returns null`() =
         runTest {
             //GIVEN
-            whenever(getRoverPhotosByDate.invoke("22-02-2021")).thenReturn(null)
+            whenever(getRoverPhotosByDateUseCase.invoke("22-02-2021")).thenReturn(null)
             viewModel.model.observeForever(observe)
             //THEN
             viewModel.findPhotosByDate("22-02-2021")

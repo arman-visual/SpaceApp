@@ -4,7 +4,7 @@ import com.avisual.data.repository.NeoRepository
 import com.avisual.domain.Neo
 import kotlinx.coroutines.flow.Flow
 
-class GetStoredNeos(private val neoRepository: NeoRepository) {
+class GetStoredNeosUseCase(private val neoRepository: NeoRepository) {
 
     fun invoke(): Flow<List<Neo>>? = neoRepository.getAllSavedNeo()
 }

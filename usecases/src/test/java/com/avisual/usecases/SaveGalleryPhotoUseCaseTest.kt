@@ -10,17 +10,17 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class SaveGalleryPhotoTest {
+class SaveGalleryPhotoUseCaseTest {
 
     @MockK
     private lateinit var galleryRepository: GalleryRepository
 
-    private lateinit var saveGalleryPhoto: SaveGalleryPhoto
+    private lateinit var saveGalleryPhotoUseCase: SaveGalleryPhotoUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        saveGalleryPhoto = SaveGalleryPhoto(galleryRepository)
+        saveGalleryPhotoUseCase = SaveGalleryPhotoUseCase(galleryRepository)
     }
 
     @Test
@@ -30,7 +30,7 @@ class SaveGalleryPhotoTest {
             val fakePhoto = PhotoGallery("U01AEA1", "", "", "", "", "", "", "")
             coEvery { galleryRepository.savePhoto(fakePhoto) } returns Unit
             //When
-            saveGalleryPhoto.invoke(fakePhoto)
+            saveGalleryPhotoUseCase.invoke(fakePhoto)
             //Then
             coVerify { galleryRepository.savePhoto(any()) }
         }

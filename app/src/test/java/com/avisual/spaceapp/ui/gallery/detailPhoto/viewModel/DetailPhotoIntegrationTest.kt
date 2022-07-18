@@ -5,9 +5,9 @@ import androidx.lifecycle.Observer
 import com.avisual.spaceapp.data.toGalleryFramework
 import com.avisual.spaceapp.fakePhoto
 import com.avisual.spaceapp.initMockedDI
-import com.avisual.usecases.DeleteGalleryPhoto
-import com.avisual.usecases.GetGalleryPhotoById
-import com.avisual.usecases.SaveGalleryPhoto
+import com.avisual.usecases.DeleteGalleryPhotoUseCase
+import com.avisual.usecases.GetGalleryPhotoByIdUseCase
+import com.avisual.usecases.SaveGalleryPhotoUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -45,8 +45,8 @@ class DetailPhotoIntegrationTest : KoinTest {
         val vmModule = module {
             viewModel {
                 DetailPhotoViewModel(
-                    SaveGalleryPhoto(get()),
-                    DeleteGalleryPhoto(get()), GetGalleryPhotoById(get())
+                    SaveGalleryPhotoUseCase(get()),
+                    DeleteGalleryPhotoUseCase(get()), GetGalleryPhotoByIdUseCase(get())
                 )
             }
         }

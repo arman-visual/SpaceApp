@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import com.avisual.domain.Neo
 import com.avisual.spaceapp.data.toFrameworkNeo
 import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoViewModel.*
-import com.avisual.usecases.GetAllNeoByDate
+import com.avisual.usecases.GetAllNeoByDateUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -33,7 +33,7 @@ class ShowNeoViewModelTest {
     private lateinit var observer: Observer<ShowNeoUi>
 
     @Mock
-    private lateinit var getAllNeoByDate: GetAllNeoByDate
+    private lateinit var getAllNeoByDateUseCase: GetAllNeoByDateUseCase
 
     private lateinit var viewModel: ShowNeoViewModel
 
@@ -56,7 +56,7 @@ class ShowNeoViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        viewModel = ShowNeoViewModel(getAllNeoByDate)
+        viewModel = ShowNeoViewModel(getAllNeoByDateUseCase)
     }
 
     @Test
@@ -64,7 +64,7 @@ class ShowNeoViewModelTest {
         runTest {
             //GIVEN
             val neos = listOf(mockNeo)
-            whenever(getAllNeoByDate.invoke("22-02-2022")).thenReturn(neos)
+            whenever(getAllNeoByDateUseCase.invoke("22-02-2022")).thenReturn(neos)
             viewModel.model.observeForever(observer)
             //WHEN
             viewModel.getAsteroidsByOnlyDate("22-02-2022")
@@ -77,7 +77,7 @@ class ShowNeoViewModelTest {
         runTest {
             //GIVEN
             val neos = listOf(mockNeo)
-            whenever(getAllNeoByDate.invoke("22-02-2022")).thenReturn(null)
+            whenever(getAllNeoByDateUseCase.invoke("22-02-2022")).thenReturn(null)
             viewModel.model.observeForever(observer)
             //WHEN
             viewModel.getAsteroidsByOnlyDate("22-02-2022")

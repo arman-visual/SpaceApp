@@ -9,8 +9,8 @@ import com.avisual.spaceapp.defaultFakeNeoPhotos
 import com.avisual.spaceapp.fakeNeo
 import com.avisual.spaceapp.initMockedDI
 import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.StoredNeoViewModel.StoredNeoUi
-import com.avisual.usecases.GetStoredNeos
-import com.avisual.usecases.RemoveNeo
+import com.avisual.usecases.GetStoredNeosUseCase
+import com.avisual.usecases.RemoveNeoUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -47,7 +47,7 @@ class StoredNeosIntegrationTest : KoinTest {
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         val vmModule = module {
-            viewModel { StoredNeoViewModel(GetStoredNeos(get()), RemoveNeo(get())) }
+            viewModel { StoredNeoViewModel(GetStoredNeosUseCase(get()), RemoveNeoUseCase(get())) }
         }
         initMockedDI(vmModule)
         viewModel = get()

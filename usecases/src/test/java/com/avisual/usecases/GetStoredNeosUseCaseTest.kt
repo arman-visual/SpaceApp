@@ -7,27 +7,28 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import junit.framework.Assert.assertEquals
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetAllNeoByDateTest {
+class GetStoredNeosUseCaseTest {
 
     @MockK
     private lateinit var neoRepository: NeoRepository
 
-    private lateinit var getAllNeoByDate: GetAllNeoByDate
+    private lateinit var getStoredNeosUseCase: GetStoredNeosUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getAllNeoByDate = GetAllNeoByDate(neoRepository)
+        getStoredNeosUseCase = GetStoredNeosUseCase(neoRepository)
     }
 
     @Test
-    fun `invoke getAllNeoByDate and returns Neos near of date `() = runBlocking {
+    fun `given when then`() = runBlocking {
         //Given
-        val mockNeos = listOf(
+        val fakeNeos = listOf(
             Neo(
                 "1",
                 "MockNeo",
@@ -42,28 +43,15 @@ class GetAllNeoByDateTest {
                 "100000",
                 "1.0000.000km",
                 "23-02-2022"
-            ),
-            Neo(
-                "2",
-                "MockNeo",
-                true,
-                2.0,
-                "",
-                3.0,
-                5.0,
-                "300 km/s",
-                "30000km/h",
-                "19-20-2020",
-                "100000",
-                "1.0000.000km",
-                "23-02-2022"
             )
         )
-        coEvery { neoRepository.getAllNeoByDate("22-02-2022") } returns mockNeos
+        val fakeFlowResponse = flowOf(fakeNeos)
+        coEvery { neoRepository.getAllSavedNeo() } returns fakeFlowResponse
         //When
-        val response = getAllNeoByDate.invoke("22-02-2022")
+        val response = getStoredNeosUseCase.invoke()
         //Then
-        coVerify(exactly = 1) { neoRepository.getAllNeoByDate(any()) }
-        assertEquals(mockNeos, response)
+        assertEquals(fakeFlowResponse, response)
+        coVerify(exactly = 1) { neoRepository.getAllSavedNeo() }
     }
+
 }
