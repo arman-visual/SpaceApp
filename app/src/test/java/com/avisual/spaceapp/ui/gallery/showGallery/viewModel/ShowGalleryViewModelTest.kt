@@ -70,10 +70,10 @@ class ShowGalleryViewModelTest {
         }
 
     @Test
-    fun `when viewModel is initialized it will be launched default search and return null`() =
+    fun `when viewModel is initialized it will be launched default search and return emptyList`() =
         runTest {
             //Given
-            whenever(getGalleryPhotosByKeywordUseCase.invoke("Nasa")).thenReturn(null)
+            whenever(getGalleryPhotosByKeywordUseCase.invoke("Nasa")).thenReturn(emptyList())
             viewModel.model.observeForever(observer)
             //When
             //Then
@@ -93,10 +93,10 @@ class ShowGalleryViewModelTest {
         }
 
     @Test
-    fun `when called findByKeyword then returns null`() =
+    fun `when called findByKeyword then returns emptyList`() =
         runTest {
             //Given
-            whenever(getGalleryPhotosByKeywordUseCase.invoke("Nasa")).thenReturn(null)
+            whenever(getGalleryPhotosByKeywordUseCase.invoke("Nasa")).thenReturn(emptyList())
             viewModel.model.observeForever(observer)
             //When
             viewModel.findPhotosByKeyword("Nasa")

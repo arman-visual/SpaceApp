@@ -73,16 +73,16 @@ class ShowPhotosViewModelTest {
         }
 
     @Test
-    fun `when pressed search button with date then returns null`() =
+    fun `when pressed search button with date then returns emptyList`() =
         runTest {
             //GIVEN
-            whenever(getRoverPhotosByDateUseCase.invoke("22-02-2021")).thenReturn(null)
+            whenever(getRoverPhotosByDateUseCase.invoke("22-02-2021")).thenReturn(emptyList())
             viewModel.model.observeForever(observe)
             //THEN
             viewModel.findPhotosByDate("22-02-2021")
             //WHEN
-            assert(viewModel.model.value == ShowPhotosUi.Content(null))
-            verify(observe).onChanged(ShowPhotosUi.Content(null))
+            assert(viewModel.model.value == ShowPhotosUi.Content(emptyList()))
+            verify(observe).onChanged(ShowPhotosUi.Content(emptyList()))
         }
 
     @After

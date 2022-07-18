@@ -77,12 +77,12 @@ class ShowNeoViewModelTest {
         runTest {
             //GIVEN
             val neos = listOf(mockNeo)
-            whenever(getAllNeoByDateUseCase.invoke("22-02-2022")).thenReturn(null)
+            whenever(getAllNeoByDateUseCase.invoke("22-02-2022")).thenReturn(emptyList())
             viewModel.model.observeForever(observer)
             //WHEN
             viewModel.getAsteroidsByOnlyDate("22-02-2022")
             //THEN
-            verify(observer).onChanged(ShowNeoUi.Content(null))
+            verify(observer).onChanged(ShowNeoUi.Content(emptyList()))
         }
 
     @After
