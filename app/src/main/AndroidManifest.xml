@@ -7,8 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage"
-        android:maxSdkVersion="28" />
+        android:maxSdkVersion="28"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <application
@@ -20,10 +20,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.roverMars.NavRoverMarsActivity" />
+        <activity
+            android:name=".ui.roverMars.NavRoverMarsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.gallery.GalleryActivity" />
-        <activity android:name=".ui.asteroidsNeo.AsteroidsNeoActivity" />
-        <activity android:name=".ui.mainMenu.MainActivity">
+        <activity
+            android:name=".ui.asteroidsNeo.AsteroidsNeoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.mainMenu.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

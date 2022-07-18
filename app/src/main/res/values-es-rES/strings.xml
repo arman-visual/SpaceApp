@@ -34,4 +34,9 @@
     <string name="images_in_nasa_gallery">Imágenes de la NASA</string>
     <string name="label_neo_name">Asteriode con nombre:</string>
     <string name="label_neo_state">fue borrada</string>
+    <string name="rover">Rover:</string>
+    <string name="rover_status">Rover estado:</string>
+    <string name="rover_earth_date">Fecha(Tierra):</string>
+    <string name="rover_launch_date">Fecha de lanzamiento:</string>
+    <string name="rover_landing_date">Fecha de aterrizaje:</string>
 </resources>

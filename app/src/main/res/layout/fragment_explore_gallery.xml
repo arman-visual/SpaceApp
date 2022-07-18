@@ -28,6 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
+        tools:visibility="visible"
         app:spanCount="2"
         tools:listitem="@layout/item_gallery_photos" />
 
