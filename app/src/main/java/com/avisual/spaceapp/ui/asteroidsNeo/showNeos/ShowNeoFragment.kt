@@ -32,7 +32,8 @@ class ShowNeoFragment : ScopeFragment() {
     }
 
     private val viewModel: ShowNeoViewModel by viewModel()
-    private lateinit var binding: ShowNeoFragmentBinding
+    private var _binding: ShowNeoFragmentBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: AsteroidsNeoAdapter
     private lateinit var navController: NavController
     private lateinit var datePicker: MaterialDatePicker<Long>
@@ -47,20 +48,19 @@ class ShowNeoFragment : ScopeFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        configureCalendar()
-        setUpUi()
+        _binding = ShowNeoFragmentBinding.inflate(inflater, container, false)
         subscribe()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configureCalendar()
+        setUpUi()
         navController = view.findNavController()
     }
 
     private fun setUpUi() {
-        binding = ShowNeoFragmentBinding.inflate(layoutInflater)
-
         binding.showInput.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "DATA_PICKER")
         }
@@ -78,7 +78,7 @@ class ShowNeoFragment : ScopeFragment() {
     }
 
     private fun subscribe() {
-        viewModel.model.observe(requireActivity(), Observer(::updateUi))
+        viewModel.model.observe(viewLifecycleOwner, Observer(::updateUi))
     }
 
     private fun updateUi(model: ShowNeoUi) {
@@ -133,5 +133,10 @@ class ShowNeoFragment : ScopeFragment() {
     private fun onClickPhoto(neo: Neo) {
         val action = ShowNeoFragmentDirections.actionShowNeoFragmentToDetailNeoFragment4(neo)
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

@@ -15,7 +15,6 @@ import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.StoredNeoViewMo
 import com.avisual.spaceapp.ui.gallery.detailPhoto.viewModel.DetailPhotoViewModel
 import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel
-import com.avisual.spaceapp.ui.roverMars.detailRover.viewModel.DetailPhotoRoverViewModel
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
 import com.avisual.usecases.*
 import org.koin.android.ext.koin.androidApplication
@@ -51,7 +50,6 @@ val scopesModule = module {
     viewModel { DetailPhotoViewModel(get(), get(), get()) }
     viewModel { SavedPhotosViewModel(get(), get(), get()) }
     viewModel { ShowPhotosViewModel(get()) }
-    viewModel { DetailPhotoRoverViewModel(get()) }
     viewModel { ShowNeoViewModel(get()) }
     viewModel { DetailNeoViewModel(get(), get(), get()) }
     viewModel { StoredNeoViewModel(get(), get()) }

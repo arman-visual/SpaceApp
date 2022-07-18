@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.avisual.spaceapp.PermissionRequester
 import com.avisual.spaceapp.R
@@ -27,10 +28,11 @@ import java.io.File
 
 
 @RequiresApi(Build.VERSION_CODES.R)
-class DetailPhotoGalleryFragment : ScopeFragment() {
+class DetailPhotoGalleryFragment : Fragment() {
 
     private val args: DetailPhotoGalleryFragmentArgs by navArgs()
-    private lateinit var binding: FragmentDetailPhotoGalleryBinding
+    private var _binding: FragmentDetailPhotoGalleryBinding? = null
+    private val binding get() = _binding!!
     private lateinit var photo: PhotoGallery
     private val viewModel: DetailPhotoViewModel by viewModel()
 
@@ -53,18 +55,18 @@ class DetailPhotoGalleryFragment : ScopeFragment() {
         savedInstanceState: Bundle?
     ): View? {
         photo = args.photoArg!!
-        setUpUi()
-        subscribeUi()
+        _binding = FragmentDetailPhotoGalleryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpUi()
+        subscribeUi()
         viewModel.checkIfPhotoSaved(photo)
     }
 
     private fun setUpUi() {
-        binding = FragmentDetailPhotoGalleryBinding.inflate(layoutInflater)
         binding.imagePhoto.loadUrl(photo.url)
         binding.titlePhotoDetail.text = photo.title
         binding.descriptionPhotoDetail.text = photo.description
@@ -86,7 +88,7 @@ class DetailPhotoGalleryFragment : ScopeFragment() {
     }
 
     private fun subscribeUi() {
-        viewModel.statusFavorite.observe(requireActivity()) { isSaved ->
+        viewModel.statusFavorite.observe(viewLifecycleOwner) { isSaved ->
             val drawableRes = if (isSaved) {
                 R.drawable.photo_saved
             } else {
@@ -109,7 +111,10 @@ class DetailPhotoGalleryFragment : ScopeFragment() {
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                 .setTitle(url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~")))
                 .setDescription("Downloading...")
-                .setDestinationInExternalPublicDir(directory.toString(), url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~")) + ".jpg")
+                .setDestinationInExternalPublicDir(
+                    directory.toString(),
+                    url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("~")) + ".jpg"
+                )
         }
 
         val downloadManager =
@@ -130,4 +135,10 @@ class DetailPhotoGalleryFragment : ScopeFragment() {
             }
             .show()
     }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.R
@@ -20,14 +21,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ShowPhotosFragment : ScopeFragment() {
+class ShowPhotosFragment : Fragment() {
 
     companion object {
         const val DATE_START_SEARCH_NEO = 1344272400000
         const val TIME_ZONE = "UTC"
     }
 
-    private lateinit var binding: FragmentShowPhotosBinding
+    private var _binding: FragmentShowPhotosBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: PhotosRoverAdapter
     private val viewModel: ShowPhotosViewModel by viewModel()
     private lateinit var datePicker: MaterialDatePicker<Long>
@@ -37,6 +39,7 @@ class ShowPhotosFragment : ScopeFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentShowPhotosBinding.inflate(inflater, container, false)
         configureCalendar()
         setupUi()
         subscribeUi()
@@ -44,7 +47,6 @@ class ShowPhotosFragment : ScopeFragment() {
     }
 
     private fun setupUi() {
-        binding = FragmentShowPhotosBinding.inflate(layoutInflater)
         adapter = PhotosRoverAdapter(emptyList()) {
             onClickPhoto(it)
         }
@@ -59,7 +61,7 @@ class ShowPhotosFragment : ScopeFragment() {
     }
 
     private fun subscribeUi() {
-        viewModel.model.observe(requireActivity(), Observer(::updateUi))
+        viewModel.model.observe(viewLifecycleOwner, Observer(::updateUi))
     }
 
     private fun updateUi(model: ShowPhotosUi) {
@@ -121,4 +123,8 @@ class ShowPhotosFragment : ScopeFragment() {
         findNavController().navigate(action)
     }
 
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 }

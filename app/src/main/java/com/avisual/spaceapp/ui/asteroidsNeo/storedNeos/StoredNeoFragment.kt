@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.databinding.NeoStoredFragmentBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.adapter.AsteroidsSavedAdapter
 import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.StoredNeoViewModel
 import com.avisual.spaceapp.ui.common.toast
-import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class StoredNeoFragment : ScopeFragment() {
+class StoredNeoFragment : Fragment() {
 
-    private lateinit var binding: NeoStoredFragmentBinding
+    private var _binding: NeoStoredFragmentBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: StoredNeoViewModel by viewModel()
     private lateinit var adapter: AsteroidsSavedAdapter
 
@@ -23,6 +24,7 @@ class StoredNeoFragment : ScopeFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = NeoStoredFragmentBinding.inflate(inflater, container, false)
         setUpUi()
         subscribe()
         return binding.root
@@ -30,7 +32,6 @@ class StoredNeoFragment : ScopeFragment() {
 
     private fun setUpUi() {
         adapter = AsteroidsSavedAdapter(emptyList(), onDeleteBtnClicked(), onClickedAsteroid())
-        binding = NeoStoredFragmentBinding.inflate(layoutInflater)
         binding.recycler.adapter = adapter
     }
 
@@ -57,5 +58,10 @@ class StoredNeoFragment : ScopeFragment() {
         val action =
             StoredNeoFragmentDirections.actionStoredNeoFragmentToDetailNeoFragment4(asteroid)
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

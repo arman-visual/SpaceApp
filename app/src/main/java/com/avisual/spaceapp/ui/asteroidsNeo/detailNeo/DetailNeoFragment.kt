@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.model.Neo
@@ -11,31 +12,31 @@ import com.avisual.spaceapp.databinding.DetailNeoFragmentBinding
 import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailNeoFragment : ScopeFragment() {
+class DetailNeoFragment : Fragment() {
 
     private val args: DetailNeoFragmentArgs by navArgs()
     private lateinit var neo: Neo
     private val viewModel: DetailNeoViewModel by viewModel()
-    private lateinit var binding: DetailNeoFragmentBinding
+    private var _binding: DetailNeoFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         neo = args.neoArg!!
-        setupUi()
-        subscribe()
+        _binding = DetailNeoFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupUi()
+        subscribe()
         viewModel.checkIfPhotoSaved(neo)
     }
 
     private fun setupUi() {
-        binding = DetailNeoFragmentBinding.inflate(layoutInflater)
-
         binding.apply {
             nameNeo.text = neo.name
             minDiameter.text = neo.minDiameter.toString()
@@ -55,7 +56,7 @@ class DetailNeoFragment : ScopeFragment() {
     }
 
     private fun subscribe() {
-        viewModel.statusDb.observe(requireActivity()) { isSaved ->
+        viewModel.statusDb.observe(viewLifecycleOwner) { isSaved ->
             val drawableRes = if (isSaved) {
                 R.drawable.photo_saved
             } else {
@@ -63,5 +64,10 @@ class DetailNeoFragment : ScopeFragment() {
             }
             binding.fbtSaveFavorite.setImageResource(drawableRes)
         }
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }
