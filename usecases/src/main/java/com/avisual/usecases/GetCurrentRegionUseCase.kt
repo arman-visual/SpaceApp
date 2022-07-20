@@ -1,9 +1,11 @@
 package com.avisual.usecases
 
-class GetCurrentRegionUseCase {
+import com.avisual.data.repository.RegionRepository
+
+class GetCurrentRegionUseCase(private val regionRepository: RegionRepository) {
 
     suspend operator fun invoke(): String {
-        return TODO("Return ReGION")
+        return regionRepository.getCurrentLocation()
     }
 
 }

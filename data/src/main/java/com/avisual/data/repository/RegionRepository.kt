@@ -1,4 +1,10 @@
 package com.avisual.data.repository
 
-class RegionRepository {
+import com.avisual.data.source.LocationDataSource
+
+class RegionRepository(private val locationDataSource: LocationDataSource) {
+
+    suspend fun getCurrentLocation(): String {
+        return locationDataSource.getCurrentLocation()
+    }
 }

@@ -2,12 +2,14 @@ package com.avisual.spaceapp.di
 
 import com.avisual.data.repository.GalleryRepository
 import com.avisual.data.repository.NeoRepository
+import com.avisual.data.repository.RegionRepository
 import com.avisual.data.repository.RoverRepository
 import com.avisual.data.source.*
 import com.avisual.spaceapp.R
 import com.avisual.spaceapp.data.database.Db
 import com.avisual.spaceapp.data.database.RoomGalleryDataSource
 import com.avisual.spaceapp.data.database.RoomNeoDataSource
+import com.avisual.spaceapp.data.location.FusedLocationDataSourceImpl
 import com.avisual.spaceapp.data.server.*
 import com.avisual.spaceapp.ui.asteroidsNeo.detailNeo.DetailNeoViewModel
 import com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoViewModel
@@ -15,6 +17,7 @@ import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.StoredNeoViewMo
 import com.avisual.spaceapp.ui.gallery.detailPhoto.viewModel.DetailPhotoViewModel
 import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel
+import com.avisual.spaceapp.ui.mainMenu.MainViewModel
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
 import com.avisual.usecases.*
 import org.koin.android.ext.koin.androidApplication
@@ -37,12 +40,14 @@ val dataSource = module {
     factory<NeoLocalDataSource> { RoomNeoDataSource(get()) }
     factory<NeoRemoteDataSource> { ServerNeoDataSource(get()) }
     factory<RoverRemoteDataSource> { ServerRoverDataSource(get()) }
+    factory<LocationDataSource> { FusedLocationDataSourceImpl(get()) }
 }
 
 val repoModule = module {
     factory { GalleryRepository(get(), get()) }
     factory { NeoRepository(get(), get(), get(named("apiKey"))) }
     factory { RoverRepository(get(), get(named("apiKey"))) }
+    factory { RegionRepository(get()) }
 }
 
 val scopesModule = module {
@@ -53,6 +58,7 @@ val scopesModule = module {
     viewModel { ShowNeoViewModel(get()) }
     viewModel { DetailNeoViewModel(get(), get(), get()) }
     viewModel { StoredNeoViewModel(get(), get()) }
+    viewModel { MainViewModel(get()) }
 }
 
 val useCasesModule = module {
@@ -67,4 +73,5 @@ val useCasesModule = module {
     factory { RemoveNeoUseCase(get()) }
     factory { GetAllNeoByDateUseCase(get()) }
     factory { GetRoverPhotosByDateUseCase(get()) }
+    factory { GetCurrentRegionUseCase(get()) }
 }
