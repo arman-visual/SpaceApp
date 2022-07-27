@@ -1,9 +1,10 @@
 package com.avisual.spaceapp.ui.mainMenu
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +13,6 @@ import com.avisual.spaceapp.R
 import com.avisual.spaceapp.databinding.ActivityMainBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
 import com.avisual.spaceapp.ui.common.startActivity
-import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.gallery.GalleryActivity
 import com.avisual.spaceapp.ui.roverMars.NavRoverMarsActivity
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        permissionLocationRequester.request { isGranted->
-            if(isGranted) requestLocation() else showAlertMessageUi()
+        permissionLocationRequester.request { isGranted ->
+            if (isGranted) requestLocation() else showAlertMessageUi()
         }
 
         binding.btNeows.setOnClickListener { startActivity<AsteroidsNeoActivity>() }
@@ -54,25 +54,40 @@ class MainActivity : AppCompatActivity() {
 
     private fun subscribeUi() {
         viewModel.language.observe(this) { language ->
-            toast("Estas en $language")
-            configureLanguage(language)
+           // toast("Estas en $language")
+            setLocale(this,language)
         }
     }
 
-    private fun configureLanguage(language: String) {
+    private fun setLocale(language: String) {
+        val metrics = resources.displayMetrics
         val config = resources.configuration
-        val lang = "fa" // your language code
-        val locale = Locale("en")
-        Locale.setDefault(locale)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            createConfigurationContext(config)
-        resources.updateConfiguration(config, resources.displayMetrics)
-
-        this.setContentView(binding.root)
+        config.locale = Locale(Locale.ENGLISH.language)
+        resources.updateConfiguration(config, metrics)
+        onConfigurationChanged(config)
     }
 
-    private fun requestLocation(){
+    private fun setLocale(activity: Activity, language: String) {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val resources = activity.resources
+        val config = resources.configuration
+
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+        onConfigurationChanged(config)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {//TODO aquispe funciona para todos los fragments
+        super.onConfigurationChanged(newConfig)
+        binding.btNasagallery.text = getString(R.string.images_in_nasa_gallery)
+        binding.btNeows.text = getString(R.string.near_asteroids)
+        binding.btSearchrover.text = getString(R.string.photos_mars_rover)
+        binding.titleMain.text = getString(R.string.what_do_you_want_to_search)
+    }
+
+    private fun requestLocation() {
         viewModel.getCurrentLocation()
     }
 

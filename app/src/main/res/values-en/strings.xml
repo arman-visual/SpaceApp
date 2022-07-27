@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Space App</string>
+    <string name="explore_images_gallery">Explore images</string>
+    <string name="favorite_images">Favorite images</string>
+    <string name="image_of_nasa">image of NASA</string>
+    <string name="buttom_of_download_image_from_nasa">Buttom of download image from NASA</string>
+    <string name="buttom_for_save_or_remove_of_favorite_photos">Buttom for save or remove of favorite photos</string>
+    <string name="info">Photo deleted</string>
+    <string name="undo">Undo</string>
+    <string name="message_no_photos">No photos with this date have been found</string>
+    <string name="message_input_error">All fields are required</string>
+    <string name="touch_here">Touch here</string>
+    <string name="neo_search">Search</string>
+    <string name="title_scree_neows">Asteroids - NeoWs</string>
+    <string name="message_no_near">No nearby asteroids on this date</string>
+    <string name="message_no_found_photos">No photos found with this word</string>
+    <string name="introduce_date">Introduce date:</string>
+    <string name="title_mars_rover_photos">Mars Rover Photos</string>
+    <string name="no_searches_yet">No searches yet</string>
+    <string name="label_check_connection">Check your internet connection</string>
+    <string name="label_require_field">You have insert a word!</string>
+    <string name="label_search_nasa">Search photos of NASA…</string>
+    <string name="label_download">Downloading…</string>
+    <string name="label_title_alert_permission">Permission required</string>
+    <string name="label_message_required_permission">Permission required to save photos from the Web.</string>
+    <string name="action_go_to_settings">GOTO SETTINGS</string>
+    <string name="label_no_there_stored_neos">No hay Asteroides Almacenados</string>
+    <string name="label_no_internet">No hay internet</string>
+    <string name="label_select_date">Select date</string>
+    <string name="what_do_you_want_to_search">What do you want to search?</string>
+    <string name="near_asteroids">Near Asteroids</string>
+    <string name="photos_mars_rover">photos mars rover</string>
+    <string name="images_in_nasa_gallery">images in nasa gallery</string>
+    <string name="label_neo_name">"Asteroid with name: "</string>
+    <string name="label_neo_state">is deleted</string>
+    <string name="rover">Rover:</string>
+    <string name="rover_status">Rover status:</string>
+    <string name="rover_earth_date">Earth date:</string>
+    <string name="rover_launch_date">Launch date:</string>
+    <string name="rover_landing_date">Landing date:</string>
+</resources>
