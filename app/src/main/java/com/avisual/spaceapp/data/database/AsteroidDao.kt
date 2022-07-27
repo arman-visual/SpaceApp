@@ -12,7 +12,7 @@ interface AsteroidDao {
     fun getAllLiveData(): LiveData<List<Neo>>
 
     @Query("SELECT * FROM  neo_asteroids_saved ORDER BY id DESC")
-    fun getNeoWithFlow(): Flow<List<Neo>>
+    fun getNeoWithFlow(): Flow<List<Neo>>?
 
     @Query("SELECT * FROM neo_asteroids_saved WHERE id = :asteroidId")
     suspend fun getById(asteroidId: String): Neo?

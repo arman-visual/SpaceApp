@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 class GetAllStoredPhotos(private val galleryRepository: GalleryRepository) {
 
-    fun invoke(): Flow<List<PhotoGallery>> {
+    fun invoke(): Flow<List<PhotoGallery>>? {
         return galleryRepository.getAllStoredPhotos()
     }
 }

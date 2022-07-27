@@ -3,6 +3,8 @@ package com.avisual.spaceapp.ui.common
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -32,4 +34,10 @@ fun Context.toast(message:String){
 inline fun <reified T : Activity> Context.startActivity() {
     val intent = Intent(this, T::class.java)
     startActivity(intent)
+}
+
+fun Context.checkInternetConnection(connectivityService: String): Boolean {
+    val cm = this.getSystemService(connectivityService) as ConnectivityManager
+    val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+    return activeNetwork?.isConnectedOrConnecting == true
 }

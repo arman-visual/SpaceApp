@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/showNeoFragment"
-        android:name="com.avisual.spaceapp.ui.asteroidsNeo.ShowNeoFragment"
+        android:name="com.avisual.spaceapp.ui.asteroidsNeo.showNeos.ShowNeoFragment"
         android:label="show_neo_fragment"
         tools:layout="@layout/show_neo_fragment" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailNeoFragment4"
-        android:name="com.avisual.spaceapp.ui.asteroidsNeo.DetailNeoFragment"
+        android:name="com.avisual.spaceapp.ui.asteroidsNeo.detailNeo.DetailNeoFragment"
         android:label="DetailNeoFragment"
         tools:layout="@layout/detail_neo_fragment">
         <argument
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/storedNeoFragment"
-        android:name="com.avisual.spaceapp.ui.asteroidsNeo.StoredNeoFragment"
+        android:name="com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.StoredNeoFragment"
         android:label="neo_stored_fragment"
         tools:layout="@layout/neo_stored_fragment" >
         <action

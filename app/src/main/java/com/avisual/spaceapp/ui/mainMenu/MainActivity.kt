@@ -6,7 +6,7 @@ import com.avisual.spaceapp.ui.common.startActivity
 import com.avisual.spaceapp.databinding.ActivityMainBinding
 import com.avisual.spaceapp.ui.asteroidsNeo.AsteroidsNeoActivity
 import com.avisual.spaceapp.ui.roverMars.NavRoverMarsActivity
-import com.avisual.spaceapp.ui.searchGallery.NavGalleryActivity
+import com.avisual.spaceapp.ui.gallery.GalleryActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btNeows.setOnClickListener { startActivity<AsteroidsNeoActivity>() }
-        binding.btNasagallery.setOnClickListener { startActivity<NavGalleryActivity>() }
+        binding.btNasagallery.setOnClickListener { startActivity<GalleryActivity>() }
         binding.btSearchrover.setOnClickListener { startActivity<NavRoverMarsActivity>() }
     }
 }

@@ -14,7 +14,7 @@ class GalleryRepository(
         return galleryRemoteDataSource.findPhotosGallery(keyword)
     }
 
-    fun getAllStoredPhotos(): Flow<List<PhotoGallery>> {
+    fun getAllStoredPhotos(): Flow<List<PhotoGallery>>? {
         return galleryLocalDataSource.getStoredPhotosInDb()
     }
 

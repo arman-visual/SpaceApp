@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/showPhotosFragment"
-        android:name="com.avisual.spaceapp.ui.roverMars.ShowPhotosFragment"
+        android:name="com.avisual.spaceapp.ui.roverMars.showRoverPhotos.ShowPhotosFragment"
         android:label="fragment_show_photos"
         tools:layout="@layout/fragment_show_photos" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailPhotoRoverFragment"
-        android:name="com.avisual.spaceapp.ui.roverMars.DetailPhotoRoverFragment"
+        android:name="com.avisual.spaceapp.ui.roverMars.detailRover.DetailPhotoRoverFragment"
         android:label="fragment_detail_photo_rover"
         tools:layout="@layout/fragment_detail_photo_rover" >
         <argument
