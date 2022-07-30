@@ -53,9 +53,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun subscribeUi() {
-        viewModel.language.observe(this) { language ->
-           // toast("Estas en $language")
-            setLocale(this,language)
+        viewModel.currentRegion.observe(this) { region ->
+            when (region) {
+                "ES" -> {
+                    setLocale(this, region)
+                }
+                "EN" -> {
+                    setLocale(this, region)
+                }
+                else -> {
+                    setLocale(this, region)
+                }
+            }
         }
     }
 
@@ -79,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         onConfigurationChanged(config)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {//TODO aquispe funciona para todos los fragments
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         binding.btNasagallery.text = getString(R.string.images_in_nasa_gallery)
         binding.btNeows.text = getString(R.string.near_asteroids)
