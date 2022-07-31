@@ -2,7 +2,6 @@
     <string name="app_name">Space App</string>
     <string name="explore_images_gallery">Explore images</string>
     <string name="favorite_images">Favorite images</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="image_of_nasa">image of NASA</string>
     <string name="buttom_of_download_image_from_nasa">Buttom of download image from NASA</string>
     <string name="buttom_for_save_or_remove_of_favorite_photos">Buttom for save or remove of favorite photos</string>
@@ -17,4 +16,55 @@
     <string name="message_no_found_photos">No photos found with this word</string>
     <string name="introduce_date">Introduce date:</string>
     <string name="title_mars_rover_photos">Mars Rover Photos</string>
+    <string name="no_searches_yet">No searches yet</string>
+    <string name="label_check_connection">Check your internet connection</string>
+    <string name="label_require_field">You have insert a word!</string>
+    <string name="label_search_nasa">Search photos of NASA…</string>
+    <string name="label_download">Downloading…</string>ç
+    <string name="label_title_alert_permission">Permission required</string>
+    <string name="label_message_required_permission">Permission required to save photos from the Web.</string>
+    <string name="action_go_to_settings">GOTO SETTINGS</string>
+    <string name="label_no_there_stored_neos">No hay Asteroides Almacenados</string>
+    <string name="label_no_internet">No hay internet</string>
+    <string name="label_select_date">Select date</string>
+    <string name="what_do_you_want_to_search">What do you want to search?</string>
+    <string name="near_asteroids">Near Asteroids</string>
+    <string name="photos_mars_rover">photos mars rover</string>
+    <string name="images_in_nasa_gallery">images in nasa gallery</string>
+    <string name="label_neo_name">"Asteroid with name: "</string>
+    <string name="label_neo_state">is deleted</string>
+    <string name="rover">Rover:</string>
+    <string name="rover_status">Rover status:</string>
+    <string name="rover_earth_date">Earth date:</string>
+    <string name="rover_launch_date">Launch date:</string>
+    <string name="rover_landing_date">Landing date:</string>
+
+    <string name="code_argentina" translatable="false">AR</string>
+    <string name="code_spain" translatable="false">ES</string>
+    <string name="code_bolivia" translatable="false">BO</string>
+    <string name="code_colombia" translatable="false">CO</string>
+    <string name="code_brasil" translatable="false">BR</string>
+    <string name="code_chile" translatable="false">CL</string>
+    <string name="code_ecuador" translatable="false">EC</string>
+    <string name="code_peru" translatable="false">PE</string>
+    <string name="code_paraguay" translatable="false">PY</string>
+    <string name="code_uruguay" translatable="false">UY</string>
+    <string name="code_venezuela" translatable="false">VE</string>
+    <string name="message_require_permission_location">For better app experience, we would like to know your location to match your region</string>
+    <string name="title_required_permission_location">Optionally required permission</string>
+
+    <string-array name="countries_array">
+        <item>@string/code_argentina</item>
+        <item>@string/code_spain</item>
+        <item>@string/code_bolivia</item>
+        <item>@string/code_colombia</item>
+        <item>@string/code_brasil</item>
+        <item>@string/code_chile</item>
+        <item>@string/code_ecuador</item>
+        <item>@string/code_peru</item>
+        <item>@string/code_paraguay</item>
+        <item>@string/code_uruguay</item>
+        <item>@string/code_venezuela</item>
+    </string-array>
+
 </resources>

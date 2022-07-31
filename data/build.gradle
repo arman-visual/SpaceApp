@@ -1,3 +1,5 @@
+import com.avisual.spaceapp.buildsrc.Libs
+
 plugins {
     id 'java-library'
     id 'kotlin'
@@ -5,9 +7,9 @@ plugins {
 
 dependencies {
     implementation project(":domain")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_version"
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.Kotlin.Coroutines.core
     //Test
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation "io.mockk:mockk:1.12.2"
+    testImplementation Libs.JUnit.junit
+    testImplementation Libs.Mockito.ioMock
 }

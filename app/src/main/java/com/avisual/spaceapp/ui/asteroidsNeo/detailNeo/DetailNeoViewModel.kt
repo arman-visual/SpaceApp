@@ -6,15 +6,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.data.toDomainNeo
-import com.avisual.usecases.GetNeoById
-import com.avisual.usecases.RemoveNeo
-import com.avisual.usecases.SaveNeoInDb
+import com.avisual.usecases.GetNeoByIdUseCase
+import com.avisual.usecases.RemoveNeoUseCase
+import com.avisual.usecases.SaveNeoInDbUseCase
 import kotlinx.coroutines.launch
 
 class DetailNeoViewModel(
-    var saveNeoInDb: SaveNeoInDb,
-    var getNeoById: GetNeoById,
-    var removeNeo: RemoveNeo
+    var saveNeoInDbUseCase: SaveNeoInDbUseCase,
+    var getNeoByIdUseCase: GetNeoByIdUseCase,
+    var removeNeoUseCase: RemoveNeoUseCase
 ) : ViewModel() {
 
     private val _statusDb = MutableLiveData(false)
@@ -29,7 +29,7 @@ class DetailNeoViewModel(
     }
 
     private suspend fun isPhotoInDB(neo: Neo): Boolean {
-        return getNeoById.invoke(neo.id) != null
+        return getNeoByIdUseCase.invoke(neo.id) != null
     }
 
     fun changeSaveStatusOfPhoto(neo: Neo) {
@@ -47,13 +47,13 @@ class DetailNeoViewModel(
 
     private fun savePhotoInDb(neo: Neo) {
         viewModelScope.launch {
-            saveNeoInDb.invoke(neo.toDomainNeo())
+            saveNeoInDbUseCase.invoke(neo.toDomainNeo())
         }
     }
 
     private fun deletePhotoInDB(neo: Neo) {
         viewModelScope.launch {
-            removeNeo.invoke(neo.toDomainNeo())
+            removeNeoUseCase.invoke(neo.toDomainNeo())
         }
     }
 }

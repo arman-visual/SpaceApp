@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -17,14 +18,14 @@ import com.avisual.spaceapp.ui.common.checkInternetConnection
 import com.avisual.spaceapp.ui.common.toast
 import com.avisual.spaceapp.ui.gallery.adapter.GalleryPhotosAdapter
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel
-import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel.*
-import org.koin.androidx.scope.ScopeFragment
+import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel.GalleryUi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ShowGalleryFragment : ScopeFragment() {
+class ShowGalleryFragment : Fragment() {
 
-    private lateinit var binding: FragmentExploreGalleryBinding
+    private var _binding: FragmentExploreGalleryBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: ShowGalleryViewModel by viewModel()
     private lateinit var adapter: GalleryPhotosAdapter
     private lateinit var navController: NavController
@@ -38,6 +39,7 @@ class ShowGalleryFragment : ScopeFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentExploreGalleryBinding.inflate(inflater, container, false)
         setUpUi()
         subscribeUi()
         return binding.root
@@ -55,7 +57,6 @@ class ShowGalleryFragment : ScopeFragment() {
     }
 
     private fun setUpUi() {
-        binding = FragmentExploreGalleryBinding.inflate(layoutInflater)
         adapter = GalleryPhotosAdapter(emptyList()) { onClickPhoto(it) }
         binding.recycler.adapter = adapter
     }
@@ -69,10 +70,14 @@ class ShowGalleryFragment : ScopeFragment() {
             if (model is GalleryUi.Loading) View.VISIBLE else View.GONE
 
         if (model is GalleryUi.Content) {
-            if (!model.photos.isNullOrEmpty()) {
+            if (model.photos.isNotEmpty()) {
+                binding.recycler.visibility = View.VISIBLE
+                binding.etInfoResult.visibility = View.GONE
                 adapter.setItems(model.photos.map { it.toGalleryFramework() })
             } else {
-                requireActivity().toast(getString(R.string.message_no_found_photos))
+                binding.etInfoResult.visibility = View.VISIBLE
+                binding.recycler.visibility = View.GONE
+                binding.etInfoResult.text = getString(R.string.message_no_found_photos)
             }
         }
     }
@@ -81,17 +86,22 @@ class ShowGalleryFragment : ScopeFragment() {
         inflater.inflate(R.menu.menu_nav_gallery, menu)
         val searchItem = menu.findItem(R.id.nav_search)
         val searchView = searchItem.actionView as SearchView
-        searchView.queryHint = "Search photos of NASA..."
+        searchView.queryHint = getString(R.string.label_search_nasa)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(keyword: String?): Boolean {
-                if (keyword != null && requireActivity().checkInternetConnection(Context.CONNECTIVITY_SERVICE)) viewModel.findPhotosByKeyword(keyword)
-                else Toast.makeText(
-                    requireActivity(),
-                    "You have insert a word!",
-                    Toast.LENGTH_LONG
-                )
-                    .show()
+                if (requireActivity().checkInternetConnection(Context.CONNECTIVITY_SERVICE)) {
+                    if (keyword != null) viewModel.findPhotosByKeyword(
+                        keyword
+                    )
+                    else Toast.makeText(
+                        requireActivity(),
+                        getString(R.string.label_require_field),
+                        Toast.LENGTH_LONG
+                    )
+                        .show()
+                } else
+                    requireActivity().toast(getString(R.string.label_check_connection))
                 return true
             }
 
@@ -105,5 +115,10 @@ class ShowGalleryFragment : ScopeFragment() {
         val action = ShowGalleryFragmentDirections
             .actionExploreGalleryFragmentToDetailPhotoGalleryFragment(photo)
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

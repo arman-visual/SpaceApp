@@ -13,7 +13,7 @@ class NeoRepository(
     private val apiKey: String
 ) {
 
-    suspend fun getAllNeoByDate(startDate: String): List<Neo>? {
+    suspend fun getAllNeoByDate(startDate: String): List<Neo> {
         return remoteDataSource.getAllNeoByDate(startDate, apiKey)
     }
 

@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.avisual.domain.PhotoGallery
-import com.avisual.usecases.GetGalleryPhotosByKeyword
+import com.avisual.usecases.GetGalleryPhotosByKeywordUseCase
 import kotlinx.coroutines.launch
 
-class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhotosByKeyword) :
+class ShowGalleryViewModel(private val getGalleryPhotosByKeywordUseCase: GetGalleryPhotosByKeywordUseCase) :
     ViewModel() {
 
     companion object {
@@ -24,34 +24,21 @@ class ShowGalleryViewModel(private val getGalleryPhotosByKeyword: GetGalleryPhot
 
     private fun refresh() = viewModelScope.launch {
         _model.value = GalleryUi.Loading
-
-        val response = getGalleryPhotosByKeyword.invoke(DEFAULT_KEYWORD)
-
-        response?.let {
-            _model.value =
-                GalleryUi.Content(it)
-        }?:run {
-            _model.value = GalleryUi.Content(emptyList())
-        }
+        val response = getGalleryPhotosByKeywordUseCase.invoke(DEFAULT_KEYWORD)
+        _model.value = GalleryUi.Content(response)
     }
 
     fun findPhotosByKeyword(keyword: String) {
         viewModelScope.launch {
             _model.value = GalleryUi.Loading
-
-            val response = getGalleryPhotosByKeyword.invoke(keyword)
-            response?.let {
-                _model.value =
-                    GalleryUi.Content(it)
-            }?:run {
-                _model.value = GalleryUi.Content(emptyList())
-            }
+            val response = getGalleryPhotosByKeywordUseCase.invoke(keyword)
+            _model.value = GalleryUi.Content(response)
         }
     }
 
     sealed class GalleryUi {
         object Loading : GalleryUi()
-        data class Content(val photos: List<PhotoGallery>? = null) : GalleryUi()
+        data class Content(val photos: List<PhotoGallery> = emptyList()) : GalleryUi()
     }
 }
 

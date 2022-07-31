@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.avisual.spaceapp.data.model.Neo
 import com.avisual.spaceapp.data.toFrameworkNeo
-import com.avisual.usecases.GetAllNeoByDate
+import com.avisual.usecases.GetAllNeoByDateUseCase
 import kotlinx.coroutines.launch
 
-class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ViewModel() {
+class ShowNeoViewModel(private var getAllNeoByDateUseCase: GetAllNeoByDateUseCase) : ViewModel() {
 
     private val _model = MutableLiveData<ShowNeoUi>()
     val model: LiveData<ShowNeoUi> get() = _model
@@ -18,7 +18,7 @@ class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ViewModel
 
         viewModelScope.launch {
             _model.value = ShowNeoUi.Loading
-            val response = getAllNeoByDate.invoke(dateStart)?.map { domainNeo ->
+            val response = getAllNeoByDateUseCase.invoke(dateStart).map { domainNeo ->
                 domainNeo.toFrameworkNeo()
             }
             _model.value = ShowNeoUi.Content(response)
@@ -27,6 +27,6 @@ class ShowNeoViewModel(private var getAllNeoByDate: GetAllNeoByDate) : ViewModel
 
     sealed class ShowNeoUi {
         object Loading : ShowNeoUi()
-        data class Content(val asteroids: List<Neo>? = null) : ShowNeoUi()
+        data class Content(val asteroids: List<Neo> = emptyList()) : ShowNeoUi()
     }
 }

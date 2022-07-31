@@ -9,9 +9,9 @@ import com.avisual.spaceapp.defaultStoredPhotos
 import com.avisual.spaceapp.fakePhoto
 import com.avisual.spaceapp.initMockedDI
 import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel.SavedPhotosUi
-import com.avisual.usecases.DeleteGalleryPhoto
-import com.avisual.usecases.GetAllStoredPhotos
-import com.avisual.usecases.SaveGalleryPhoto
+import com.avisual.usecases.DeleteGalleryPhotoUseCase
+import com.avisual.usecases.GetAllStoredPhotosUseCase
+import com.avisual.usecases.SaveGalleryPhotoUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -49,8 +49,8 @@ class SavedPhotosIntegrationTest : KoinTest {
         val vmModule = module {
             viewModel {
                 SavedPhotosViewModel(
-                    SaveGalleryPhoto(get()),
-                    DeleteGalleryPhoto(get()), GetAllStoredPhotos(get())
+                    SaveGalleryPhotoUseCase(get()),
+                    DeleteGalleryPhotoUseCase(get()), GetAllStoredPhotosUseCase(get())
                 )
             }
         }
