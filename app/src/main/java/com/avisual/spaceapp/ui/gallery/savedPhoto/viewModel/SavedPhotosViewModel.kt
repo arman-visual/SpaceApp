@@ -26,7 +26,7 @@ class SavedPhotosViewModel(
         getPhotosFromDb()
     }
 
-    fun getPhotosFromDb() {//TODO aquispe quizas deberia ponerlo como livedata
+    fun getPhotosFromDb() {
         viewModelScope.launch {
             getAllStoredPhotosUseCase.invoke()?.collect { listPhotoGalleryDomain ->
                 _modelSavedPhotos.value = SavedPhotosUi.Content(listPhotoGalleryDomain.map { it.toGalleryFramework() })
