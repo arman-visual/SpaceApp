@@ -38,4 +38,31 @@
     <string name="rover_earth_date">Earth date:</string>
     <string name="rover_launch_date">Launch date:</string>
     <string name="rover_landing_date">Landing date:</string>
+
+    <string name="code_argentina" translatable="false">AR</string>
+    <string name="code_spain" translatable="false">ES</string>
+    <string name="code_bolivia" translatable="false">BO</string>
+    <string name="code_colombia" translatable="false">CO</string>
+    <string name="code_brasil" translatable="false">BR</string>
+    <string name="code_chile" translatable="false">CL</string>
+    <string name="code_ecuador" translatable="false">EC</string>
+    <string name="code_peru" translatable="false">PE</string>
+    <string name="code_paraguay" translatable="false">PY</string>
+    <string name="code_uruguay" translatable="false">UY</string>
+    <string name="code_venezuela" translatable="false">VE</string>
+
+    <string-array name="countries_array">
+        <item>@string/code_argentina</item>
+        <item>@string/code_spain</item>
+        <item>@string/code_bolivia</item>
+        <item>@string/code_colombia</item>
+        <item>@string/code_brasil</item>
+        <item>@string/code_chile</item>
+        <item>@string/code_ecuador</item>
+        <item>@string/code_peru</item>
+        <item>@string/code_paraguay</item>
+        <item>@string/code_uruguay</item>
+        <item>@string/code_venezuela</item>
+    </string-array>
+
 </resources>

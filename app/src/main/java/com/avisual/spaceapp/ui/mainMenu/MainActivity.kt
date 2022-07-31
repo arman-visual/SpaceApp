@@ -54,26 +54,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun subscribeUi() {
         viewModel.currentRegion.observe(this) { region ->
-            when (region) {
-                "ES" -> {
-                    setLocale(this, region)
-                }
-                "EN" -> {
-                    setLocale(this, region)
-                }
-                else -> {
-                    setLocale(this, region)
-                }
-            }
+            if(resources.getStringArray(R.array.countries_array).contains(region))
+                setLocale(this, ES_LANGUAGE)
+            else
+                setLocale(this, EN_LANGUAGE)
         }
-    }
-
-    private fun setLocale(language: String) {
-        val metrics = resources.displayMetrics
-        val config = resources.configuration
-        config.locale = Locale(Locale.ENGLISH.language)
-        resources.updateConfiguration(config, metrics)
-        onConfigurationChanged(config)
     }
 
     private fun setLocale(activity: Activity, language: String) {
@@ -101,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAlertMessageUi() {
-        MaterialAlertDialogBuilder(this)
+        MaterialAlertDialogBuilder(this)//TODO aquispe modificar message
             .setTitle(getString(R.string.label_title_alert_permission))
             .setMessage(getString(R.string.label_message_required_permission))
             .setPositiveButton(getString(R.string.action_go_to_settings)) { dialog, _ ->
@@ -112,5 +97,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             .show()
+    }
+
+    companion object{
+        const val ES_LANGUAGE = "ES"
+        const val EN_LANGUAGE = "EN"
     }
 }
