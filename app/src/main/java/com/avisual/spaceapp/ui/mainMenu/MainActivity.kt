@@ -86,9 +86,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAlertMessageUi() {
-        MaterialAlertDialogBuilder(this)//TODO aquispe modificar message
-            .setTitle(getString(R.string.label_title_alert_permission))
-            .setMessage(getString(R.string.label_message_required_permission))
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.title_required_permission_location))
+            .setMessage(getString(R.string.message_require_permission_location))
             .setPositiveButton(getString(R.string.action_go_to_settings)) { dialog, _ ->
                 dialog.cancel()
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)

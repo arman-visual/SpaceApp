@@ -39,4 +39,6 @@
     <string name="rover_earth_date">Earth date:</string>
     <string name="rover_launch_date">Launch date:</string>
     <string name="rover_landing_date">Landing date:</string>
+    <string name="message_require_permission_location">For better app experience, we would like to know your location to match your region</string>
+    <string name="title_required_permission_location">Optionally required permission</string>
 </resources>

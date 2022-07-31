@@ -50,6 +50,8 @@
     <string name="code_paraguay" translatable="false">PY</string>
     <string name="code_uruguay" translatable="false">UY</string>
     <string name="code_venezuela" translatable="false">VE</string>
+    <string name="message_require_permission_location">For better app experience, we would like to know your location to match your region</string>
+    <string name="title_required_permission_location">Optionally required permission</string>
 
     <string-array name="countries_array">
         <item>@string/code_argentina</item>

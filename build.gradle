@@ -1,27 +1,45 @@
+import com.avisual.spaceapp.buildsrc.Libs
+apply plugin: "com.github.ben-manes.versions"
+
 buildscript {
     ext.kotlin_version = "1.6.0"
     repositories {
         google()
         jcenter()
         mavenCentral()
+        gradlePluginPortal()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.2"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "androidx.navigation.safeargs:androidx.navigation.safeargs.gradle.plugin:2.4.1"
-
+        classpath Libs.androidGradlePlugin
+        classpath Libs.Kotlin.gradlePlugin
+        classpath Libs.AndroidDx.Navigation.gradlePlugin
+        classpath Libs.gradleVersionsPlugin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+// Taken from https://github.com/ben-manes/gradle-versions-plugin
+def isNonStable = { String version ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-r)?$/
+    return !stableKeyword && !(version ==~ regex)
+}
+
 allprojects {
     repositories {
         google()
+        gradlePluginPortal()
         jcenter()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+tasks.named("dependencyUpdates").configure {
+    rejectVersionIf {
+        isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)
+    }
 }

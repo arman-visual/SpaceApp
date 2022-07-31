@@ -39,4 +39,6 @@
     <string name="rover_earth_date">Fecha(Tierra):</string>
     <string name="rover_launch_date">Fecha de lanzamiento:</string>
     <string name="rover_landing_date">Fecha de aterrizaje:</string>
+    <string name="message_require_permission_location">Para una mejor experiencia con la app, nos gustaría conocer tu ubicación para poner el lenguaje acorde a tu región</string>
+    <string name="title_required_permission_location">Permiso requerido opcionalmente</string>
 </resources>
