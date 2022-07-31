@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -14,12 +15,12 @@ import com.avisual.spaceapp.databinding.FragmentSavedPhotosBinding
 import com.avisual.spaceapp.ui.gallery.adapter.SavedPhotosAdapter
 import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel
 import com.google.android.material.snackbar.Snackbar
-import org.koin.androidx.scope.ScopeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SavedPhotosFragment : ScopeFragment() {
+class SavedPhotosFragment : Fragment() {
 
-    private lateinit var binding: FragmentSavedPhotosBinding
+    private var _binding: FragmentSavedPhotosBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: SavedPhotosViewModel by viewModel()
     private lateinit var photosAdapter: SavedPhotosAdapter
 
@@ -27,13 +28,17 @@ class SavedPhotosFragment : ScopeFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setUpUi()
-        subscribeUi()
+        _binding = FragmentSavedPhotosBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpUi()
+        subscribeUi()
+    }
+
     private fun setUpUi() {
-        binding = FragmentSavedPhotosBinding.inflate(layoutInflater)
         photosAdapter = SavedPhotosAdapter(emptyList()) {
             navToDetailPhoto(it)
         }
@@ -91,5 +96,10 @@ class SavedPhotosFragment : ScopeFragment() {
                 photo
             )
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

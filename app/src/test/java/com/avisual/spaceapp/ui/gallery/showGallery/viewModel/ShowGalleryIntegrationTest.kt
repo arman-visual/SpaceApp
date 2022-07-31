@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import com.avisual.spaceapp.defaultFakeGalleryPhotos
 import com.avisual.spaceapp.initMockedDI
 import com.avisual.spaceapp.ui.gallery.showGallery.viewModel.ShowGalleryViewModel.GalleryUi
-import com.avisual.usecases.GetGalleryPhotosByKeyword
+import com.avisual.usecases.GetGalleryPhotosByKeywordUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -41,7 +41,7 @@ class ShowGalleryIntegrationTest : KoinTest {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         val vmModule = module {
             factory { ShowGalleryViewModel(get()) }
-            factory { GetGalleryPhotosByKeyword(get()) }
+            factory { GetGalleryPhotosByKeywordUseCase(get()) }
         }
         initMockedDI(vmModule)
         viewModel = get()

@@ -144,8 +144,8 @@ class FakeNeoLocalDataSource : NeoLocalDataSource {
 class FakeNeoRemoteDataSource : NeoRemoteDataSource {
 
     private val neos = defaultFakeNeoPhotos
-    override suspend fun getAllNeoByDate(startDate: String, apiKey: String): List<Neo>? {
-        return neos ?: null
+    override suspend fun getAllNeoByDate(startDate: String, apiKey: String): List<Neo> {
+        return neos
     }
 
 }
@@ -153,8 +153,8 @@ class FakeNeoRemoteDataSource : NeoRemoteDataSource {
 class FakeRoverRemoteDataSource : RoverRemoteDataSource {
 
     private val roverPhotos = defaultFakeRoverPhotos
-    override suspend fun getPhotosRoverByDate(date: String, apiKey: String): List<PhotoRover>? {
-        return roverPhotos ?: null
+    override suspend fun getPhotosRoverByDate(date: String, apiKey: String): List<PhotoRover> {
+        return roverPhotos
     }
 
 }

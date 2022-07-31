@@ -5,8 +5,8 @@ import androidx.lifecycle.Observer
 import com.avisual.domain.Neo
 import com.avisual.spaceapp.data.toFrameworkNeo
 import com.avisual.spaceapp.ui.asteroidsNeo.storedNeos.viewModel.StoredNeoViewModel.StoredNeoUi
-import com.avisual.usecases.GetStoredNeos
-import com.avisual.usecases.RemoveNeo
+import com.avisual.usecases.GetStoredNeosUseCase
+import com.avisual.usecases.RemoveNeoUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
@@ -32,10 +32,10 @@ class StoredNeoViewModelTest {
     var rule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    private lateinit var removeNeo: RemoveNeo
+    private lateinit var removeNeoUseCase: RemoveNeoUseCase
 
     @Mock
-    private lateinit var getStoredNeos: GetStoredNeos
+    private lateinit var getStoredNeosUseCase: GetStoredNeosUseCase
 
     @Mock
     private lateinit var observer: Observer<StoredNeoUi>
@@ -61,7 +61,7 @@ class StoredNeoViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        viewModel = StoredNeoViewModel(getStoredNeos, removeNeo)
+        viewModel = StoredNeoViewModel(getStoredNeosUseCase, removeNeoUseCase)
     }
 
     @Test
@@ -69,7 +69,7 @@ class StoredNeoViewModelTest {
         runTest {
             //GIVEN
             val storedNeos = listOf(mockNeo.copy(id = "S1"))
-            whenever(getStoredNeos.invoke()).thenReturn(flowOf(storedNeos))
+            whenever(getStoredNeosUseCase.invoke()).thenReturn(flowOf(storedNeos))
             viewModel.model.observeForever(observer)
             //WHEN
             viewModel.getStoredNeosFromDb()
@@ -82,7 +82,7 @@ class StoredNeoViewModelTest {
     fun `when viewModel is created then return null`() =
         runTest {
             //GIVEN
-            whenever(getStoredNeos.invoke()).thenReturn(null)
+            whenever(getStoredNeosUseCase.invoke()).thenReturn(null)
             viewModel.model.observeForever(observer)
             //WHEN
             viewModel.getStoredNeosFromDb()
@@ -95,12 +95,12 @@ class StoredNeoViewModelTest {
         runTest {
             //GIVEN
             val storedNeo = mockNeo.copy(id = "S2")
-            whenever(removeNeo.invoke(storedNeo)).thenReturn(Unit)
+            whenever(removeNeoUseCase.invoke(storedNeo)).thenReturn(Unit)
             viewModel.model.observeForever(observer)
             //WHEN
             viewModel.removeAsteroidSaved(storedNeo.toFrameworkNeo())
             //THEN
-            verify(removeNeo).invoke(storedNeo)
+            verify(removeNeoUseCase).invoke(storedNeo)
         }
 
     @After

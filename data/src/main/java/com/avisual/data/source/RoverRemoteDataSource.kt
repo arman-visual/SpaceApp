@@ -4,5 +4,5 @@ import com.avisual.domain.PhotoRover
 
 interface RoverRemoteDataSource {
 
-    suspend fun getPhotosRoverByDate(date: String, apiKey: String): List<PhotoRover>?
+    suspend fun getPhotosRoverByDate(date: String, apiKey: String): List<PhotoRover>
 }

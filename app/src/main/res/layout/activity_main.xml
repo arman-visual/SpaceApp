@@ -8,6 +8,15 @@
     android:orientation="vertical"
     tools:context=".ui.mainMenu.MainActivity">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="111dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
 
         android:id="@+id/linearLayout5"
@@ -27,7 +36,7 @@
             android:layout_marginBottom="10dp"
             android:background="#CD1976D2"
             android:fontFamily="sans-serif-condensed"
-            android:text="What do you want to search?"
+            android:text="@string/what_do_you_want_to_search"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
@@ -36,19 +45,19 @@
             android:id="@+id/bt_neows"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Near Asteroids" />
+            android:text="@string/near_asteroids" />
 
         <Button
             android:id="@+id/bt_searchrover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="photos mars rover" />
+            android:text="@string/photos_mars_rover" />
 
         <Button
             android:id="@+id/bt_nasagallery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="images in nasa gallery" />
+            android:text="@string/images_in_nasa_gallery" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

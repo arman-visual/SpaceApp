@@ -7,15 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.avisual.spaceapp.data.model.PhotoGallery
 import com.avisual.spaceapp.data.toGalleryDomain
 import com.avisual.spaceapp.data.toGalleryFramework
-import com.avisual.usecases.DeleteGalleryPhoto
-import com.avisual.usecases.GetAllStoredPhotos
-import com.avisual.usecases.SaveGalleryPhoto
+import com.avisual.usecases.DeleteGalleryPhotoUseCase
+import com.avisual.usecases.GetAllStoredPhotosUseCase
+import com.avisual.usecases.SaveGalleryPhotoUseCase
 import kotlinx.coroutines.launch
 
 class SavedPhotosViewModel(
-    private val saveGalleryPhoto: SaveGalleryPhoto,
-    private val deleteGalleryPhoto: DeleteGalleryPhoto,
-    private val getAllStoredPhotos: GetAllStoredPhotos
+    private val saveGalleryPhotoUseCase: SaveGalleryPhotoUseCase,
+    private val deleteGalleryPhotoUseCase: DeleteGalleryPhotoUseCase,
+    private val getAllStoredPhotosUseCase: GetAllStoredPhotosUseCase
 ) :
     ViewModel() {
 
@@ -26,9 +26,9 @@ class SavedPhotosViewModel(
         getPhotosFromDb()
     }
 
-    fun getPhotosFromDb() {//TODO aquispe quizas deberia ponerlo como livedata
+    fun getPhotosFromDb() {
         viewModelScope.launch {
-            getAllStoredPhotos.invoke()?.collect { listPhotoGalleryDomain ->
+            getAllStoredPhotosUseCase.invoke()?.collect { listPhotoGalleryDomain ->
                 _modelSavedPhotos.value = SavedPhotosUi.Content(listPhotoGalleryDomain.map { it.toGalleryFramework() })
             }
         }
@@ -36,13 +36,13 @@ class SavedPhotosViewModel(
 
     fun deletePhoto(photoGallery: PhotoGallery) {
         viewModelScope.launch {
-            deleteGalleryPhoto.invoke(photoGallery.toGalleryDomain())
+            deleteGalleryPhotoUseCase.invoke(photoGallery.toGalleryDomain())
         }
     }
 
     fun savePhoto(photoGallery: PhotoGallery) {
         viewModelScope.launch {
-            saveGalleryPhoto.invoke(photoGallery.toGalleryDomain())
+            saveGalleryPhotoUseCase.invoke(photoGallery.toGalleryDomain())
         }
     }
 

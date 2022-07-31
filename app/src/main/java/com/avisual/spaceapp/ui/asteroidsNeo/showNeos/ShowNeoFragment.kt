@@ -32,7 +32,8 @@ class ShowNeoFragment : ScopeFragment() {
     }
 
     private val viewModel: ShowNeoViewModel by viewModel()
-    private lateinit var binding: ShowNeoFragmentBinding
+    private var _binding: ShowNeoFragmentBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: AsteroidsNeoAdapter
     private lateinit var navController: NavController
     private lateinit var datePicker: MaterialDatePicker<Long>
@@ -47,38 +48,37 @@ class ShowNeoFragment : ScopeFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        configureCalendar()
-        setUpUi()
+        _binding = ShowNeoFragmentBinding.inflate(inflater, container, false)
         subscribe()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configureCalendar()
+        setUpUi()
         navController = view.findNavController()
     }
 
     private fun setUpUi() {
-        binding = ShowNeoFragmentBinding.inflate(layoutInflater)
-
         binding.showInput.setOnClickListener {
             datePicker.show(requireActivity().supportFragmentManager, "DATA_PICKER")
         }
-        binding.search.setOnClickListener {//TODO aquispe controlar consultas sin conexion
+        binding.search.setOnClickListener {
             val cm = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             if (cm.activeNetworkInfo!=null && cm.activeNetworkInfo!!.isAvailable)
                 viewModel.getAsteroidsByOnlyDate(
                     binding.showInput.text.toString()
                 )
             else
-                requireActivity().toast("No hay internet")
+                requireActivity().toast(getString(R.string.label_no_internet))
         }
         adapter = AsteroidsNeoAdapter(emptyList()) { onClickPhoto(it) }
         binding.recycler.adapter = adapter
     }
 
     private fun subscribe() {
-        viewModel.model.observe(requireActivity(), Observer(::updateUi))
+        viewModel.model.observe(viewLifecycleOwner, Observer(::updateUi))
     }
 
     private fun updateUi(model: ShowNeoUi) {
@@ -87,7 +87,7 @@ class ShowNeoFragment : ScopeFragment() {
             if (model is ShowNeoUi.Loading) View.VISIBLE else View.GONE
 
         if (model is ShowNeoUi.Content) {
-            if (!model.asteroids.isNullOrEmpty()) {
+            if (model.asteroids.isNotEmpty()) {
                 adapter.setItems(model.asteroids)
             } else {
                 requireActivity().toast(getString(R.string.message_no_near))
@@ -113,7 +113,7 @@ class ShowNeoFragment : ScopeFragment() {
                 .setEnd(finalYear)
 
         datePicker = MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Select date")
+            .setTitleText(getString(R.string.label_select_date))
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .setCalendarConstraints(constraintsBuilder.build())
             .build().apply {
@@ -133,5 +133,10 @@ class ShowNeoFragment : ScopeFragment() {
     private fun onClickPhoto(neo: Neo) {
         val action = ShowNeoFragmentDirections.actionShowNeoFragmentToDetailNeoFragment4(neo)
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

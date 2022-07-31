@@ -5,9 +5,9 @@ import androidx.lifecycle.Observer
 import com.avisual.domain.PhotoGallery
 import com.avisual.spaceapp.data.toGalleryFramework
 import com.avisual.spaceapp.ui.gallery.savedPhoto.viewModel.SavedPhotosViewModel.SavedPhotosUi
-import com.avisual.usecases.DeleteGalleryPhoto
-import com.avisual.usecases.GetAllStoredPhotos
-import com.avisual.usecases.SaveGalleryPhoto
+import com.avisual.usecases.DeleteGalleryPhotoUseCase
+import com.avisual.usecases.GetAllStoredPhotosUseCase
+import com.avisual.usecases.SaveGalleryPhotoUseCase
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -35,13 +35,13 @@ class SavedPhotosViewModelTest {
     var rule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    private lateinit var saveGalleryPhoto: SaveGalleryPhoto
+    private lateinit var saveGalleryPhotoUseCase: SaveGalleryPhotoUseCase
 
     @Mock
-    private lateinit var deleteGalleryPhoto: DeleteGalleryPhoto
+    private lateinit var deleteGalleryPhotoUseCase: DeleteGalleryPhotoUseCase
 
     @Mock
-    private lateinit var getAllStoredPhotos: GetAllStoredPhotos
+    private lateinit var getAllStoredPhotosUseCase: GetAllStoredPhotosUseCase
 
     @Mock
     private lateinit var observer: Observer<SavedPhotosUi>
@@ -63,7 +63,7 @@ class SavedPhotosViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        viewModel = SavedPhotosViewModel(saveGalleryPhoto, deleteGalleryPhoto, getAllStoredPhotos)
+        viewModel = SavedPhotosViewModel(saveGalleryPhotoUseCase, deleteGalleryPhotoUseCase, getAllStoredPhotosUseCase)
     }
 
     @Test
@@ -71,7 +71,7 @@ class SavedPhotosViewModelTest {
         runTest {
             //GIVEN
             val photos = listOf(mockPhoto.copy(nasa_id = "TST1"))
-            whenever(getAllStoredPhotos.invoke()).thenReturn(flowOf(photos))
+            whenever(getAllStoredPhotosUseCase.invoke()).thenReturn(flowOf(photos))
             viewModel.modelSavedPhotos.observeForever(observer)
             //WHEN
             viewModel.getPhotosFromDb()
@@ -84,7 +84,7 @@ class SavedPhotosViewModelTest {
     fun `Observing livedata when viewModel is created then return null`() =
         runTest {
             //GIVEN
-            whenever(getAllStoredPhotos.invoke()).thenReturn(null)
+            whenever(getAllStoredPhotosUseCase.invoke()).thenReturn(null)
             viewModel.modelSavedPhotos.observeForever(observer)
             //WHEN
             viewModel.getPhotosFromDb()
@@ -97,12 +97,12 @@ class SavedPhotosViewModelTest {
         runTest {
             //GIVEN
             val photo = mockPhoto.copy(nasa_id = "1TST")
-            whenever(saveGalleryPhoto.invoke(photo)).thenReturn(Unit)
+            whenever(saveGalleryPhotoUseCase.invoke(photo)).thenReturn(Unit)
             viewModel.modelSavedPhotos.observeForever(observer)
             //WHEN
             viewModel.savePhoto(photo.toGalleryFramework())
             //THEN
-            verify(saveGalleryPhoto).invoke(photo)
+            verify(saveGalleryPhotoUseCase).invoke(photo)
         }
 
     @Test
@@ -110,12 +110,12 @@ class SavedPhotosViewModelTest {
         runTest {
             //GIVEN
             val photo = mockPhoto.copy(nasa_id = "1TST")
-            whenever(deleteGalleryPhoto.invoke(photo)).thenReturn(Unit)
+            whenever(deleteGalleryPhotoUseCase.invoke(photo)).thenReturn(Unit)
             viewModel.modelSavedPhotos.observeForever(observer)
             //WHEN
             viewModel.deletePhoto(photo.toGalleryFramework())
             //THEN
-            verify(deleteGalleryPhoto).invoke(photo)
+            verify(deleteGalleryPhotoUseCase).invoke(photo)
         }
 
     @After

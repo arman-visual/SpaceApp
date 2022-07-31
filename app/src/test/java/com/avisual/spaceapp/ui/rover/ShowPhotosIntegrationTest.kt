@@ -7,7 +7,7 @@ import com.avisual.spaceapp.defaultFakeRoverPhotos
 import com.avisual.spaceapp.initMockedDI
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel
 import com.avisual.spaceapp.ui.roverMars.showRoverPhotos.viewModel.ShowPhotosViewModel.*
-import com.avisual.usecases.GetRoverPhotosByDate
+import com.avisual.usecases.GetRoverPhotosByDateUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -41,7 +41,7 @@ class ShowPhotosIntegrationTest : KoinTest {
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         val vmModule = module {
-            factory { ShowPhotosViewModel(GetRoverPhotosByDate(get())) }
+            factory { ShowPhotosViewModel(GetRoverPhotosByDateUseCase(get())) }
         }
         initMockedDI(vmModule)
         viewModel = get()
